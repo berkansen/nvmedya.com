@@ -378,6 +378,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     assignTask(currentTaskId, 'Berkan');
                     break;
                 case 'move-todo':
+                    // Reset assignee when moving back to Todo (Sahipsiz)
+                    assignTask(currentTaskId, null);
                     updateTaskStatus(currentTaskId, 'todo');
                     break;
                 case 'move-progress':
@@ -391,7 +393,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateTaskStatus(currentTaskId, 'archive');
                     break;
                 case 'delete':
-                    deleteTask(currentTaskId);
+                    if (confirm('Bu görevi silmek istediğinize emin misiniz?')) {
+                        deleteTask(currentTaskId);
+                    }
                     break;
             }
         });

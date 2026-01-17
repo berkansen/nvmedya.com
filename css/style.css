@@ -1260,10 +1260,10 @@ header {
 }
 
 .badge-yeliz {
-    background: rgba(224, 170, 255, 0.2);
-    /* Light Purple */
-    color: #e0aaff;
-    border: 1px solid rgba(224, 170, 255, 0.4);
+    background: rgba(255, 105, 180, 0.2);
+    /* Hot Pink */
+    color: #ff69b4;
+    border: 1px solid rgba(255, 105, 180, 0.4);
 }
 
 .badge-berkan {
@@ -1429,8 +1429,8 @@ header {
 }
 
 .note-item.note-yeliz {
-    border-left-color: #e0aaff;
-    background: rgba(224, 170, 255, 0.05);
+    border-left-color: #ff69b4;
+    background: rgba(255, 105, 180, 0.05);
 }
 
 .note-item.note-berkan {
@@ -1446,7 +1446,7 @@ header {
 }
 
 .note-yeliz .note-author {
-    color: #e0aaff;
+    color: #ff69b4;
 }
 
 .note-berkan .note-author {
@@ -1518,6 +1518,17 @@ header {
 }
 
 /* --- Archive Section --- */
+.archive-section {
+    max-width: 800px;
+    /* Or whatever width looks good centered */
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
 .archive-list .task-card {
     opacity: 0.8;
     background: rgba(255, 255, 255, 0.02);
@@ -1545,6 +1556,15 @@ header {
 }
 
 /* Ensure modals are on top */
-.modal {
-    z-index: 2000;
+/* Red Buttons */
+#openTrashBtn,
+#deleteNoteBtn {
+    background-color: #ff4d4d !important;
+    color: white !important;
+    border: none;
+}
+
+#openTrashBtn:hover,
+#deleteNoteBtn:hover {
+    background-color: #ff3333 !important;
 }
