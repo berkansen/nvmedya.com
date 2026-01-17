@@ -1,33 +1,24 @@
+// --- Firebase Configuration ---
+const firebaseConfig = {
+    apiKey: "AIzaSyAhKpbwC3VVX7ewazNY-XvJ_en_P1tiwtI",
+    authDomain: "nisan-vitrini-panel.firebaseapp.com",
+    projectId: "nisan-vitrini-panel",
+    storageBucket: "nisan-vitrini-panel.firebasestorage.app",
+    messagingSenderId: "951374944469",
+    appId: "1:951374944469:web:49f8944d4d9cf669c16a5c"
+};
+
+// Initialize Firebase
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+}
+const db = firebase.firestore();
+
 document.addEventListener('DOMContentLoaded', () => {
-    // --- State Management ---
-    let tasks = JSON.parse(localStorage.getItem('nvm_tasks')) || [];
-    let trash = JSON.parse(localStorage.getItem('nvm_trash')) || [];
-    let archive = JSON.parse(localStorage.getItem('nvm_archive')) || [];
-
-    // Cleanup old trash and archive
-    const cleanupStorage = () => {
-        const now = new Date();
-        const fifteenDaysAgo = new Date();
-        fifteenDaysAgo.setDate(now.getDate() - 15);
-
-        const sixtyDaysAgo = new Date();
-        sixtyDaysAgo.setDate(now.getDate() - 60);
-
-        // Trash Cleanup (15 days)
-        const initTrashLen = trash.length;
-        trash = trash.filter(t => new Date(t.deletedAt) > fifteenDaysAgo);
-        if (trash.length !== initTrashLen) {
-            localStorage.setItem('nvm_trash', JSON.stringify(trash));
-        }
-
-        // Archive Cleanup (60 days)
-        const initArchiveLen = archive.length;
-        archive = archive.filter(t => new Date(t.archivedAt) > sixtyDaysAgo);
-        if (archive.length !== initArchiveLen) {
-            localStorage.setItem('nvm_archive', JSON.stringify(archive));
-        }
-    };
-    cleanupStorage();
+    // --- State Management (Local Mirrors of DB) ---
+    let tasks = [];
+    let trash = [];
+    let archive = [];
 
     // --- DOM Elements ---
     const taskInput = document.getElementById('taskInput');
@@ -44,12 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuMoveDone = document.getElementById('menuMoveDone');
     const menuMoveArchive = document.getElementById('menuMoveArchive');
 
-
     // Counts
     const countTodo = document.getElementById('count-todo');
     const countProgress = document.getElementById('count-progress');
     const countDone = document.getElementById('count-done');
-
 
     // Modals
     const noteModal = document.getElementById('noteModal');
@@ -57,12 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const trashModal = document.getElementById('trashModal');
     const archiveModal = document.getElementById('archiveModal');
 
-    // Note Add Elements
+    // Note Elements
     const noteText = document.getElementById('noteText');
     const saveNoteBtn = document.getElementById('saveNoteBtn');
     const closeNoteModal = document.getElementById('closeNoteModal');
 
-    // Note Edit Elements
     const editNoteText = document.getElementById('editNoteText');
     const updateNoteBtn = document.getElementById('updateNoteBtn');
     const deleteNoteBtn = document.getElementById('deleteNoteBtn');
@@ -77,30 +65,59 @@ document.addEventListener('DOMContentLoaded', () => {
     const archiveList = document.getElementById('archiveList');
 
     let currentTaskId = null;
-    let currentNoteIndex = null; // for editing
+    let currentNoteIndex = null;
 
     // --- Constants ---
     const TASK_COLORS = [
-        '#FF5252', // Red
-        '#FF9800', // Orange
-        '#FFD740', // Yellow
-        '#69F0AE', // Green
-        '#40C4FF', // Blue
-        '#7C4DFF', // Deep Purple
-        '#FF4081'  // Pink
+        '#FF5252', '#FF9800', '#FFD740', '#69F0AE',
+        '#40C4FF', '#7C4DFF', '#FF4081'
     ];
 
-    // --- Render ---
-    function renderTasks() {
-        // Sort tasks: Newest first
-        tasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    // --- Real-time Listeners ---
 
-        // Clear lists
+    // 1. Listen for Tasks
+    db.collection('tasks').onSnapshot(snapshot => {
+        tasks = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        // Sort newest first
+        tasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        renderTasks();
+    });
+
+    // 2. Listen for Trash
+    db.collection('trash').onSnapshot(snapshot => {
+        trash = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        renderTrash(); // updates modal if open
+    });
+
+    // 3. Listen for Archive
+    db.collection('archive').onSnapshot(snapshot => {
+        archive = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        renderArchive(); // updates modal if open
+    });
+
+    // --- Cleanup Logic (Run once on load) ---
+    const runCleanup = () => {
+        // Fix date math safely
+        const d15 = new Date(); d15.setDate(d15.getDate() - 15);
+        const d60 = new Date(); d60.setDate(d60.getDate() - 60);
+
+        // Delete old trash
+        db.collection('trash').where('deletedAt', '<', d15.toISOString()).get()
+            .then(snap => snap.forEach(doc => doc.ref.delete()));
+
+        // Delete old archive
+        db.collection('archive').where('archivedAt', '<', d60.toISOString()).get()
+            .then(snap => snap.forEach(doc => doc.ref.delete()));
+    };
+    runCleanup();
+
+    // --- Render Functions ---
+
+    function renderTasks() {
         colTodo.innerHTML = '';
         colProgress.innerHTML = '';
         colDone.innerHTML = '';
 
-        // Counters
         let cTodo = 0, cProgress = 0, cDone = 0;
 
         tasks.forEach(task => {
@@ -146,19 +163,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Expand/Collapse on Click
             taskCard.addEventListener('click', (e) => {
-                // Ignore if clicked on specific buttons/notes handled separately
                 if (e.target.closest('.note-item') || e.target.closest('.btn')) return;
-
                 taskCard.classList.toggle('expanded');
             });
 
-            // Add Event Listener for Context Menu
+            // Context Menu
             taskCard.addEventListener('contextmenu', (e) => {
                 e.preventDefault();
                 showContextMenu(e, task.id, task.status);
             });
 
-            // Append to correct column
+            // Append to column
             if (task.status === 'todo') {
                 colTodo.appendChild(taskCard);
                 cTodo++;
@@ -171,13 +186,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Update counts
         countTodo.textContent = cTodo;
         countProgress.textContent = cProgress;
         countDone.textContent = cDone;
-
-        // Save to local storage
-        localStorage.setItem('nvm_tasks', JSON.stringify(tasks));
     }
 
     function renderTrash() {
@@ -234,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Actions ---
+    // --- Actions (Write to DB) ---
     function addTask() {
         const text = taskInput.value.trim();
         if (!text) return;
@@ -242,74 +253,55 @@ document.addEventListener('DOMContentLoaded', () => {
         // Assign a color based on current number of tasks
         const colorIndex = tasks.length % 7;
 
-        const newTask = {
-            id: Date.now().toString(),
+        db.collection('tasks').add({
             text: text,
             status: 'todo',
             assignee: null,
             createdAt: new Date().toISOString(),
             notes: [],
             colorIndex: colorIndex
-        };
+        });
 
-        tasks.unshift(newTask); // Add to beginning (though we sort anyway)
         taskInput.value = '';
-        renderTasks();
     }
 
     function updateTaskStatus(id, newStatus) {
-        const taskIndex = tasks.findIndex(t => t.id === id);
-        if (taskIndex > -1) {
-            tasks[taskIndex].status = newStatus;
-            renderTasks();
+        db.collection('tasks').doc(id).update({ status: newStatus });
+    }
+
+    function assignTask(id, person) {
+        db.collection('tasks').doc(id).update({ assignee: person });
+    }
+
+    function deleteTask(id) {
+        const task = tasks.find(t => t.id === id);
+        if (task) {
+            // Add to Trash Collection
+            db.collection('trash').add({
+                task: task,
+                deletedAt: new Date().toISOString()
+            });
+            // Remove from Tasks Collection
+            db.collection('tasks').doc(id).delete();
         }
     }
 
     function archiveTask(id) {
-        const taskIndex = tasks.findIndex(t => t.id === id);
-        if (taskIndex > -1) {
-            const task = tasks[taskIndex];
-            archive.push({
-                id: Date.now().toString(), // Archive ID
+        const task = tasks.find(t => t.id === id);
+        if (task) {
+            // Add to Archive Collection
+            db.collection('archive').add({
                 task: task,
                 archivedAt: new Date().toISOString()
             });
-            localStorage.setItem('nvm_archive', JSON.stringify(archive));
-
-            tasks.splice(taskIndex, 1);
-            renderTasks();
-            renderArchive(); // if open
-        }
-    }
-
-    function assignTask(id, person) {
-        const taskIndex = tasks.findIndex(t => t.id === id);
-        if (taskIndex > -1) {
-            tasks[taskIndex].assignee = person;
-            renderTasks();
-        }
-    }
-
-    function deleteTask(id) {
-        const taskIndex = tasks.findIndex(t => t.id === id);
-        if (taskIndex > -1) {
-            const task = tasks[taskIndex];
-            trash.push({
-                id: Date.now().toString(), // Trash ID
-                task: task,
-                deletedAt: new Date().toISOString()
-            });
-            localStorage.setItem('nvm_trash', JSON.stringify(trash));
-
-            tasks.splice(taskIndex, 1);
-            renderTasks();
-            renderTrash(); // update if open
+            // Remove from Tasks Collection
+            db.collection('tasks').doc(id).delete();
         }
     }
 
     // --- Notes Management ---
     window.openEditNote = (taskId, noteIndex, e) => {
-        e.stopPropagation(); // prevent card click/action
+        e.stopPropagation();
         currentTaskId = taskId;
         currentNoteIndex = noteIndex;
 
@@ -322,14 +314,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateNote() {
         if (!currentTaskId || currentNoteIndex === null) return;
-
         const text = editNoteText.value.trim();
         if (!text) return;
 
-        const taskIndex = tasks.findIndex(t => t.id === currentTaskId);
-        if (taskIndex > -1) {
-            tasks[taskIndex].notes[currentNoteIndex].text = text;
-            renderTasks();
+        const task = tasks.find(t => t.id === currentTaskId);
+        if (task) {
+            const updatedNotes = [...task.notes];
+            updatedNotes[currentNoteIndex].text = text;
+            db.collection('tasks').doc(currentTaskId).update({ notes: updatedNotes });
             editNoteModal.style.display = 'none';
         }
     }
@@ -338,10 +330,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!currentTaskId || currentNoteIndex === null) return;
         if (!confirm('Bu notu silmek istediğinize emin misiniz?')) return;
 
-        const taskIndex = tasks.findIndex(t => t.id === currentTaskId);
-        if (taskIndex > -1) {
-            tasks[taskIndex].notes.splice(currentNoteIndex, 1);
-            renderTasks();
+        const task = tasks.find(t => t.id === currentTaskId);
+        if (task) {
+            const updatedNotes = [...task.notes];
+            updatedNotes.splice(currentNoteIndex, 1);
+            db.collection('tasks').doc(currentTaskId).update({ notes: updatedNotes });
             editNoteModal.style.display = 'none';
         }
     }
@@ -361,72 +354,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         const author = document.querySelector('input[name="noteAuthor"]:checked').value;
+        const task = tasks.find(t => t.id === currentTaskId);
 
-        const taskIndex = tasks.findIndex(t => t.id === currentTaskId);
-        if (taskIndex > -1) {
-            if (!tasks[taskIndex].notes) tasks[taskIndex].notes = [];
-            tasks[taskIndex].notes.push({
+        if (task) {
+            const newNote = {
                 text: text,
                 author: author,
                 createdAt: new Date().toISOString()
-            });
-            renderTasks();
+            };
+            // Simplest way: read task mirrors, update, write back
+            const updatedNotes = task.notes ? [...task.notes, newNote] : [newNote];
+            db.collection('tasks').doc(currentTaskId).update({ notes: updatedNotes });
             noteModal.style.display = 'none';
         }
     }
 
-    // --- Global Trash Actions ---
+    // --- Global Trash/Archive Actions ---
     window.restoreTask = (trashId) => {
-        const trashIndex = trash.findIndex(t => t.id === trashId);
-        if (trashIndex > -1) {
-            const item = trash[trashIndex];
-            tasks.push(item.task);
-            trash.splice(trashIndex, 1);
-
-            localStorage.setItem('nvm_trash', JSON.stringify(trash));
-            renderTasks();
-            renderTrash();
+        const item = trash.find(t => t.id === trashId);
+        if (item) {
+            // Restore to main tasks
+            db.collection('tasks').add({ ...item.task, status: item.task.status || 'todo' });
+            // Remove from trash
+            db.collection('trash').doc(trashId).delete();
         }
     }
 
     window.permDeleteTask = (trashId) => {
         if (!confirm('Bu öğeyi kalıcı olarak silmek istediğinize emin misiniz?')) return;
-
-        trash = trash.filter(t => t.id !== trashId);
-        localStorage.setItem('nvm_trash', JSON.stringify(trash));
-        renderTrash();
+        db.collection('trash').doc(trashId).delete();
     }
 
-    // --- Global Archive Actions ---
     window.restoreArchive = (archiveId) => {
-        const index = archive.findIndex(t => t.id === archiveId);
-        if (index > -1) {
-            const item = archive[index];
-            // Restore to 'done' status
-            item.task.status = 'done';
-            tasks.push(item.task);
-            archive.splice(index, 1);
-
-            localStorage.setItem('nvm_archive', JSON.stringify(archive));
-            renderTasks();
-            renderArchive();
+        const item = archive.find(t => t.id === archiveId);
+        if (item) {
+            db.collection('tasks').add({ ...item.task, status: 'done' });
+            db.collection('archive').doc(archiveId).delete();
         }
     }
 
     window.permDeleteArchive = (archiveId) => {
         if (!confirm('Bu öğeyi kalıcı olarak silmek istediğinize emin misiniz?')) return;
-
-        archive = archive.filter(t => t.id !== archiveId);
-        localStorage.setItem('nvm_archive', JSON.stringify(archive));
-        renderArchive();
+        db.collection('archive').doc(archiveId).delete();
     }
 
     // --- Context Menu ---
     function showContextMenu(e, id, status) {
         currentTaskId = id;
 
-        // Dynamic Menu Items based on Status
-        // Reset defaults
         menuMoveTodo.style.display = 'none';
         menuMoveProgress.style.display = 'none';
         menuMoveProgressBack.style.display = 'none';
@@ -436,11 +411,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (status === 'todo') {
             menuMoveProgress.style.display = 'flex';
         } else if (status === 'in-progress') {
-            menuMoveTodo.style.display = 'flex'; // Back to Todo
-            menuMoveDone.style.display = 'flex'; // Forward to Done
+            menuMoveTodo.style.display = 'flex';
+            menuMoveDone.style.display = 'flex';
         } else if (status === 'done') {
-            menuMoveProgressBack.style.display = 'flex'; // Back to Progress
-            menuMoveArchive.style.display = 'flex'; // Archive
+            menuMoveProgressBack.style.display = 'flex';
+            menuMoveArchive.style.display = 'flex';
         }
 
         contextMenu.style.display = 'block';
@@ -450,7 +425,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function hideContextMenu() {
         contextMenu.style.display = 'none';
-        // Don't null currentTaskId immediately if we open a modal
     }
 
     // --- Event Listeners ---
@@ -465,7 +439,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Menu Actions
     document.querySelectorAll('.menu-item').forEach(item => {
         item.addEventListener('click', (e) => {
             const action = item.dataset.action;
@@ -475,17 +448,10 @@ document.addEventListener('DOMContentLoaded', () => {
             contextMenu.style.display = 'none';
 
             switch (action) {
-                case 'add-note':
-                    openNoteModal();
-                    break;
-                case 'assign-yeliz':
-                    assignTask(currentTaskId, 'Yeliz');
-                    break;
-                case 'assign-berkan':
-                    assignTask(currentTaskId, 'Berkan');
-                    break;
+                case 'add-note': openNoteModal(); break;
+                case 'assign-yeliz': assignTask(currentTaskId, 'Yeliz'); break;
+                case 'assign-berkan': assignTask(currentTaskId, 'Berkan'); break;
                 case 'move-todo':
-                    // Reset assignee when moving back to Todo (Sahipsiz)
                     assignTask(currentTaskId, null);
                     updateTaskStatus(currentTaskId, 'todo');
                     break;
@@ -493,50 +459,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'move-progress-back':
                     updateTaskStatus(currentTaskId, 'in-progress');
                     break;
-                case 'move-done':
-                    updateTaskStatus(currentTaskId, 'done');
-                    break;
-                case 'move-archive':
-                    archiveTask(currentTaskId);
-                    break;
+                case 'move-done': updateTaskStatus(currentTaskId, 'done'); break;
+                case 'move-archive': archiveTask(currentTaskId); break;
                 case 'delete':
-                    if (confirm('Bu görevi silmek istediğinize emin misiniz?')) {
-                        deleteTask(currentTaskId);
-                    }
+                    if (confirm('Bu görevi silmek istediğinize emin misiniz?')) deleteTask(currentTaskId);
                     break;
             }
         });
     });
 
-    // Modal Listeners
+    // Modal Events
     saveNoteBtn.addEventListener('click', saveNote);
     closeNoteModal.addEventListener('click', () => noteModal.style.display = 'none');
 
-    // Edit Modal
     updateNoteBtn.addEventListener('click', updateNote);
     deleteNoteBtn.addEventListener('click', deleteNote);
     closeEditNoteModal.addEventListener('click', () => editNoteModal.style.display = 'none');
 
     openTrashBtn.addEventListener('click', () => {
-        renderTrash();
         trashModal.style.display = 'block';
     });
     closeTrashModal.addEventListener('click', () => trashModal.style.display = 'none');
 
     openArchiveBtn.addEventListener('click', () => {
-        renderArchive();
         archiveModal.style.display = 'block';
     });
     closeArchiveModal.addEventListener('click', () => archiveModal.style.display = 'none');
 
-    // Close modals on outside click
     window.addEventListener('click', (e) => {
         if (e.target == noteModal) noteModal.style.display = 'none';
         if (e.target == trashModal) trashModal.style.display = 'none';
         if (e.target == editNoteModal) editNoteModal.style.display = 'none';
         if (e.target == archiveModal) archiveModal.style.display = 'none';
     });
-
-    // Initial Render
-    renderTasks();
 });
