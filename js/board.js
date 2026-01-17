@@ -23,24 +23,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const colTodo = document.getElementById('list-todo');
     const colProgress = document.getElementById('list-in-progress');
     const colDone = document.getElementById('list-done');
+    const colArchive = document.getElementById('list-archive');
     const contextMenu = document.getElementById('contextMenu');
+
+    // Context Menu Items
+    const menuMoveTodo = document.getElementById('menuMoveTodo');
+    const menuMoveProgress = document.getElementById('menuMoveProgress');
+    const menuMoveProgressBack = document.getElementById('menuMoveProgressBack');
+    const menuMoveDone = document.getElementById('menuMoveDone');
+    const menuMoveArchive = document.getElementById('menuMoveArchive');
+
 
     // Counts
     const countTodo = document.getElementById('count-todo');
     const countProgress = document.getElementById('count-progress');
     const countDone = document.getElementById('count-done');
+    const countArchive = document.getElementById('count-archive');
+
 
     // Modals
     const noteModal = document.getElementById('noteModal');
+    const editNoteModal = document.getElementById('editNoteModal');
     const trashModal = document.getElementById('trashModal');
+
+    // Note Add Elements
     const noteText = document.getElementById('noteText');
     const saveNoteBtn = document.getElementById('saveNoteBtn');
     const closeNoteModal = document.getElementById('closeNoteModal');
+
+    // Note Edit Elements
+    const editNoteText = document.getElementById('editNoteText');
+    const updateNoteBtn = document.getElementById('updateNoteBtn');
+    const deleteNoteBtn = document.getElementById('deleteNoteBtn');
+    const closeEditNoteModal = document.getElementById('closeEditNoteModal');
+
+    // Trash Elements
     const closeTrashModal = document.getElementById('closeTrashModal');
     const openTrashBtn = document.getElementById('openTrashBtn');
     const trashList = document.getElementById('trashList');
 
     let currentTaskId = null;
+    let currentNoteIndex = null; // for editing
 
     // --- Render ---
     function renderTasks() {
@@ -48,9 +71,10 @@ document.addEventListener('DOMContentLoaded', () => {
         colTodo.innerHTML = '';
         colProgress.innerHTML = '';
         colDone.innerHTML = '';
+        colArchive.innerHTML = '';
 
         // Counters
-        let cTodo = 0, cProgress = 0, cDone = 0;
+        let cTodo = 0, cProgress = 0, cDone = 0, cArchive = 0;
 
         tasks.forEach(task => {
             const taskCard = document.createElement('div');
@@ -68,10 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
             let notesHtml = '';
             if (task.notes && task.notes.length > 0) {
                 notesHtml = '<div class="task-notes">';
-                task.notes.forEach(note => {
+                task.notes.forEach((note, index) => {
                     const authorClass = note.author.toLowerCase() === 'yeliz' ? 'note-yeliz' : 'note-berkan';
+                    // Added click event to edit
                     notesHtml += `
-                        <div class="note-item ${authorClass}">
+                        <div class="note-item ${authorClass}" onclick="window.openEditNote('${task.id}', ${index}, event)">
                             <span class="note-author">${note.author}:</span> ${note.text}
                         </div>
                     `;
@@ -89,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Add Event Listener for Context Menu
             taskCard.addEventListener('contextmenu', (e) => {
                 e.preventDefault();
-                showContextMenu(e, task.id);
+                showContextMenu(e, task.id, task.status);
             });
 
             // Append to correct column
@@ -102,6 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (task.status === 'done') {
                 colDone.appendChild(taskCard);
                 cDone++;
+            } else if (task.status === 'archive') {
+                colArchive.appendChild(taskCard);
+                cArchive++;
             }
         });
 
@@ -109,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         countTodo.textContent = cTodo;
         countProgress.textContent = cProgress;
         countDone.textContent = cDone;
+        if (countArchive) countArchive.textContent = cArchive;
 
         // Save to local storage
         localStorage.setItem('nvm_tasks', JSON.stringify(tasks));
@@ -149,10 +178,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const newTask = {
             id: Date.now().toString(),
             text: text,
-            status: 'todo', // todo, in-progress, done
+            status: 'todo', // todo, in-progress, done, archive
             assignee: null, // 'Yeliz', 'Berkan'
             createdAt: new Date().toISOString(),
-            notes: []
+            notes: [] // {text, author, createdAt}
         };
 
         tasks.push(newTask);
@@ -193,7 +222,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Notes ---
+    // --- Notes Management ---
+    window.openEditNote = (taskId, noteIndex, e) => {
+        e.stopPropagation(); // prevent card click/action
+        currentTaskId = taskId;
+        currentNoteIndex = noteIndex;
+
+        const task = tasks.find(t => t.id === taskId);
+        if (task && task.notes[noteIndex]) {
+            editNoteText.value = task.notes[noteIndex].text;
+            editNoteModal.style.display = 'block';
+        }
+    }
+
+    function updateNote() {
+        if (!currentTaskId || currentNoteIndex === null) return;
+
+        const text = editNoteText.value.trim();
+        if (!text) return;
+
+        const taskIndex = tasks.findIndex(t => t.id === currentTaskId);
+        if (taskIndex > -1) {
+            tasks[taskIndex].notes[currentNoteIndex].text = text;
+            renderTasks();
+            editNoteModal.style.display = 'none';
+        }
+    }
+
+    function deleteNote() {
+        if (!currentTaskId || currentNoteIndex === null) return;
+        if (!confirm('Bu notu silmek istediğinize emin misiniz?')) return;
+
+        const taskIndex = tasks.findIndex(t => t.id === currentTaskId);
+        if (taskIndex > -1) {
+            tasks[taskIndex].notes.splice(currentNoteIndex, 1);
+            renderTasks();
+            editNoteModal.style.display = 'none';
+        }
+    }
+
     function openNoteModal() {
         noteModal.style.display = 'block';
         noteText.value = '';
@@ -246,10 +313,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- Context Menu ---
-    function showContextMenu(e, id) {
+    function showContextMenu(e, id, status) {
         currentTaskId = id;
+
+        // Dynamic Menu Items based on Status
+        // Reset defaults
+        menuMoveTodo.style.display = 'none';
+        menuMoveProgress.style.display = 'none';
+        menuMoveProgressBack.style.display = 'none';
+        menuMoveDone.style.display = 'none';
+        menuMoveArchive.style.display = 'none';
+
+        if (status === 'todo') {
+            menuMoveProgress.style.display = 'flex';
+        } else if (status === 'in-progress') {
+            menuMoveTodo.style.display = 'flex'; // Back to Todo
+            menuMoveDone.style.display = 'flex'; // Forward to Done
+        } else if (status === 'done') {
+            menuMoveProgressBack.style.display = 'flex'; // Back to Progress
+            menuMoveArchive.style.display = 'flex'; // Archive
+        } else if (status === 'archive') {
+            menuMoveDone.style.display = 'flex'; // Restore if you want (labeled as Done)
+        }
+
         contextMenu.style.display = 'block';
-        contextMenu.style.left = `${e.pageX}px`; // Use pageX/Y to account for scroll
+        contextMenu.style.left = `${e.pageX}px`;
         contextMenu.style.top = `${e.pageY}px`;
     }
 
@@ -289,11 +377,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'assign-berkan':
                     assignTask(currentTaskId, 'Berkan');
                     break;
+                case 'move-todo':
+                    updateTaskStatus(currentTaskId, 'todo');
+                    break;
                 case 'move-progress':
+                case 'move-progress-back':
                     updateTaskStatus(currentTaskId, 'in-progress');
                     break;
                 case 'move-done':
                     updateTaskStatus(currentTaskId, 'done');
+                    break;
+                case 'move-archive':
+                    updateTaskStatus(currentTaskId, 'archive');
                     break;
                 case 'delete':
                     deleteTask(currentTaskId);
@@ -306,6 +401,11 @@ document.addEventListener('DOMContentLoaded', () => {
     saveNoteBtn.addEventListener('click', saveNote);
     closeNoteModal.addEventListener('click', () => noteModal.style.display = 'none');
 
+    // Edit Modal
+    updateNoteBtn.addEventListener('click', updateNote);
+    deleteNoteBtn.addEventListener('click', deleteNote);
+    closeEditNoteModal.addEventListener('click', () => editNoteModal.style.display = 'none');
+
     openTrashBtn.addEventListener('click', () => {
         renderTrash();
         trashModal.style.display = 'block';
@@ -316,6 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('click', (e) => {
         if (e.target == noteModal) noteModal.style.display = 'none';
         if (e.target == trashModal) trashModal.style.display = 'none';
+        if (e.target == editNoteModal) editNoteModal.style.display = 'none';
     });
 
     // Initial Render

@@ -104,6 +104,19 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Archive Section (Bottom) -->
+            <div class="archive-section" style="margin-top: 3rem;">
+                <h3 class="column-header header-archive" style="border-color: #a0a0a0;">
+                    Arşiv
+                    <span class="count" id="count-archive">0</span>
+                </h3>
+                <div class="task-list archive-list" id="list-archive"
+                    style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem;">
+                    <!-- Archived tasks -->
+                </div>
+            </div>
+
         </div>
 
         <!-- Custom Context Menu -->
@@ -119,20 +132,31 @@
                 <i class='bx bx-user'></i> Berkan'a Ata
             </div>
             <div class="menu-divider"></div>
-            <div class="menu-item" data-action="move-progress">
+
+            <!-- Dynamic Actions will be toggled in JS -->
+            <div class="menu-item" data-action="move-todo" id="menuMoveTodo" style="display:none;">
+                <i class='bx bx-arrow-back'></i> Sahipsiz'e Al
+            </div>
+            <div class="menu-item" data-action="move-progress" id="menuMoveProgress">
                 <i class='bx bx-loader-alt'></i> Yapılıyor
             </div>
-            <div class="menu-item" data-action="move-done">
+            <div class="menu-item" data-action="move-progress-back" id="menuMoveProgressBack" style="display:none;">
+                <i class='bx bx-arrow-back'></i> Yapılıyor'a Al
+            </div>
+            <div class="menu-item" data-action="move-done" id="menuMoveDone">
                 <i class='bx bx-check-circle'></i> Tamamlandı
             </div>
+            <div class="menu-item" data-action="move-archive" id="menuMoveArchive" style="display:none;">
+                <i class='bx bx-archive-in'></i> Arşive Ekle
+            </div>
+
             <div class="menu-divider"></div>
             <div class="menu-item delete-item" data-action="delete">
                 <i class='bx bx-trash'></i> Sil
             </div>
         </div>
 
-
-        <!-- Note Modal -->
+        <!-- Note Modal (Add) -->
         <div id="noteModal" class="modal">
             <div class="modal-content">
                 <span class="close-modal" id="closeNoteModal">&times;</span>
@@ -150,6 +174,20 @@
                     </div>
                 </div>
                 <button id="saveNoteBtn" class="btn btn-primary" style="width:100%; margin-top:1rem;">Kaydet</button>
+            </div>
+        </div>
+
+        <!-- Note Edit Modal -->
+        <div id="editNoteModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeEditNoteModal">&times;</span>
+                <h3>Notu Düzenle</h3>
+                <textarea id="editNoteText" rows="4" class="modal-input"></textarea>
+                <div class="modal-actions" style="display:flex; gap:1rem; margin-top:1rem;">
+                    <button id="updateNoteBtn" class="btn btn-primary" style="flex:1;">Güncelle</button>
+                    <button id="deleteNoteBtn" class="btn btn-outline"
+                        style="flex:1; border-color:#ff4d4d; color:#ff4d4d;">Notu Sil</button>
+                </div>
             </div>
         </div>
 

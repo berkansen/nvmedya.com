@@ -1516,3 +1516,35 @@ header {
 .btn-delete:hover {
     background: rgba(255, 77, 77, 0.3);
 }
+
+/* --- Archive Section --- */
+.archive-list .task-card {
+    opacity: 0.8;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.archive-list .task-card:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.header-archive {
+    border-left: 4px solid #a0a0a0;
+    color: #a0a0a0;
+    margin-bottom: 1.5rem;
+}
+
+/* Note Item Hover */
+.note-item {
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.note-item:hover {
+    filter: brightness(1.2);
+}
+
+/* Ensure modals are on top */
+.modal {
+    z-index: 2000;
+}
