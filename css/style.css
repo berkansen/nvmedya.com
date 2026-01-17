@@ -1557,71 +1557,99 @@ header {
 
 /* Ensure modals are on top */
 /* Red Buttons */
+/* Red Buttons & Archive */
+#openTrashBtn,
+#openArchiveBtn,
+#deleteNoteBtn {
+    border-radius: 50px;
+    padding: 0.8rem 1.5rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    color: white !important;
+    transition: background 0.3s;
+}
+
 #openTrashBtn,
 #deleteNoteBtn {
+    background-color: #ff4d4d !important;
+}
 
-    #openTrashBtn:hover,
-    #deleteNoteBtn:hover {
-        background-color: #ff3333 !important;
-    }
+#openTrashBtn:hover,
+#deleteNoteBtn:hover {
+    background-color: #ff3333 !important;
+}
+
+#openArchiveBtn {
+    background-color: #9c27b0 !important;
+}
+
+#openArchiveBtn:hover {
+    background-color: #7b1fa2 !important;
+}
 
 
-    /* --- Task Card Truncation & Sizing --- */
-    .task-card {
-        border-left-width: 4px;
-        /* Ensure overrides JS inline style effectively if needed */
-        max-height: 180px;
-        /* Fixed height for standard view */
-        overflow: hidden;
-        position: relative;
-        transition: max-height 0.4s ease, transform 0.2s, box-shadow 0.2s;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
-    }
+/* --- Task Card Truncation & Sizing --- */
+.task-card {
+    border-left-width: 4px;
+    /* Ensure overrides JS inline style effectively if needed */
+    max-height: 180px;
+    /* Fixed height for standard view */
+    overflow: hidden;
+    position: relative;
+    transition: max-height 0.4s ease, transform 0.2s, box-shadow 0.2s;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+}
 
-    .task-card.expanded {
-        max-height: 1000px;
-        /* Large enough to show all content */
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
-        z-index: 100;
-    }
+.task-card.expanded {
+    max-height: 1000px;
+    /* Large enough to show all content */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.04));
+    z-index: 100;
+}
 
-    .task-content {
-        display: flex;
-        flex-direction: column;
-    }
+.task-content {
+    display: flex;
+    flex-direction: column;
+}
 
-    .task-text {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.task-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-    .task-card.expanded .task-text {
-        -webkit-line-clamp: unset;
-    }
+.task-card.expanded .task-text {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+}
 
-    .expand-hint {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 30px;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.4));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-muted);
-        font-size: 1.2rem;
-        opacity: 0.6;
-        transition: opacity 0.3s;
-    }
+.expand-hint {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.4));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
 
-    .task-card:hover .expand-hint {
-        opacity: 1;
-    }
+.task-card:hover .expand-hint {
+    opacity: 1;
+}
 
-    .task-card.expanded .expand-hint i {
-        transform: rotate(180deg);
-    }
+.task-card.expanded .expand-hint i {
+    transform: rotate(180deg);
+}
