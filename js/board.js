@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         archive.forEach(item => {
             const archiveItem = document.createElement('div');
-            archiveItem.className = 'trash-item'; // Reuse same style
+            archiveItem.className = 'archive-item';
 
             const archivedDate = new Date(item.archivedAt).toLocaleDateString('tr-TR');
 
