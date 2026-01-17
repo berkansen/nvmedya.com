@@ -65,6 +65,9 @@
             <div class="board-controls">
                 <input type="text" id="taskInput" placeholder="Yeni görev ekle..." class="task-input">
                 <button id="addTaskBtn" class="btn btn-primary"><i class='bx bx-plus'></i> Ekle</button>
+                <button id="openTrashBtn" class="btn btn-outline"
+                    style="margin-left:auto; border-color: #ff4d4d; color: #ff4d4d;"><i class='bx bx-trash'></i> Çöp
+                    Kutusu</button>
             </div>
 
             <div class="board-container">
@@ -105,6 +108,10 @@
 
         <!-- Custom Context Menu -->
         <div id="contextMenu" class="context-menu">
+            <div class="menu-item" data-action="add-note">
+                <i class='bx bx-note'></i> Not Ekle
+            </div>
+            <div class="menu-divider"></div>
             <div class="menu-item" data-action="assign-yeliz">
                 <i class='bx bx-user'></i> Yeliz'e Ata
             </div>
@@ -121,6 +128,41 @@
             <div class="menu-divider"></div>
             <div class="menu-item delete-item" data-action="delete">
                 <i class='bx bx-trash'></i> Sil
+            </div>
+        </div>
+        </div>
+
+        <!-- Note Modal -->
+        <div id="noteModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeNoteModal">&times;</span>
+                <h3>Not Ekle</h3>
+                <textarea id="noteText" placeholder="Notunuzu yazın..." rows="4" class="modal-input"></textarea>
+                <div class="modal-actions">
+                    <label style="color:var(--text-muted); margin-right: 1rem;">Kim Yazıyor?</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="noteAuthor" value="Yeliz" checked> Yeliz
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="noteAuthor" value="Berkan"> Berkan
+                        </label>
+                    </div>
+                </div>
+                <button id="saveNoteBtn" class="btn btn-primary" style="width:100%; margin-top:1rem;">Kaydet</button>
+            </div>
+        </div>
+
+        <!-- Trash Modal -->
+        <div id="trashModal" class="modal">
+            <div class="modal-content trash-content">
+                <span class="close-modal" id="closeTrashModal">&times;</span>
+                <h3>Çöp Kutusu (Son 15 Gün)</h3>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem;">15 günden eski öğeler
+                    otomatik olarak silinir.</p>
+                <div class="trash-list" id="trashList">
+                    <!-- Deleted tasks go here -->
+                </div>
             </div>
         </div>
     </section>

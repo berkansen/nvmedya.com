@@ -1,6 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     // --- State Management ---
     let tasks = JSON.parse(localStorage.getItem('nvm_tasks')) || [];
+    let trash = JSON.parse(localStorage.getItem('nvm_trash')) || [];
+
+    // Cleanup old trash (older than 15 days)
+    const cleanupTrash = () => {
+        const fifteenDaysAgo = new Date();
+        fifteenDaysAgo.setDate(fifteenDaysAgo.getDate() - 15);
+        
+        const initialLen = trash.length;
+        trash = trash.filter(t => new Date(t.deletedAt) > fifteenDaysAgo);
+        
+        if (trash.length !== initialLen) {
+            localStorage.setItem('nvm_trash', JSON.stringify(trash));
+        }
+    };
+    cleanupTrash();
 
     // --- DOM Elements ---
     const taskInput = document.getElementById('taskInput');
@@ -14,6 +29,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const countTodo = document.getElementById('count-todo');
     const countProgress = document.getElementById('count-progress');
     const countDone = document.getElementById('count-done');
+
+    // Modals
+    const noteModal = document.getElementById('noteModal');
+    const trashModal = document.getElementById('trashModal');
+    const noteText = document.getElementById('noteText');
+    const saveNoteBtn = document.getElementById('saveNoteBtn');
+    const closeNoteModal = document.getElementById('closeNoteModal');
+    const closeTrashModal = document.getElementById('closeTrashModal');
+    const openTrashBtn = document.getElementById('openTrashBtn');
+    const trashList = document.getElementById('trashList');
 
     let currentTaskId = null;
 
@@ -31,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const taskCard = document.createElement('div');
             taskCard.className = 'task-card';
             taskCard.dataset.id = task.id;
-
+            
             // Assignee Badge
             let assigneeHtml = '';
             if (task.assignee) {
@@ -39,9 +64,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 assigneeHtml = `<span class="assignee-badge ${assigneeClass}">${task.assignee}</span>`;
             }
 
+            // Notes Html
+            let notesHtml = '';
+            if (task.notes && task.notes.length > 0) {
+                notesHtml = '<div class="task-notes">';
+                task.notes.forEach(note => {
+                    const authorClass = note.author.toLowerCase() === 'yeliz' ? 'note-yeliz' : 'note-berkan';
+                    notesHtml += `
+                        <div class="note-item ${authorClass}">
+                            <span class="note-author">${note.author}:</span> ${note.text}
+                        </div>
+                    `;
+                });
+                notesHtml += '</div>';
+            }
+
             taskCard.innerHTML = `
                 ${assigneeHtml}
                 <p class="task-text">${task.text}</p>
+                ${notesHtml}
                 <div class="task-date">${new Date(task.createdAt).toLocaleDateString('tr-TR')}</div>
             `;
 
@@ -73,17 +114,44 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('nvm_tasks', JSON.stringify(tasks));
     }
 
+    function renderTrash() {
+        trashList.innerHTML = '';
+        if (trash.length === 0) {
+            trashList.innerHTML = '<p class="text-center" style="color:var(--text-muted)">Çöp kutusu boş.</p>';
+            return;
+        }
+
+        trash.forEach(item => {
+            const trashItem = document.createElement('div');
+            trashItem.className = 'trash-item';
+            
+            const deletedDate = new Date(item.deletedAt).toLocaleDateString('tr-TR');
+            
+            trashItem.innerHTML = `
+                <div class="trash-info">
+                    <h4>${item.task.text}</h4>
+                    <span class="trash-date">Silinme: ${deletedDate}</span>
+                </div>
+                <div class="trash-actions">
+                    <button class="btn btn-sm btn-restore" onclick="window.restoreTask('${item.id}')">Geri Yükle</button>
+                    <button class="btn btn-sm btn-delete" onclick="window.permDeleteTask('${item.id}')">Sil</button>
+                </div>
+            `;
+            trashList.appendChild(trashItem);
+        });
+    }
+
     // --- Actions ---
     function addTask() {
         const text = taskInput.value.trim();
-        if (!text) return;
 
         const newTask = {
             id: Date.now().toString(),
             text: text,
             status: 'todo', // todo, in-progress, done
             assignee: null, // 'Yeliz', 'Berkan'
-            createdAt: new Date().toISOString()
+            createdAt: new Date().toISOString(),
+            notes: []
         };
 
         tasks.push(newTask);
@@ -108,8 +176,68 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function deleteTask(id) {
-        tasks = tasks.filter(t => t.id !== id);
-        renderTasks();
+        const taskIndex = tasks.findIndex(t => t.id === id);
+        if (taskIndex > -1) {
+            const task = tasks[taskIndex];
+            trash.push({
+                id: Date.now().toString(), // Trash ID
+                task: task,
+                deletedAt: new Date().toISOString()
+            });
+            localStorage.setItem('nvm_trash', JSON.stringify(trash));
+            
+            tasks.splice(taskIndex, 1);
+            renderTasks();
+            renderTrash(); // update if open
+        }
+    }
+
+    // --- Notes ---
+    function openNoteModal() {
+        noteModal.style.display = 'block';
+        noteText.value = '';
+        noteText.focus();
+    }
+
+    function saveNote() {
+        const text = noteText.value.trim();
+            alert('Lütfen bir not girin.');
+            return;
+        }
+
+        const author = document.querySelector('input[name="noteAuthor"]:checked').value;
+        
+        const taskIndex = tasks.findIndex(t => t.id === currentTaskId);
+        if (taskIndex > -1) {
+            tasks[taskIndex].notes.push({
+                text: text,
+                author: author,
+                createdAt: new Date().toISOString()
+            });
+            renderTasks();
+            noteModal.style.display = 'none';
+        }
+    }
+
+    // --- Global Trash Actions ---
+    window.restoreTask = (trashId) => {
+        const trashIndex = trash.findIndex(t => t.id === trashId);
+        if (trashIndex > -1) {
+            const item = trash[trashIndex];
+            tasks.push(item.task);
+            trash.splice(trashIndex, 1);
+            
+            localStorage.setItem('nvm_trash', JSON.stringify(trash));
+            renderTasks();
+            renderTrash();
+        }
+    }
+
+    window.permDeleteTask = (trashId) => {
+        
+        trash = trash.filter(t => t.id !== trashId);
+        localStorage.setItem('nvm_trash', JSON.stringify(trash));
+        renderTrash();
     }
 
     // --- Context Menu ---
@@ -122,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function hideContextMenu() {
         contextMenu.style.display = 'none';
-        currentTaskId = null;
+        // Don't null currentTaskId immediately if we open a modal
     }
 
     // --- Event Listeners ---
@@ -132,7 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('click', (e) => {
-        if (!contextMenu.contains(e.target)) {
             hideContextMenu();
         }
     });
@@ -141,9 +268,14 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.menu-item').forEach(item => {
         item.addEventListener('click', (e) => {
             const action = item.dataset.action;
-            if (!currentTaskId) return;
+
+            // Hide context menu but keep ID for actions
+            contextMenu.style.display = 'none';
 
             switch (action) {
+                case 'add-note':
+                    openNoteModal();
+                    break;
                 case 'assign-yeliz':
                     assignTask(currentTaskId, 'Yeliz');
                     break;
@@ -160,8 +292,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     deleteTask(currentTaskId);
                     break;
             }
-            hideContextMenu();
         });
+    });
+
+    // Modal Listeners
+    saveNoteBtn.addEventListener('click', saveNote);
+    closeNoteModal.addEventListener('click', () => noteModal.style.display = 'none');
+    
+    openTrashBtn.addEventListener('click', () => {
+        renderTrash();
+        trashModal.style.display = 'block';
+    });
+    closeTrashModal.addEventListener('click', () => trashModal.style.display = 'none');
+
+    // Close modals on outside click
+    window.addEventListener('click', (e) => {
+        if (e.target == noteModal) noteModal.style.display = 'none';
+        if (e.target == trashModal) trashModal.style.display = 'none';
     });
 
     // Initial Render
