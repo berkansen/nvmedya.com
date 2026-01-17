@@ -56,6 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Toggle Password Visibility
+    const toggleBtn = document.getElementById('togglePasswordBtn');
+    toggleBtn.addEventListener('click', () => {
+        const type = loginInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        loginInput.setAttribute('type', type);
+
+        // Toggle Icon
+        if (type === 'text') {
+            toggleBtn.classList.remove('bx-show');
+            toggleBtn.classList.add('bx-hide');
+        } else {
+            toggleBtn.classList.remove('bx-hide');
+            toggleBtn.classList.add('bx-show');
+        }
+    });
+
     // --- State Management (Local Mirrors of DB) ---
     let tasks = [];
     let trash = [];

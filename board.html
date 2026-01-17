@@ -39,7 +39,12 @@
         <div class="login-card">
             <h2>Giriş Yap</h2>
             <p>Paneli görüntülemek için şifreyi giriniz.</p>
-            <input type="password" id="loginPassword" placeholder="Şifre" class="modal-input">
+            <div style="position:relative; width:100%;">
+                <input type="password" id="loginPassword" placeholder="Şifre" class="modal-input"
+                    style="padding-right: 40px;">
+                <i class='bx bx-show' id="togglePasswordBtn"
+                    style="position:absolute; right:15px; top:50%; transform:translateY(-50%); cursor:pointer; color:rgba(255,255,255,0.5); font-size:1.2rem;"></i>
+            </div>
             <button id="loginBtn" class="btn btn-primary" style="width:100%; justify-content:center;">Giriş</button>
         </div>
     </div>
