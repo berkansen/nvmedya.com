@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İletişim - Nisan Vitrini Media</title>
-    <meta name="description" content="Nisan Vitrini Media ile iletişime geçin.">
+    <title>Nisan Vitrini Media - Dijital Medya Ajansı</title>
+    <meta name="description"
+        content="Nisan Vitrini Media, markanızı dijital dünyada öne çıkaran yaratıcı medya çözümleri sunar.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,11 +24,11 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-JD1C5PBEKD"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-JD1C5PBEKD');
+        gtag('config', 'G-JD1C5PBEKD');
     </script>
 
 </head>
@@ -35,7 +36,7 @@
 <body>
     <header id="header">
         <nav class="navbar container">
-            <a href="/" class="logo">
+            <a href="#" class="logo">
                 <img src="assets/nisanvitrini-logo.png" alt="Nisan Vitrini Media">
             </a>
 
@@ -44,60 +45,85 @@
             </div>
 
             <ul class="nav-list" id="nav-list">
-                <li class="nav-item"><a href="/" class="nav-link">Ana Sayfa</a></li>
-                <li class="nav-item"><a href="/#services" class="nav-link">Hizmetler</a></li>
+                <li class="nav-item"><a href="/" class="nav-link active">Ana Sayfa</a></li>
+                <li class="nav-item"><a href="#services" class="nav-link">Hizmetler</a></li>
 
                 <li class="nav-item"><a href="/about" class="nav-link">Hakkımızda</a></li>
-                <li class="nav-item"><a href="/contact" class="nav-link active">İletişim</a></li>
+                <li class="nav-item"><a href="/contact" class="nav-link">İletişim</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section class="page-header section">
-            <div class="container center">
-                <span class="section-subtitle">Bize Ulaşın</span>
-                <h1 class="section-title">İletişim</h1>
-                <p class="hero-description" style="margin: 0 auto;">Projeleriniz için bir kahve eşliğinde konuşalım.</p>
+    <!-- Board Section -->
+    <section class="board-section section" style="padding-top: 120px; min-height: 80vh;">
+        <div class="container">
+            <div class="section-header center">
+                <span class="section-subtitle">İş Takibi</span>
+                <h2 class="section-title">Proje Panosu</h2>
             </div>
-        </section>
 
-        <section class="contact-section section">
-            <div class="container contact-container">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <i class='bx bxl-whatsapp contact-icon'></i>
-                        <h3>WhatsApp</h3>
-                        <p><a href="https://wa.me/905526288131" target="_blank">Mesaj Gönder</a></p>
-                    </div>
-                    <div class="contact-card">
-                        <i class='bx bx-map contact-icon'></i>
-                        <h3>Adresimiz</h3>
-                        <p>Manavkuyu Mahallesi, 250 Sokak, Numara 6–G<br>Taşkent – Bayraklı – İzmir</p>
-                    </div>
-                    <div class="contact-card">
-                        <i class='bx bx-phone contact-icon'></i>
-                        <h3>Telefon</h3>
-                        <p><a href="tel:+905526288131">+90 552 628 81 31</a></p>
+            <div class="board-controls">
+                <input type="text" id="taskInput" placeholder="Yeni görev ekle..." class="task-input">
+                <button id="addTaskBtn" class="btn btn-primary"><i class='bx bx-plus'></i> Ekle</button>
+            </div>
 
-                    </div>
-                    <div class="contact-card">
-                        <i class='bx bx-envelope contact-icon'></i>
-                        <h3>E-posta</h3>
-                        <p><a href="mailto:nisanvitrini@gmail.com">nisanvitrini@gmail.com</a></p>
+            <div class="board-container">
+                <!-- Column 1: Sahipsiz İşler -->
+                <div class="board-column" id="col-todo">
+                    <h3 class="column-header header-todo">
+                        Sahipsiz İşler
+                        <span class="count" id="count-todo">0</span>
+                    </h3>
+                    <div class="task-list" id="list-todo">
+                        <!-- Tasks will go here -->
                     </div>
                 </div>
 
-                <div class="contact-map-wrapper">
-                    <iframe
-                        src="https://maps.google.com/maps?q=38.46530992468854,27.200028112360787&hl=tr&z=17&output=embed"
-                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                <!-- Column 2: Yapılıyor -->
+                <div class="board-column" id="col-in-progress">
+                    <h3 class="column-header header-progress">
+                        Yapılıyor
+                        <span class="count" id="count-progress">0</span>
+                    </h3>
+                    <div class="task-list" id="list-in-progress">
+                        <!-- Tasks will go here -->
+                    </div>
+                </div>
+
+                <!-- Column 3: Tamamlandı -->
+                <div class="board-column" id="col-done">
+                    <h3 class="column-header header-done">
+                        Tamamlandı
+                        <span class="count" id="count-done">0</span>
+                    </h3>
+                    <div class="task-list" id="list-done">
+                        <!-- Tasks will go here -->
+                    </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+
+        <!-- Custom Context Menu -->
+        <div id="contextMenu" class="context-menu">
+            <div class="menu-item" data-action="assign-yeliz">
+                <i class='bx bx-user'></i> Yeliz'e Ata
+            </div>
+            <div class="menu-item" data-action="assign-berkan">
+                <i class='bx bx-user'></i> Berkan'a Ata
+            </div>
+            <div class="menu-divider"></div>
+            <div class="menu-item" data-action="move-progress">
+                <i class='bx bx-loader-alt'></i> Yapılıyor
+            </div>
+            <div class="menu-item" data-action="move-done">
+                <i class='bx bx-check-circle'></i> Tamamlandı
+            </div>
+            <div class="menu-divider"></div>
+            <div class="menu-item delete-item" data-action="delete">
+                <i class='bx bx-trash'></i> Sil
+            </div>
+        </div>
+    </section>
 
     <footer class="footer section">
         <div class="container footer-container">
@@ -108,9 +134,9 @@
             <div class="footer-box">
                 <h4 class="footer-title">Linkler</h4>
                 <ul class="footer-links">
-                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="#home">Ana Sayfa</a></li>
                     <li><a href="/about">Hakkımızda</a></li>
-                    <li><a href="/#services">Hizmetler</a></li>
+                    <li><a href="#services">Hizmetler</a></li>
                 </ul>
             </div>
             <div class="footer-box">
@@ -152,6 +178,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/board.js"></script>
 </body>
 
 </html>

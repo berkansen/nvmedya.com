@@ -1133,3 +1133,210 @@ header {
         grid-template-columns: 1fr;
     }
 }
+
+/* --- Kanban Board Styles --- */
+.board-controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.task-input {
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    color: var(--text-main);
+    width: 300px;
+    outline: none;
+    font-family: var(--font-body);
+}
+
+.task-input:focus {
+    border-color: var(--primary-color);
+}
+
+.board-container {
+    display: flex;
+    /* Flexbox instead of grid for columns to stretch nicely */
+    gap: 2rem;
+    overflow-x: auto;
+    /* Allow horizontal scroll on mobile */
+    padding-bottom: 2rem;
+    align-items: flex-start;
+    /* Do not stretch height of columns */
+}
+
+.board-column {
+    flex: 1;
+    min-width: 300px;
+    /* Minimum width for columns */
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.column-header {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-todo {
+    border-color: #ef781a;
+}
+
+/* Orange */
+.header-progress {
+    border-color: #e0aaff;
+}
+
+/* Purple */
+.header-done {
+    border-color: #2ec4b6;
+}
+
+/* Green */
+
+.count {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.task-list {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.task-card {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+    user-select: none;
+    /* Make drag/interaction feel app-like */
+}
+
+.task-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.task-text {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 0.5rem;
+}
+
+.task-date {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-align: right;
+}
+
+/* Badges */
+.assignee-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.badge-yeliz {
+    background: rgba(224, 170, 255, 0.2);
+    /* Light Purple */
+    color: #e0aaff;
+    border: 1px solid rgba(224, 170, 255, 0.4);
+}
+
+.badge-berkan {
+    background: rgba(46, 196, 182, 0.2);
+    /* Teal/Cyan */
+    color: #2ec4b6;
+    border: 1px solid rgba(46, 196, 182, 0.4);
+}
+
+/* Context Menu */
+.context-menu {
+    display: none;
+    position: absolute;
+    background: #1e1e1e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.5rem 0;
+    width: 200px;
+    z-index: 1000;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.menu-item {
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-muted);
+    transition: 0.2s;
+    font-size: 0.9rem;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+}
+
+.menu-item i {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.menu-divider {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0.3rem 0;
+}
+
+.delete-item:hover {
+    color: #ff4d4d;
+}
+
+.delete-item:hover i {
+    color: #ff4d4d;
+}
+
+@media (max-width: 768px) {
+    .board-container {
+        flex-direction: column;
+        overflow-x: hidden;
+    }
+
+    .board-column {
+        width: 100%;
+    }
+
+    .board-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .task-input {
+        width: 100%;
+    }
+}
