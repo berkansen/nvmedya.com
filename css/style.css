@@ -1737,6 +1737,26 @@ header {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+
 .btn-restore:hover {
     background: rgba(255, 255, 255, 0.2);
+}
+
+.card-menu-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 5;
+    transition: color 0.2s;
+}
+
+.card-menu-btn:hover,
+.task-card:hover .card-menu-btn {
+    color: var(--text-main);
 }

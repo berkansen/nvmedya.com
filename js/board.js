@@ -153,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             taskCard.innerHTML = `
                 ${assigneeHtml}
+                <button class="card-menu-btn"><i class='bx bx-dots-vertical-rounded'></i></button>
                 <div class="task-content">
                     <p class="task-text">${task.text}</p>
                     ${notesHtml}
@@ -163,8 +164,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Expand/Collapse on Click
             taskCard.addEventListener('click', (e) => {
-                if (e.target.closest('.note-item') || e.target.closest('.btn')) return;
+                if (e.target.closest('.note-item') || e.target.closest('.btn') || e.target.closest('.card-menu-btn')) return;
                 taskCard.classList.toggle('expanded');
+            });
+
+            // Menu Button Click
+            const menuBtn = taskCard.querySelector('.card-menu-btn');
+            menuBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Position menu near the button
+                const rect = menuBtn.getBoundingClientRect();
+                // Fake an event object with coordinates for showContextMenu
+                const fakeEvent = {
+                    pageX: rect.left,
+                    pageY: rect.bottom + 5, // slightly below
+                    preventDefault: () => { }
+                };
+                showContextMenu(fakeEvent, task.id, task.status);
             });
 
             // Context Menu
