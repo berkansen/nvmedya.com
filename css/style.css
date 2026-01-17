@@ -1175,6 +1175,8 @@ header {
     width: 300px;
     outline: none;
     font-family: var(--font-body);
+    font-size: 16px;
+    /* Prevent iOS zoom */
 }
 
 .task-input:focus {
