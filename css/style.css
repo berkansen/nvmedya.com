@@ -1387,6 +1387,8 @@ header {
     color: var(--text-main);
     margin: 1rem 0;
     font-family: var(--font-body);
+    font-size: 16px;
+    /* Prevents auto-zoom on mobile */
     resize: vertical;
 }
 
@@ -1399,6 +1401,7 @@ header {
 .radio-group {
     display: flex;
     gap: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .radio-label {
@@ -1406,10 +1409,21 @@ header {
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
+    font-size: 1rem;
 }
 
 .radio-label input {
     accent-color: var(--primary-color);
+    width: 20px;
+    height: 20px;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 20% auto;
+        padding: 1.5rem;
+        width: 95%;
+    }
 }
 
 /* Notes on Card */
