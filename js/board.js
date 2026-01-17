@@ -434,9 +434,32 @@ document.addEventListener('DOMContentLoaded', () => {
             menuMoveArchive.style.display = 'flex';
         }
 
+
         contextMenu.style.display = 'block';
-        contextMenu.style.left = `${e.pageX}px`;
-        contextMenu.style.top = `${e.pageY}px`;
+
+        // --- Smart Positioning ---
+        const menuWidth = contextMenu.offsetWidth || 200;
+        const menuHeight = contextMenu.offsetHeight || 250;
+
+        let x = e.pageX;
+        let y = e.pageY;
+
+        // Check right edge
+        if (x + menuWidth > window.innerWidth) {
+            x = window.innerWidth - menuWidth - 10;
+        }
+
+        // Check bottom edge
+        if (y + menuHeight > window.innerHeight + window.scrollY) {
+            y = y - menuHeight;
+        }
+
+        // Final clamp
+        x = Math.max(10, x);
+        y = Math.max(10 + window.scrollY, y);
+
+        contextMenu.style.left = `${x}px`;
+        contextMenu.style.top = `${y}px`;
     }
 
     function hideContextMenu() {
