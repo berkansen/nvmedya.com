@@ -7,10 +7,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const cleanupTrash = () => {
         const fifteenDaysAgo = new Date();
         fifteenDaysAgo.setDate(fifteenDaysAgo.getDate() - 15);
-        
+
         const initialLen = trash.length;
         trash = trash.filter(t => new Date(t.deletedAt) > fifteenDaysAgo);
-        
+
         if (trash.length !== initialLen) {
             localStorage.setItem('nvm_trash', JSON.stringify(trash));
         }
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const taskCard = document.createElement('div');
             taskCard.className = 'task-card';
             taskCard.dataset.id = task.id;
-            
+
             // Assignee Badge
             let assigneeHtml = '';
             if (task.assignee) {
@@ -124,9 +124,9 @@ document.addEventListener('DOMContentLoaded', () => {
         trash.forEach(item => {
             const trashItem = document.createElement('div');
             trashItem.className = 'trash-item';
-            
+
             const deletedDate = new Date(item.deletedAt).toLocaleDateString('tr-TR');
-            
+
             trashItem.innerHTML = `
                 <div class="trash-info">
                     <h4>${item.task.text}</h4>
@@ -144,6 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Actions ---
     function addTask() {
         const text = taskInput.value.trim();
+        if (!text) return;
 
         const newTask = {
             id: Date.now().toString(),
@@ -185,7 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 deletedAt: new Date().toISOString()
             });
             localStorage.setItem('nvm_trash', JSON.stringify(trash));
-            
+
             tasks.splice(taskIndex, 1);
             renderTasks();
             renderTrash(); // update if open
@@ -200,15 +201,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function saveNote() {
+        if (!currentTaskId) return;
         const text = noteText.value.trim();
+        if (!text) {
             alert('Lütfen bir not girin.');
             return;
         }
 
         const author = document.querySelector('input[name="noteAuthor"]:checked').value;
-        
+
         const taskIndex = tasks.findIndex(t => t.id === currentTaskId);
         if (taskIndex > -1) {
+            if (!tasks[taskIndex].notes) tasks[taskIndex].notes = [];
             tasks[taskIndex].notes.push({
                 text: text,
                 author: author,
@@ -226,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const item = trash[trashIndex];
             tasks.push(item.task);
             trash.splice(trashIndex, 1);
-            
+
             localStorage.setItem('nvm_trash', JSON.stringify(trash));
             renderTasks();
             renderTrash();
@@ -234,7 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     window.permDeleteTask = (trashId) => {
-        
+        if (!confirm('Bu öğeyi kalıcı olarak silmek istediğinize emin misiniz?')) return;
+
         trash = trash.filter(t => t.id !== trashId);
         localStorage.setItem('nvm_trash', JSON.stringify(trash));
         renderTrash();
@@ -260,6 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('click', (e) => {
+        if (!contextMenu.contains(e.target)) {
             hideContextMenu();
         }
     });
@@ -268,6 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.menu-item').forEach(item => {
         item.addEventListener('click', (e) => {
             const action = item.dataset.action;
+            if (!currentTaskId) return;
 
             // Hide context menu but keep ID for actions
             contextMenu.style.display = 'none';
@@ -298,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Modal Listeners
     saveNoteBtn.addEventListener('click', saveNote);
     closeNoteModal.addEventListener('click', () => noteModal.style.display = 'none');
-    
+
     openTrashBtn.addEventListener('click', () => {
         renderTrash();
         trashModal.style.display = 'block';
