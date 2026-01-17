@@ -2,20 +2,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- State Management ---
     let tasks = JSON.parse(localStorage.getItem('nvm_tasks')) || [];
     let trash = JSON.parse(localStorage.getItem('nvm_trash')) || [];
+    let archive = JSON.parse(localStorage.getItem('nvm_archive')) || [];
 
-    // Cleanup old trash (older than 15 days)
-    const cleanupTrash = () => {
+    // Cleanup old trash and archive
+    const cleanupStorage = () => {
+        const now = new Date();
         const fifteenDaysAgo = new Date();
-        fifteenDaysAgo.setDate(fifteenDaysAgo.getDate() - 15);
+        fifteenDaysAgo.setDate(now.getDate() - 15);
 
-        const initialLen = trash.length;
+        const sixtyDaysAgo = new Date();
+        sixtyDaysAgo.setDate(now.getDate() - 60);
+
+        // Trash Cleanup (15 days)
+        const initTrashLen = trash.length;
         trash = trash.filter(t => new Date(t.deletedAt) > fifteenDaysAgo);
-
-        if (trash.length !== initialLen) {
+        if (trash.length !== initTrashLen) {
             localStorage.setItem('nvm_trash', JSON.stringify(trash));
         }
+
+        // Archive Cleanup (60 days)
+        const initArchiveLen = archive.length;
+        archive = archive.filter(t => new Date(t.archivedAt) > sixtyDaysAgo);
+        if (archive.length !== initArchiveLen) {
+            localStorage.setItem('nvm_archive', JSON.stringify(archive));
+        }
     };
-    cleanupTrash();
+    cleanupStorage();
 
     // --- DOM Elements ---
     const taskInput = document.getElementById('taskInput');
@@ -23,7 +35,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const colTodo = document.getElementById('list-todo');
     const colProgress = document.getElementById('list-in-progress');
     const colDone = document.getElementById('list-done');
-    const colArchive = document.getElementById('list-archive');
     const contextMenu = document.getElementById('contextMenu');
 
     // Context Menu Items
@@ -38,13 +49,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const countTodo = document.getElementById('count-todo');
     const countProgress = document.getElementById('count-progress');
     const countDone = document.getElementById('count-done');
-    const countArchive = document.getElementById('count-archive');
 
 
     // Modals
     const noteModal = document.getElementById('noteModal');
     const editNoteModal = document.getElementById('editNoteModal');
     const trashModal = document.getElementById('trashModal');
+    const archiveModal = document.getElementById('archiveModal');
 
     // Note Add Elements
     const noteText = document.getElementById('noteText');
@@ -57,10 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const deleteNoteBtn = document.getElementById('deleteNoteBtn');
     const closeEditNoteModal = document.getElementById('closeEditNoteModal');
 
-    // Trash Elements
+    // Trash & Archive Elements
     const closeTrashModal = document.getElementById('closeTrashModal');
+    const closeArchiveModal = document.getElementById('closeArchiveModal');
     const openTrashBtn = document.getElementById('openTrashBtn');
+    const openArchiveBtn = document.getElementById('openArchiveBtn');
     const trashList = document.getElementById('trashList');
+    const archiveList = document.getElementById('archiveList');
 
     let currentTaskId = null;
     let currentNoteIndex = null; // for editing
@@ -71,10 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
         colTodo.innerHTML = '';
         colProgress.innerHTML = '';
         colDone.innerHTML = '';
-        colArchive.innerHTML = '';
 
         // Counters
-        let cTodo = 0, cProgress = 0, cDone = 0, cArchive = 0;
+        let cTodo = 0, cProgress = 0, cDone = 0;
 
         tasks.forEach(task => {
             const taskCard = document.createElement('div');
@@ -94,7 +107,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 notesHtml = '<div class="task-notes">';
                 task.notes.forEach((note, index) => {
                     const authorClass = note.author.toLowerCase() === 'yeliz' ? 'note-yeliz' : 'note-berkan';
-                    // Added click event to edit
                     notesHtml += `
                         <div class="note-item ${authorClass}" onclick="window.openEditNote('${task.id}', ${index}, event)">
                             <span class="note-author">${note.author}:</span> ${note.text}
@@ -127,9 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else if (task.status === 'done') {
                 colDone.appendChild(taskCard);
                 cDone++;
-            } else if (task.status === 'archive') {
-                colArchive.appendChild(taskCard);
-                cArchive++;
             }
         });
 
@@ -137,7 +146,6 @@ document.addEventListener('DOMContentLoaded', () => {
         countTodo.textContent = cTodo;
         countProgress.textContent = cProgress;
         countDone.textContent = cDone;
-        if (countArchive) countArchive.textContent = cArchive;
 
         // Save to local storage
         localStorage.setItem('nvm_tasks', JSON.stringify(tasks));
@@ -170,6 +178,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    function renderArchive() {
+        archiveList.innerHTML = '';
+        if (archive.length === 0) {
+            archiveList.innerHTML = '<p class="text-center" style="color:var(--text-muted)">Arşiv boş.</p>';
+            return;
+        }
+
+        archive.forEach(item => {
+            const archiveItem = document.createElement('div');
+            archiveItem.className = 'trash-item'; // Reuse same style
+
+            const archivedDate = new Date(item.archivedAt).toLocaleDateString('tr-TR');
+
+            archiveItem.innerHTML = `
+                <div class="trash-info">
+                    <h4>${item.task.text}</h4>
+                    <span class="trash-date">Arşivleme: ${archivedDate}</span>
+                </div>
+                <div class="trash-actions">
+                    <button class="btn btn-sm btn-restore" onclick="window.restoreArchive('${item.id}')">Geri Yükle</button>
+                    <button class="btn btn-sm btn-delete" onclick="window.permDeleteArchive('${item.id}')">Sil</button>
+                </div>
+            `;
+            archiveList.appendChild(archiveItem);
+        });
+    }
+
     // --- Actions ---
     function addTask() {
         const text = taskInput.value.trim();
@@ -178,10 +213,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const newTask = {
             id: Date.now().toString(),
             text: text,
-            status: 'todo', // todo, in-progress, done, archive
-            assignee: null, // 'Yeliz', 'Berkan'
+            status: 'todo',
+            assignee: null,
             createdAt: new Date().toISOString(),
-            notes: [] // {text, author, createdAt}
+            notes: []
         };
 
         tasks.push(newTask);
@@ -194,6 +229,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (taskIndex > -1) {
             tasks[taskIndex].status = newStatus;
             renderTasks();
+        }
+    }
+
+    function archiveTask(id) {
+        const taskIndex = tasks.findIndex(t => t.id === id);
+        if (taskIndex > -1) {
+            const task = tasks[taskIndex];
+            archive.push({
+                id: Date.now().toString(), // Archive ID
+                task: task,
+                archivedAt: new Date().toISOString()
+            });
+            localStorage.setItem('nvm_archive', JSON.stringify(archive));
+
+            tasks.splice(taskIndex, 1);
+            renderTasks();
+            renderArchive(); // if open
         }
     }
 
@@ -312,6 +364,30 @@ document.addEventListener('DOMContentLoaded', () => {
         renderTrash();
     }
 
+    // --- Global Archive Actions ---
+    window.restoreArchive = (archiveId) => {
+        const index = archive.findIndex(t => t.id === archiveId);
+        if (index > -1) {
+            const item = archive[index];
+            // Restore to 'done' status
+            item.task.status = 'done';
+            tasks.push(item.task);
+            archive.splice(index, 1);
+
+            localStorage.setItem('nvm_archive', JSON.stringify(archive));
+            renderTasks();
+            renderArchive();
+        }
+    }
+
+    window.permDeleteArchive = (archiveId) => {
+        if (!confirm('Bu öğeyi kalıcı olarak silmek istediğinize emin misiniz?')) return;
+
+        archive = archive.filter(t => t.id !== archiveId);
+        localStorage.setItem('nvm_archive', JSON.stringify(archive));
+        renderArchive();
+    }
+
     // --- Context Menu ---
     function showContextMenu(e, id, status) {
         currentTaskId = id;
@@ -332,8 +408,6 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (status === 'done') {
             menuMoveProgressBack.style.display = 'flex'; // Back to Progress
             menuMoveArchive.style.display = 'flex'; // Archive
-        } else if (status === 'archive') {
-            menuMoveDone.style.display = 'flex'; // Restore if you want (labeled as Done)
         }
 
         contextMenu.style.display = 'block';
@@ -390,7 +464,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     updateTaskStatus(currentTaskId, 'done');
                     break;
                 case 'move-archive':
-                    updateTaskStatus(currentTaskId, 'archive');
+                    archiveTask(currentTaskId);
                     break;
                 case 'delete':
                     if (confirm('Bu görevi silmek istediğinize emin misiniz?')) {
@@ -416,11 +490,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     closeTrashModal.addEventListener('click', () => trashModal.style.display = 'none');
 
+    openArchiveBtn.addEventListener('click', () => {
+        renderArchive();
+        archiveModal.style.display = 'block';
+    });
+    closeArchiveModal.addEventListener('click', () => archiveModal.style.display = 'none');
+
     // Close modals on outside click
     window.addEventListener('click', (e) => {
         if (e.target == noteModal) noteModal.style.display = 'none';
         if (e.target == trashModal) trashModal.style.display = 'none';
         if (e.target == editNoteModal) editNoteModal.style.display = 'none';
+        if (e.target == archiveModal) archiveModal.style.display = 'none';
     });
 
     // Initial Render
