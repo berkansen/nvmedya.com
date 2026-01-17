@@ -1655,6 +1655,34 @@ header {
 }
 
 /* --- Modal Item Styling --- */
+/* Modal Headers */
+#archiveModal h3 {
+    background: #9c27b0;
+    color: white;
+    padding: 1rem;
+    margin: -2rem -2rem 1rem -2rem;
+    border-radius: 8px 8px 0 0;
+}
+
+#trashModal h3 {
+    background: #ff4d4d;
+    color: white;
+    padding: 1rem;
+    margin: -2rem -2rem 1rem -2rem;
+    border-radius: 8px 8px 0 0;
+}
+
+#archiveModal .close-modal,
+#trashModal .close-modal {
+    color: white;
+    opacity: 0.8;
+}
+
+#archiveModal .close-modal:hover,
+#trashModal .close-modal:hover {
+    opacity: 1;
+}
+
 .trash-item,
 .archive-item {
     padding: 1rem;
