@@ -79,8 +79,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentTaskId = null;
     let currentNoteIndex = null; // for editing
 
+    // --- Constants ---
+    const TASK_COLORS = [
+        '#FF5252', // Red
+        '#FF9800', // Orange
+        '#FFD740', // Yellow
+        '#69F0AE', // Green
+        '#40C4FF', // Blue
+        '#7C4DFF', // Deep Purple
+        '#FF4081'  // Pink
+    ];
+
     // --- Render ---
     function renderTasks() {
+        // Sort tasks: Newest first
+        tasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
         // Clear lists
         colTodo.innerHTML = '';
         colProgress.innerHTML = '';
@@ -93,6 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const taskCard = document.createElement('div');
             taskCard.className = 'task-card';
             taskCard.dataset.id = task.id;
+
+            // Apply Color
+            const color = TASK_COLORS[task.colorIndex || 0];
+            taskCard.style.borderLeft = `4px solid ${color}`;
 
             // Assignee Badge
             let assigneeHtml = '';
@@ -118,10 +136,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             taskCard.innerHTML = `
                 ${assigneeHtml}
-                <p class="task-text">${task.text}</p>
-                ${notesHtml}
+                <div class="task-content">
+                    <p class="task-text">${task.text}</p>
+                    ${notesHtml}
+                </div>
                 <div class="task-date">${new Date(task.createdAt).toLocaleDateString('tr-TR')}</div>
+                <div class="expand-hint"><i class='bx bx-chevron-down'></i></div>
             `;
+
+            // Expand/Collapse on Click
+            taskCard.addEventListener('click', (e) => {
+                // Ignore if clicked on specific buttons/notes handled separately
+                if (e.target.closest('.note-item') || e.target.closest('.btn')) return;
+
+                taskCard.classList.toggle('expanded');
+            });
 
             // Add Event Listener for Context Menu
             taskCard.addEventListener('contextmenu', (e) => {
@@ -210,16 +239,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = taskInput.value.trim();
         if (!text) return;
 
+        // Assign a color based on current number of tasks
+        const colorIndex = tasks.length % 7;
+
         const newTask = {
             id: Date.now().toString(),
             text: text,
             status: 'todo',
             assignee: null,
             createdAt: new Date().toISOString(),
-            notes: []
+            notes: [],
+            colorIndex: colorIndex
         };
 
-        tasks.push(newTask);
+        tasks.unshift(newTask); // Add to beginning (though we sort anyway)
         taskInput.value = '';
         renderTasks();
     }
