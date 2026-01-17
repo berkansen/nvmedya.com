@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=2">
+    <link rel="stylesheet" href="css/style.css?v=3">
 
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -34,6 +34,16 @@
 </head>
 
 <body>
+    <!-- Login Overlay -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-card">
+            <h2>Giriş Yap</h2>
+            <p>Paneli görüntülemek için şifreyi giriniz.</p>
+            <input type="password" id="loginPassword" placeholder="Şifre" class="modal-input">
+            <button id="loginBtn" class="btn btn-primary" style="width:100%; justify-content:center;">Giriş</button>
+        </div>
+    </div>
+
     <header id="header">
         <nav class="navbar container">
             <a href="#" class="logo">

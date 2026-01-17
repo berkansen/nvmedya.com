@@ -14,7 +14,48 @@ if (!firebase.apps.length) {
 }
 const db = firebase.firestore();
 
+
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Auth Logic ---
+    const loginOverlay = document.getElementById('loginOverlay');
+    const loginBtn = document.getElementById('loginBtn');
+    const loginInput = document.getElementById('loginPassword');
+
+    // Check Auth
+    const authDate = localStorage.getItem('nvm_check_date');
+    const PASSWORD = 'nisan2026';
+    const VALID_DAYS = 15;
+
+    // Helper to hide
+    const unlock = () => {
+        loginOverlay.style.opacity = '0';
+        setTimeout(() => {
+            loginOverlay.style.display = 'none';
+        }, 500); // fade out
+    };
+
+    if (authDate) {
+        const date = new Date(parseInt(authDate));
+        const now = new Date();
+        const diffTime = Math.abs(now - date);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays <= VALID_DAYS) {
+            unlock();
+        }
+    }
+
+    // Login Action
+    loginBtn.addEventListener('click', () => {
+        if (loginInput.value === PASSWORD) {
+            localStorage.setItem('nvm_check_date', Date.now().toString());
+            unlock();
+        } else {
+            alert('Hatalı şifre!');
+            loginInput.value = '';
+        }
+    });
+
     // --- State Management (Local Mirrors of DB) ---
     let tasks = [];
     let trash = [];
