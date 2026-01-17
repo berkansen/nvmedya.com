@@ -1134,12 +1134,36 @@ header {
     }
 }
 
+
 /* --- Kanban Board Styles --- */
 .board-controls {
     display: flex;
     gap: 1rem;
     margin-bottom: 2rem;
     justify-content: center;
+    flex-wrap: wrap;
+    /* allow wrapping on small screens */
+}
+
+@media (max-width: 768px) {
+    .board-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Make input full width on mobile */
+    .task-input {
+        width: 100% !important;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Wrap buttons container */
+    .board-controls>div {
+        margin-left: 0 !important;
+        /* override auto margin */
+        justify-content: center;
+        width: 100%;
+    }
 }
 
 .task-input {
