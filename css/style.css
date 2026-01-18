@@ -1147,29 +1147,50 @@ header {
     display: flex;
     gap: 1rem;
     margin-bottom: 2rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    /* allow wrapping on small screens */
+    align-items: center;
+}
+
+.controls-buttons {
+    margin-left: auto;
+    display: flex;
+    gap: 0.5rem;
 }
 
 @media (max-width: 768px) {
     .board-controls {
         flex-direction: column;
-        align-items: center;
+        align-items: stretch;
+        gap: 1rem;
     }
 
-    /* Make input full width on mobile */
     .task-input {
         width: 100% !important;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0;
     }
 
-    /* Wrap buttons container */
-    .board-controls>div {
-        margin-left: 0 !important;
-        /* override auto margin */
-        justify-content: center;
+    /* Horizontal Scroll for Buttons */
+    .controls-buttons {
+        margin-left: 0;
         width: 100%;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 5px;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Hide scrollbar */
+    .controls-buttons::-webkit-scrollbar {
+        display: none;
+    }
+
+    .controls-buttons {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .controls-buttons .btn {
+        flex-shrink: 0;
     }
 }
 
