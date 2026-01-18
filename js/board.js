@@ -638,15 +638,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (showMyTasks) {
                 filterMyTasksBtn.classList.add('active');
-                filterMyTasksBtn.style.background = 'var(--primary-color)';
-                filterMyTasksBtn.style.borderColor = 'var(--primary-color)';
                 filterMyTasksBtn.innerHTML = "<i class='bx bx-x'></i> Filtreyi Temizle";
             } else {
                 filterMyTasksBtn.classList.remove('active');
-                filterMyTasksBtn.style.background = 'transparent';
-                filterMyTasksBtn.style.borderColor = 'rgba(255, 255, 255, 0.2)';
                 filterMyTasksBtn.innerHTML = "<i class='bx bx-user-check'></i> Bana Atananlar";
             }
+            // Clear inline styles to let CSS take over
+            filterMyTasksBtn.style.background = '';
+            filterMyTasksBtn.style.borderColor = '';
+
             renderTasks();
         });
     }

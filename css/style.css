@@ -124,8 +124,15 @@ img {
     margin-left: 1rem;
 }
 
-.btn-outline:hover {
+.btn-outline:hover,
+.btn-outline.active {
     border-color: var(--text-main);
+}
+
+.btn-outline.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
 }
 
 .btn-text {
