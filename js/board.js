@@ -110,6 +110,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const colDone = document.getElementById('list-done');
     const contextMenu = document.getElementById('contextMenu');
 
+    const filterMyTasksBtn = document.getElementById('filterMyTasksBtn');
+
     // Context Menu Items
     const menuMoveTodo = document.getElementById('menuMoveTodo');
     const menuMoveProgress = document.getElementById('menuMoveProgress');
@@ -155,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentTaskId = null;
     let currentNoteIndex = null;
+    let showMyTasks = false; // Filter state
 
     // --- Constants ---
     const TASK_COLORS = [
@@ -206,7 +209,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let cTodo = 0, cProgress = 0, cDone = 0;
 
-        tasks.forEach(task => {
+        let displayTasks = tasks;
+        if (showMyTasks) {
+            const activeUser = localStorage.getItem('nvm_active_user');
+            displayTasks = tasks.filter(t => t.assignee === activeUser);
+        }
+
+        displayTasks.forEach(task => {
             const taskCard = document.createElement('div');
             taskCard.className = 'task-card';
             taskCard.dataset.id = task.id;
@@ -622,6 +631,25 @@ document.addEventListener('DOMContentLoaded', () => {
     taskInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') addTask();
     });
+
+    if (filterMyTasksBtn) {
+        filterMyTasksBtn.addEventListener('click', () => {
+            showMyTasks = !showMyTasks;
+
+            if (showMyTasks) {
+                filterMyTasksBtn.classList.add('active');
+                filterMyTasksBtn.style.background = 'var(--primary-color)';
+                filterMyTasksBtn.style.borderColor = 'var(--primary-color)';
+                filterMyTasksBtn.innerHTML = "<i class='bx bx-x'></i> Filtreyi Temizle";
+            } else {
+                filterMyTasksBtn.classList.remove('active');
+                filterMyTasksBtn.style.background = 'transparent';
+                filterMyTasksBtn.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+                filterMyTasksBtn.innerHTML = "<i class='bx bx-user-check'></i> Bana Atananlar";
+            }
+            renderTasks();
+        });
+    }
 
     document.addEventListener('click', (e) => {
         if (!contextMenu.contains(e.target)) {
