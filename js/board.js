@@ -105,6 +105,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuMoveDone = document.getElementById('menuMoveDone');
     const menuMoveArchive = document.getElementById('menuMoveArchive');
 
+    // Task Edit Elements
+    const editTaskModal = document.getElementById('editTaskModal');
+    const editTaskInput = document.getElementById('editTaskInput');
+    const updateTaskBtn = document.getElementById('updateTaskBtn');
+    const closeEditTaskModal = document.getElementById('closeEditTaskModal');
+
     // Counts
     const countTodo = document.getElementById('count-todo');
     const countProgress = document.getElementById('count-progress');
@@ -392,6 +398,32 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- Task Editing ---
+    function openEditTaskModal(id) {
+        const activeUser = localStorage.getItem('nvm_active_user');
+        const task = tasks.find(t => t.id === id);
+
+        if (task) {
+            // Permission Check
+            if (task.createdByName && task.createdByName !== activeUser) {
+                alert(`Bu işi sadece oluşturan kişi (${task.createdByName}) düzenleyebilir!`);
+                return;
+            }
+
+            editTaskInput.value = task.text;
+            editTaskModal.style.display = 'block';
+        }
+    }
+
+    function updateTask() {
+        if (!currentTaskId) return;
+        const text = editTaskInput.value.trim();
+        if (!text) return;
+
+        db.collection('tasks').doc(currentTaskId).update({ text: text });
+        editTaskModal.style.display = 'none';
+    }
+
     // --- Notes Management ---
     window.openEditNote = (taskId, noteIndex, e) => {
         e.stopPropagation();
@@ -610,6 +642,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'delete':
                     if (confirm('Bu görevi silmek istediğinize emin misiniz?')) deleteTask(currentTaskId);
                     break;
+                case 'edit-task':
+                    openEditTaskModal(currentTaskId);
+                    break;
             }
         });
     });
@@ -637,7 +672,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target == trashModal) trashModal.style.display = 'none';
         if (e.target == editNoteModal) editNoteModal.style.display = 'none';
         if (e.target == archiveModal) archiveModal.style.display = 'none';
+        if (e.target == editTaskModal) editTaskModal.style.display = 'none';
     });
+
+    // Task Edit Events
+    updateTaskBtn.addEventListener('click', updateTask);
+    closeEditTaskModal.addEventListener('click', () => editTaskModal.style.display = 'none');
 
     // Logout Action
     const logoutBtn = document.getElementById('logoutBtn');
