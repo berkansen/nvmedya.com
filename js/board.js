@@ -122,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeNoteModal = document.getElementById('closeNoteModal');
 
     const editNoteText = document.getElementById('editNoteText');
+    const noteEditInfo = document.getElementById('noteEditInfo');
     const updateNoteBtn = document.getElementById('updateNoteBtn');
     const deleteNoteBtn = document.getElementById('deleteNoteBtn');
     const closeEditNoteModal = document.getElementById('closeEditNoteModal');
@@ -220,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Date Formatting
             const dateObj = new Date(task.createdAt);
-            const dateStr = dateObj.toLocaleDateString('tr-TR');
+            const dateStr = dateObj.toLocaleDateString('tr-TR', { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
             // Created By info
             const createdByInfo = task.createdByName ? ` • ${task.createdByName} oluşturdu` : '';
 
@@ -362,8 +363,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function deleteTask(id) {
+        const activeUser = localStorage.getItem('nvm_active_user');
         const task = tasks.find(t => t.id === id);
+
         if (task) {
+            // Permission Check
+            if (task.createdByName && task.createdByName !== activeUser) {
+                alert(`Bu işi sadece oluşturan kişi (${task.createdByName}) silebilir!`);
+                return;
+            }
+
             db.collection('trash').add({
                 task: task,
                 deletedAt: new Date().toISOString()
@@ -391,7 +400,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const task = tasks.find(t => t.id === taskId);
         if (task && task.notes[noteIndex]) {
-            editNoteText.value = task.notes[noteIndex].text;
+            const note = task.notes[noteIndex];
+            editNoteText.value = note.text;
+
+            // Show Last Edited Info
+            if (note.lastEditedBy) {
+                const date = new Date(note.lastEditedAt).toLocaleString('tr-TR', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' });
+                noteEditInfo.textContent = `Son düzenleyen: ${note.lastEditedBy} (${date})`;
+                noteEditInfo.style.display = 'block';
+            } else {
+                noteEditInfo.style.display = 'none';
+            }
+
             editNoteModal.style.display = 'block';
         }
     }
@@ -401,10 +421,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = editNoteText.value.trim();
         if (!text) return;
 
+        const activeUser = localStorage.getItem('nvm_active_user') || 'Bilinmeyen';
+
         const task = tasks.find(t => t.id === currentTaskId);
         if (task) {
             const updatedNotes = [...task.notes];
+
+            // Update Text and Add Audit Trail
             updatedNotes[currentNoteIndex].text = text;
+            updatedNotes[currentNoteIndex].lastEditedBy = activeUser;
+            updatedNotes[currentNoteIndex].lastEditedAt = new Date().toISOString();
+
             db.collection('tasks').doc(currentTaskId).update({ notes: updatedNotes });
             editNoteModal.style.display = 'none';
         }
@@ -412,10 +439,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function deleteNote() {
         if (!currentTaskId || currentNoteIndex === null) return;
-        if (!confirm('Bu notu silmek istediğinize emin misiniz?')) return;
 
+        const activeUser = localStorage.getItem('nvm_active_user');
         const task = tasks.find(t => t.id === currentTaskId);
-        if (task) {
+
+        if (task && task.notes[currentNoteIndex]) {
+            const note = task.notes[currentNoteIndex];
+
+            // Permission Check
+            if (note.author !== activeUser) {
+                alert(`Bu notu sadece yazan kişi (${note.author}) silebilir!`);
+                return;
+            }
+
+            if (!confirm('Bu notu silmek istediğinize emin misiniz?')) return;
+
             const updatedNotes = [...task.notes];
             updatedNotes.splice(currentNoteIndex, 1);
             db.collection('tasks').doc(currentTaskId).update({ notes: updatedNotes });
