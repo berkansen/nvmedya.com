@@ -19,11 +19,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Auth Logic ---
     const loginOverlay = document.getElementById('loginOverlay');
     const loginBtn = document.getElementById('loginBtn');
-    const loginInput = document.getElementById('loginPassword');
+    const loginPasswordInput = document.getElementById('loginPassword');
+    const loginUsernameInput = document.getElementById('loginUsername');
 
-    // Check Auth
-    const authDate = localStorage.getItem('nvm_check_date');
-    const PASSWORD = 'nisan2026';
+    // Users Configuration
+    const USERS = {
+        'berkan': { pass: 'kavala250', display: 'Berkan' },
+        'yeliz': { pass: 'berkan1923', display: 'Yeliz' }
+    };
+
     const VALID_DAYS = 15;
 
     // Helper to hide
@@ -34,7 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500); // fade out
     };
 
-    if (authDate) {
+    // Check Auth
+    // CHANGED KEYS TO FORCE LOGOUT ON ALL DEVICES
+    const authDate = localStorage.getItem('nvm_auth_session');
+    const currentUser = localStorage.getItem('nvm_active_user');
+
+    if (authDate && currentUser) {
         const date = new Date(parseInt(authDate));
         const now = new Date();
         const diffTime = Math.abs(now - date);
@@ -47,20 +56,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Login Action
     loginBtn.addEventListener('click', () => {
-        if (loginInput.value === PASSWORD) {
-            localStorage.setItem('nvm_check_date', Date.now().toString());
+        const username = loginUsernameInput.value.trim().toLowerCase();
+        const password = loginPasswordInput.value.trim();
+
+        if (USERS[username] && USERS[username].pass === password) {
+            localStorage.setItem('nvm_auth_session', Date.now().toString());
+            localStorage.setItem('nvm_active_user', USERS[username].display);
             unlock();
         } else {
-            alert('Hatalı şifre!');
-            loginInput.value = '';
+            alert('Hatalı kullanıcı adı veya şifre!');
+            loginPasswordInput.value = '';
         }
     });
 
     // Toggle Password Visibility
     const toggleBtn = document.getElementById('togglePasswordBtn');
     toggleBtn.addEventListener('click', () => {
-        const type = loginInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        loginInput.setAttribute('type', type);
+        const type = loginPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        loginPasswordInput.setAttribute('type', type);
 
         // Toggle Icon
         if (type === 'text') {
@@ -72,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- State Management (Local Mirrors of DB) ---
+    // --- State Management ---
     let tasks = [];
     let trash = [];
     let archive = [];
@@ -143,26 +156,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Listen for Trash
     db.collection('trash').onSnapshot(snapshot => {
         trash = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        renderTrash(); // updates modal if open
+        renderTrash();
     });
 
     // 3. Listen for Archive
     db.collection('archive').onSnapshot(snapshot => {
         archive = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        renderArchive(); // updates modal if open
+        renderArchive();
     });
 
-    // --- Cleanup Logic (Run once on load) ---
+    // --- Cleanup Logic ---
     const runCleanup = () => {
-        // Fix date math safely
         const d15 = new Date(); d15.setDate(d15.getDate() - 15);
         const d60 = new Date(); d60.setDate(d60.getDate() - 60);
 
-        // Delete old trash
         db.collection('trash').where('deletedAt', '<', d15.toISOString()).get()
             .then(snap => snap.forEach(doc => doc.ref.delete()));
 
-        // Delete old archive
         db.collection('archive').where('archivedAt', '<', d60.toISOString()).get()
             .then(snap => snap.forEach(doc => doc.ref.delete()));
     };
@@ -208,6 +218,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 notesHtml += '</div>';
             }
 
+            // Date Formatting
+            const dateObj = new Date(task.createdAt);
+            const dateStr = dateObj.toLocaleDateString('tr-TR');
+            // Created By info
+            const createdByInfo = task.createdByName ? ` • ${task.createdByName} oluşturdu` : '';
+
             taskCard.innerHTML = `
                 ${assigneeHtml}
                 <button class="card-menu-btn"><i class='bx bx-dots-vertical-rounded'></i></button>
@@ -215,11 +231,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <p class="task-text">${task.text}</p>
                     ${notesHtml}
                 </div>
-                <div class="task-date">${new Date(task.createdAt).toLocaleDateString('tr-TR')}</div>
+                <div class="task-date">${dateStr}${createdByInfo}</div>
                 <div class="expand-hint"><i class='bx bx-chevron-down'></i></div>
             `;
 
-            // Expand/Collapse on Click
+            // Expand/Collapse
             taskCard.addEventListener('click', (e) => {
                 if (e.target.closest('.note-item') || e.target.closest('.btn') || e.target.closest('.card-menu-btn')) return;
                 taskCard.classList.toggle('expanded');
@@ -229,12 +245,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const menuBtn = taskCard.querySelector('.card-menu-btn');
             menuBtn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                // Position menu near the button
                 const rect = menuBtn.getBoundingClientRect();
-                // Fake an event object with coordinates for showContextMenu
                 const fakeEvent = {
                     pageX: rect.left,
-                    pageY: rect.bottom + 5, // slightly below
+                    pageY: rect.bottom + 5,
                     preventDefault: () => { }
                 };
                 showContextMenu(fakeEvent, task.id, task.status);
@@ -246,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 showContextMenu(e, task.id, task.status);
             });
 
-            // Append to column
+            // Append
             if (task.status === 'todo') {
                 colTodo.appendChild(taskCard);
                 cTodo++;
@@ -274,7 +288,6 @@ document.addEventListener('DOMContentLoaded', () => {
         trash.forEach(item => {
             const trashItem = document.createElement('div');
             trashItem.className = 'trash-item';
-
             const deletedDate = new Date(item.deletedAt).toLocaleDateString('tr-TR');
 
             trashItem.innerHTML = `
@@ -301,7 +314,6 @@ document.addEventListener('DOMContentLoaded', () => {
         archive.forEach(item => {
             const archiveItem = document.createElement('div');
             archiveItem.className = 'archive-item';
-
             const archivedDate = new Date(item.archivedAt).toLocaleDateString('tr-TR');
 
             archiveItem.innerHTML = `
@@ -318,18 +330,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Actions (Write to DB) ---
+    // --- Actions ---
     function addTask() {
         const text = taskInput.value.trim();
         if (!text) return;
 
-        // Assign a color based on current number of tasks
+        const activeUser = localStorage.getItem('nvm_active_user') || 'Bilinmeyen';
+
+        // Assign a color
         const colorIndex = tasks.length % 7;
 
         db.collection('tasks').add({
             text: text,
             status: 'todo',
             assignee: null,
+            createdByName: activeUser, // Track who created it
             createdAt: new Date().toISOString(),
             notes: [],
             colorIndex: colorIndex
@@ -349,12 +364,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function deleteTask(id) {
         const task = tasks.find(t => t.id === id);
         if (task) {
-            // Add to Trash Collection
             db.collection('trash').add({
                 task: task,
                 deletedAt: new Date().toISOString()
             });
-            // Remove from Tasks Collection
             db.collection('tasks').doc(id).delete();
         }
     }
@@ -362,12 +375,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function archiveTask(id) {
         const task = tasks.find(t => t.id === id);
         if (task) {
-            // Add to Archive Collection
             db.collection('archive').add({
                 task: task,
                 archivedAt: new Date().toISOString()
             });
-            // Remove from Tasks Collection
             db.collection('tasks').doc(id).delete();
         }
     }
@@ -426,7 +437,9 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const author = document.querySelector('input[name="noteAuthor"]:checked').value;
+        // Auto-assign author
+        const author = localStorage.getItem('nvm_active_user') || 'Bilinmeyen';
+
         const task = tasks.find(t => t.id === currentTaskId);
 
         if (task) {
@@ -435,7 +448,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 author: author,
                 createdAt: new Date().toISOString()
             };
-            // Simplest way: read task mirrors, update, write back
             const updatedNotes = task.notes ? [...task.notes, newNote] : [newNote];
             db.collection('tasks').doc(currentTaskId).update({ notes: updatedNotes });
             noteModal.style.display = 'none';
@@ -588,4 +600,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target == editNoteModal) editNoteModal.style.display = 'none';
         if (e.target == archiveModal) archiveModal.style.display = 'none';
     });
+
+    // Logout Action
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            if (confirm('Çıkış yapmak istediğinize emin misiniz?')) {
+                localStorage.removeItem('nvm_auth_session');
+                localStorage.removeItem('nvm_active_user');
+                location.reload();
+            }
+        });
+    }
 });

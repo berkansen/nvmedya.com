@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/style.css?v=4">
 
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -38,7 +38,11 @@
     <div id="loginOverlay" class="login-overlay">
         <div class="login-card">
             <h2>Giriş Yap</h2>
-            <p>Paneli görüntülemek için şifreyi giriniz.</p>
+            <p>Paneli görüntülemek için bilgilerinizi giriniz.</p>
+
+            <input type="text" id="loginUsername" placeholder="Kullanıcı Adı" class="modal-input"
+                style="margin-bottom: 0.5rem;">
+
             <div style="position:relative; width:100%;">
                 <input type="password" id="loginPassword" placeholder="Şifre" class="modal-input"
                     style="padding-right: 40px;">
@@ -83,6 +87,8 @@
                     <button id="addTaskBtn" class="btn btn-primary"><i class='bx bx-plus'></i> Ekle</button>
                     <button id="openArchiveBtn" class="btn btn-primary"><i class='bx bx-archive'></i> Arşiv</button>
                     <button id="openTrashBtn" class="btn btn-primary"><i class='bx bx-trash'></i> Çöp Kutusu</button>
+                    <button id="logoutBtn" class="btn btn-outline" style="border-color: #ff4d4d; color: #ff4d4d;"><i
+                            class='bx bx-log-out'></i> Çıkış</button>
                 </div>
             </div>
 
@@ -165,17 +171,7 @@
                 <span class="close-modal" id="closeNoteModal">&times;</span>
                 <h3>Not Ekle</h3>
                 <textarea id="noteText" placeholder="Notunuzu yazın..." rows="4" class="modal-input"></textarea>
-                <div class="modal-actions">
-                    <label style="color:var(--text-muted); margin-right: 1rem;">Kim Yazıyor?</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="noteAuthor" value="Yeliz" checked> Yeliz
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="noteAuthor" value="Berkan"> Berkan
-                        </label>
-                    </div>
-                </div>
+
                 <button id="saveNoteBtn" class="btn btn-primary" style="width:100%; margin-top:1rem;">Kaydet</button>
             </div>
         </div>
@@ -278,7 +274,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
     <script src="js/main.js"></script>
-    <script src="js/board.js?v=2"></script>
+    <script src="js/board.js?v=4"></script>
 </body>
 
 </html>
