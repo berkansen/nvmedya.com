@@ -16,6 +16,18 @@ const db = firebase.firestore();
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Logout Action (Priority) ---
+    const logoutBtn = document.getElementById('logoutBtn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            if (confirm('Çıkış yapmak istediğinize emin misiniz?')) {
+                localStorage.removeItem('nvm_auth_session');
+                localStorage.removeItem('nvm_active_user');
+                location.reload();
+            }
+        });
+    }
+
     // --- Auth Logic ---
     const loginOverlay = document.getElementById('loginOverlay');
     const loginBtn = document.getElementById('loginBtn');
@@ -679,15 +691,4 @@ document.addEventListener('DOMContentLoaded', () => {
     updateTaskBtn.addEventListener('click', updateTask);
     closeEditTaskModal.addEventListener('click', () => editTaskModal.style.display = 'none');
 
-    // Logout Action
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-            if (confirm('Çıkış yapmak istediğinize emin misiniz?')) {
-                localStorage.removeItem('nvm_auth_session');
-                localStorage.removeItem('nvm_active_user');
-                location.reload();
-            }
-        });
-    }
 });

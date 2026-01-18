@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=4">
+    <link rel="stylesheet" href="css/style.css?v=5">
 
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -160,8 +160,23 @@
             </div>
 
             <div class="menu-divider"></div>
+            <div class="menu-item" data-action="edit-task">
+                <i class='bx bx-edit-alt'></i> Düzenle
+            </div>
             <div class="menu-item delete-item" data-action="delete">
                 <i class='bx bx-trash'></i> Sil
+            </div>
+        </div>
+
+        <!-- Edit Task Modal -->
+        <div id="editTaskModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" id="closeEditTaskModal">&times;</span>
+                <h3>Görevi Düzenle</h3>
+                <textarea id="editTaskInput" rows="4" class="modal-input"></textarea>
+                <div class="modal-actions" style="margin-top:1rem;">
+                    <button id="updateTaskBtn" class="btn btn-primary" style="width:100%;">Güncelle</button>
+                </div>
             </div>
         </div>
 
@@ -276,7 +291,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
     <script src="js/main.js"></script>
-    <script src="js/board.js?v=4"></script>
+    <script src="js/board.js?v=5"></script>
 </body>
 
 </html>
