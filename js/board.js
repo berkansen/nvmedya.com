@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let tasks = [];
     let trash = [];
     let archive = [];
+    let personalNotes = [];
 
     // --- DOM Elements ---
     const taskInput = document.getElementById('taskInput');
@@ -155,6 +156,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const trashList = document.getElementById('trashList');
     const archiveList = document.getElementById('archiveList');
 
+    // Personal Notes Elements
+    const personalNotesBtn = document.getElementById('personalNotesBtn');
+    const personalNotesModal = document.getElementById('personalNotesModal');
+    const closePersonalNotesModal = document.getElementById('closePersonalNotesModal');
+    const newPersonalNoteInput = document.getElementById('newPersonalNoteInput');
+    const addPersonalNoteBtn = document.getElementById('addPersonalNoteBtn');
+    const personalNotesList = document.getElementById('personalNotesList');
+
     let currentTaskId = null;
     let currentNoteIndex = null;
     let showMyTasks = false; // Filter state
@@ -185,6 +194,18 @@ document.addEventListener('DOMContentLoaded', () => {
     db.collection('archive').onSnapshot(snapshot => {
         archive = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         renderArchive();
+    });
+
+    // 4. Listen for Personal Notes
+    db.collection('personal_notes').onSnapshot(snapshot => {
+        const activeUser = localStorage.getItem('nvm_active_user');
+        // Filter mainly on client side for simplicity, but better securely on server rules
+        personalNotes = snapshot.docs
+            .map(doc => ({ id: doc.id, ...doc.data() }))
+            .filter(note => note.owner === activeUser); // Client-side filter
+
+        personalNotes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        renderPersonalNotes();
     });
 
     // --- Cleanup Logic ---
@@ -355,6 +376,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             archiveList.appendChild(archiveItem);
+        });
+    }
+
+    function renderPersonalNotes() {
+        personalNotesList.innerHTML = '';
+        if (personalNotes.length === 0) {
+            personalNotesList.innerHTML = '<p class="text-center" style="color:var(--text-muted)">Henüz notunuz yok.</p>';
+            return;
+        }
+
+        personalNotes.forEach(note => {
+            const noteItem = document.createElement('div');
+            noteItem.className = 'personal-note-item';
+            const dateStr = new Date(note.createdAt).toLocaleDateString('tr-TR', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+            noteItem.innerHTML = `
+                <div style="padding-right: 20px;">${note.text}</div>
+                <span class="personal-note-date">${dateStr}</span>
+                <i class='bx bx-trash personal-note-delete' onclick="window.deletePersonalNote('${note.id}')"></i>
+            `;
+            personalNotesList.appendChild(noteItem);
         });
     }
 
@@ -574,6 +616,29 @@ document.addEventListener('DOMContentLoaded', () => {
         db.collection('archive').doc(archiveId).delete();
     }
 
+    // --- Personal Notes Logic ---
+    function addPersonalNote() {
+        const text = newPersonalNoteInput.value.trim();
+        if (!text) return;
+
+        const activeUser = localStorage.getItem('nvm_active_user');
+
+        db.collection('personal_notes').add({
+            text: text,
+            owner: activeUser,
+            createdAt: new Date().toISOString()
+        });
+
+        newPersonalNoteInput.value = '';
+        newPersonalNoteInput.focus();
+    }
+
+    window.deletePersonalNote = (noteId) => {
+        if (confirm('Notu silmek istediğinize emin misiniz?')) {
+            db.collection('personal_notes').doc(noteId).delete();
+        }
+    }
+
     // --- Context Menu ---
     function showContextMenu(e, id, status) {
         currentTaskId = id;
@@ -707,12 +772,26 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     closeArchiveModal.addEventListener('click', () => archiveModal.style.display = 'none');
 
+    // Personal Notes Events
+    if (personalNotesBtn) {
+        personalNotesBtn.addEventListener('click', () => {
+            personalNotesModal.style.display = 'block';
+            newPersonalNoteInput.focus();
+        });
+    }
+    closePersonalNotesModal.addEventListener('click', () => personalNotesModal.style.display = 'none');
+    addPersonalNoteBtn.addEventListener('click', addPersonalNote);
+    newPersonalNoteInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') addPersonalNote();
+    });
+
     window.addEventListener('click', (e) => {
         if (e.target == noteModal) noteModal.style.display = 'none';
         if (e.target == trashModal) trashModal.style.display = 'none';
         if (e.target == editNoteModal) editNoteModal.style.display = 'none';
         if (e.target == archiveModal) archiveModal.style.display = 'none';
         if (e.target == editTaskModal) editTaskModal.style.display = 'none';
+        if (e.target == personalNotesModal) personalNotesModal.style.display = 'none';
     });
 
     // Task Edit Events
