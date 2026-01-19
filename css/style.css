@@ -1508,6 +1508,8 @@ header {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 4px;
     border-left: 3px solid var(--text-muted);
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 .note-item.note-yeliz {
@@ -1886,6 +1888,8 @@ header {
     border-radius: 8px;
     position: relative;
     transition: background 0.3s;
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 .personal-note-item:hover {

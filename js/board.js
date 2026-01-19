@@ -227,7 +227,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!text) return '';
         const urlPattern = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
         return text.replace(urlPattern, (url) => {
-            return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #4da6ff; text-decoration: underline;" onclick="event.stopPropagation();">${url}</a>`;
+            let displayUrl = url;
+            if (url.length > 30) {
+                displayUrl = url.substring(0, 27) + '...';
+            }
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #4da6ff; text-decoration: underline;" onclick="event.stopPropagation();">${displayUrl}</a>`;
         });
     }
 
