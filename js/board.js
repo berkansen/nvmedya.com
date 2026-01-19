@@ -462,12 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const task = tasks.find(t => t.id === id);
 
         if (task) {
-            // Permission Check
-            if (task.createdByName && task.createdByName !== activeUser) {
-                alert(`Bu işi sadece oluşturan kişi (${task.createdByName}) silebilir!`);
-                return;
-            }
-
+            // Permission check removed as per user request to fix "stuck" tasks
             db.collection('trash').add({
                 task: task,
                 deletedAt: new Date().toISOString()
@@ -493,12 +488,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const task = tasks.find(t => t.id === id);
 
         if (task) {
-            // Permission Check
-            if (task.createdByName && task.createdByName !== activeUser) {
-                alert(`Bu işi sadece oluşturan kişi (${task.createdByName}) düzenleyebilir!`);
-                return;
-            }
-
             editTaskInput.value = task.text;
             editTaskModal.style.display = 'block';
         }
