@@ -223,6 +223,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Render Functions ---
 
+    function linkify(text) {
+        if (!text) return '';
+        const urlPattern = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+        return text.replace(urlPattern, (url) => {
+            return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #4da6ff; text-decoration: underline;" onclick="event.stopPropagation();">${url}</a>`;
+        });
+    }
+
     function renderTasks() {
         colTodo.innerHTML = '';
         colProgress.innerHTML = '';
@@ -260,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const authorClass = note.author.toLowerCase() === 'yeliz' ? 'note-yeliz' : 'note-berkan';
                     notesHtml += `
                         <div class="note-item ${authorClass}" onclick="window.openEditNote('${task.id}', ${index}, event)">
-                            <span class="note-author">${note.author}:</span> ${note.text}
+                            <span class="note-author">${note.author}:</span> ${linkify(note.text)}
                         </div>
                     `;
                 });
@@ -392,7 +400,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const dateStr = new Date(note.createdAt).toLocaleDateString('tr-TR', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' });
 
             noteItem.innerHTML = `
-                <div style="padding-right: 20px;">${note.text}</div>
+                <div style="padding-right: 20px;">${linkify(note.text)}</div>
                 <span class="personal-note-date">${dateStr}</span>
                 <i class='bx bx-trash personal-note-delete' onclick="window.deletePersonalNote('${note.id}')"></i>
             `;
