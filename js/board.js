@@ -221,6 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     runCleanup();
 
+    // --- Sharing Helper ---
+    window.shareToWhatsApp = (text) => {
+        if (!text) return;
+        const encodedText = encodeURIComponent(text);
+        const url = `https://wa.me/?text=${encodedText}`;
+        window.open(url, '_blank');
+    }
+
     // --- Render Functions ---
 
     function linkify(text) {
@@ -272,7 +280,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const authorClass = note.author.toLowerCase() === 'yeliz' ? 'note-yeliz' : 'note-berkan';
                     notesHtml += `
                         <div class="note-item ${authorClass}" onclick="window.openEditNote('${task.id}', ${index}, event)">
-                            <span class="note-author">${note.author}:</span> ${linkify(note.text)}
+                            <div style="display:flex; justify-content:space-between; align-items:flex-start; width:100%;">
+                                <div><span class="note-author">${note.author}:</span> ${linkify(note.text)}</div>
+                                <i class='bx bxl-whatsapp' style="cursor:pointer; font-size:1.1rem; margin-left:5px; color:#25D366;" onclick="window.shareNote(event, '${task.id}', ${index})"></i>
+                            </div>
                         </div>
                     `;
                 });
@@ -404,9 +415,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const dateStr = new Date(note.createdAt).toLocaleDateString('tr-TR', { day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' });
 
             noteItem.innerHTML = `
-                <div style="padding-right: 20px;">${linkify(note.text)}</div>
+                <div style="padding-right: 40px;">${linkify(note.text)}</div>
                 <span class="personal-note-date">${dateStr}</span>
-                <i class='bx bx-trash personal-note-delete' onclick="window.deletePersonalNote('${note.id}')"></i>
+                <div style="position: absolute; top: 10px; right: 10px; display:flex; gap:5px;">
+                     <i class='bx bxl-whatsapp' style="cursor:pointer; font-size:1.2rem; color:#25D366;" onclick="window.sharePersonalNote('${note.id}')"></i>
+                     <i class='bx bx-trash' style="cursor:pointer; font-size:1.2rem; color:#ff4d4d;" onclick="window.deletePersonalNote('${note.id}')"></i>
+                </div>
             `;
             personalNotesList.appendChild(noteItem);
         });
@@ -645,6 +659,24 @@ document.addEventListener('DOMContentLoaded', () => {
         newPersonalNoteInput.focus();
     }
 
+    window.shareNote = (e, taskId, index) => {
+        e.stopPropagation();
+        const task = tasks.find(t => t.id === taskId);
+        if (task && task.notes[index]) {
+            const note = task.notes[index];
+            const textToShare = `*Not Paylaşımı*\n\n"${note.text}"\n\n- ${note.author}`;
+            window.shareToWhatsApp(textToShare);
+        }
+    }
+
+    window.sharePersonalNote = (noteId) => {
+        const note = personalNotes.find(n => n.id === noteId);
+        if (note) {
+            const textToShare = `*Kişisel Not*\n\n"${note.text}"`;
+            window.shareToWhatsApp(textToShare);
+        }
+    }
+
     window.deletePersonalNote = (noteId) => {
         if (confirm('Notu silmek istediğinize emin misiniz?')) {
             db.collection('personal_notes').doc(noteId).delete();
@@ -762,9 +794,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 case 'edit-task':
                     openEditTaskModal(currentTaskId);
                     break;
+                case 'share-whatsapp':
+                    const taskToShare = tasks.find(t => t.id === currentTaskId);
+                    if (taskToShare) {
+                        const date = new Date(taskToShare.createdAt).toLocaleDateString('tr-TR');
+                        const assignee = taskToShare.assignee ? taskToShare.assignee : 'Atanmadı';
+                        const text = `*Proje/Görev Detayı*\n\n*İş:* ${taskToShare.text}\n*Durum:* ${getStatusText(taskToShare.status)}\n*Atanan:* ${assignee}\n*Tarih:* ${date}`;
+                        window.shareToWhatsApp(text);
+                    }
+                    break;
             }
         });
     });
+
+    // Helper for status text
+    function getStatusText(status) {
+        if (status === 'todo') return 'Sahipsiz İşler';
+        if (status === 'in-progress') return 'Yapılıyor';
+        if (status === 'done') return 'Tamamlandı';
+        return '';
+    }
 
     // Modal Events
     saveNoteBtn.addEventListener('click', saveNote);
