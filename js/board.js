@@ -450,11 +450,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function updateTaskStatus(id, newStatus) {
-        db.collection('tasks').doc(id).update({ status: newStatus });
+        db.collection('tasks').doc(id).update({ status: newStatus })
+            .catch(err => {
+                console.error("Status update error:", err);
+                alert("Durum güncellenemedi: " + err.message);
+            });
     }
 
     function assignTask(id, person) {
-        db.collection('tasks').doc(id).update({ assignee: person });
+        db.collection('tasks').doc(id).update({ assignee: person })
+            .catch(err => {
+                console.error("Assign error:", err);
+                alert("Atama yapılamadı: " + err.message);
+            });
     }
 
     function deleteTask(id) {
@@ -462,13 +470,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const task = tasks.find(t => t.id === id);
 
         if (task) {
-            // Permission check removed as per user request to fix "stuck" tasks
+            // Permission check removed.
+            // Try backup to trash (non-blocking)
             db.collection('trash').add({
                 task: task,
                 deletedAt: new Date().toISOString()
-            });
-            db.collection('tasks').doc(id).delete();
+            }).catch(err => console.warn("Trash backup failed:", err));
         }
+
+        // Force delete
+        db.collection('tasks').doc(id).delete()
+            .then(() => console.log("Task deleted"))
+            .catch(err => {
+                console.error("Delete error:", err);
+                alert("Silme işlemi başarısız: " + err.message);
+            });
     }
 
     function archiveTask(id) {
@@ -477,8 +493,13 @@ document.addEventListener('DOMContentLoaded', () => {
             db.collection('archive').add({
                 task: task,
                 archivedAt: new Date().toISOString()
-            });
-            db.collection('tasks').doc(id).delete();
+            }).catch(err => console.warn("Archive backup failed:", err));
+
+            db.collection('tasks').doc(id).delete()
+                .catch(err => {
+                    console.error("Archive delete error:", err);
+                    alert("Arşivleme işlemi başarısız: " + err.message);
+                });
         }
     }
 
