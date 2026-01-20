@@ -453,7 +453,14 @@ document.addEventListener('DOMContentLoaded', () => {
         db.collection('tasks').doc(id).update({ status: newStatus })
             .catch(err => {
                 console.error("Status update error:", err);
-                alert("Durum güncellenemedi: " + err.message);
+                if (err.message.includes("No document to update") || err.code === 'not-found') {
+                    alert("Bu görev veritabanında bulunamadı (daha önce silinmiş olabilir), listeden kaldırılıyor.");
+                    // Ghost task cleanup
+                    tasks = tasks.filter(t => t.id !== id);
+                    renderTasks();
+                } else {
+                    alert("Durum güncellenemedi: " + err.message);
+                }
             });
     }
 
@@ -461,44 +468,65 @@ document.addEventListener('DOMContentLoaded', () => {
         db.collection('tasks').doc(id).update({ assignee: person })
             .catch(err => {
                 console.error("Assign error:", err);
-                alert("Atama yapılamadı: " + err.message);
+                if (err.message.includes("No document to update") || err.code === 'not-found') {
+                    alert("Bu görev veritabanında bulunamadı, listeden kaldırılıyor.");
+                    tasks = tasks.filter(t => t.id !== id);
+                    renderTasks();
+                } else {
+                    alert("Atama yapılamadı: " + err.message);
+                }
             });
     }
 
     function deleteTask(id) {
-        const activeUser = localStorage.getItem('nvm_active_user');
-        const task = tasks.find(t => t.id === id);
+        // Manually remove from UI immediately to fix "stuck task" issue
+        // If it exists on server, snapshot will confirm. If not, this fixes the ghost.
+        const originalTasks = [...tasks]; // Backup in case of error (unlikely for delete)
+
+        // Optimistic update
+        tasks = tasks.filter(t => t.id !== id);
+        renderTasks();
+
+        const task = originalTasks.find(t => t.id === id);
 
         if (task) {
-            // Permission check removed.
-            // Try backup to trash (non-blocking)
+            // Try backup (won't block UI if fails)
             db.collection('trash').add({
                 task: task,
                 deletedAt: new Date().toISOString()
-            }).catch(err => console.warn("Trash backup failed:", err));
+            }).catch(e => console.log('Trash backup skip', e));
         }
 
-        // Force delete
         db.collection('tasks').doc(id).delete()
-            .then(() => console.log("Task deleted"))
+            .then(() => {
+                console.log("Task deleted from server (or didn't exist)");
+            })
             .catch(err => {
                 console.error("Delete error:", err);
-                alert("Silme işlemi başarısız: " + err.message);
+                // If strictly permission error, revert UI (optional, but requested "force delete" so maybe not)
+                // For now, assume if delete fails on server, we still want it gone from UI if the user commanded it,
+                // unless it's a permission thing. But user is admin-ish.
+                alert("Uyarı: Silme işlemi sunucuda hata verdi (" + err.message + ") ancak ekranınızdan kaldırıldı.");
             });
     }
 
     function archiveTask(id) {
         const task = tasks.find(t => t.id === id);
+
+        // Optimistic remove
+        tasks = tasks.filter(t => t.id !== id);
+        renderTasks();
+
         if (task) {
             db.collection('archive').add({
                 task: task,
                 archivedAt: new Date().toISOString()
-            }).catch(err => console.warn("Archive backup failed:", err));
+            }).catch(e => console.log('Archive backup skip', e));
 
             db.collection('tasks').doc(id).delete()
                 .catch(err => {
                     console.error("Archive delete error:", err);
-                    alert("Arşivleme işlemi başarısız: " + err.message);
+                    alert("Arşivleme sunucuda tamamlanamadı ancak ekranınızdan kaldırıldı: " + err.message);
                 });
         }
     }
