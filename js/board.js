@@ -13,89 +13,129 @@ if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
 }
 const db = firebase.firestore();
+const auth = firebase.auth();
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Logout Action (Priority) ---
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', () => {
-            if (confirm('Çıkış yapmak istediğinize emin misiniz?')) {
-                localStorage.removeItem('nvm_auth_session');
-                localStorage.removeItem('nvm_active_user');
-                location.reload();
-            }
-        });
-    }
-
-    // --- Auth Logic ---
+    // --- Auth Logic & State ---
     const loginOverlay = document.getElementById('loginOverlay');
     const loginBtn = document.getElementById('loginBtn');
     const loginPasswordInput = document.getElementById('loginPassword');
     const loginUsernameInput = document.getElementById('loginUsername');
+    const logoutBtn = document.getElementById('logoutBtn');
 
-    // Users Configuration
-    const USERS = {
-        'berkan': { pass: 'kavala250', display: 'Berkan' },
-        'yeliz': { pass: 'berkan1923', display: 'Yeliz' }
-    };
+    // Toggle Password Visibility
+    const toggleBtn = document.getElementById('togglePasswordBtn');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            const type = loginPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            loginPasswordInput.setAttribute('type', type);
+            if (type === 'text') {
+                toggleBtn.classList.remove('bx-show');
+                toggleBtn.classList.add('bx-hide');
+            } else {
+                toggleBtn.classList.remove('bx-hide');
+                toggleBtn.classList.add('bx-show');
+            }
+        });
+    }
 
-    const VALID_DAYS = 15;
+    // Unsubscribe functions tracker
+    let unsubscribers = [];
 
-    // Helper to hide
     const unlock = () => {
         loginOverlay.style.opacity = '0';
         setTimeout(() => {
             loginOverlay.style.display = 'none';
-        }, 500); // fade out
+        }, 500);
     };
-
-    // Check Auth
-    // CHANGED KEYS TO FORCE LOGOUT ON ALL DEVICES
-    const authDate = localStorage.getItem('nvm_auth_session');
-    const currentUser = localStorage.getItem('nvm_active_user');
-
-    if (authDate && currentUser) {
-        const date = new Date(parseInt(authDate));
-        const now = new Date();
-        const diffTime = Math.abs(now - date);
-        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-        if (diffDays <= VALID_DAYS) {
-            unlock();
-        }
-    }
 
     // Login Action
     loginBtn.addEventListener('click', () => {
         const username = loginUsernameInput.value.trim().toLowerCase();
         const password = loginPasswordInput.value.trim();
 
-        if (USERS[username] && USERS[username].pass === password) {
-            localStorage.setItem('nvm_auth_session', Date.now().toString());
-            localStorage.setItem('nvm_active_user', USERS[username].display);
+        let email = username;
+        if (!email.includes('@')) {
+            email = `${username}@nisanvitrini.com`;
+        }
+
+        auth.signInWithEmailAndPassword(email, password)
+            .catch((error) => {
+                let msg = 'Hatalı kullanıcı adı veya şifre!';
+                if (error.code === 'auth/user-not-found') msg = 'Kullanıcı bulunamadı.';
+                if (error.code === 'auth/wrong-password') msg = 'Şifre hatalı.';
+                console.error(error);
+                alert(msg);
+            });
+    });
+
+    // Logout Action
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            if (confirm('Çıkış yapmak istediğinize emin misiniz?')) {
+                auth.signOut().then(() => {
+                    location.reload();
+                });
+            }
+        });
+    }
+
+    // Auth State Change
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            // Derive display name
+            let displayName = 'Misafir';
+            if (user.email.includes('berkan')) displayName = 'Berkan';
+            else if (user.email.includes('yeliz')) displayName = 'Yeliz';
+
+            localStorage.setItem('nvm_active_user', displayName);
             unlock();
+            setupRealtimeListeners(user);
         } else {
-            alert('Hatalı kullanıcı adı veya şifre!');
-            loginPasswordInput.value = '';
+            localStorage.removeItem('nvm_active_user');
+            loginOverlay.style.display = 'flex';
+            loginOverlay.style.opacity = '1';
+
+            // Unsubscribe from updates
+            unsubscribers.forEach(unsub => unsub());
+            unsubscribers = [];
         }
     });
 
-    // Toggle Password Visibility
-    const toggleBtn = document.getElementById('togglePasswordBtn');
-    toggleBtn.addEventListener('click', () => {
-        const type = loginPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-        loginPasswordInput.setAttribute('type', type);
+    // Wrapper for Real-time Listeners
+    function setupRealtimeListeners(user) {
+        if (unsubscribers.length > 0) return; // Prevent duplicate listeners
 
-        // Toggle Icon
-        if (type === 'text') {
-            toggleBtn.classList.remove('bx-show');
-            toggleBtn.classList.add('bx-hide');
-        } else {
-            toggleBtn.classList.remove('bx-hide');
-            toggleBtn.classList.add('bx-show');
-        }
-    });
+        // 1. Listen for Tasks
+        unsubscribers.push(db.collection('tasks').onSnapshot(snapshot => {
+            tasks = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            tasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            renderTasks();
+        }, err => console.log('Tasks Error:', err)));
+
+        // 2. Listen for Trash
+        unsubscribers.push(db.collection('trash').onSnapshot(snapshot => {
+            trash = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            renderTrash();
+        }));
+
+        // 3. Listen for Archive
+        unsubscribers.push(db.collection('archive').onSnapshot(snapshot => {
+            archive = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            renderArchive();
+        }));
+
+        // 4. Listen for Personal Notes
+        unsubscribers.push(db.collection('personal_notes').onSnapshot(snapshot => {
+            const activeUser = localStorage.getItem('nvm_active_user');
+            personalNotes = snapshot.docs
+                .map(doc => ({ id: doc.id, ...doc.data() }))
+                .filter(note => note.owner === activeUser);
+            personalNotes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+            renderPersonalNotes();
+        }));
+    }
 
     // --- State Management ---
     let tasks = [];
@@ -176,37 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Real-time Listeners ---
 
-    // 1. Listen for Tasks
-    db.collection('tasks').onSnapshot(snapshot => {
-        tasks = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        // Sort newest first
-        tasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        renderTasks();
-    });
-
-    // 2. Listen for Trash
-    db.collection('trash').onSnapshot(snapshot => {
-        trash = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        renderTrash();
-    });
-
-    // 3. Listen for Archive
-    db.collection('archive').onSnapshot(snapshot => {
-        archive = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        renderArchive();
-    });
-
-    // 4. Listen for Personal Notes
-    db.collection('personal_notes').onSnapshot(snapshot => {
-        const activeUser = localStorage.getItem('nvm_active_user');
-        // Filter mainly on client side for simplicity, but better securely on server rules
-        personalNotes = snapshot.docs
-            .map(doc => ({ id: doc.id, ...doc.data() }))
-            .filter(note => note.owner === activeUser); // Client-side filter
-
-        personalNotes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        renderPersonalNotes();
-    });
+    // --- Real-time listeners are now handled in setupRealtimeListeners ---
 
     // --- Cleanup Logic ---
     const runCleanup = () => {
