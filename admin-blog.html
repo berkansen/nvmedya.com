@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Yönetimi - Nisan Vitrini Media</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css?v=10">
+
+    <!-- Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <style>
+        .admin-container {
+            max-width: 800px;
+            margin: 120px auto 50px;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-family: inherit;
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-family: inherit;
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        .blog-list {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .blog-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .admin-nav {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Login Overlay -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-card">
+            <h2>Giriş Yap</h2>
+            <p>Admin paneline erişmek için giriş yapınız.</p>
+            <input type="text" id="loginUsername" placeholder="Kullanıcı Adı" class="modal-input"
+                style="margin-bottom: 0.5rem;">
+            <div style="position:relative; width:100%;">
+                <input type="password" id="loginPassword" placeholder="Şifre" class="modal-input"
+                    style="padding-right: 40px;">
+                <i class='bx bx-show' id="togglePasswordBtn"
+                    style="position:absolute; right:15px; top:50%; transform:translateY(-50%); cursor:pointer; color:rgba(255,255,255,0.5); font-size:1.2rem;"></i>
+            </div>
+            <button id="loginBtn" class="btn btn-primary" style="width:100%; justify-content:center;">Giriş</button>
+        </div>
+    </div>
+
+    <header id="header">
+        <nav class="navbar container">
+            <a href="/" class="logo">
+                <img src="assets/nisanvitrini-logo.png" alt="Nisan Vitrini Media">
+            </a>
+        </nav>
+    </header>
+
+    <section class="section">
+        <div class="container admin-container">
+            <div class="admin-nav">
+                <a href="/board.html" class="btn btn-outline"><i class='bx bx-task'></i> İş Panosu</a>
+                <button id="logoutBtn" class="btn btn-outline" style="border-color: #ff4d4d; color: #ff4d4d;"><i
+                        class='bx bx-log-out'></i> Çıkış</button>
+            </div>
+
+            <h2 class="section-title" style="margin-bottom: 2rem;">Yeni Blog Ekle</h2>
+
+            <div class="form-group">
+                <label class="form-label">Blog Başlığı</label>
+                <input type="text" id="blogTitle" class="form-input" placeholder="Örn: SEO Nedir ve Nasıl Yapılır?">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Kapak Resmi (Link olarak ekleyin)</label>
+                <input type="text" id="blogImage" class="form-input" placeholder="Örn: https://orneksite.com/resim.jpg">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Kısa Açıklama (Listede görünecek özet)</label>
+                <input type="text" id="blogExcerpt" class="form-input"
+                    placeholder="Bu blog yazısında SEO'nun temellerini anlatıyoruz...">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Blog İçeriği (HTML Kullanabilirsiniz)</label>
+                <textarea id="blogContent" class="form-textarea"
+                    placeholder="Yazınızın tamamını buraya yazın veya yapıştırın..."></textarea>
+            </div>
+            <button id="saveBlogBtn" class="btn btn-primary"
+                style="width: 100%; justify-content: center; padding: 1rem;"><i class='bx bx-save'></i> Blog Yazısını
+                Yayınla</button>
+
+            <div class="blog-list" id="adminBlogList">
+                <h3
+                    style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">
+                    Mevcut Blog Yazıları</h3>
+                <!-- List will be populated here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+    <script src="js/admin-blog.js"></script>
+</body>
+
+</html>

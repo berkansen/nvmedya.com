@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Nisan Vitrini Media</title>
+    <meta name="description" content="Nisan Vitrini Media Blog - Dijital dünyadaki güncel gelişmeler ve makaleler">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css?v=11">
+
+    <!-- Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <style>
+        .blog-header {
+            margin-top: 120px;
+            text-align: center;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            min-height: 400px;
+            /* skeleton / loader için */
+        }
+
+        .blog-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .blog-excerpt {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .blog-meta {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+
+        .loader {
+            text-align: center;
+            grid-column: 1 / -1;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav class="navbar container">
+            <a href="/" class="logo">
+                <img src="assets/nisanvitrini-logo.png" alt="Nisan Vitrini Media">
+            </a>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-item"><a href="/" class="nav-link">Ana Sayfa</a></li>
+                <li class="nav-item"><a href="/#services" class="nav-link">Hizmetler</a></li>
+                <li class="nav-item"><a href="/blog.html" class="nav-link active">Blog</a></li>
+                <li class="nav-item"><a href="/about" class="nav-link">Hakkımızda</a></li>
+                <li class="nav-item"><a href="/contact" class="nav-link">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <div class="blog-header">
+                    <span class="section-subtitle">Makaleler</span>
+                    <h1 class="section-title">Blog</h1>
+                    <p style="color: var(--text-muted); max-width: 600px; margin: 1rem auto 0;">Dijital dünyadan
+                        gelişmeler, sektörel ipuçları ve içerikler.</p>
+                </div>
+
+                <div class="blog-grid" id="publicBlogList">
+                    <div class="loader">Yükleniyor...</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer section">
+        <div class="container footer-container">
+            <div class="footer-box">
+                <a href="#" class="footer-logo">nisan vitrini media<span class="dot">.</span></a>
+                <p>Yeni nesil medya.</p>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">İletişim</h4>
+                <ul class="footer-contact">
+                    <li><a href="mailto:nisanvitrini@gmail.com">nisanvitrini@gmail.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nisan Vitrini Media. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/blog.js"></script>
+</body>
+
+</html>

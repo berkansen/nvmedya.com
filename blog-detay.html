@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Detay - Nisan Vitrini Media</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css?v=11">
+
+    <!-- Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <style>
+        .blog-header {
+            margin-top: 120px;
+            text-align: center;
+        }
+
+        .blog-detay-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .detay-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+        }
+
+        .detay-content {
+            padding: 2rem 3rem;
+        }
+
+        .detay-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .detay-meta {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1.5rem;
+        }
+
+        .detay-body {
+            color: #d1d5db;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .detay-body p {
+            margin-bottom: 1.5rem;
+        }
+
+        .detay-body h2,
+        .detay-body h3 {
+            color: #fff;
+            margin: 2rem 0 1rem;
+        }
+
+        .loader {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-top: 2rem;
+            transition: color 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .detay-content {
+                padding: 1.5rem;
+            }
+
+            .detay-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <nav class="navbar container">
+            <a href="/" class="logo">
+                <img src="assets/nisanvitrini-logo.png" alt="Nisan Vitrini Media">
+            </a>
+            <div class="nav-toggle" id="nav-toggle"><i class='bx bx-menu'></i></div>
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-item"><a href="/" class="nav-link">Ana Sayfa</a></li>
+                <li class="nav-item"><a href="/blog.html" class="nav-link active">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="section" style="padding-top: 100px;">
+            <div class="container blog-detay-container" id="blogDetayContent">
+                <div class="loader">İçerik yükleniyor...</div>
+            </div>
+
+            <div class="container" style="max-width: 800px;">
+                <a href="/blog.html" class="back-btn"><i class='bx bx-arrow-back'></i> Blog'a Dön</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer section">
+        <div class="container footer-container">
+            <div class="footer-box">
+                <a href="#" class="footer-logo">nisan vitrini media<span class="dot">.</span></a>
+                <p>Yeni nesil medya.</p>
+            </div>
+            <div class="footer-box">
+                <p>&copy; 2026 Nisan Vitrini Media. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/blog-detay.js"></script>
+</body>
+
+</html>
