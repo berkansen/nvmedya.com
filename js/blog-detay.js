@@ -43,6 +43,30 @@ document.addEventListener('DOMContentLoaded', () => {
             // Update Page Title
             document.title = `${post.title} - Nisan Vitrini Media`;
 
+            // Inject SEO Meta Tags dynamically
+            function setMetaTag(name, content, isProperty = false) {
+                if (!content) return;
+                const attribute = isProperty ? 'property' : 'name';
+                let tag = document.querySelector(`meta[${attribute}="${name}"]`);
+                if (!tag) {
+                    tag = document.createElement('meta');
+                    tag.setAttribute(attribute, name);
+                    document.head.appendChild(tag);
+                }
+                tag.setAttribute('content', content);
+            }
+
+            // Standard SEO
+            setMetaTag('description', post.metaDescription || post.excerpt);
+            if (post.keywords) setMetaTag('keywords', post.keywords);
+
+            // Open Graph (Social Media)
+            setMetaTag('og:title', post.title, true);
+            setMetaTag('og:description', post.metaDescription || post.excerpt, true);
+            if (post.image) setMetaTag('og:image', post.image, true);
+            setMetaTag('og:type', 'article', true);
+            setMetaTag('og:url', window.location.href, true);
+
             const imgHtml = post.image ? `<img src="${post.image}" alt="${post.title}" class="detay-image" onerror="this.style.display='none';">` : '';
 
             // Render Content

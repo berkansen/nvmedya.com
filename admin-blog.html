@@ -83,6 +83,38 @@
             gap: 1rem;
             margin-bottom: 2rem;
         }
+
+        .seo-guidelines {
+            background: rgba(43, 88, 118, 0.2);
+            border-left: 4px solid #4da6ff;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #d1d5db;
+        }
+
+        .seo-guidelines h4 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .seo-guidelines ul {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0;
+        }
+
+        .char-counter {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            float: right;
+            margin-top: 0.3rem;
+        }
     </style>
 </head>
 
@@ -122,23 +154,58 @@
 
             <h2 class="section-title" style="margin-bottom: 2rem;">Yeni Blog Ekle</h2>
 
+            <div class="seo-guidelines">
+                <h4><i class='bx bx-bulb' style="color: #FFD740;"></i> 2026 SEO & GEO (Yapay Zeka Arama) Rehberi</h4>
+                <ul>
+                    <li><strong>İçerik Yapısı:</strong> Yazılarınızı mutlaka alt başlıklarla (H2, H3) bölün. Yapay zeka
+                        motorları okunaklı, iyi yapılandırılmış metinleri öne çıkarır.</li>
+                    <li><strong>Soru & Cevap (FAQ):</strong> İnsanların doğrudan sorabileceği "Nasıl yapılır?", "Nedir?"
+                        gibi soru başlıkları kullanın. GEO motorları direkt yanıt vermeyi sever.</li>
+                    <li><strong>Meta Açıklama:</strong> Link sosyal medyada veya Google'da paylaşıldığında görünen
+                        özettir. Max 160 karakter olmalı ve odak kelimenizi içermelidir.</li>
+                    <li><strong>Kapak Fotoğrafı:</strong> Sosyal medyada mükemmel görünmesi için <strong>önerilen boyut
+                            1200x630px</strong> olmalıdır.</li>
+                </ul>
+            </div>
+
             <div class="form-group">
                 <label class="form-label">Blog Başlığı</label>
                 <input type="text" id="blogTitle" class="form-input" placeholder="Örn: SEO Nedir ve Nasıl Yapılır?">
             </div>
             <div class="form-group">
-                <label class="form-label">Kapak Resmi (Link olarak ekleyin)</label>
+                <label class="form-label">Kapak Resmi Linki <span
+                        style="font-size: 0.8rem; color: #4da6ff; margin-left: 10px;">(1200x630px
+                        önerilir)</span></label>
                 <input type="text" id="blogImage" class="form-input" placeholder="Örn: https://orneksite.com/resim.jpg">
             </div>
             <div class="form-group">
-                <label class="form-label">Kısa Açıklama (Listede görünecek özet)</label>
+                <label class="form-label">Kısa Açıklama (Panel Seçim Listesinde Görünecek)</label>
                 <input type="text" id="blogExcerpt" class="form-input"
                     placeholder="Bu blog yazısında SEO'nun temellerini anlatıyoruz...">
             </div>
+
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+            <h3 style="margin-bottom: 1.5rem;">SEO Bilgileri</h3>
+
+            <div class="form-group">
+                <label class="form-label">Meta Açıklama (Google/Sosyal Medya Özeti) <span class="char-counter"
+                        id="metaCounter">0 / 160</span></label>
+                <textarea id="blogMetaDesc" class="form-input" style="min-height: 80px;" maxlength="160"
+                    placeholder="Arama sonuçlarında başlığın altında çıkacak olan dikkat çekici, kısa özet..."></textarea>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Odak Anahtar Kelimeler</label>
+                <input type="text" id="blogKeywords" class="form-input"
+                    placeholder="Örn: seo rehberi, dijital pazarlama, 2026 seo (Virgülle ayırın)">
+            </div>
+
+            <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+            <h3 style="margin-bottom: 1.5rem;">İçerik</h3>
+
             <div class="form-group">
                 <label class="form-label">Blog İçeriği (HTML Kullanabilirsiniz)</label>
                 <textarea id="blogContent" class="form-textarea"
-                    placeholder="Yazınızın tamamını buraya yazın veya yapıştırın..."></textarea>
+                    placeholder="Yazınızın tamamını buraya yazın veya yapıştırın. &#10;&#10;Örnek: &#10;<h2>Alt Başlığım</h2>&#10;<p>Metnim...</p>"></textarea>
             </div>
             <button id="saveBlogBtn" class="btn btn-primary"
                 style="width: 100%; justify-content: center; padding: 1rem;"><i class='bx bx-save'></i> Blog Yazısını

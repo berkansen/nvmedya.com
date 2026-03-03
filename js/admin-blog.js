@@ -64,12 +64,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Editor Logic ---
+    const metaDescInput = document.getElementById('blogMetaDesc');
+    const metaCounter = document.getElementById('metaCounter');
+
+    if (metaDescInput && metaCounter) {
+        metaDescInput.addEventListener('input', () => {
+            const length = metaDescInput.value.length;
+            metaCounter.textContent = `${length} / 160`;
+            if (length > 160) {
+                metaCounter.style.color = '#ff4d4d';
+            } else {
+                metaCounter.style.color = 'var(--text-muted)';
+            }
+        });
+    }
+
     const saveBtn = document.getElementById('saveBlogBtn');
     saveBtn?.addEventListener('click', async () => {
         const title = document.getElementById('blogTitle').value.trim();
         const image = document.getElementById('blogImage').value.trim();
         const excerpt = document.getElementById('blogExcerpt').value.trim();
         const content = document.getElementById('blogContent').value.trim();
+
+        // SEO Fields
+        const metaDesc = document.getElementById('blogMetaDesc').value.trim();
+        const keywords = document.getElementById('blogKeywords').value.trim();
 
         if (!title || !content) {
             alert('Lütfen en az "Başlık" ve "İçerik" alanlarını doldurun.');
@@ -84,6 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 title: title,
                 image: image || 'assets/blog-placeholder.jpg', // Default resim eklenebilir
                 excerpt: excerpt,
+                metaDescription: metaDesc || excerpt, // Fallback to excerpt if meta is empty
+                keywords: keywords,
                 content: content,
                 createdAt: new Date().toISOString()
             });
@@ -92,7 +113,10 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('blogTitle').value = '';
             document.getElementById('blogImage').value = '';
             document.getElementById('blogExcerpt').value = '';
+            document.getElementById('blogMetaDesc').value = '';
+            document.getElementById('blogKeywords').value = '';
             document.getElementById('blogContent').value = '';
+            if (metaCounter) metaCounter.textContent = '0 / 160';
             fetchBlogs();
         } catch (error) {
             alert('Hata oluştu: ' + error);
