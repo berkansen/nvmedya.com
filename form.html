@@ -30,8 +30,11 @@
       gtag('config', 'G-JD1C5PBEKD');
     </script>
     <style>
+        .page-header.section {
+            padding-bottom: 0 !important;
+        }
         .form-section {
-            padding: 4rem 0;
+            padding: 1rem 0 4rem 0;
         }
         .form-container {
             max-width: 600px;
@@ -160,6 +163,11 @@
                     <div class="form-group">
                         <label for="companyName">Firma Adı (Opsiyonel)</label>
                         <input type="text" id="companyName" name="companyName" placeholder="Firmanızın veya Projenizin Adı">
+                    </div>
+
+                    <div class="form-group" style="display: flex; align-items: center; gap: 12px; background: #fafafa; padding: 15px; border-radius: 8px; border: 1px solid #eee; margin-bottom: 25px;">
+                        <input type="checkbox" id="humanCheck" name="humanCheck" required style="width: 20px; height: 20px; margin: 0; cursor: pointer; flex-shrink: 0; accent-color: #000;">
+                        <label for="humanCheck" style="margin: 0; font-weight: 500; cursor: pointer; user-select: none; font-size: 0.95rem; line-height: 1.4;">Ben robot değilim, insanım.</label>
                     </div>
 
                     <button type="submit" class="submit-btn" id="submitBtn">Gönder</button>
