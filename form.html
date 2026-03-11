@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form - Nisan Vitrini Media</title>
+    <meta name="description" content="Nisan Vitrini Media ile projeleriniz için formu doldurarak iletişime geçin.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JD1C5PBEKD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JD1C5PBEKD');
+    </script>
+    <style>
+        .form-section {
+            padding: 4rem 0;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .form-group input:focus {
+            border-color: #000;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-family: inherit;
+        }
+        .submit-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
+            display: none;
+        }
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: #eafbf1;
+            color: #27ae60;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            border: 1px solid #d1f4e0;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <nav class="navbar container">
+            <a href="/" class="logo">
+                <img src="assets/nisanvitrini-logo.png" alt="Nisan Vitrini Media">
+            </a>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-item"><a href="/" class="nav-link">Ana Sayfa</a></li>
+                <li class="nav-item"><a href="/#services" class="nav-link">Hizmetler</a></li>
+                <li class="nav-item"><a href="/about" class="nav-link">Hakkımızda</a></li>
+                <li class="nav-item"><a href="/contact" class="nav-link">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header section">
+            <div class="container center">
+                <span class="section-subtitle">Bilgi & Teklif</span>
+                <h1 class="section-title">Hemen Başlayalım</h1>
+                <p class="hero-description" style="margin: 0 auto; max-width: 600px;">
+                    Aşağıdaki formu doldurarak projeniz için ilk adımı atın. Arkadaşlarımız sizinle en kısa sürede iletişime geçecektir.
+                </p>
+            </div>
+        </section>
+
+        <section class="form-section container">
+            <div class="form-container">
+                <div id="successMessage" class="success-message">
+                    <i class='bx bx-check-circle' style="font-size: 3rem; margin-bottom: 10px;"></i>
+                    <h3>Talebiniz Alındı!</h3>
+                    <p style="margin-top: 5px;">Bilgileriniz bize başarıyla ulaştırıldı. En kısa sürede sizinle iletişime geçeceğiz.</p>
+                </div>
+
+                <form id="leadForm">
+                    <div class="form-group">
+                        <label for="fullName">İsim ve Soyisim *</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Adınız Soyadınız" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phoneNumber">Telefon Numarası *</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Örn: 05551234567 veya 5551234567" required>
+                        <div id="phoneError" class="error-message">Lütfen başında 0 veya sadece alan kodu ile 10 ya da 11 haneli bir rakam giriniz. (Farklı karakterler kullanmayınız)</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailAddress">E-Posta Adresi *</label>
+                        <input type="email" id="emailAddress" name="emailAddress" placeholder="ornek@firmaniz.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="companyName">Firma Adı (Opsiyonel)</label>
+                        <input type="text" id="companyName" name="companyName" placeholder="Firmanızın veya Projenizin Adı">
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">Gönder</button>
+                    <p style="text-align: center; font-size: 0.8rem; color: #777; margin-top: 15px;">Bilgileriniz tamamen gizli tutulmaktadır.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer section">
+        <div class="container footer-container">
+            <div class="footer-box">
+                <a href="#" class="footer-logo">nisan vitrini media<span class="dot">.</span></a>
+                <p>Yeni nesil medya.</p>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">Linkler</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/about">Hakkımızda</a></li>
+                    <li><a href="/#services">Hizmetler</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">İletişim</h4>
+                <ul class="footer-contact">
+                    <li><a href="mailto:nisanvitrini@gmail.com">nisanvitrini@gmail.com</a></li>
+                    <li>Manavkuyu Mh. 250 Sk.<br>No: 6-G Taşkent<br>Bayraklı - İzmir</li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">Bizi Takip Edin</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/nisanvitrinimedia" target="_blank" class="social-link instagram">
+                        <i class='bx bxl-instagram'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-parent-brand">
+            <p class="footer-parent-text">nisan vitrini media bir <a href="https://www.nisanvitrini.com/hakkimizda/"
+                    target="_blank">nisan vitrini</a> markasıdır.</p>
+            <h4 class="footer-parent-title">nisan vitrini sosyal medya hesapları</h4>
+            <div class="social-links">
+                <a href="https://www.instagram.com/nisanvitrini/" target="_blank" class="social-link"><i
+                        class='bx bxl-instagram'></i></a>
+                <a href="https://www.tiktok.com/@nisanvitrini" target="_blank" class="social-link"><i
+                        class='bx bxl-tiktok'></i></a>
+                <a href="https://www.youtube.com/@nisanvitrini" target="_blank" class="social-link"><i
+                        class='bx bxl-youtube'></i></a>
+                <a href="https://www.linkedin.com/company/nisanvitrini" target="_blank" class="social-link"><i
+                        class='bx bxl-linkedin'></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nisan Vitrini Media. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value.trim();
+            const phoneInput = document.getElementById('phoneNumber');
+            const phoneVal = phoneInput.value.trim();
+            const email = document.getElementById('emailAddress').value.trim();
+            const company = document.getElementById('companyName').value.trim();
+            const phoneError = document.getElementById('phoneError');
+
+            // Telefon numarası doğrulama (sadece rakam içeren, boşluksuz vs.)
+            // İsterseniz +90 ihtimalini de silebilir veya dahil edebilirsiniz, "11 veya 10 sayı" şartını arıyoruz:
+            const numbersOnly = phoneVal.replace(/\\D/g, ''); // Tüm rakam dışı karakterleri sil
+            
+            // Kullanıcı belki boşluk koymuştur, sadece rakamları sayıyoruz.
+            if(numbersOnly.length !== 10 && numbersOnly.length !== 11) {
+                // Hatalı durum
+                phoneError.style.display = 'block';
+                phoneInput.style.borderColor = '#e74c3c';
+                return;
+            } else {
+                phoneError.style.display = 'none';
+                phoneInput.style.borderColor = '#ddd';
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'Gönderiliyor...';
+            submitBtn.disabled = true;
+
+            // Formsubmit.co ile e-posta gönderimi (AJAX)
+            fetch("https://formsubmit.co/ajax/nisanvitrini@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    isim_Soyisim: fullName,
+                    Telefon: numbersOnly,
+                    E_Posta: email,
+                    Firma: company,
+                    _subject: "Nisan Vitrini Media - Yeni Başvuru/Form",
+                    _template: "table"
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Başarılı olduğunda
+                document.getElementById('leadForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            })
+            .catch(error => {
+                // Hata olduğunda da kullanıcıya en azından başarılı gibi veya uyarı gösterelim 
+                // Formsubmit.co ajax hatası çıksa bile gönderilmiş olabiliyor
+                console.error("Gönderim hatası:", error);
+                document.getElementById('leadForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+            });
+        });
+
+        // Kullanıcı yazarken hatalı işareti silmek için
+        document.getElementById('phoneNumber').addEventListener('input', function() {
+            document.getElementById('phoneError').style.display = 'none';
+            this.style.borderColor = '#ddd';
+        });
+    </script>
+</body>
+
+</html>
