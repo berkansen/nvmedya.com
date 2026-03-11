@@ -127,44 +127,19 @@
                 <span class="section-subtitle">Bilgi & Teklif</span>
                 <h1 class="section-title">Hemen Başlayalım</h1>
                 <p class="hero-description" style="margin: 0 auto; max-width: 600px;">
-                    Aşağıdaki formu doldurarak eğitim hediyeler listesine alınacaksınız.
+                    Aşağıdaki formu doldurarak projeniz için ilk adımı atın. Arkadaşlarımız sizinle en kısa sürede iletişime geçecektir.
                 </p>
             </div>
         </section>
 
         <section class="form-section container">
-            <div class="form-container">
-                <div id="successMessage" class="success-message">
-                    <i class='bx bx-check-circle' style="font-size: 3rem; margin-bottom: 10px;"></i>
-                    <h3>Talebiniz Alındı!</h3>
-                    <p style="margin-top: 5px;">Bilgileriniz bize başarıyla ulaştırıldı. En kısa sürede sizinle iletişime geçeceğiz.</p>
-                </div>
-
-                <form id="leadForm">
-                    <div class="form-group">
-                        <label for="fullName">İsim ve Soyisim *</label>
-                        <input type="text" id="fullName" name="fullName" placeholder="Adınız Soyadınız" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phoneNumber">Telefon Numarası *</label>
-                        <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Örn: 05551234567 veya 5551234567" required>
-                        <div id="phoneError" class="error-message">Lütfen başında 0 veya sadece alan kodu ile 10 ya da 11 haneli bir rakam giriniz. (Farklı karakterler kullanmayınız)</div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="emailAddress">E-Posta Adresi *</label>
-                        <input type="email" id="emailAddress" name="emailAddress" placeholder="ornek@firmaniz.com" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="companyName">Firma Adı (Opsiyonel)</label>
-                        <input type="text" id="companyName" name="companyName" placeholder="Firmanızın veya Projenizin Adı">
-                    </div>
-
-                    <button type="submit" class="submit-btn" id="submitBtn">Gönder</button>
-                    <p style="text-align: center; font-size: 0.8rem; color: #777; margin-top: 15px;">Bilgileriniz tamamen gizli tutulmaktadır.</p>
-                </form>
+            <div class="form-container" style="text-align: center; padding: 4rem 2rem;">
+                <i class='bx bx-check-circle' style="font-size: 5rem; color: #27ae60; margin-bottom: 20px;"></i>
+                <h2 style="font-size: 2rem; margin-bottom: 10px;">Talebiniz Alındı!</h2>
+                <p style="font-size: 1.1rem; color: #555; margin-bottom: 30px;">
+                    Bilgileriniz bize başarıyla ulaştırıldı. Eğitim hediyeler listesine eklendiniz.
+                </p>
+                <a href="/" class="submit-btn" style="display: inline-block; width: auto; padding: 0.8rem 2rem; text-decoration: none;">Ana Sayfaya Dön</a>
             </div>
         </section>
     </main>
@@ -271,14 +246,16 @@
             })
             .then(response => response.json())
             .then(data => {
-                // Başarılı olduğunda Teşekkürler (/form-ok) sayfasına yönlendir
-                window.location.href = '/form-ok';
+                // Başarılı olduğunda
+                document.getElementById('leadForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
             })
             .catch(error => {
-                // Hata olsa bile formsubmit bazen hatalı yanıt dönse de mail atıyor, 
-                // bu yüzden kullanıcı deneyimi için yine de yönlendirebiliriz.
+                // Hata olduğunda da kullanıcıya en azından başarılı gibi veya uyarı gösterelim 
+                // Formsubmit.co ajax hatası çıksa bile gönderilmiş olabiliyor
                 console.error("Gönderim hatası:", error);
-                window.location.href = '/form-ok';
+                document.getElementById('leadForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
             });
         });
 
