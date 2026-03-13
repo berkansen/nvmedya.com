@@ -592,10 +592,12 @@ header {
 
 .client-logo-img.bg-white {
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 10px 20px;
-    border-radius: 8px;
+    padding: 10px 25px;
+    border-radius: 10px;
+    height: 80px;
+    max-height: 80px;
+    box-sizing: border-box;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    max-height: 60px; /* Reduces image content taking padding into account */
     margin: 0;
 }
 
