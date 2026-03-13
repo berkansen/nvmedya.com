@@ -590,6 +590,13 @@ header {
     filter: grayscale(0%);
 }
 
+.client-logo-img.bg-white {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
 .navbar .btn-primary {
     background: transparent;
     border: 1px solid var(--primary-color);
