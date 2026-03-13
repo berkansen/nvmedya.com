@@ -592,11 +592,11 @@ header {
 
 .client-logo-img.bg-white {
     background-color: rgba(255, 255, 255, 0.9);
-    padding: 15px 25px;
-    border-radius: 12px;
+    padding: 10px 20px;
+    border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    max-height: 100px;
-    margin: 0 15px; /* Prevent it from touching neighbors due to scale */
+    max-height: 60px; /* Reduces image content taking padding into account */
+    margin: 0;
 }
 
 .navbar .btn-primary {
