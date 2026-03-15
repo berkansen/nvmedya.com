@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Özel Teklif - Nisan Vitrini Media</title>
+    <meta name="description"
+        content="Nisan Vitrini Media sosyal medya yönetim paketleri ve fiyat teklifi.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JD1C5PBEKD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JD1C5PBEKD');
+    </script>
+    <style>
+        .pricing-section {
+            padding: calc(var(--header-height) + 4rem) 0 4rem;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .pricing-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 3rem 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .pricing-card.popular {
+            border-color: rgba(239, 120, 26, 0.4);
+            background: linear-gradient(180deg, rgba(239, 120, 26, 0.08) 0%, var(--card-bg) 100%);
+        }
+
+        .pricing-card.popular::before {
+            content: 'Önerilen';
+            position: absolute;
+            top: 25px;
+            right: -35px;
+            background: var(--gradient-main);
+            color: white;
+            font-size: 0.8rem;
+            padding: 8px 40px;
+            transform: rotate(45deg);
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .pricing-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .pricing-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            min-height: 45px;
+        }
+
+        .pricing-price {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 2.5rem;
+            line-height: 1;
+            display: flex;
+            align-items:baseline;
+            gap: 5px;
+        }
+
+        .pricing-price span {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 3rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .pricing-features li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            color: var(--text-main);
+            font-size: 1rem;
+        }
+
+        .pricing-features li i {
+            color: #00E676;
+            font-size: 1.3rem;
+            margin-top: 2px;
+        }
+
+        .pricing-btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <nav class="navbar container">
+            <a href="/" class="logo">
+                <img src="assets/nisanvitrini-logo.png" alt="Nisan Vitrini Media">
+            </a>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-item"><a href="/" class="nav-link">Ana Sayfa</a></li>
+                <li class="nav-item"><a href="/#services" class="nav-link">Hizmetler</a></li>
+                <li class="nav-item"><a href="/blog.html" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="/about.html" class="nav-link">Hakkımızda</a></li>
+                <li class="nav-item"><a href="/contact.html" class="nav-link">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="pricing-section section">
+            <div class="container">
+                <div class="pricing-header">
+                    <span class="section-subtitle">Aylık Planlar</span>
+                    <h1 class="section-title">Sosyal Medya Paketlerimiz</h1>
+                    <p class="text-muted">İhtiyacınıza en uygun paketi seçerek dijital dünyadaki varlığınızı güçlendirin.</p>
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- Paket 3 -->
+                    <div class="pricing-card">
+                        <h3 class="pricing-title">Video Edit Paketi</h3>
+                        <p class="pricing-desc">Çekimlerinizi profesyonel bir dokunuşla dikey video formatında sunuyoruz.</p>
+                        <div class="pricing-price">
+                            10.000 <span>TL + KDV</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class='bx bx-check'></i> 12 Adet Dikey Video</li>
+                            <li><i class='bx bx-check'></i> Aylık Raporlama</li>
+                            <li><i class='bx bx-check'></i> Aylık Meet Toplantısı</li>
+                        </ul>
+                        <a href="https://wa.me/905330386616" class="btn btn-outline pricing-btn" target="_blank">Bizimle İletişime Geçin</a>
+                    </div>
+
+                    <!-- Paket 2 -->
+                    <div class="pricing-card popular">
+                        <h3 class="pricing-title">Gold Paket</h3>
+                        <p class="pricing-desc">Gelişmiş dijital marka yönetimi ve meta reklam odaklı büyüme paketi.</p>
+                        <div class="pricing-price">
+                            15.000 <span>TL + KDV</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class='bx bx-check'></i> 12 Adet Dikey Video</li>
+                            <li><i class='bx bx-check'></i> 4 Adet Post</li>
+                            <li><i class='bx bx-check'></i> Sınırsız Özel Gün Postu</li>
+                            <li><i class='bx bx-check'></i> Meta Reklam Hizmeti</li>
+                            <li><i class='bx bx-check'></i> Aylık Raporlama</li>
+                            <li><i class='bx bx-check'></i> Aylık Meet Toplantısı</li>
+                        </ul>
+                        <a href="https://wa.me/905330386616" class="btn btn-primary pricing-btn" target="_blank">Tercih Et</a>
+                    </div>
+
+                    <!-- Paket 1 -->
+                    <div class="pricing-card">
+                        <h3 class="pricing-title">Full Paket</h3>
+                        <p class="pricing-desc">Markanızı sosyal medyada eksiksiz ve en güçlü şekilde temsil eder.</p>
+                        <div class="pricing-price">
+                            20.000 <span>TL + KDV</span>
+                        </div>
+                        <ul class="pricing-features">
+                            <li><i class='bx bx-check'></i> 20 Adet Dikey Video</li>
+                            <li><i class='bx bx-check'></i> 8 Adet Post</li>
+                            <li><i class='bx bx-check'></i> Sosyal Medya Yönetimi</li>
+                            <li><i class='bx bx-check'></i> Sınırsız Özel Gün Postu</li>
+                            <li><i class='bx bx-check'></i> Dijital Marketing Hizmeti</li>
+                            <li><i class='bx bx-check'></i> Aylık Raporlama</li>
+                            <li><i class='bx bx-check'></i> Ayda 2 Kez Meet Toplantısı</li>
+                        </ul>
+                        <a href="https://wa.me/905330386616" class="btn btn-outline pricing-btn" target="_blank">Bizimle İletişime Geçin</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer section">
+        <div class="container footer-container">
+            <div class="footer-box">
+                <a href="#" class="footer-logo">nisan vitrini media<span class="dot">.</span></a>
+                <p>Yeni nesil medya.</p>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">Linkler</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/about.html">Hakkımızda</a></li>
+                    <li><a href="/#services">Hizmetler</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">İletişim</h4>
+                <ul class="footer-contact">
+                    <li><a href="mailto:nisanvitrini@gmail.com">nisanvitrini@gmail.com</a></li>
+                    <li>Manavkuyu Mh. 250 Sk.<br>No: 6-G Taşkent<br>Bayraklı - İzmir</li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">Bizi Takip Edin</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/nisanvitrinimedia" target="_blank" class="social-link instagram">
+                        <i class='bx bxl-instagram'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-parent-brand">
+            <p class="footer-parent-text">nisan vitrini media bir <a href="https://www.nisanvitrini.com/hakkimizda/"
+                    target="_blank">nisan vitrini</a> markasıdır.</p>
+            <h4 class="footer-parent-title">nisan vitrini sosyal medya hesapları</h4>
+            <div class="social-links">
+                <a href="https://www.instagram.com/nisanvitrini/" target="_blank" class="social-link"><i
+                        class='bx bxl-instagram'></i></a>
+                <a href="https://www.tiktok.com/@nisanvitrini" target="_blank" class="social-link"><i
+                        class='bx bxl-tiktok'></i></a>
+                <a href="https://www.youtube.com/@nisanvitrini" target="_blank" class="social-link"><i
+                        class='bx bxl-youtube'></i></a>
+                <a href="https://www.linkedin.com/company/nisanvitrini" target="_blank" class="social-link"><i
+                        class='bx bxl-linkedin'></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nisan Vitrini Media. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+
+</html>
