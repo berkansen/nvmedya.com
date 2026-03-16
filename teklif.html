@@ -42,15 +42,15 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
             align-items: stretch;
         }
 
         .pricing-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
-            padding: 3rem 2.5rem;
+            padding: 2.5rem 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
             transition: var(--transition);
             display: flex;
@@ -100,7 +100,7 @@
         }
 
         .pricing-price {
-            font-size: 2.8rem;
+            font-size: 2.4rem;
             font-weight: 700;
             color: var(--primary-color);
             margin-bottom: 2.5rem;
@@ -142,6 +142,12 @@
         .pricing-btn {
             width: 100%;
             text-align: center;
+        }
+
+        @media (min-width: 1024px) {
+            .pricing-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
