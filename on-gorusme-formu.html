@@ -490,11 +490,11 @@
             })
             .then(response => response.json())
             .then(data => {
-                window.location.href = '/form-ok';
+                window.location.href = '/on-gorusme-formu-ok';
             })
             .catch(error => {
                 console.error("Gönderim hatası:", error);
-                window.location.href = '/form-ok';
+                window.location.href = '/on-gorusme-formu-ok';
             });
         });
 
