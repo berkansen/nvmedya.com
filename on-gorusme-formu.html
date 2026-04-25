@@ -37,6 +37,12 @@
         h1, h2, h3, h4, h5, h6 {
             color: #2c3e50 !important;
         }
+        .error-border {
+            border-color: #e74c3c !important;
+        }
+        input[type="checkbox"].error-border {
+            outline: 2px solid #e74c3c !important;
+        }
         .page-header.section {
             padding-bottom: 0 !important;
         }
@@ -447,6 +453,20 @@
         document.getElementById('phoneNumber').addEventListener('input', function() {
             document.getElementById('phoneError').style.display = 'none';
             this.style.borderColor = '#ddd';
+        });
+
+        // Tüm alanlardaki native 'invalid' (zorunlu boş uyarısı) yakalama
+        const formInputs = document.querySelectorAll('#preInterviewForm input, #preInterviewForm select, #preInterviewForm textarea');
+        formInputs.forEach(input => {
+            input.addEventListener('invalid', function() {
+                this.classList.add('error-border');
+            });
+            input.addEventListener('input', function() {
+                this.classList.remove('error-border');
+            });
+            input.addEventListener('change', function() {
+                this.classList.remove('error-border');
+            });
         });
     </script>
 </body>
