@@ -320,6 +320,43 @@
                         </div>
                     </div>
 
+                    <div class="form-part">
+                        <h2 class="form-part-title">4. RANDEVU SEÇİMİ</h2>
+                        
+                        <div class="form-group">
+                            <label for="appointmentTime">Ücretsiz Ön Görüşme için Saat Seçin * <br><small style="font-weight: 300; font-size: 0.9em; color: #666;">* Saat uygunluk durumuna bakılacaktır.</small></label>
+                            <select id="appointmentTime" name="appointmentTime" required>
+                                <option value="">Gün ve Saat Seçiniz</option>
+                                <optgroup label="Çarşamba">
+                                    <option value="Çarşamba 15:00">Çarşamba - 15:00</option>
+                                    <option value="Çarşamba 15:30">Çarşamba - 15:30</option>
+                                    <option value="Çarşamba 16:00">Çarşamba - 16:00</option>
+                                    <option value="Çarşamba 16:30">Çarşamba - 16:30</option>
+                                    <option value="Çarşamba 17:00">Çarşamba - 17:00</option>
+                                    <option value="Çarşamba 17:30">Çarşamba - 17:30</option>
+                                    <option value="Çarşamba 18:00">Çarşamba - 18:00</option>
+                                    <option value="Çarşamba 18:30">Çarşamba - 18:30</option>
+                                    <option value="Çarşamba 19:00">Çarşamba - 19:00</option>
+                                    <option value="Çarşamba 19:30">Çarşamba - 19:30</option>
+                                </optgroup>
+                                <optgroup label="Cuma">
+                                    <option value="Cuma 14:00">Cuma - 14:00</option>
+                                    <option value="Cuma 14:30">Cuma - 14:30</option>
+                                    <option value="Cuma 15:00">Cuma - 15:00</option>
+                                    <option value="Cuma 15:30">Cuma - 15:30</option>
+                                    <option value="Cuma 16:00">Cuma - 16:00</option>
+                                    <option value="Cuma 16:30">Cuma - 16:30</option>
+                                    <option value="Cuma 17:00">Cuma - 17:00</option>
+                                    <option value="Cuma 17:30">Cuma - 17:30</option>
+                                    <option value="Cuma 18:00">Cuma - 18:00</option>
+                                    <option value="Cuma 18:30">Cuma - 18:30</option>
+                                    <option value="Cuma 19:00">Cuma - 19:00</option>
+                                    <option value="Cuma 19:30">Cuma - 19:30</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group" style="display: flex; align-items: center; gap: 12px; background: #fafafa; padding: 15px; border-radius: 8px; border: 1px solid #eee; margin-bottom: 25px;">
                         <input type="checkbox" id="humanCheck" name="humanCheck" required style="width: 20px; height: 20px; margin: 0; cursor: pointer; flex-shrink: 0; accent-color: #000;">
                         <label for="humanCheck" style="margin: 0; font-weight: 500; cursor: pointer; user-select: none; font-size: 0.95rem; line-height: 1.4;">Ben robot değilim, insanım.</label>
@@ -405,6 +442,7 @@
             const medications = document.getElementById('medications').value.trim();
             
             const currentProblem = document.getElementById('currentProblem').value.trim();
+            const appointmentTime = document.getElementById('appointmentTime').value;
             
             const phoneError = document.getElementById('phoneError');
 
@@ -445,6 +483,7 @@
                     Teshis: diagnosis,
                     Kullanilan_Ilaclar: medications,
                     Mevcut_Problem: currentProblem,
+                    Talep_Edilen_Randevu: appointmentTime,
                     _subject: "Ön Görüşme Formu - Yeni Kayıt",
                     _template: "table"
                 })
