@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danışan Bilgi ve Ön Görüşme Formu - Nisan Vitrini Media</title>
+    <meta name="description" content="Danışan bilgi ve ön görüşme formu.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JD1C5PBEKD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JD1C5PBEKD');
+    </script>
+    <style>
+        .page-header.section {
+            padding-bottom: 0 !important;
+        }
+        .form-section {
+            padding: 1rem 0 4rem 0;
+        }
+        .form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+        .form-part {
+            margin-bottom: 3rem;
+        }
+        .form-part-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #eee;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group-row {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .form-group-row .form-group {
+            flex: 1;
+        }
+        @media screen and (max-width: 600px) {
+            .form-group-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #000;
+        }
+        .radio-group {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        .radio-item input[type="radio"] {
+            width: auto;
+            accent-color: #000;
+            cursor: pointer;
+        }
+        .radio-item span {
+            font-size: 0.95rem;
+            color: #333;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #000;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+            font-family: inherit;
+        }
+        .submit-btn:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 0.4rem;
+            display: none;
+        }
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+            background: #eafbf1;
+            color: #27ae60;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            border: 1px solid #d1f4e0;
+        }
+        .info-box {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid #000;
+            margin-bottom: 2rem;
+        }
+        .info-box h4 {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        .info-box p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 0.8rem;
+            line-height: 1.5;
+        }
+        .info-box p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header id="header">
+        <nav class="navbar container">
+            <a href="/" class="logo">
+                <img src="assets/nisanvitrini-logo.png" alt="Nisan Vitrini Media">
+            </a>
+
+            <div class="nav-toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-item"><a href="/" class="nav-link">Ana Sayfa</a></li>
+                <li class="nav-item"><a href="/#services" class="nav-link">Hizmetler</a></li>
+                <li class="nav-item"><a href="/about" class="nav-link">Hakkımızda</a></li>
+                <li class="nav-item"><a href="/contact" class="nav-link">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="page-header section">
+            <div class="container center">
+                <span class="section-subtitle">Ön Görüşme</span>
+                <h1 class="section-title">Danışan Bilgi ve Ön Görüşme Formu</h1>
+                <p class="hero-description" style="margin: 0 auto; max-width: 600px;">
+                    Lütfen aşağıdaki bilgileri eksiksiz olarak doldurunuz.
+                </p>
+            </div>
+        </section>
+
+        <section class="form-section container">
+            <div class="form-container">
+
+                <div class="info-box">
+                    <h4>ÜCRETSİZ ÖN GÖRÜŞME ve Saatleri</h4>
+                    <p>Ön görüşmenin amacı, karşılıklı olarak tanışmak ve sizin hipnoterapi ile ilgili kafanızdaki soru işaretlerini cevaplayarak birlikte çalışmanın uygun olup olmadığını değerlendirmektir.</p>
+                    <p>Bu görüşme sırasında şu an hayatınızda sizi para ile ilgili zorlayan konuları ortaya çıkartıp çözüm için nasıl bir yol haritası çizebileceğimizden bahsediyor olacağım. Bu görüşme sırasında hipnoz uygulaması yapılmayacaktır.</p>
+                    <p>Seans süremiz 20 dakikadır. İptal etmek ya da saatinizi değiştirmek isterseniz 24 saat öncesinden haber vermeniz gerekmektedir. 1 kereye mahsus iptal hakkınız bulunmaktadır.</p>
+                </div>
+
+                <div id="successMessage" class="success-message">
+                    <i class='bx bx-check-circle' style="font-size: 3rem; margin-bottom: 10px;"></i>
+                    <h3>Talebiniz Alındı!</h3>
+                    <p style="margin-top: 5px;">Bilgileriniz bize başarıyla ulaştırıldı. En kısa sürede sizinle iletişime geçeceğiz.</p>
+                </div>
+
+                <form id="preInterviewForm">
+                    
+                    <div class="form-part">
+                        <h2 class="form-part-title">1. KİŞİSEL BİLGİLER</h2>
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="fullName">Ad Soyad *</label>
+                                <input type="text" id="fullName" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthDate">Doğum Tarihi *</label>
+                                <input type="date" id="birthDate" name="birthDate" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="maritalStatus">Medeni Durum</label>
+                                <select id="maritalStatus" name="maritalStatus">
+                                    <option value="">Seçiniz</option>
+                                    <option value="Bekar">Bekar</option>
+                                    <option value="Evli">Evli</option>
+                                    <option value="Boşanmış">Boşanmış</option>
+                                    <option value="Dul">Dul</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="profession">Meslek</label>
+                                <input type="text" id="profession" name="profession">
+                            </div>
+                        </div>
+
+                        <div class="form-group-row">
+                            <div class="form-group">
+                                <label for="phoneNumber">Telefon Numarası *</label>
+                                <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Örn: 05551234567" required>
+                                <div id="phoneError" class="error-message">Lütfen başında 0 ile 11 haneli bir rakam giriniz.</div>
+                            </div>
+                            <div class="form-group">
+                                <label for="emailAddress">E-posta Adresi *</label>
+                                <input type="email" id="emailAddress" name="emailAddress" placeholder="ornek@mail.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Adres</label>
+                            <textarea id="address" name="address" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-part">
+                        <h2 class="form-part-title">2. SAĞLIK BİLGİLERİ</h2>
+                        
+                        <div class="form-group">
+                            <label for="healthHistory">Sağlık Geçmişiniz (geçmiş ve mevcut rahatsızlıklar):</label>
+                            <textarea id="healthHistory" name="healthHistory" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Daha önce Psikiyatri veya Psikolog'dan yardım aldınız mı?</label>
+                            <div class="radio-group">
+                                <label class="radio-item">
+                                    <input type="radio" name="psychologyHelp" value="Evet">
+                                    <span>Evet</span>
+                                </label>
+                                <label class="radio-item">
+                                    <input type="radio" name="psychologyHelp" value="Hayır">
+                                    <span>Hayır</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="therapistName">Eğer aldıysanız Psikiyatrist ve/veya Psikoloğunuzun adı soyadı nedir?</label>
+                            <input type="text" id="therapistName" name="therapistName">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="diagnosis">Size Psikiyatristiniz ve Psikoloğunuz tarafından tanınmış bir konu var mı? Varsa nedir?</label>
+                            <textarea id="diagnosis" name="diagnosis" rows="3"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="medications">Psikiyatrik herhangi bir ilaç kullandınız mı yada şu an kullanıyor musunuz?</label>
+                            <textarea id="medications" name="medications" rows="3"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-part">
+                        <h2 class="form-part-title">3. MEVCUT PROBLEMİNİZ</h2>
+                        
+                        <div class="form-group">
+                            <label for="currentProblem">Para ile ilgili en çok zorlandığınız durumu 2 - 3 cümle ile yazabilir misiniz?</label>
+                            <textarea id="currentProblem" name="currentProblem" rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="display: flex; align-items: center; gap: 12px; background: #fafafa; padding: 15px; border-radius: 8px; border: 1px solid #eee; margin-bottom: 25px;">
+                        <input type="checkbox" id="humanCheck" name="humanCheck" required style="width: 20px; height: 20px; margin: 0; cursor: pointer; flex-shrink: 0; accent-color: #000;">
+                        <label for="humanCheck" style="margin: 0; font-weight: 500; cursor: pointer; user-select: none; font-size: 0.95rem; line-height: 1.4;">Ben robot değilim, insanım.</label>
+                    </div>
+
+                    <button type="submit" class="submit-btn" id="submitBtn">Formu Gönder</button>
+                    <p style="text-align: center; font-size: 0.8rem; color: #777; margin-top: 15px;">Bilgileriniz tamamen gizli tutulmaktadır.</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer section">
+        <div class="container footer-container">
+            <div class="footer-box">
+                <a href="#" class="footer-logo">nisan vitrini media<span class="dot">.</span></a>
+                <p>Yeni nesil medya.</p>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">Linkler</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/about">Hakkımızda</a></li>
+                    <li><a href="/#services">Hizmetler</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">İletişim</h4>
+                <ul class="footer-contact">
+                    <li><a href="mailto:nisanvitrini@gmail.com">nisanvitrini@gmail.com</a></li>
+                    <li>Manavkuyu Mh. 250 Sk.<br>No: 6-G Taşkent<br>Bayraklı - İzmir</li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">Bizi Takip Edin</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/nisanvitrinimedia" target="_blank" class="social-link instagram">
+                        <i class='bx bxl-instagram'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-parent-brand">
+            <p class="footer-parent-text">nisan vitrini media bir <a href="https://www.nisanvitrini.com/hakkimizda/"
+                    target="_blank">nisan vitrini</a> markasıdır.</p>
+            <h4 class="footer-parent-title">nisan vitrini sosyal medya hesapları</h4>
+            <div class="social-links">
+                <a href="https://www.instagram.com/nisanvitrini/" target="_blank" class="social-link"><i
+                        class='bx bxl-instagram'></i></a>
+                <a href="https://www.tiktok.com/@nisanvitrini" target="_blank" class="social-link"><i
+                        class='bx bxl-tiktok'></i></a>
+                <a href="https://www.youtube.com/@nisanvitrini" target="_blank" class="social-link"><i
+                        class='bx bxl-youtube'></i></a>
+                <a href="https://www.linkedin.com/company/nisanvitrini" target="_blank" class="social-link"><i
+                        class='bx bxl-linkedin'></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nisan Vitrini Media. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        document.getElementById('preInterviewForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const fullName = document.getElementById('fullName').value.trim();
+            const phoneInput = document.getElementById('phoneNumber');
+            const phoneVal = phoneInput.value.trim();
+            const email = document.getElementById('emailAddress').value.trim();
+            const birthDate = document.getElementById('birthDate').value.trim();
+            const maritalStatus = document.getElementById('maritalStatus').value;
+            const profession = document.getElementById('profession').value.trim();
+            const address = document.getElementById('address').value.trim();
+            
+            const healthHistory = document.getElementById('healthHistory').value.trim();
+            const psychologyHelp = document.querySelector('input[name="psychologyHelp"]:checked') ? document.querySelector('input[name="psychologyHelp"]:checked').value : 'Belirtilmedi';
+            const therapistName = document.getElementById('therapistName').value.trim();
+            const diagnosis = document.getElementById('diagnosis').value.trim();
+            const medications = document.getElementById('medications').value.trim();
+            
+            const currentProblem = document.getElementById('currentProblem').value.trim();
+            
+            const phoneError = document.getElementById('phoneError');
+
+            const numbersOnly = phoneVal.replace(/\D/g, ''); 
+            
+            if(numbersOnly.length !== 10 && numbersOnly.length !== 11) {
+                phoneError.style.display = 'block';
+                phoneInput.style.borderColor = '#e74c3c';
+                return;
+            } else {
+                phoneError.style.display = 'none';
+                phoneInput.style.borderColor = '#ddd';
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.innerText;
+            submitBtn.innerText = 'Gönderiliyor...';
+            submitBtn.disabled = true;
+
+            // Formsubmit.co ile e-posta gönderimi (AJAX)
+            fetch("https://formsubmit.co/ajax/nisanvitrini@gmail.com", {
+                method: "POST",
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    Ad_Soyad: fullName,
+                    Dogum_Tarihi: birthDate,
+                    Telefon: numbersOnly,
+                    E_Posta: email,
+                    Medeni_Durum: maritalStatus,
+                    Meslek: profession,
+                    Adres: address,
+                    Saglik_Gecmisi: healthHistory,
+                    Psikolojik_Yardim_Aldi_Mi: psychologyHelp,
+                    Uzman_Adi: therapistName,
+                    Teshis: diagnosis,
+                    Kullanilan_Ilaclar: medications,
+                    Mevcut_Problem: currentProblem,
+                    _subject: "Ön Görüşme Formu - Yeni Kayıt",
+                    _template: "table"
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                window.location.href = '/form-ok';
+            })
+            .catch(error => {
+                console.error("Gönderim hatası:", error);
+                window.location.href = '/form-ok';
+            });
+        });
+
+        document.getElementById('phoneNumber').addEventListener('input', function() {
+            document.getElementById('phoneError').style.display = 'none';
+            this.style.borderColor = '#ddd';
+        });
+    </script>
+</body>
+
+</html>
