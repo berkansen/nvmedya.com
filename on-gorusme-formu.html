@@ -398,6 +398,9 @@
             
             const phoneError = document.getElementById('phoneError');
 
+            // Benzersiz 4 haneli bir başlık numarası oluştur
+            const formId = Math.floor(1000 + Math.random() * 9000);
+
             const numbersOnly = phoneVal.replace(/\D/g, ''); 
             
             if(numbersOnly.length !== 10 && numbersOnly.length !== 11) {
@@ -436,7 +439,7 @@
                     Kullanilan_Ilaclar: medications,
                     Mevcut_Problem: currentProblem,
                     Talep_Edilen_Randevu: appointmentTime,
-                    _subject: "Ön Görüşme Formu - Yeni Kayıt",
+                    _subject: "Ön Görüşme Formu - Yeni Kayıt #" + formId,
                     _template: "table"
                 })
             })
