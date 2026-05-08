@@ -64,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Editor Logic ---
+    let currentEditId = null;
     const metaDescInput = document.getElementById('blogMetaDesc');
     const metaCounter = document.getElementById('metaCounter');
 
@@ -80,6 +81,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const saveBtn = document.getElementById('saveBlogBtn');
+    const cancelEditBtn = document.getElementById('cancelEditBtn');
+
+    function resetForm() {
+        document.getElementById('blogTitle').value = '';
+        document.getElementById('blogImage').value = '';
+        document.getElementById('blogExcerpt').value = '';
+        document.getElementById('blogMetaDesc').value = '';
+        document.getElementById('blogKeywords').value = '';
+        document.getElementById('blogContent').value = '';
+        if (metaCounter) metaCounter.textContent = '0 / 160';
+        currentEditId = null;
+        if (saveBtn) saveBtn.innerHTML = "<i class='bx bx-save'></i> Blog Yazısını Yayınla";
+        if (cancelEditBtn) cancelEditBtn.style.display = 'none';
+    }
+
+    cancelEditBtn?.addEventListener('click', resetForm);
+
     saveBtn?.addEventListener('click', async () => {
         const title = document.getElementById('blogTitle').value.trim();
         const image = document.getElementById('blogImage').value.trim();
@@ -99,30 +117,35 @@ document.addEventListener('DOMContentLoaded', () => {
         saveBtn.innerText = 'Kaydediliyor...';
 
         try {
-            await db.collection('blog_posts').add({
-                title: title,
-                image: image || 'assets/blog-placeholder.jpg', // Default resim eklenebilir
-                excerpt: excerpt,
-                metaDescription: metaDesc || excerpt, // Fallback to excerpt if meta is empty
-                keywords: keywords,
-                content: content,
-                createdAt: new Date().toISOString()
-            });
-            alert('Blog başarıyla yayınlandı!');
-            // Temizle
-            document.getElementById('blogTitle').value = '';
-            document.getElementById('blogImage').value = '';
-            document.getElementById('blogExcerpt').value = '';
-            document.getElementById('blogMetaDesc').value = '';
-            document.getElementById('blogKeywords').value = '';
-            document.getElementById('blogContent').value = '';
-            if (metaCounter) metaCounter.textContent = '0 / 160';
+            if (currentEditId) {
+                await db.collection('blog_posts').doc(currentEditId).update({
+                    title: title,
+                    image: image || 'assets/blog-placeholder.jpg',
+                    excerpt: excerpt,
+                    metaDescription: metaDesc || excerpt,
+                    keywords: keywords,
+                    content: content
+                });
+                alert('Blog başarıyla güncellendi!');
+            } else {
+                await db.collection('blog_posts').add({
+                    title: title,
+                    image: image || 'assets/blog-placeholder.jpg',
+                    excerpt: excerpt,
+                    metaDescription: metaDesc || excerpt,
+                    keywords: keywords,
+                    content: content,
+                    createdAt: new Date().toISOString()
+                });
+                alert('Blog başarıyla yayınlandı!');
+            }
+            resetForm();
             fetchBlogs();
         } catch (error) {
             alert('Hata oluştu: ' + error);
         } finally {
             saveBtn.disabled = false;
-            saveBtn.innerHTML = "<i class='bx bx-save'></i> Blog Yazısını Yayınla";
+            saveBtn.innerHTML = currentEditId ? "<i class='bx bx-edit'></i> Blog Yazısını Güncelle" : "<i class='bx bx-save'></i> Blog Yazısını Yayınla";
         }
     });
 
@@ -147,7 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <strong>${post.title}</strong>
                                 <div style="font-size: 0.8rem; color: #aaa;">Yayın: ${dateStr}</div>
                             </div>
-                            <button class="btn btn-outline" style="border-color: #ff4d4d; color: #ff4d4d; padding: 0.5rem 1rem;" onclick="deleteBlog('${doc.id}')">Sil</button>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-outline" style="border-color: #4da6ff; color: #4da6ff; padding: 0.5rem 1rem;" onclick="editBlog('${doc.id}')">Düzenle</button>
+                                <button class="btn btn-outline" style="border-color: #ff4d4d; color: #ff4d4d; padding: 0.5rem 1rem;" onclick="deleteBlog('${doc.id}')">Sil</button>
+                            </div>
                         </div>
                     `;
                 });
@@ -156,6 +182,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 listContainer.innerHTML = html;
             });
     }
+
+    // --- Edit Blog Global Fonksiyon ---
+    window.editBlog = async (id) => {
+        try {
+            const docRef = await db.collection('blog_posts').doc(id).get();
+            if (docRef.exists) {
+                const post = docRef.data();
+                
+                document.getElementById('blogTitle').value = post.title || '';
+                document.getElementById('blogImage').value = (post.image === 'assets/blog-placeholder.jpg') ? '' : (post.image || '');
+                document.getElementById('blogExcerpt').value = post.excerpt || '';
+                document.getElementById('blogMetaDesc').value = post.metaDescription || '';
+                document.getElementById('blogKeywords').value = post.keywords || '';
+                document.getElementById('blogContent').value = post.content || '';
+                
+                if (metaCounter) {
+                    const len = (post.metaDescription || '').length;
+                    metaCounter.textContent = `${len} / 160`;
+                    metaCounter.style.color = len > 160 ? '#ff4d4d' : 'var(--text-muted)';
+                }
+
+                currentEditId = id;
+                const saveBtn = document.getElementById('saveBlogBtn');
+                const cancelEditBtn = document.getElementById('cancelEditBtn');
+                
+                if (saveBtn) saveBtn.innerHTML = "<i class='bx bx-edit'></i> Blog Yazısını Güncelle";
+                if (cancelEditBtn) cancelEditBtn.style.display = 'block';
+                
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        } catch (err) {
+            console.error("Düzenleme hatası:", err);
+            alert("Blog bilgileri alınırken hata oluştu.");
+        }
+    };
 
     // --- Delete Blog Global Fonksiyon ---
     window.deleteBlog = async (id) => {

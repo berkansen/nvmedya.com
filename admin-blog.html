@@ -207,9 +207,13 @@
                 <textarea id="blogContent" class="form-textarea"
                     placeholder="Yazınızın tamamını buraya yazın veya yapıştırın. &#10;&#10;Örnek: &#10;<h2>Alt Başlığım</h2>&#10;<p>Metnim...</p>"></textarea>
             </div>
-            <button id="saveBlogBtn" class="btn btn-primary"
-                style="width: 100%; justify-content: center; padding: 1rem;"><i class='bx bx-save'></i> Blog Yazısını
-                Yayınla</button>
+            <div style="display: flex; gap: 1rem;">
+                <button id="saveBlogBtn" class="btn btn-primary"
+                    style="flex: 1; justify-content: center; padding: 1rem;"><i class='bx bx-save'></i> Blog Yazısını
+                    Yayınla</button>
+                <button id="cancelEditBtn" class="btn btn-outline"
+                    style="display: none; padding: 1rem; border-color: #aaa; color: #aaa;"><i class='bx bx-x'></i> İptal</button>
+            </div>
 
             <div class="blog-list" id="adminBlogList">
                 <h3
