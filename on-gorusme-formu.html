@@ -186,6 +186,39 @@
         .info-box p:last-child {
             margin-bottom: 0;
         }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 1.1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            box-sizing: border-box;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            filter: brightness(1.1);
+        }
+
+        .link-btn i {
+            font-size: 1.5rem;
+            position: absolute;
+            left: 1.5rem;
+        }
+
+        .btn-calendar {
+            background-color: #4285F4;
+        }
     </style>
 </head>
 
@@ -354,6 +387,14 @@
                                     <option value="Cuma 19:30">Cuma - 19:30</option>
                                 </optgroup>
                             </select>
+
+                            <div style="margin-top: 1.5rem; text-align: center;">
+                                <p style="font-weight: 500; color: #333; margin-bottom: 1rem;">Uygun Seans Saatlerini Aşağıdan Görebilir ve Seçebilirsiniz</p>
+                                <a href="https://calendar.app.google/v3MsZZYBxHggyNzw8" target="_blank" class="link-btn btn-calendar">
+                                    <i class='bx bx-calendar'></i>
+                                    Randevu Takvimi
+                                </a>
+                            </div>
                         </div>
                     </div>
 
