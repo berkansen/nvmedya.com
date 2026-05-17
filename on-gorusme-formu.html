@@ -301,7 +301,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="address">Yaşadığınız Şehir</label>
+                            <label for="address">Adres</label>
                             <textarea id="address" name="address" rows="3"></textarea>
                         </div>
                     </div>
@@ -329,11 +329,6 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="therapistName">Eğer aldıysanız Psikiyatrist ve/veya Psikoloğunuzun adı soyadı nedir?</label>
-                            <input type="text" id="therapistName" name="therapistName">
-                        </div>
-
-                        <div class="form-group">
                             <label for="diagnosis">Psikiyatristiniz veya psikoloğunuz tarafından konulmuş bir tanınız var mıdır ? Varsa nedir ?</label>
                             <textarea id="diagnosis" name="diagnosis" rows="3"></textarea>
                         </div>
@@ -357,13 +352,36 @@
                         <h2 class="form-part-title">4. RANDEVU SEÇİMİ</h2>
                         
                         <div class="form-group">
-                            <div style="margin-top: 1.5rem; text-align: center;">
-                                <p style="font-weight: 500; color: #333; margin-bottom: 1rem;">Uygun Seans Saatlerini Aşağıdan Görebilir ve Seçebilirsiniz</p>
-                                <a href="https://calendar.app.google/v3MsZZYBxHggyNzw8" target="_blank" class="link-btn btn-calendar">
-                                    <i class='bx bx-calendar'></i>
-                                    Randevu Takvimi
-                                </a>
-                            </div>
+                            <label for="appointmentTime">Ücretsiz Ön Görüşme için Saat Seçin * <br><small style="font-weight: 300; font-size: 0.9em; color: #666;">* Saat uygunluk durumuna bakılacaktır.</small></label>
+                            <select id="appointmentTime" name="appointmentTime" required>
+                                <option value="">Gün ve Saat Seçiniz</option>
+                                <optgroup label="Çarşamba">
+                                    <option value="Çarşamba 15:00">Çarşamba - 15:00</option>
+                                    <option value="Çarşamba 15:30">Çarşamba - 15:30</option>
+                                    <option value="Çarşamba 16:00">Çarşamba - 16:00</option>
+                                    <option value="Çarşamba 16:30">Çarşamba - 16:30</option>
+                                    <option value="Çarşamba 17:00">Çarşamba - 17:00</option>
+                                    <option value="Çarşamba 17:30">Çarşamba - 17:30</option>
+                                    <option value="Çarşamba 18:00">Çarşamba - 18:00</option>
+                                    <option value="Çarşamba 18:30">Çarşamba - 18:30</option>
+                                    <option value="Çarşamba 19:00">Çarşamba - 19:00</option>
+                                    <option value="Çarşamba 19:30">Çarşamba - 19:30</option>
+                                </optgroup>
+                                <optgroup label="Cuma">
+                                    <option value="Cuma 14:00">Cuma - 14:00</option>
+                                    <option value="Cuma 14:30">Cuma - 14:30</option>
+                                    <option value="Cuma 15:00">Cuma - 15:00</option>
+                                    <option value="Cuma 15:30">Cuma - 15:30</option>
+                                    <option value="Cuma 16:00">Cuma - 16:00</option>
+                                    <option value="Cuma 16:30">Cuma - 16:30</option>
+                                    <option value="Cuma 17:00">Cuma - 17:00</option>
+                                    <option value="Cuma 17:30">Cuma - 17:30</option>
+                                    <option value="Cuma 18:00">Cuma - 18:00</option>
+                                    <option value="Cuma 18:30">Cuma - 18:30</option>
+                                    <option value="Cuma 19:00">Cuma - 19:00</option>
+                                    <option value="Cuma 19:30">Cuma - 19:30</option>
+                                </optgroup>
+                            </select>
                         </div>
                     </div>
 
@@ -399,11 +417,11 @@
             
             const healthHistory = document.getElementById('healthHistory').value.trim();
             const psychologyHelp = document.querySelector('input[name="psychologyHelp"]:checked') ? document.querySelector('input[name="psychologyHelp"]:checked').value : 'Belirtilmedi';
-            const therapistName = document.getElementById('therapistName').value.trim();
             const diagnosis = document.getElementById('diagnosis').value.trim();
             const medications = document.getElementById('medications').value.trim();
             
             const currentProblem = document.getElementById('currentProblem').value.trim();
+            const appointmentTime = document.getElementById('appointmentTime').value;
             
             const phoneError = document.getElementById('phoneError');
 
@@ -443,10 +461,10 @@
                     Adres: address,
                     Saglik_Gecmisi: healthHistory,
                     Psikolojik_Yardim_Aldi_Mi: psychologyHelp,
-                    Uzman_Adi: therapistName,
                     Teshis: diagnosis,
                     Kullanilan_Ilaclar: medications,
                     Mevcut_Problem: currentProblem,
+                    Talep_Edilen_Randevu: appointmentTime,
                     _subject: "Ön Görüşme Formu - Yeni Kayıt #" + formId,
                     _template: "table",
                     _cc: "nisanvitrini@gmail.com"
