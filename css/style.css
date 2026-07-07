@@ -1123,6 +1123,10 @@ header {
     color: #e1306c;
 }
 
+.link-icon.youtube {
+    color: #FF0000;
+}
+
 .link-icon.whatsapp {
     color: #25D366;
 }
