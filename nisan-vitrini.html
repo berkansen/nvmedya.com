@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İklim Davetiye - Nisan Vitrini Media</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .media-container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .profile-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            border-radius: 50%;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .profile-bio {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: -0.5rem;
+        }
+
+        .links-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .link-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            filter: brightness(1.1);
+        }
+
+        .link-btn i {
+            font-size: 1.5rem;
+            position: absolute;
+            left: 1.5rem;
+        }
+
+        /* Specific Colors */
+        .btn-instagram {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+        }
+        
+        .btn-phone {
+            background-color: #34b7f1;
+        }
+
+        .btn-website {
+            background-color: var(--primary-color);
+        }
+
+        .btn-calendar {
+            background-color: #4285F4;
+        }
+        
+        .btn-location {
+            background-color: #EA4335;
+        }
+
+        .btn-iklim {
+            background-color: #E2A0B1; /* Pudra Rengi */
+        }
+
+        .btn-aras {
+            background-color: #0047AB; /* Nazar Boncuğu Mavisi */
+        }
+
+        .footer-minimal {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        .qr-section {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+        }
+
+        .qr-code {
+            width: 120px;
+            height: 120px;
+            display: block;
+        }
+    </style>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JD1C5PBEKD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-JD1C5PBEKD');
+    </script>
+
+</head>
+
+<body>
+
+    <div class="media-container">
+        <!-- Profile Section -->
+        <div class="profile-section">
+            <img src="assets/iklim-davetiye-logo.png" alt="İklim Davetiye" class="profile-img">
+            <h1 class="profile-name">İklim Davetiye</h1>
+            <p class="profile-bio">Önce Gör Sonra Dokun</p>
+        </div>
+
+        <!-- Links Section -->
+        <div class="links-section">
+            <!-- Web Sitemiz -->
+            <a href="https://www.nisanvitrini.com" target="_blank" class="link-btn btn-website">
+                <i class='bx bx-globe'></i>
+                Web Sitemiz
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/nisanvitrinicom" target="_blank" class="link-btn btn-instagram">
+                <i class='bx bxl-instagram'></i>
+                Instagram
+            </a>
+
+            <!-- İklim Serisi Davetiye -->
+            <a href="https://www.nisanvitrini.com/urunler/davetiye/iklim-davetiye/" target="_blank" class="link-btn btn-iklim">
+                <i class='bx bx-envelope'></i>
+                İklim Serisi Davetiye
+            </a>
+
+            <!-- Fenomen Serisi Davetiye -->
+            <a href="https://www.nisanvitrini.com/urunler/davetiye/fenomen-davetiye/" target="_blank" class="link-btn btn-website">
+                <i class='bx bx-envelope-open'></i>
+                Fenomen Serisi Davetiye
+            </a>
+
+            <!-- Sünnet Davetiyeleri (Aras) -->
+            <a href="https://www.nisanvitrini.com/urunler/davetiye/aras-davetiye/" target="_blank" class="link-btn btn-aras">
+                <i class='bx bx-party'></i>
+                Sünnet Davetiyeleri (Aras)
+            </a>
+
+            <!-- Davetiye instagram -->
+            <a href="https://www.instagram.com/iklimdavetiye.izmir" target="_blank" class="link-btn btn-instagram">
+                <i class='bx bxl-instagram'></i>
+                Davetiye instagram
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/905526288131" target="_blank" class="link-btn btn-whatsapp">
+                <i class='bx bxl-whatsapp'></i>
+                WhatsApp
+            </a>
+            
+            <!-- Bizi Arayın -->
+            <a href="tel:+905526288131" target="_blank" class="link-btn btn-phone">
+                <i class='bx bx-phone-call'></i>
+                Bizi Arayın
+            </a>
+            
+            <!-- Konumumuz -->
+            <a href="https://maps.app.goo.gl/Z8FqoT3SZAJkxRmK7" target="_blank" class="link-btn btn-location">
+                <i class='bx bx-map'></i>
+                Konumumuz
+            </a>
+
+            <!-- Rezervasyon Takvimi -->
+            <a href="https://calendar.app.google/aPTN53mxjhJyppTK8" target="_blank" class="link-btn btn-calendar">
+                <i class='bx bx-calendar'></i>
+                Rezervasyon Takvimi
+            </a>
+        </div>
+
+        <!-- Section QR Code -->
+        <div class="qr-section">
+            <img src="assets/qr-iklim-davetiye.png" alt="QR Code" class="qr-code">
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer-minimal">
+            &copy; 2026 Nisan Vitrini Media
+        </footer>
+    </div>
+
+</body>
+
+</html>
