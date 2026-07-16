@@ -1135,6 +1135,10 @@ header {
     color: var(--primary-color);
 }
 
+.link-icon.threads {
+    color: #ffffff;
+}
+
 .action-buttons {
     display: flex;
     justify-content: flex-end;
