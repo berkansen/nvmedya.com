@@ -394,7 +394,7 @@ header {
 
 .footer-container {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
     gap: 3rem;
     margin-bottom: 3rem;
 }
@@ -1983,4 +1983,47 @@ header {
 .login-card p {
     color: var(--text-muted);
     margin-bottom: 1.5rem;
+}
+
+/* Policy Pages */
+.policy-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.policy-intro {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-main);
+    margin-bottom: 2.5rem;
+}
+
+.policy-section {
+    margin-bottom: 3rem;
+}
+
+.policy-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
+    color: var(--primary-color);
+    border-left: 3px solid var(--primary-color);
+    padding-left: 1rem;
+}
+
+.policy-text {
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+    line-height: 1.7;
+}
+
+.policy-list {
+    margin-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    list-style-type: disc;
+}
+
+.policy-list li {
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
 }
