@@ -2027,3 +2027,40 @@ header {
     margin-bottom: 0.6rem;
     line-height: 1.6;
 }
+
+.policy-container a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.policy-container a:hover {
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.policy-callout {
+    background-color: rgba(239, 120, 26, 0.08);
+    border-left: 4px solid var(--primary-color);
+    padding: 1.25rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    margin: 2rem 0;
+}
+
+.policy-callout p {
+    margin-bottom: 0 !important;
+    color: var(--text-main);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.policy-callout a {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.policy-callout a:hover {
+    color: var(--text-main);
+    text-decoration: none;
+}
