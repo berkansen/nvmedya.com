@@ -4,8 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Nisan Vitrini Media</title>
-    <meta name="description" content="Nisan Vitrini Media Blog - Dijital dünyadaki güncel gelişmeler ve makaleler">
+    <title>AI Destekli Çalışma Sürecimiz - Nisan Vitrini Media</title>
+    <meta name="description"
+        content="Nisan Vitrini Media yapay zekâ destekli çalışma sürecimiz. Yaratıcı ve operasyonel süreçlerimizi AI araçlarıyla nasıl desteklediğimizi ve insan kontrolü prensibimizi inceleyin.">
+    <link rel="canonical" href="https://media.nisanvitrini.com/ai-destekli-calisma-surecimiz">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://media.nisanvitrini.com/ai-destekli-calisma-surecimiz">
+    <meta property="og:title" content="AI Destekli Çalışma Sürecimiz - Nisan Vitrini Media">
+    <meta property="og:description" content="NVM'nin yapay zekâ destekli çalışma ve üretim süreçlerine dair detaylı yaklaşımı.">
+    <meta property="og:image" content="https://media.nisanvitrini.com/assets/nisanvitrini-logo.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,95 +22,45 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=11">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- Icons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
 
-    <style>
-        .blog-header {
-            margin-top: 120px;
-            text-align: center;
-        }
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JD1C5PBEKD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            min-height: 400px;
-            /* skeleton / loader için */
-        }
+        gtag('config', 'G-JD1C5PBEKD');
+    </script>
 
-        .blog-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: flex;
-            flex-direction: column;
+    <!-- JSON-LD Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "AI Destekli Çalışma Sürecimiz - Nisan Vitrini Media",
+      "description": "Nisan Vitrini Media yapay zekâ destekli çalışma sürecimiz. Yaratıcı ve operasyonel süreçlerimizi AI araçlarıyla nasıl desteklediğimizi ve insan kontrolü prensibimizi inceleyin.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Nisan Vitrini Media",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://media.nisanvitrini.com/assets/nisanvitrini-logo.png"
         }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .blog-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .blog-content {
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-        }
-
-        .blog-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: #fff;
-        }
-
-        .blog-excerpt {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .blog-meta {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.4);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding-top: 1rem;
-            margin-top: 1rem;
-        }
-
-        .loader {
-            text-align: center;
-            grid-column: 1 / -1;
-            padding: 3rem;
-            color: var(--text-muted);
-        }
-    </style>
+      },
+      "datePublished": "2026-08-04",
+      "dateModified": "2026-08-04"
+    }
+    </script>
 </head>
 
 <body>
-    <!-- Header -->
     <header id="header">
         <nav class="navbar container">
             <a href="/" class="logo">
@@ -115,7 +74,7 @@
             <ul class="nav-list" id="nav-list">
                 <li class="nav-item"><a href="/" class="nav-link">Ana Sayfa</a></li>
                 <li class="nav-item"><a href="/#services" class="nav-link">Hizmetler</a></li>
-                <li class="nav-item"><a href="/blog.html" class="nav-link active">Blog</a></li>
+                <li class="nav-item"><a href="/blog.html" class="nav-link">Blog</a></li>
                 <li class="nav-item"><a href="/about" class="nav-link">Hakkımızda</a></li>
                 <li class="nav-item"><a href="/contact" class="nav-link">İletişim</a></li>
             </ul>
@@ -123,17 +82,28 @@
     </header>
 
     <main>
+        <section class="page-header section">
+            <div class="container text-center">
+                <span class="section-subtitle">Süreçlerimiz</span>
+                <h1 class="section-title">AI Destekli Çalışma Sürecimiz</h1>
+                <p class="policy-meta" style="color: var(--text-muted); font-size: 0.9rem; margin-top: 1rem;">Son Güncelleme: 4 Ağustos 2026</p>
+            </div>
+        </section>
+
         <section class="section">
             <div class="container">
-                <div class="blog-header">
-                    <span class="section-subtitle">Makaleler</span>
-                    <h1 class="section-title">Blog</h1>
-                    <p style="color: var(--text-muted); max-width: 600px; margin: 1rem auto 0;">Dijital dünyadan
-                        gelişmeler, sektörel ipuçları ve içerikler.</p>
-                </div>
+                <div class="policy-container">
+                    <div class="policy-intro">
+                        <p class="policy-text"><strong>Nisan Vitrini Media</strong> olarak yapay zekâyı içerik üretim sürecinin yerine geçen bir sistem olarak değil, strateji, fikir geliştirme, araştırma, metin taslağı, görsel konsept ve analiz süreçlerini hızlandıran yardımcı bir araç olarak kullanıyoruz.</p>
+                    </div>
 
-                <div class="blog-grid" id="publicBlogList">
-                    <div class="loader">Yükleniyor...</div>
+                    <div class="policy-section">
+                        <p class="policy-text">Her projede nihai karar, yaratıcı yön, marka dili ve yayın onayı insan kontrolündedir. AI ile hazırlanan hiçbir çıktı doğrudan ve kontrolsüz şekilde yayına alınmaz. Tüm içerikler NVM ekibi tarafından kontrol edilir, markanın kimliğine uygun hale getirilir ve gerekli durumlarda müşteri onayına sunulur.</p>
+                        
+                        <p class="policy-text">Bu yaklaşım sayesinde daha hızlı fikir geliştirir, daha fazla alternatif üretir, içerik süreçlerini daha verimli yönetir ve markalar için daha tutarlı, kontrollü ve ölçülebilir işler ortaya çıkarırız.</p>
+                        
+                        <p class="policy-text">AI kullanımımız; gizlilik, telif, marka güvenliği, kişisel veri koruması ve şeffaflık prensipleriyle birlikte değerlendirilir.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -207,12 +177,7 @@
         </div>
     </footer>
 
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-
     <script src="js/main.js"></script>
-    <script src="js/blog.js"></script>
 </body>
 
 </html>
