@@ -418,6 +418,16 @@ header {
     font-size: 0.9rem;
 }
 
+.footer-links li a {
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.footer-links li a:hover {
+    color: var(--accent-color);
+}
+
+
 .footer-bottom {
     text-align: center;
     padding: 2rem 0;
