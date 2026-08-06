@@ -518,6 +518,57 @@
             }
         }
     </style>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Service",
+          "@id": "https://www.nvmedya.com/hizmetler/web-tasarim-gelistirme#service",
+          "name": "Web Tasarım ve Geliştirme Hizmeti",
+          "serviceType": "Web Tasarım ve Geliştirme",
+          "description": "Nisan Vitrini Media tarafından sunulan web tasarım ve geliştirme hizmeti; proje stratejisi, sayfa yapısı, kullanıcı deneyimi, arayüz tasarımı, mobil uyumluluk, teknik geliştirme, içerik yerleşimi, performans, erişilebilirlik ve temel SEO ve GEO altyapısı çalışmalarını kapsar.",
+          "url": "https://www.nvmedya.com/hizmetler/web-tasarim-gelistirme",
+          "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://www.nvmedya.com/hizmetler/web-tasarim-gelistirme"
+          },
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.nvmedya.com/#organization",
+            "name": "Nisan Vitrini Media",
+            "alternateName": "NVM",
+            "url": "https://www.nvmedya.com/"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.nvmedya.com/hizmetler/web-tasarim-gelistirme#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Ana Sayfa",
+              "item": "https://www.nvmedya.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Hizmetler",
+              "item": "https://www.nvmedya.com/hizmetler"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Web Tasarım ve Geliştirme"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 
 <body>
