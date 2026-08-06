@@ -106,6 +106,121 @@
             color: var(--text-main);
             font-weight: 500;
         }
+
+        /* Info Box Styles */
+        .info-box {
+            background: rgba(239, 120, 26, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 2.5rem auto 3rem;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .info-box-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        /* Grid & Cards Styles */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .scope-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            height: 100%;
+        }
+
+        .scope-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .scope-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .scope-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .scope-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .scope-footer-text {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .scope-footer-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px dashed var(--primary-color);
+            padding-bottom: 2px;
+        }
+
+        .scope-footer-text a:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
+        }
+
+        @media screen and (max-width: 992px) {
+            .scope-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+            .scope-card {
+                padding: 2rem 1.5rem;
+            }
+            .scope-footer-text {
+                text-align: left;
+            }
+        }
     </style>
 </head>
 
@@ -161,6 +276,91 @@
                 </div>
             </div>
             <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Dijital Reklam Yönetimi Hizmet Kapsamı Section -->
+        <section id="reklam-hizmet-kapsami" class="section alt-bg" aria-labelledby="reklam-hizmet-kapsami-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="reklam-hizmet-kapsami-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Dijital Reklam Yönetimi Hizmetimiz Neleri Kapsar?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        NVM dijital reklam yönetimi hizmeti; kampanya hedefinin belirlenmesinden hedef kitle ve reklam kreatifi planlamasına, bütçe dağılımından kampanya kurulumu, performans takibi ve optimizasyona kadar reklam sürecinin temel aşamalarını kapsar. Kesin çalışma kapsamı markanın hedeflerine, bütçesine, sektörüne ve kullanılacak reklam platformuna göre belirlenir.
+                    </p>
+                </div>
+
+                <!-- Info Box (Direct Answer Area) -->
+                <div class="info-box">
+                    <p class="info-box-title">Kısaca Neler Yapıyoruz?</p>
+                    <p class="info-box-text">
+                        Markanızın reklam hedefini belirliyor; hedef kitleyi, kampanya yapısını, reklam metinlerini, görsel ve video kreatiflerini, bütçe kullanımını ve performans takibini birbiriyle uyumlu şekilde yönetiyoruz.
+                    </p>
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="scope-grid">
+                    <article class="scope-card">
+                        <i class='bx bx-target-lock scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Reklam Hedefinin Belirlenmesi</h3>
+                        <p class="scope-desc">Kampanyanın marka bilinirliği, web sitesi trafiği, iletişim, başvuru veya satış gibi hangi temel hedefe hizmet edeceğini belirliyoruz. Kampanya yapısını ve ölçülecek sonuçları bu hedef doğrultusunda planlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-group scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Hedef Kitle Planlaması</h3>
+                        <p class="scope-desc">Markanın ürün veya hizmetlerini, sektörünü ve potansiyel müşterilerini değerlendirerek uygun hedef kitle yapıları oluşturuyoruz. Hedeflemeleri yalnızca geniş erişim elde etmek için değil, reklam mesajını ilgili kullanıcılarla buluşturmak amacıyla planlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-sitemap scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Kampanya ve Reklam Yapısı</h3>
+                        <p class="scope-desc">Reklam hedefi, hedef kitleler ve kullanılacak içerikler doğrultusunda kampanya, reklam grubu ve reklam yapısını oluşturuyoruz. Farklı mesajların ve kreatiflerin performansını karşılaştırmaya uygun bir kurulum hazırlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-edit-alt scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Reklam Metni ve Kreatif Planlama</h3>
+                        <p class="scope-desc">Reklam başlıklarını, açıklama metinlerini, yönlendirme ifadelerini ve kullanılacak görsel veya video içeriklerini kampanyanın amacıyla uyumlu şekilde planlıyoruz. Kreatiflerin marka kimliğini korurken reklam mesajını açık biçimde aktarmasına dikkat ediyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-credit-card scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Bütçe Dağılımı ve Yayına Alma</h3>
+                        <p class="scope-desc">Reklam bütçesini kampanya hedefleri, hedef kitleler ve test edilecek içerikler arasında planlıyoruz. Kampanyaları gerekli teknik kontrollerin ardından yayına alıyor ve bütçe kullanımını düzenli olarak takip ediyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-line-chart scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Performans Takibi ve Optimizasyon</h3>
+                        <p class="scope-desc">Reklamların gösterim, erişim, tıklama, iletişim, başvuru veya dönüşüm gibi proje için belirlenen performans göstergelerini izliyoruz. Elde edilen verilere göre hedefleme, bütçe, reklam metni veya kreatiflerde gerekli iyileştirmeleri uyguluyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-file scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Raporlama ve Sonuç Değerlendirmesi</h3>
+                        <p class="scope-desc">Kampanya sonuçlarını anlaşılır performans göstergeleriyle değerlendiriyor ve yapılan optimizasyonları raporluyoruz. Elde edilen verileri sonraki reklam dönemlerinin planlanmasında ve kreatif kararların geliştirilmesinde kullanıyoruz.</p>
+                    </article>
+                </div>
+
+                <!-- Footer Text Area -->
+                <div style="margin-top: 4rem;">
+                    <p class="scope-footer-text">
+                        Reklam performansı yalnızca hedefleme ve bütçeye bağlı değildir. Kullanılan görsel, video, metin ve teklif yapısı da sonuçları doğrudan etkileyebilir. Bu nedenle reklam kreatiflerini kampanya yönetiminin ayrı ve önemli bir parçası olarak değerlendiriyoruz.
+                    </p>
+                    <p class="scope-footer-text">
+                        Kullanılacak reklam platformu her proje için aynı değildir. Platform seçimi; hedef kitlenin kullanım alışkanlıklarına, kampanya amacına, bütçeye ve markanın dijital altyapısına göre belirlenir.
+                    </p>
+                    <p class="scope-footer-text" style="font-size: 0.95rem; opacity: 0.85;">
+                        <strong>Bütçe ve sonuç bilgilendirmesi:</strong> Reklam bütçesi, hizmet bedelinden ayrı olarak değerlendirilir. Reklam sonuçları; bütçe, sektör, hedef kitle, teklif, web sitesi veya iletişim altyapısı ve kullanılan kreatifler gibi birçok değişkene bağlıdır. Bu nedenle kesin satış, başvuru veya reklam getirisi garantisi verilmez.
+                    </p>
+                    <p class="scope-footer-text" style="margin-top: 2.5rem;">
+                        Reklam kampanyalarında kullanılacak içeriklerin düzenli olarak üretilmesi için 
+                        <a href="/hizmetler/sosyal-medya-yonetimi">sosyal medya yönetimi</a> 
+                        ve 
+                        <a href="/hizmetler/reels-dikey-video-produksiyonu">Reels ve dikey video prodüksiyonu</a> 
+                        hizmetlerimizi de inceleyebilirsiniz.
+                    </p>
+                </div>
+            </div>
         </section>
     </main>
 
