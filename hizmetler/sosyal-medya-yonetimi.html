@@ -106,6 +106,121 @@
             color: var(--text-main);
             font-weight: 500;
         }
+
+        /* Info Box Styles */
+        .info-box {
+            background: rgba(239, 120, 26, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 2.5rem auto 3rem;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .info-box-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        /* Grid & Cards Styles */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .scope-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            height: 100%;
+        }
+
+        .scope-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .scope-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .scope-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .scope-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .scope-footer-text {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .scope-footer-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px dashed var(--primary-color);
+            padding-bottom: 2px;
+        }
+
+        .scope-footer-text a:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
+        }
+
+        @media screen and (max-width: 992px) {
+            .scope-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+            .scope-card {
+                padding: 2rem 1.5rem;
+            }
+            .scope-footer-text {
+                text-align: left;
+            }
+        }
     </style>
 </head>
 
@@ -161,6 +276,85 @@
                 </div>
             </div>
             <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Hizmet Kapsamı Section -->
+        <section id="hizmet-kapsami" class="section alt-bg" aria-labelledby="hizmet-kapsami-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="hizmet-kapsami-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Sosyal Medya Yönetimi Hizmetimiz Neleri Kapsar?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        NVM sosyal medya yönetimi hizmeti; marka ve hedef kitle analizinden içerik stratejisine, Reels üretiminden tasarım ve performans raporlamasına kadar sosyal medya iletişiminin temel süreçlerini kapsar. Çalışmanın kesin kapsamı, markanın ihtiyaçlarına, hedeflerine ve kullanılacak platformlara göre belirlenir.
+                    </p>
+                </div>
+
+                <!-- Info Box (Direct Answer Area) -->
+                <div class="info-box">
+                    <p class="info-box-title">Kısaca Neler Yapıyoruz?</p>
+                    <p class="info-box-text">
+                        Markanız için sosyal medya stratejisi oluşturuyor; aylık içerik planını, Reels ve dikey videoları, grafik tasarımları, paylaşım metinlerini, yayın düzenini ve performans değerlendirmesini birbiriyle uyumlu şekilde yönetiyoruz.
+                    </p>
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="scope-grid">
+                    <article class="scope-card">
+                        <i class='bx bx-search-alt scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Marka ve Hedef Kitle Analizi</h3>
+                        <p class="scope-desc">Markanızın mevcut sosyal medya görünümünü, sektörünü, rakiplerini, hedef kitlesini ve iletişim ihtiyaçlarını inceliyoruz. İçerik stratejisinin temelini varsayımlar yerine markaya özgü veriler ve hedefler üzerine kuruyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-compass scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Sosyal Medya Stratejisi</h3>
+                        <p class="scope-desc">Markanızın sosyal medyada hangi konularla, hangi anlatım diliyle ve hangi içerik formatlarıyla yer alacağını belirliyoruz. Stratejiyi bilinirlik, güven, etkileşim, başvuru veya satış gibi temel hedeflerle ilişkilendiriyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-calendar scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Aylık İçerik Planlama</h3>
+                        <p class="scope-desc">Paylaşılacak içerikleri konu, format, platform ve yayın zamanı açısından planlıyoruz. Böylece içerik üretimi rastlantısal paylaşımlar yerine sürdürülebilir ve takip edilebilir bir yayın düzenine dönüşüyor.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-camera-movie scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Reels ve Dikey Video Üretimi</h3>
+                        <p class="scope-desc">Instagram Reels, TikTok ve YouTube Shorts gibi dikey video platformları için fikir, senaryo, çekim ve kurgu süreçleri hazırlıyoruz. Videoları markanın kimliğine, hedef kitlesine ve platform kullanım alışkanlıklarına göre tasarlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-palette scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Grafik Tasarım ve Görsel Dil</h3>
+                        <p class="scope-desc">Sosyal medya gönderileri, kaydırmalı içerikler, hikayeler ve kampanya görselleri için markanızla uyumlu bir tasarım sistemi oluşturuyoruz. Renk, tipografi ve görsel kullanımında tutarlı bir marka görünümü sağlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-edit-alt scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Metin Yazımı ve Yayın Düzeni</h3>
+                        <p class="scope-desc">İçeriklerin başlıklarını, açıklama metinlerini, yönlendirme ifadelerini ve gerekli yayın detaylarını markanızın iletişim diline göre hazırlıyoruz. İçeriklerin platformlara uygun ve düzenli bir yayın akışı içinde kullanılmasını planlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-bar-chart-alt-2 scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Performans Raporlama ve Optimizasyon</h3>
+                        <p class="scope-desc">İçeriklerin erişim, görüntülenme, etkileşim ve takipçi gelişimi gibi temel performans göstergelerini değerlendiriyoruz. Elde edilen sonuçları sonraki içerik planlarını ve üretim kararlarını geliştirmek için kullanıyoruz.</p>
+                    </article>
+                </div>
+
+                <!-- Footer Text Area -->
+                <div style="margin-top: 4rem;">
+                    <p class="scope-footer-text">
+                        Çalışılacak platformlar markanın hedeflerine göre belirlenir. NVM; Instagram, TikTok, YouTube Shorts ve LinkedIn için platformun kullanım biçimine uygun içerik planları ve üretim süreçleri hazırlayabilir.
+                    </p>
+                    <p class="scope-footer-text" style="font-size: 0.95rem; opacity: 0.85;">
+                        <strong>Hizmet kapsamı bilgilendirme notu:</strong> Hizmet kapsamı her marka için aynı değildir. Çekim sıklığı, paylaşım adedi, kullanılacak platformlar, reklam yönetimi ve ek prodüksiyon ihtiyaçları proje görüşmesinden sonra ayrıca belirlenir.
+                    </p>
+                    <p class="scope-footer-text" style="margin-top: 2rem;">
+                        Sosyal medya yönetiminin dışında sunduğumuz hizmetleri görmek için 
+                        <a href="/hizmetler">tüm dijital ajans hizmetlerimizi inceleyebilirsiniz</a>.
+                    </p>
+                </div>
+            </div>
         </section>
     </main>
 
