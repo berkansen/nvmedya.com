@@ -221,6 +221,113 @@
                 text-align: left;
             }
         }
+
+        /* Process List Timeline Styles */
+        .process-list {
+            max-width: 800px;
+            margin: 3rem auto;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .process-list::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 1.25rem;
+            width: 2px;
+            height: 100%;
+            background: rgba(239, 120, 26, 0.15);
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-badge {
+            position: absolute;
+            top: 0.2rem;
+            left: -3rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .process-badge-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .process-step-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Area Style */
+        .cta-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            margin: 4rem auto 0;
+            text-align: center;
+        }
+
+        .cta-box-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+        }
+
+        @media screen and (max-width: 576px) {
+            .process-list {
+                padding-left: 2rem;
+            }
+            .process-list::before {
+                left: 0.75rem;
+            }
+            .process-badge {
+                width: 1.8rem;
+                height: 1.8rem;
+                left: -2rem;
+                font-size: 0.8rem;
+            }
+            .process-step-title {
+                font-size: 1.15rem;
+            }
+            .cta-box {
+                padding: 2rem 1.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -353,6 +460,80 @@
                         Sosyal medya yönetiminin dışında sunduğumuz hizmetleri görmek için 
                         <a href="/hizmetler">tüm dijital ajans hizmetlerimizi inceleyebilirsiniz</a>.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nasıl Çalışıyoruz Section -->
+        <section id="nasil-calisiyoruz" class="section" aria-labelledby="nasil-calisiyoruz-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="nasil-calisiyoruz-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Sosyal Medya Yönetimi Sürecinde Nasıl Çalışıyoruz?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        Nisan Vitrini Media (NVM), sosyal medya yönetimi sürecini yalnızca içerik üretimi olarak ele almaz. Markanın hedeflerini, üretim düzenini, yayın planını ve performans gelişimini birlikte değerlendiren düzenli bir çalışma sistemi kurar.
+                    </p>
+                </div>
+
+                <!-- Timeline / Step Process List -->
+                <div class="process-list">
+                    <article class="process-step">
+                        <div class="process-badge">1</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 1</span>
+                            <h3 class="process-step-title">Ön Görüşme ve İhtiyaç Analizi</h3>
+                            <p class="process-step-desc">İlk aşamada markanızı, hedef kitlesinizi, mevcut dijital görünümünüzü, önceliklerinizi ve beklentilerinizi değerlendiriyoruz. Böylece sosyal medya yönetimi çalışmasının kapsamını ve odak noktalarını netleştiriyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">2</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 2</span>
+                            <h3 class="process-step-title">Strateji ve İçerik Planı Oluşturma</h3>
+                            <p class="process-step-desc">Markanız için uygun içerik başlıklarını, içerik formatlarını, yayın düzenini ve iletişim dilini belirliyoruz. Sosyal medya stratejisini, hedeflerinizle uyumlu ve uygulanabilir bir içerik planına dönüştürüyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">3</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 3</span>
+                            <h3 class="process-step-title">İçerik Üretimi ve Onay Süreci</h3>
+                            <p class="process-step-desc">Tasarım, Reels, dikey video ve paylaşım metinlerini hazırlıyoruz. İçerikler paylaşım öncesinde markanızın onay sürecinden geçer; gerekli revizeler bu aşamada netleştirilir.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">4</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 4</span>
+                            <h3 class="process-step-title">Yayın ve Uygulama Süreci</h3>
+                            <p class="process-step-desc">Onaylanan içerikler belirlenen yayın planına göre uygulanır. Böylece marka hesabınızda düzensiz ve kopuk paylaşımlar yerine planlı, tutarlı ve sürdürülebilir bir iletişim akışı oluşur.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">5</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 5</span>
+                            <h3 class="process-step-title">Takip, Raporlama ve Geliştirme</h3>
+                            <p class="process-step-desc">İçerik performansını düzenli olarak değerlendiriyor, hangi formatların ve içerik türlerinin daha iyi çalıştığını analiz ediyoruz. Elde edilen sonuçları sonraki planlara yansıtarak süreci geliştiriyoruz.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Info note & CTA box -->
+                <div style="margin-top: 4rem;">
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2.5rem; text-align: center; font-style: italic;">
+                        Her marka için işleyiş aynı kalmaz. İçerik üretim yoğunluğu, çekim ihtiyacı, onay süreci ve raporlama düzeni markanın çalışma yapısına ve proje kapsamına göre farklılaşabilir.
+                    </p>
+
+                    <div class="cta-box">
+                        <p class="cta-box-text">
+                            Markanız için nasıl bir sosyal medya yönetimi süreci planlanabileceğini öğrenmek isterseniz bizimle iletişime geçebilirsiniz.
+                        </p>
+                        <a href="/contact" class="btn btn-primary">Projeni Anlat</a>
+                    </div>
                 </div>
             </div>
         </section>
