@@ -221,6 +221,113 @@
                 text-align: left;
             }
         }
+
+        /* Process List Timeline Styles */
+        .process-list {
+            max-width: 800px;
+            margin: 3rem auto;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .process-list::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 1.25rem;
+            width: 2px;
+            height: 100%;
+            background: rgba(239, 120, 26, 0.15);
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-badge {
+            position: absolute;
+            top: 0.2rem;
+            left: -3rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .process-badge-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .process-step-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Area Style */
+        .cta-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            margin: 4rem auto 0;
+            text-align: center;
+        }
+
+        .cta-box-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+        }
+
+        @media screen and (max-width: 576px) {
+            .process-list {
+                padding-left: 2rem;
+            }
+            .process-list::before {
+                left: 0.75rem;
+            }
+            .process-badge {
+                width: 1.8rem;
+                height: 1.8rem;
+                left: -2rem;
+                font-size: 0.8rem;
+            }
+            .process-step-title {
+                font-size: 1.15rem;
+            }
+            .cta-box {
+                padding: 2rem 1.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -353,6 +460,99 @@
                         Dikey videoların düzenli bir sosyal medya stratejisi içinde planlanmasını istiyorsanız 
                         <a href="/hizmetler/sosyal-medya-yonetimi">sosyal medya yönetimi hizmetimizi</a> de inceleyebilirsiniz.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Çalışma Süreci Section -->
+        <section id="video-produksiyon-sureci" class="section" aria-labelledby="video-produksiyon-sureci-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="video-produksiyon-sureci-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Reels ve Dikey Video Prodüksiyonu Sürecinde Nasıl Çalışıyoruz?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        NVM, dikey video üretimini yalnızca çekim ve kurgu aşamalarından oluşan bir işlem olarak ele almaz. İçerik fikrinden yayınlanabilir videonun teslimine kadar bütün süreci markanın hedefleri, iletişim dili ve kullanılacak platformlar doğrultusunda planlar.
+                    </p>
+                </div>
+
+                <!-- Timeline / Step Process List -->
+                <div class="process-list">
+                    <article class="process-step">
+                        <div class="process-badge">1</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 1</span>
+                            <h3 class="process-step-title">Marka ve Proje İhtiyacını Anlama</h3>
+                            <p class="process-step-desc">İlk görüşmede markanın faaliyet alanını, hedef kitlesini, ürün veya hizmetlerini, kullanılacak platformları ve videolardan beklenen temel amacı değerlendiriyoruz. Üretim kapsamını bu bilgiler doğrultusunda netleştiriyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">2</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 2</span>
+                            <h3 class="process-step-title">İçerik Fikirleri ve Konsept Planı</h3>
+                            <p class="process-step-desc">Markaya uygun video konularını, anlatım biçimlerini ve içerik serilerini geliştiriyoruz. Trendlerden yararlanılması gerekiyorsa trendi doğrudan kopyalamak yerine markanın dili ve hedefleriyle uyumlu hale getiriyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">3</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 3</span>
+                            <h3 class="process-step-title">Senaryo ve Çekim Hazırlığı</h3>
+                            <p class="process-step-desc">Videoların giriş cümlelerini, sahne akışlarını, konuşma metinlerini, çekim mekanını ve gerekli ürün veya materyalleri planlıyoruz. Çekim gününün verimli ilerlemesi için içerikleri önceden üretime hazır hale getiriyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">4</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 4</span>
+                            <h3 class="process-step-title">Çekim ve Sahne Yönlendirmesi</h3>
+                            <p class="process-step-desc">Planlanan videoları dikey formata uygun şekilde çekiyor; kamera karşısındaki kişileri konuşma, hareket, tempo ve sahne geçişleri konusunda yönlendiriyoruz. Doğal anlatımı korurken videonun mesajını net biçimde aktarmasını hedefliyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">5</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 5</span>
+                            <h3 class="process-step-title">Kurgu ve İçerik Düzenleme</h3>
+                            <p class="process-step-desc">Çekilen görüntüleri video ritmine göre seçiyor ve kurguluyoruz. Gerekli altyazıları, müzikleri, ses düzenlemelerini, geçişleri ve marka kimliğiyle uyumlu görsel detayları ekliyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">6</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 6</span>
+                            <h3 class="process-step-title">Onay, Revize ve Teslim</h3>
+                            <p class="process-step-desc">Hazırlanan videoları marka onayına sunuyor, proje kapsamında belirlenen revizeleri uyguluyoruz. Onaylanan içerikleri kullanılacak platformlara uygun format ve ölçülerde teslim ediyoruz.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Info note & CTA box -->
+                <div style="margin-top: 4rem;">
+                    <div class="info-box" style="margin-bottom: 2.5rem;">
+                        <p class="info-box-title">Üretim Süreci Kısaca</p>
+                        <p class="info-box-text">
+                            İhtiyacın belirlenmesi, fikir geliştirme, senaryo, çekim, kurgu, onay ve teslim aşamaları tek bir üretim planı içinde yürütülür.
+                        </p>
+                    </div>
+
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2.5rem; text-align: center; font-style: italic;">
+                        Her projede aynı üretim modeli uygulanmaz. Çekim yapılacak mekan, video sayısı, çekimde yer alacak kişiler, içerik türleri, kurgu yoğunluğu ve teslim süreleri proje kapsamına göre değişebilir.
+                    </p>
+
+                    <div class="cta-box">
+                        <p class="cta-box-text">
+                            Markanız için nasıl bir Reels ve dikey video üretim süreci hazırlanabileceğini öğrenmek isterseniz projenizi bize anlatabilirsiniz.
+                        </p>
+                        <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                            <a href="/contact" class="btn btn-primary">Video Projeni Anlat</a>
+                            <a href="#video-hizmet-kapsami" class="btn btn-outline" style="margin-left: 1rem;">Hizmet Kapsamını İncele</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
