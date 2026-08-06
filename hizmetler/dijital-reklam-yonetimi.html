@@ -328,6 +328,84 @@
                 padding: 2rem 1.5rem;
             }
         }
+
+        /* FAQ Section Styles */
+        #reklam-sik-sorulan-sorular {
+            scroll-margin-top: 100px;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 2rem;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-align: left;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-question[aria-expanded="true"] .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Accessibly hide when JS is active, but keep visible if no-js */
+        .js-faq-active .faq-answer {
+            display: none;
+        }
+
+        .js-faq-active .faq-answer.show {
+            display: block;
+        }
+
+        @media screen and (max-width: 576px) {
+            .faq-item {
+                padding: 1.25rem 1.5rem;
+            }
+            .faq-question {
+                font-size: 1.05rem;
+            }
+        }
     </style>
 </head>
 
@@ -565,6 +643,133 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sık Sorulan Sorular Section -->
+        <section id="reklam-sik-sorulan-sorular" class="section alt-bg" aria-labelledby="reklam-sss-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="reklam-sss-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Dijital Reklam Yönetimi Hakkında Sık Sorulan Sorular</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        Dijital reklam yönetiminin kapsamı, reklam bütçesi, kreatif üretimi, hedef kitle planlaması, performans takibi ve fiyatlandırma hakkında en çok merak edilen soruları aşağıda yanıtladık.
+                    </p>
+                </div>
+
+                <div class="faq-list">
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="reklam-faq-answer-1" id="reklam-faq-question-1">
+                                Dijital reklam yönetimi hizmeti neleri kapsar?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="reklam-faq-answer-1" class="faq-answer" role="region" aria-labelledby="reklam-faq-question-1">
+                            <p>Dijital reklam yönetimi; reklam hedefinin belirlenmesi, hedef kitle planlaması, kampanya yapısının kurulması, reklam metni ve kreatif hazırlığı, bütçe dağılımı, yayına alma, performans takibi, optimizasyon ve raporlama süreçlerini kapsayabilir. Kesin kapsam markanın ihtiyaçlarına göre belirlenir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="reklam-faq-answer-2" id="reklam-faq-question-2">
+                                Reklam bütçesi ajans hizmet bedeline dahil mi?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="reklam-faq-answer-2" class="faq-answer" role="region" aria-labelledby="reklam-faq-question-2">
+                            <p>Hayır. Reklam platformuna ödenen medya bütçesi ile NVM tarafından sunulan reklam yönetimi hizmet bedeli birbirinden ayrı değerlendirilir. Reklam bütçesi marka tarafından ilgili reklam hesabına ayrıca sağlanır.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="reklam-faq-answer-3" id="reklam-faq-question-3">
+                                Reklam için ne kadar bütçe ayırmak gerekir?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="reklam-faq-answer-3" class="faq-answer" role="region" aria-labelledby="reklam-faq-question-3">
+                            <p>Uygun reklam bütçesi; sektör, hedef kitle, kampanya amacı, rekabet düzeyi, kullanılacak platform ve beklenen sonuçlara göre değişir. Sabit bir bütçe her marka için doğru olmayabilir. Önerilen bütçe, proje ve hedefler değerlendirildikten sonra belirlenir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="reklam-faq-answer-4" id="reklam-faq-question-4">
+                                Reklam görsellerini ve videolarını kim hazırlıyor?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="reklam-faq-answer-4" class="faq-answer" role="region" aria-labelledby="reklam-faq-question-4">
+                            <p>Reklam metinleri, görselleri ve video kreatifleri proje kapsamına göre NVM tarafından hazırlanabilir. Markanın mevcut içerikleri de uygunluk açısından değerlendirilerek kullanılabilir. Kreatif üretimin kapsamı teklif aşamasında ayrıca belirlenir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="reklam-faq-answer-5" id="reklam-faq-question-5">
+                                Dijital reklamlar kesin satış veya başvuru getirir mi?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="reklam-faq-answer-5" class="faq-answer" role="region" aria-labelledby="reklam-faq-question-5">
+                            <p>Hayır. Dijital reklam sonuçları; bütçe, sektör, rekabet, hedef kitle, teklif, web sitesi, iletişim süreci ve kullanılan kreatifler gibi birçok değişkene bağlıdır. Bu nedenle kesin satış, başvuru, dönüşüm veya reklam getirisi garantisi verilemez.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="reklam-faq-answer-6" id="reklam-faq-question-6">
+                                Reklam kampanyalarının performansı nasıl takip edilir?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="reklam-faq-answer-6" class="faq-answer" role="region" aria-labelledby="reklam-faq-question-6">
+                            <p>Kampanyalar, proje için belirlenen gösterim, erişim, tıklama, iletişim, başvuru veya dönüşüm gibi performans göstergeleri üzerinden takip edilir. Elde edilen sonuçlara göre bütçe, hedef kitle, reklam metni veya kreatiflerde gerekli iyileştirmeler yapılır.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="reklam-faq-answer-7" id="reklam-faq-question-7">
+                                Reklam vermeden önce web sitesi gerekli mi?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="reklam-faq-answer-7" class="faq-answer" role="region" aria-labelledby="reklam-faq-question-7">
+                            <p>Her reklam kampanyasında web sitesi zorunlu değildir. Bazı kampanyalar iletişim, mesajlaşma veya form hedefiyle planlanabilir. Ancak satış, başvuru veya detaylı bilgi hedeflerinde hızlı, güvenilir ve mobil uyumlu bir web sitesi reklam performansını destekleyebilir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="reklam-faq-answer-8" id="reklam-faq-question-8">
+                                Dijital reklam yönetimi fiyatı nasıl belirlenir?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="reklam-faq-answer-8" class="faq-answer" role="region" aria-labelledby="reklam-faq-question-8">
+                            <p>Hizmet fiyatı; kampanya sayısı, kullanılacak platform, kreatif üretim ihtiyacı, teknik kurulum, raporlama kapsamı ve yönetim yoğunluğuna göre belirlenir. Reklam bütçesi bu hizmet bedelinden ayrı olarak değerlendirilir ve çalışma kapsamı netleştirildikten sonra markaya özel teklif hazırlanır.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Info note & CTA box -->
+                <div style="margin-top: 4rem;">
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2.5rem; text-align: center;">
+                        Markanız için uygun reklam hedefini, kampanya yapısını ve bütçe yaklaşımını birlikte değerlendirebiliriz.
+                    </p>
+
+                    <div class="cta-box" style="margin-top: 0;">
+                        <p class="cta-box-text" style="margin-bottom: 2rem;">
+                            Dijital reklam yönetimi hakkında detaylı bilgi ve size özel teklif alın.
+                        </p>
+                        <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                            <a href="/contact" class="btn btn-primary">Reklam Projeni Anlat</a>
+                            <a href="/hizmetler/reels-dikey-video-produksiyonu" class="btn btn-outline" style="margin-left: 1rem;">Reels Hizmetini İncele</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer section">
@@ -630,6 +835,36 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqList = document.querySelector('.faq-list');
+            if (faqList) {
+                faqList.classList.add('js-faq-active');
+            }
+
+            const buttons = document.querySelectorAll('.faq-question');
+            buttons.forEach((button, index) => {
+                const answerId = button.getAttribute('aria-controls');
+                const answer = document.getElementById(answerId);
+                
+                // Open first FAQ by default
+                if (index === 0) {
+                    button.setAttribute('aria-expanded', 'true');
+                    if (answer) answer.classList.add('show');
+                } else {
+                    button.setAttribute('aria-expanded', 'false');
+                }
+
+                button.addEventListener('click', () => {
+                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', !isExpanded);
+                    if (answer) {
+                        answer.classList.toggle('show');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
