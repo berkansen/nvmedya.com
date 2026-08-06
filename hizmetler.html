@@ -58,6 +58,73 @@
 
       gtag('config', 'G-JD1C5PBEKD');
     </script>
+
+    <style>
+        #hizmetler {
+            scroll-margin-top: 100px;
+        }
+
+        .services-grid-page {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card-page {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            height: 100%;
+        }
+
+        .service-card-page:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-icon-page {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-title-page {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .service-desc-page {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Responsive Breakpoints */
+        @media screen and (max-width: 992px) {
+            .services-grid-page {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .services-grid-page {
+                grid-template-columns: 1fr;
+            }
+            .service-card-page {
+                padding: 2rem 1.5rem;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -103,6 +170,63 @@
                 </div>
             </div>
             <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Services Grid Section -->
+        <section id="hizmetler" class="section alt-bg">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-subtitle">NVM HİZMETLERİ</span>
+                    <h2 class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Markanız İçin Sunduğumuz Dijital Ajans Hizmetleri</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        NVM; markaların dijital iletişim, içerik üretimi ve büyüme süreçlerini tek bir strateji altında birleştirir. İhtiyaca göre tek bir hizmetten yararlanabilir veya markanıza özel, birden fazla uzmanlık alanını kapsayan bütünleşik bir çalışma modeli oluşturabilirsiniz.
+                    </p>
+                </div>
+
+                <div class="services-grid-page">
+                    <article class="service-card-page">
+                        <i class='bx bx-share-alt service-icon-page'></i>
+                        <h3 class="service-title-page">Sosyal Medya Yönetimi</h3>
+                        <p class="service-desc-page">Markanızın hedef kitlesine ve iletişim diline uygun sosyal medya stratejisi oluşturuyor; içerik planlama, metin yazımı, tasarım, video üretimi, yayın süreci ve performans raporlamasını birlikte yönetiyoruz.</p>
+                    </article>
+
+                    <article class="service-card-page">
+                        <i class='bx bx-video service-icon-page'></i>
+                        <h3 class="service-title-page">Reels ve Dikey Video Prodüksiyonu</h3>
+                        <p class="service-desc-page">Instagram Reels, TikTok ve YouTube Shorts için fikir, senaryo, çekim ve kurgu süreçlerini kapsayan dikey videolar üretiyoruz. İçerikleri platform dinamiklerine ve markanızın hedeflerine göre tasarlıyoruz.</p>
+                    </article>
+
+                    <article class="service-card-page">
+                        <i class='bx bx-trending-up service-icon-page'></i>
+                        <h3 class="service-title-page">Dijital Reklam Yönetimi</h3>
+                        <p class="service-desc-page">Markanızın bilinirlik, trafik, başvuru veya satış hedeflerine uygun dijital reklam kampanyaları planlıyor; hedef kitle, kreatif içerik, bütçe ve performans süreçlerini düzenli olarak optimize ediyoruz.</p>
+                    </article>
+
+                    <article class="service-card-page">
+                        <i class='bx bx-bot service-icon-page'></i>
+                        <h3 class="service-title-page">Sanal Marka Elçisi ve AI Kreatif Çözümler</h3>
+                        <p class="service-desc-page">Markalara özel sanal karakterler, yapay zeka destekli görsel dünyalar ve yeni nesil içerik formatları geliştiriyoruz. Tüm üretimleri marka kimliği, insan kontrolü ve ticari kullanım ihtiyaçları doğrultusunda planlıyoruz.</p>
+                    </article>
+
+                    <article class="service-card-page">
+                        <i class='bx bx-palette service-icon-page'></i>
+                        <h3 class="service-title-page">Marka Kimliği ve Grafik Tasarım</h3>
+                        <p class="service-desc-page">Markanızın görsel dilini güçlendiren logo, renk sistemi, tipografi, sosyal medya tasarımları ve kurumsal iletişim materyalleri hazırlıyoruz. Tasarım kararlarını markanın konumlandırmasıyla birlikte ele alıyoruz.</p>
+                    </article>
+
+                    <article class="service-card-page">
+                        <i class='bx bx-code-alt service-icon-page'></i>
+                        <h3 class="service-title-page">Web Tasarım ve Geliştirme</h3>
+                        <p class="service-desc-page">Markanızı doğru anlatan, mobil uyumlu, hızlı ve kullanıcı odaklı web siteleri tasarlıyoruz. İçerik yapısını SEO, kullanıcı deneyimi ve dönüşüm hedeflerini birlikte dikkate alarak oluşturuyoruz.</p>
+                    </article>
+
+                    <article class="service-card-page">
+                        <i class='bx bx-music service-icon-page'></i>
+                        <h3 class="service-title-page">Jingle ve Müzik Tasarımı</h3>
+                        <p class="service-desc-page">Markaların reklam, sosyal medya ve kurumsal iletişim çalışmalarında kullanabileceği özgün jingle, müzik ve ses kimliği çözümleri geliştiriyoruz.</p>
+                    </article>
+                </div>
+            </div>
         </section>
     </main>
 
