@@ -304,106 +304,94 @@
             }
         }
 
-        /* Timeline Styles */
+        /* Process List Timeline Styles */
         #marka-kimligi-tasarim-sureci {
             scroll-margin-top: 100px;
         }
 
-        .timeline {
-            position: relative;
+        .process-list {
             max-width: 800px;
-            margin: 4rem auto 0;
-            padding: 0;
-            list-style: none;
+            margin: 3rem auto;
+            position: relative;
+            padding-left: 3rem;
         }
 
-        .timeline::before {
+        .process-list::before {
             content: '';
             position: absolute;
             top: 0;
-            bottom: 0;
-            left: 31px;
+            left: 1.25rem;
             width: 2px;
-            background: rgba(255, 255, 255, 0.05);
+            height: 100%;
+            background: rgba(239, 120, 26, 0.15);
         }
 
-        .timeline-item {
+        .process-step {
             position: relative;
             margin-bottom: 3rem;
-            padding-left: 80px;
             text-align: left;
         }
 
-        .timeline-item:last-child {
+        .process-step:last-child {
             margin-bottom: 0;
         }
 
-        .timeline-badge {
+        .process-badge {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 64px;
-            height: 64px;
+            top: 0.2rem;
+            left: -3rem;
+            width: 2.5rem;
+            height: 2.5rem;
             border-radius: 50%;
-            background: var(--card-bg);
-            border: 2px solid rgba(255, 255, 255, 0.05);
+            background: var(--bg-color);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 700;
-            color: var(--primary-color);
-            transition: var(--transition);
             z-index: 1;
         }
 
-        .timeline-item:hover .timeline-badge {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(239, 120, 26, 0.2);
+        .process-badge-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
         }
 
-        .timeline-panel {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            transition: var(--transition);
-        }
-
-        .timeline-item:hover .timeline-panel {
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .timeline-title {
-            font-size: 1.25rem;
+        .process-step-title {
+            font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
             color: var(--text-main);
         }
 
-        .timeline-desc {
+        .process-step-desc {
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
-            margin: 0;
         }
 
         @media screen and (max-width: 576px) {
-            .timeline::before {
-                display: none;
+            .process-list {
+                padding-left: 2rem;
             }
-            .timeline-item {
-                padding-left: 0;
-                margin-bottom: 2rem;
+            .process-list::before {
+                left: 0.75rem;
             }
-            .timeline-badge {
-                position: relative;
-                margin-bottom: 1rem;
-                width: 50px;
-                height: 50px;
+            .process-badge {
+                width: 1.8rem;
+                height: 1.8rem;
+                left: -2rem;
+                font-size: 0.8rem;
             }
-            .timeline-panel {
-                padding: 1.5rem;
+            .process-step-title {
+                font-size: 1.15rem;
             }
         }
 
@@ -859,64 +847,71 @@
                     </p>
                 </div>
 
-                <!-- Timeline / Süreç Adımları -->
-                <ul class="timeline">
-                    <li class="timeline-item">
-                        <div class="timeline-badge">Adım 1</div>
-                        <article class="timeline-panel">
-                            <h3 class="timeline-title">Marka ve İhtiyaç Analizi</h3>
-                            <p class="timeline-desc">Markanın faaliyet alanını, hedef kitlesini, mevcut görsel kimliğini, iletişim dilini ve tasarım ihtiyaçlarını değerlendiriyoruz. Yeni bir marka oluşturuluyorsa temel marka yönünü, mevcut bir marka yenileniyorsa korunması ve geliştirilmesi gereken unsurları belirliyoruz.</p>
-                        </article>
-                    </li>
+                <!-- Timeline / Step Process List -->
+                <div class="process-list">
+                    <article class="process-step">
+                        <div class="process-badge">1</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 1</span>
+                            <h3 class="process-step-title">Marka ve İhtiyaç Analizi</h3>
+                            <p class="process-step-desc">Markanın faaliyet alanını, hedef kitlesini, mevcut görsel kimliğini, iletişim dilini ve tasarım ihtiyaçlarını değerlendiriyoruz. Yeni bir marka oluşturuluyorsa temel marka yönünü, mevcut bir marka yenileniyorsa korunması ve geliştirilmesi gereken unsurları belirliyoruz.</p>
+                        </div>
+                    </article>
 
-                    <li class="timeline-item">
-                        <div class="timeline-badge">Adım 2</div>
-                        <article class="timeline-panel">
-                            <h3 class="timeline-title">Görsel Yön ve Tasarım Stratejisi</h3>
-                            <p class="timeline-desc">Markanın nasıl görünmesi, hangi duyguyu vermesi ve hedef kitlesi tarafından nasıl algılanması gerektiğini planlıyoruz. Renk, tipografi, biçim, kompozisyon ve görsel dil için temel tasarım yönünü oluşturuyoruz.</p>
-                        </article>
-                    </li>
+                    <article class="process-step">
+                        <div class="process-badge">2</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 2</span>
+                            <h3 class="process-step-title">Görsel Yön ve Tasarım Stratejisi</h3>
+                            <p class="process-step-desc">Markanın nasıl görünmesi, hangi duyguyu vermesi ve hedef kitlesi tarafından nasıl algılanması gerektiğini planlıyoruz. Renk, tipografi, biçim, kompozisyon ve görsel dil için temel tasarım yönünü oluşturuyoruz.</p>
+                        </div>
+                    </article>
 
-                    <li class="timeline-item">
-                        <div class="timeline-badge">Adım 3</div>
-                        <article class="timeline-panel">
-                            <h3 class="timeline-title">Referans ve Görsel Dünya Araştırması</h3>
-                            <p class="timeline-desc">Sektörün görsel alışkanlıklarını, rakiplerin iletişim yaklaşımını ve markanın farklılaşabileceği tasarım alanlarını inceliyoruz. Referanslar doğrudan kopyalanmaz; markaya özgü görsel kararları desteklemek amacıyla değerlendirilir.</p>
-                        </article>
-                    </li>
+                    <article class="process-step">
+                        <div class="process-badge">3</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 3</span>
+                            <h3 class="process-step-title">Referans ve Görsel Dünya Araştırması</h3>
+                            <p class="process-step-desc">Sektörün görsel alışkanlıklarını, rakiplerin iletişim yaklaşımını ve markanın farklılaşabileceği tasarım alanlarını inceliyoruz. Referanslar doğrudan kopyalanmaz; markaya özgü görsel kararları desteklemek amacıyla değerlendirilir.</p>
+                        </div>
+                    </article>
 
-                    <li class="timeline-item">
-                        <div class="timeline-badge">Adım 4</div>
-                        <article class="timeline-panel">
-                            <h3 class="timeline-title">Logo ve Temel Kimlik Tasarımı</h3>
-                            <p class="timeline-desc">Proje kapsamına göre logo alternatifleri, renk paleti, tipografi sistemi ve temel grafik unsurlar hazırlanır. Tasarımların dijital ve basılı kullanım alanlarında anlaşılır, uygulanabilir ve tutarlı olması hedeflenir.</p>
-                        </article>
-                    </li>
+                    <article class="process-step">
+                        <div class="process-badge">4</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 4</span>
+                            <h3 class="process-step-title">Logo ve Temel Kimlik Tasarımı</h3>
+                            <p class="process-step-desc">Proje kapsamına göre logo alternatifleri, renk paleti, tipografi sistemi ve temel grafik unsurlar hazırlanır. Tasarımların dijital ve basılı kullanım alanlarında anlaşılır, uygulanabilir ve tutarlı olması hedeflenir.</p>
+                        </div>
+                    </article>
 
-                    <li class="timeline-item">
-                        <div class="timeline-badge">Adım 5</div>
-                        <article class="timeline-panel">
-                            <h3 class="timeline-title">Sunum, Geri Bildirim ve Revize</h3>
-                            <p class="timeline-desc">Hazırlanan tasarım yönünü ve temel kararları gerekçeleriyle birlikte sunuyoruz. Marka tarafından iletilen geri bildirimleri değerlendiriyor ve proje teklifinde belirlenen revize kapsamı doğrultusunda gerekli düzenlemeleri uyguluyoruz.</p>
-                        </article>
-                    </li>
+                    <article class="process-step">
+                        <div class="process-badge">5</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 5</span>
+                            <h3 class="process-step-title">Sunum, Geri Bildirim ve Revize</h3>
+                            <p class="process-step-desc">Hazırlanan tasarım yönünü ve temel kararları gerekçeleriyle birlikte sunuyoruz. Marka tarafından iletilen geri bildirimleri değerlendiriyor ve proje teklifinde belirlenen revize kapsamı doğrultusunda gerekli düzenlemeleri uyguluyoruz.</p>
+                        </div>
+                    </article>
 
-                    <li class="timeline-item">
-                        <div class="timeline-badge">Adım 6</div>
-                        <article class="timeline-panel">
-                            <h3 class="timeline-title">Uygulama Alanlarının Hazırlanması</h3>
-                            <p class="timeline-desc">Onaylanan marka kimliğini proje kapsamındaki sosyal medya şablonları, kurumsal materyaller, sunumlar, kampanya tasarımları veya diğer kullanım alanlarına uyarlıyoruz. Hazırlanacak uygulama sayısı ve türü teklif aşamasında belirlenir.</p>
-                        </article>
-                    </li>
+                    <article class="process-step">
+                        <div class="process-badge">6</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 6</span>
+                            <h3 class="process-step-title">Uygulama Alanlarının Hazırlanması</h3>
+                            <p class="process-step-desc">Onaylanan marka kimliğini proje kapsamındaki sosyal medya şablonları, kurumsal materyaller, sunumlar, kampanya tasarımları veya diğer kullanım alanlarına uyarlıyoruz. Hazırlanacak uygulama sayısı ve türü teklif aşamasında belirlenir.</p>
+                        </div>
+                    </article>
 
-                    <li class="timeline-item">
-                        <div class="timeline-badge">Adım 7</div>
-                        <article class="timeline-panel">
-                            <h3 class="timeline-title">Dosya Teslimi ve Kullanım Rehberi</h3>
-                            <p class="timeline-desc">Onaylanan tasarımları proje kapsamında belirlenen dosya formatlarında teslim ediyoruz. Dahil edilmişse logo kullanımı, renkler, tipografi ve temel görsel kuralları açıklayan marka kimliği rehberi de hazırlanır.</p>
-                        </article>
-                    </li>
-                </ul>
+                    <article class="process-step">
+                        <div class="process-badge">7</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 7</span>
+                            <h3 class="process-step-title">Dosya Teslimi ve Kullanım Rehberi</h3>
+                            <p class="process-step-desc">Onaylanan tasarımları proje kapsamında belirlenen dosya formatlarında teslim ediyoruz. Dahil edilmişse logo kullanımı, renkler, tipografi ve temel görsel kuralları açıklayan marka kimliği rehberi de hazırlanır.</p>
+                        </div>
+                    </article>
+                </div>
 
                 <!-- Süreç Özeti ve Bilgilendirmeler -->
                 <div style="margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 4rem;">
