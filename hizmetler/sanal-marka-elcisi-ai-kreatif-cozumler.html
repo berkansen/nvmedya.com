@@ -295,6 +295,113 @@
                 text-align: left;
             }
         }
+
+        /* Process List Timeline Styles */
+        .process-list {
+            max-width: 800px;
+            margin: 3rem auto;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .process-list::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 1.25rem;
+            width: 2px;
+            height: 100%;
+            background: rgba(239, 120, 26, 0.15);
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-badge {
+            position: absolute;
+            top: 0.2rem;
+            left: -3rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .process-badge-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .process-step-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* CTA Area Style */
+        .cta-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            margin: 4rem auto 0;
+            text-align: center;
+        }
+
+        .cta-box-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+        }
+
+        @media screen and (max-width: 576px) {
+            .process-list {
+                padding-left: 2rem;
+            }
+            .process-list::before {
+                left: 0.75rem;
+            }
+            .process-badge {
+                width: 1.8rem;
+                height: 1.8rem;
+                left: -2rem;
+                font-size: 0.8rem;
+            }
+            .process-step-title {
+                font-size: 1.15rem;
+            }
+            .cta-box {
+                padding: 2rem 1.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -476,6 +583,112 @@
                         <a href="/hizmetler/dijital-reklam-yonetimi">dijital reklam yönetimi</a> 
                         hizmetlerimizi de inceleyebilirsiniz.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nasıl Çalışıyoruz Section -->
+        <section id="sanal-marka-elcisi-gelistirme-sureci" class="section" aria-labelledby="sanal-marka-elcisi-gelistirme-sureci-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="sanal-marka-elcisi-gelistirme-sureci-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Sanal Marka Elçisi Geliştirme Sürecinde Nasıl Çalışıyoruz?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        NVM, sanal marka elçisi geliştirme sürecini yalnızca karakter görseli üretmek olarak ele almaz. Strateji, karakter kimliği, görsel tutarlılık, içerik kullanım alanları, üretim kuralları ve insan kontrolünü birlikte planlayan sürdürülebilir bir karakter sistemi oluşturur.
+                    </p>
+                </div>
+
+                <!-- Timeline / Step Process List -->
+                <div class="process-list">
+                    <article class="process-step">
+                        <div class="process-badge">1</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 1</span>
+                            <h3 class="process-step-title">Marka, Hedef Kitle ve Kullanım Amacı Analizi</h3>
+                            <p class="process-step-desc">İlk aşamada markanın faaliyet alanını, hedef kitlesini, iletişim dilini ve sanal karakterden beklediği rolü değerlendiriyoruz. Karakterin bilgilendirme, eğlendirme, ürün anlatımı, topluluk iletişimi veya kampanya gibi hangi amaçlarla kullanılacağını netleştiriyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">2</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 2</span>
+                            <h3 class="process-step-title">Karakter Konsepti ve Stratejik Rol</h3>
+                            <p class="process-step-desc">Karakterin markayı nasıl temsil edeceğini, hangi değerleri taşıyacağını ve hedef kitleyle nasıl bir bağ kuracağını planlıyoruz. Karakterin insan, hayvan, maskot veya farklı bir yaratıcı formda tasarlanması proje hedeflerine göre belirlenir.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">3</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 3</span>
+                            <h3 class="process-step-title">Görünüm ve Görsel Kimlik Tasarımı</h3>
+                            <p class="process-step-desc">Karakterin yüzünü, vücut oranlarını, kıyafetlerini, renklerini, aksesuarlarını ve genel görsel stilini oluşturuyoruz. Tasarım kararlarını markanın mevcut renkleri, hedef kitlesi ve kullanılacağı içerik türleriyle uyumlu hale getiriyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">4</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 4</span>
+                            <h3 class="process-step-title">Kişilik, Hikaye ve İletişim Dili</h3>
+                            <p class="process-step-desc">Karakterin kişilik özelliklerini, değerlerini, davranış biçimini, geçmiş hikayesini ve konuşma tonunu belirliyoruz. Böylece karakter yalnızca görsel olarak değil, marka iletişiminde de tutarlı bir kimliğe sahip olur.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">5</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 5</span>
+                            <h3 class="process-step-title">Test Üretimleri ve Tutarlılık Kontrolü</h3>
+                            <p class="process-step-desc">Karakteri farklı sahnelerde, pozlarda, kıyafetlerde ve içerik formatlarında test ediyoruz. Yüz, oran, stil ve temel kimlik özelliklerinde oluşabilecek tutarsızlıkları değerlendirerek üretim kurallarını geliştiriyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">6</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 6</span>
+                            <h3 class="process-step-title">Karakter Rehberi ve Kullanım Sistemi</h3>
+                            <p class="process-step-desc">Karakterin korunacak özelliklerini, değişebilecek alanlarını, kullanılabilecek içerik formatlarını ve iletişim kurallarını tanımlayan temel bir karakter sistemi hazırlıyoruz. Bu yapı, sonraki üretimlerde görsel ve anlatı tutarlılığını destekler.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">7</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">Adım 7</span>
+                            <h3 class="process-step-title">İçerik Üretimi ve Sürekli Geliştirme</h3>
+                            <p class="process-step-desc">Onaylanan sanal marka elçisi için sosyal medya içerikleri, kampanya görselleri, video uyarlamaları ve farklı kullanım senaryoları geliştirilebilir. Karakterin dünyası, markanın ihtiyaçlarına ve yeni iletişim hedeflerine göre zaman içinde genişletilebilir.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- İnsan Kontrolü Süreci Bilgi Alanı -->
+                <div style="margin-top: 4rem;">
+                    <div class="info-box" style="margin-bottom: 2.5rem;">
+                        <p class="info-box-title">İnsan Kontrolü Sürecin Bir Parçasıdır</p>
+                        <p class="info-box-text">
+                            Yapay zeka destekli üretimler otomatik olarak yayınlanmaz. Karakter görünümü, içerik uygunluğu, marka tutarlılığı ve kullanım amacı NVM tarafından değerlendirilir; içerikler belirlenen onay sürecinden sonra kullanıma hazırlanır.
+                        </p>
+                    </div>
+
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 1.5rem; text-align: center; font-style: italic;">
+                        Her sanal marka elçisi projesi aynı kapsamda ilerlemez. Karakter sayısı, görsel stil, test üretimleri, içerik formatları, karakter rehberi, revize süreci ve teslim edilecek dosyalar proje ihtiyaçlarına göre değişebilir.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2.5rem; text-align: center; font-style: italic;">
+                        Yapay zeka destekli üretimlerde teknik araçlar, model özellikleri ve üretim sonuçları zaman içinde değişebilir. Bu nedenle karakter tutarlılığı ve üretim kalitesi düzenli insan kontrolüyle değerlendirilir.
+                    </p>
+
+                    <!-- CTA Box -->
+                    <div class="cta-box">
+                        <p class="cta-box-text">
+                            Markanız için nasıl bir sanal karakter dünyası oluşturulabileceğini ve karakterin hangi içeriklerde kullanılabileceğini birlikte planlayabiliriz.
+                        </p>
+                        <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                            <a href="/contact" class="btn btn-primary">Sanal Karakter Projeni Anlat</a>
+                            <a href="#sanal-marka-elcisi-hizmet-kapsami" class="btn btn-outline" style="margin-left: 1rem;">Hizmet Kapsamını İncele</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
