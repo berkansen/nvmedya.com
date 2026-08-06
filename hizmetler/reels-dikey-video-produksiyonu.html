@@ -58,6 +58,170 @@
 
       gtag('config', 'G-JD1C5PBEKD');
     </script>
+
+    <style>
+        #video-hizmet-kapsami {
+            scroll-margin-top: 100px;
+        }
+
+        /* Breadcrumb Styles */
+        .breadcrumb-nav {
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .breadcrumb-list li:not(:last-child)::after {
+            content: "/";
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .breadcrumb-list a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .breadcrumb-list li.active {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Info Box Styles */
+        .info-box {
+            background: rgba(239, 120, 26, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 2.5rem auto 3rem;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .info-box-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        /* Grid & Cards Styles */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .scope-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            height: 100%;
+        }
+
+        .scope-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .scope-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .scope-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .scope-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .scope-footer-text {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .scope-footer-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px dashed var(--primary-color);
+            padding-bottom: 2px;
+        }
+
+        .scope-footer-text a:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
+        }
+
+        @media screen and (max-width: 992px) {
+            .scope-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+            .scope-card {
+                padding: 2rem 1.5rem;
+            }
+            .scope-footer-text {
+                text-align: left;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -112,6 +276,85 @@
                 </div>
             </div>
             <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Reels ve Dikey Video Prodüksiyonu Hizmet Kapsamı Section -->
+        <section id="video-hizmet-kapsami" class="section alt-bg" aria-labelledby="video-hizmet-kapsami-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="video-hizmet-kapsami-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Reels ve Dikey Video Prodüksiyonu Hizmetimiz Neleri Kapsar?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        NVM Reels ve dikey video prodüksiyonu hizmeti; içerik fikrinin geliştirilmesinden senaryo ve çekim planına, video çekiminden kurgu ve platform uyarlamasına kadar üretimin temel aşamalarını kapsar. Projenin kesin kapsamı; markanın hedeflerine, çekim ihtiyacına, video sayısına ve kullanılacak platformlara göre belirlenir.
+                    </p>
+                </div>
+
+                <!-- Info Box (Direct Answer Area) -->
+                <div class="info-box">
+                    <p class="info-box-title">Kısaca Neler Yapıyoruz?</p>
+                    <p class="info-box-text">
+                        Markanız için dikey video fikirleri geliştiriyor; senaryo, çekim planı, prodüksiyon, kurgu, altyazı ve platforma uygun video teslim süreçlerini birbiriyle uyumlu şekilde yönetiyoruz.
+                    </p>
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="scope-grid">
+                    <article class="scope-card">
+                        <i class='bx bx-bulb scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">İçerik Fikri ve Konsept Geliştirme</h3>
+                        <p class="scope-desc">Markanızın ürünlerini, hizmetlerini ve iletişim hedeflerini dikkate alarak dikey video fikirleri geliştiriyoruz. İçerik konularını yalnızca güncel trendlere göre değil, markanın hedef kitlesine ve sürdürülebilir içerik ihtiyacına göre belirliyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-edit-alt scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Senaryo ve Video Akışı</h3>
+                        <p class="scope-desc">Videonun girişini, anlatım akışını, sahnelerini, konuşma metinlerini ve yönlendirme cümlelerini planlıyoruz. İzleyicinin dikkatini koruyan ancak marka dilini yapaylaştırmayan uygulanabilir senaryolar hazırlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-calendar scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Çekim Öncesi Planlama</h3>
+                        <p class="scope-desc">Çekim günü, mekan, kullanılacak ürünler, kişiler, sahne sırası ve ihtiyaç duyulan ekipmanı önceden planlıyoruz. Böylece çekim sürecinin daha düzenli ilerlemesini ve planlanan içeriklerin verimli biçimde üretilmesini sağlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-video scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Dikey Video Çekimi</h3>
+                        <p class="scope-desc">Instagram Reels, TikTok ve YouTube Shorts formatlarına uygun dikey videolar çekiyoruz. Kadraj, ışık, ses ve sahne düzenini videonun kullanım amacı ve markanın görsel kimliği doğrultusunda hazırlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-user-voice scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Çekim Yönlendirmesi</h3>
+                        <p class="scope-desc">Kamera karşısında yer alan kişilerin konuşma, hareket ve sahne geçişlerini çekim sırasında yönlendiriyoruz. Amaç, doğal görünümü korurken videonun planlanan anlatımını eksiksiz biçimde oluşturmaktır.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-cut scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Kurgu, Altyazı ve Ses Düzenleme</h3>
+                        <p class="scope-desc">Çekilen görüntüleri video ritmine uygun şekilde kurguluyor; gerekli altyazıları, geçişleri, müzikleri ve temel ses düzenlemelerini ekliyoruz. Görsel ve işitsel öğeleri içeriğin mesajını destekleyecek ölçüde kullanıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-export scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Platforma Uygun Teslim</h3>
+                        <p class="scope-desc">Videoları kullanılacak platformların dikey format, süre ve görüntüleme alışkanlıklarına göre hazırlıyoruz. Gerektiğinde aynı içeriğin Instagram Reels, TikTok veya YouTube Shorts için farklı teslim versiyonları planlanabilir.</p>
+                    </article>
+                </div>
+
+                <!-- Footer Text Area -->
+                <div style="margin-top: 4rem;">
+                    <p class="scope-footer-text">
+                        NVM; Instagram Reels, TikTok ve YouTube Shorts için dikey video üretimi gerçekleştirebilir. Her videonun bütün platformlarda aynı biçimde kullanılması gerekmez. Platform seçimi, video süresi ve kurgu yaklaşımı markanın hedef kitlesine ve içerik stratejisine göre belirlenir.
+                    </p>
+                    <p class="scope-footer-text" style="font-size: 0.95rem; opacity: 0.85;">
+                        <strong>Hizmet kapsamı bilgilendirme notu:</strong> Video sayısı, çekim süresi, mekan, oyuncu veya sunucu ihtiyacı, ekipman kullanımı, ulaşım, özel kurgu talepleri ve teslim versiyonları her projede farklı olabilir. Bu ayrıntılar ön görüşme sonrasında hazırlanacak çalışma kapsamında ayrıca belirlenir.
+                    </p>
+                    <p class="scope-footer-text" style="margin-top: 2rem;">
+                        Dikey videoların düzenli bir sosyal medya stratejisi içinde planlanmasını istiyorsanız 
+                        <a href="/hizmetler/sosyal-medya-yonetimi">sosyal medya yönetimi hizmetimizi</a> de inceleyebilirsiniz.
+                    </p>
+                </div>
+            </div>
         </section>
     </main>
 
