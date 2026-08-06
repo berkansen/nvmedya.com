@@ -328,6 +328,84 @@
                 padding: 2rem 1.5rem;
             }
         }
+
+        /* FAQ Section Styles */
+        #sik-sorulan-sorular {
+            scroll-margin-top: 100px;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 2rem;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-align: left;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-question[aria-expanded="true"] .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Accessibly hide when JS is active, but keep visible if no-js */
+        .js-faq-active .faq-answer {
+            display: none;
+        }
+
+        .js-faq-active .faq-answer.show {
+            display: block;
+        }
+
+        @media screen and (max-width: 576px) {
+            .faq-item {
+                padding: 1.25rem 1.5rem;
+            }
+            .faq-question {
+                font-size: 1.05rem;
+            }
+        }
     </style>
 </head>
 
@@ -537,6 +615,130 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sık Sorulan Sorular Section -->
+        <section id="sik-sorulan-sorular" class="section alt-bg" aria-labelledby="sss-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="sss-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Sosyal Medya Yönetimi Hakkında Sık Sorulan Sorular</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        Nisan Vitrini Media (NVM) sosyal medya yönetimi hizmetinin kapsamı, içerik üretimi, çekim süreci, reklam yönetimi, raporlama ve fiyatlandırma hakkında merak edilen temel soruları aşağıda yanıtladık.
+                    </p>
+                </div>
+
+                <div class="faq-list">
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
+                                Sosyal medya yönetimi hizmeti neleri kapsar?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="faq-answer-1" class="faq-answer" role="region" aria-labelledby="faq-question-1">
+                            <p>Sosyal medya yönetimi; marka ve hedef kitle analizi, içerik stratejisi, aylık içerik planlaması, grafik tasarım, Reels ve dikey video üretimi, paylaşım metinleri, yayın düzeni ve performans değerlendirmesi gibi süreçleri kapsayabilir. Kesin hizmet kapsamı markanın ihtiyaçlarına ve oluşturulan çalışma planına göre belirlenir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
+                                Hangi sosyal medya platformları için hizmet veriyorsunuz?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="faq-answer-2" class="faq-answer" role="region" aria-labelledby="faq-question-2">
+                            <p>NVM; Instagram, TikTok, YouTube Shorts ve LinkedIn için içerik stratejisi ve üretim süreçleri hazırlayabilir. Her markanın bütün platformlarda yer alması gerekmez. Kullanılacak platformlar hedef kitleye, içerik türüne ve markanın iş hedeflerine göre seçilir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
+                                Aylık paylaşım ve içerik sayısı nasıl belirlenir?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="faq-answer-3" class="faq-answer" role="region" aria-labelledby="faq-question-3">
+                            <p>Aylık paylaşım sayısı; markanın hedefleri, kullanılacak platformlar, içerik formatları, çekim ihtiyacı ve üretim kapasitesi değerlendirilerek belirlenir. Her marka için aynı sayıda paylaşım içeren sabit bir sistem uygulamak yerine sürdürülebilir ve amaca uygun bir içerik düzeni oluşturulur.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4">
+                                Reels ve video çekimi sosyal medya yönetimine dahil mi?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="faq-answer-4" class="faq-answer" role="region" aria-labelledby="faq-question-4">
+                            <p>Reels ve dikey video üretimi proje kapsamına göre sosyal medya yönetimi çalışmasına dahil edilebilir. Çekim sıklığı, çekim yeri, hazırlanacak video sayısı ve prodüksiyon ihtiyaçları ön görüşme sırasında ayrıca belirlenir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-5" id="faq-question-5">
+                                İçerikler yayınlanmadan önce onaya sunuluyor mu?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="faq-answer-5" class="faq-answer" role="region" aria-labelledby="faq-question-5">
+                            <p>Evet. Hazırlanan içerikler, belirlenen çalışma düzenine göre yayınlanmadan önce marka onayına sunulur. Tasarım, video ve metinlerle ilgili gerekli revizeler onay sürecinde değerlendirilir. Onaylanan içerikler daha sonra yayın planına alınır.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-6" id="faq-question-6">
+                                Dijital reklam yönetimi bu hizmete dahil mi?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="faq-answer-6" class="faq-answer" role="region" aria-labelledby="faq-question-6">
+                            <p>Dijital reklam yönetimi ayrı bir uzmanlık ve hizmet alanıdır. İhtiyaç halinde sosyal medya yönetimi çalışmasına ek olarak planlanabilir. Reklam hedefleri, bütçe, kampanya yapısı, kreatif üretim ve performans takibi ayrıca kapsamlandırılır.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-7" id="faq-question-7">
+                                Sosyal medya performansı nasıl raporlanıyor?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="faq-answer-7" class="faq-answer" role="region" aria-labelledby="faq-question-7">
+                            <p>İçeriklerin erişim, görüntülenme, etkileşim, takipçi gelişimi ve içerik türlerine göre performansı düzenli olarak değerlendirilir. Raporlama kapsamı projeye göre değişebilir. Elde edilen veriler sonraki içerik planlarını ve üretim kararlarını geliştirmek amacıyla kullanılır.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="faq-answer-8" id="faq-question-8">
+                                Sosyal medya yönetimi fiyatı nasıl belirlenir?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="faq-answer-8" class="faq-answer" role="region" aria-labelledby="faq-question-8">
+                            <p>Sosyal medya yönetimi fiyatı; kullanılacak platformlara, aylık içerik sayısına, tasarım & video üretim ihtiyacına, çekim sıklığına, yayın sürecine ve talep edilen ek hizmetlere göre belirlenir. Markaya özel çalışma kapsamı netleştirildikten sonra teklif hazırlanır.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Info note & CTA box -->
+                <div style="margin-top: 4rem;">
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2.5rem; text-align: center;">
+                        Aradığınız yanıtı bulamadıysanız veya markanıza özel çalışma kapsamını öğrenmek istiyorsanız projenizi bize anlatabilirsiniz.
+                    </p>
+
+                    <div class="cta-box" style="margin-top: 0;">
+                        <p class="cta-box-text" style="margin-bottom: 2rem;">
+                            Sosyal Medya Yönetimi için size özel teklif ve detaylı bilgi alın.
+                        </p>
+                        <a href="/contact" class="btn btn-primary">Teklif ve Bilgi Al</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer section">
@@ -602,6 +804,36 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqList = document.querySelector('.faq-list');
+            if (faqList) {
+                faqList.classList.add('js-faq-active');
+            }
+
+            const buttons = document.querySelectorAll('.faq-question');
+            buttons.forEach((button, index) => {
+                const answerId = button.getAttribute('aria-controls');
+                const answer = document.getElementById(answerId);
+                
+                // Open first FAQ by default
+                if (index === 0) {
+                    button.setAttribute('aria-expanded', 'true');
+                    if (answer) answer.classList.add('show');
+                } else {
+                    button.setAttribute('aria-expanded', 'false');
+                }
+
+                button.addEventListener('click', () => {
+                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', !isExpanded);
+                    if (answer) {
+                        answer.classList.toggle('show');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
