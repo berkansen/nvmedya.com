@@ -84,10 +84,18 @@
             height: 100%;
         }
 
-        .service-card-page:hover {
+        .service-card-page:hover,
+        .service-card-link:hover .service-card-page {
             transform: translateY(-5px);
             border-color: rgba(255, 255, 255, 0.1);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
         }
 
         .service-icon-page {
@@ -184,11 +192,13 @@
                 </div>
 
                 <div class="services-grid-page">
-                    <article class="service-card-page">
-                        <i class='bx bx-share-alt service-icon-page'></i>
-                        <h3 class="service-title-page">Sosyal Medya Yönetimi</h3>
-                        <p class="service-desc-page">Markanızın hedef kitlesine ve iletişim diline uygun sosyal medya stratejisi oluşturuyor; içerik planlama, metin yazımı, tasarım, video üretimi, yayın süreci ve performans raporlamasını birlikte yönetiyoruz.</p>
-                    </article>
+                    <a href="/hizmetler/sosyal-medya-yonetimi" class="service-card-link">
+                        <article class="service-card-page">
+                            <i class='bx bx-share-alt service-icon-page'></i>
+                            <h3 class="service-title-page">Sosyal Medya Yönetimi</h3>
+                            <p class="service-desc-page">Markanızın hedef kitlesine ve iletişim diline uygun sosyal medya stratejisi oluşturuyor; içerik planlama, metin yazımı, tasarım, video üretimi, yayın süreci ve performans raporlamasını birlikte yönetiyoruz.</p>
+                        </article>
+                    </a>
 
                     <article class="service-card-page">
                         <i class='bx bx-video service-icon-page'></i>
