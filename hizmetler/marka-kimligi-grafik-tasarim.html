@@ -406,6 +406,84 @@
                 padding: 1.5rem;
             }
         }
+
+        /* FAQ Section Styles */
+        #marka-kimligi-sik-sorulan-sorular {
+            scroll-margin-top: 100px;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 2rem;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-align: left;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-question[aria-expanded="true"] .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Accessibly hide when JS is active, but keep visible if no-js */
+        .js-faq-active .faq-answer {
+            display: none;
+        }
+
+        .js-faq-active .faq-answer.show {
+            display: block;
+        }
+
+        @media screen and (max-width: 576px) {
+            .faq-item {
+                padding: 1.25rem 1.5rem;
+            }
+            .faq-question {
+                font-size: 1.05rem;
+            }
+        }
     </style>
 </head>
 
@@ -702,6 +780,134 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sık Sorulan Sorular Section -->
+        <section id="marka-kimligi-sik-sorulan-sorular" class="section alt-bg" aria-labelledby="marka-kimligi-sss-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="marka-kimligi-sss-baslik" class="section-title">Marka Kimliği ve Grafik Tasarım Hakkında Sık Sorulan Sorular</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 1.5rem auto 0;">
+                        Marka kimliği çalışmasının kapsamı, logo tasarımı, revize süreci, teslim dosyaları, sosyal medya tasarımları, kullanım hakları ve fiyatlandırma hakkında en çok merak edilen soruları aşağıda yanıtladık.
+                    </p>
+                </div>
+
+                <div class="faq-list">
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="marka-kimligi-faq-answer-1" id="marka-kimligi-faq-question-1">
+                                Marka kimliği hizmeti neleri kapsar?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="marka-kimligi-faq-answer-1" class="faq-answer" role="region" aria-labelledby="marka-kimligi-faq-question-1">
+                            <p>Marka kimliği hizmeti; markanın görsel yönünün belirlenmesi, logo sistemi, renk paleti, tipografi, grafik unsurlar, sosyal medya tasarım yaklaşımı, kurumsal iletişim materyalleri ve marka kimliği rehberi gibi çalışmaları kapsayabilir. Kesin kapsam markanın ihtiyaçlarına ve proje teklifine göre belirlenir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="marka-kimligi-faq-answer-2" id="marka-kimligi-faq-question-2">
+                                Marka kimliği yalnızca logo tasarımından mı oluşur?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="marka-kimligi-faq-answer-2" class="faq-answer" role="region" aria-labelledby="marka-kimligi-faq-question-2">
+                            <p>Hayır. Logo, marka kimliğinin önemli bir parçasıdır ancak tek başına bütün marka kimliğini oluşturmaz. Renkler, tipografi, görsel dil, fotoğraf yaklaşımı, sosyal medya tasarımları ve farklı kullanım alanlarındaki kurallar birlikte tutarlı bir görsel sistem oluşturur.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="marka-kimligi-faq-answer-3" id="marka-kimligi-faq-question-3">
+                                Mevcut logomuz ve marka kimliğimiz yenilenebilir mi?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="marka-kimligi-faq-answer-3" class="faq-answer" role="region" aria-labelledby="marka-kimligi-faq-question-3">
+                            <p>Evet. Mevcut logo, renkler, tipografi ve iletişim materyalleri değerlendirilerek görsel kimlik yenileme çalışması yapılabilir. Korunması gereken marka unsurları ile geliştirilmesi gereken alanlar proje başlangıcında birlikte belirlenir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="marka-kimligi-faq-answer-4" id="marka-kimligi-faq-question-4">
+                                Kaç logo alternatifi ve kaç revize hazırlanıyor?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="marka-kimligi-faq-answer-4" class="faq-answer" role="region" aria-labelledby="marka-kimligi-faq-question-4">
+                            <p>Sunulacak tasarım alternatifi ve revize sayısı her projede aynı değildir. Alternatif sayısı, sunum biçimi, revize adımları ve kapsam dışı talepler teklif aşamasında açıkça belirlenir. Hizmet sınırsız alternatif veya sınırsız revize anlamına gelmez.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="marka-kimligi-faq-answer-5" id="marka-kimligi-faq-question-5">
+                                Sosyal medya tasarımları marka kimliği hizmetine dahil mi?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="marka-kimligi-faq-answer-5" class="faq-answer" role="region" aria-labelledby="marka-kimligi-faq-question-5">
+                            <p>Sosyal medya gönderileri, kaydırmalı içerikler, hikayeler, Reels kapakları ve kampanya şablonları proje kapsamına göre hizmete dahil edilebilir. Her marka kimliği projesi bütün sosyal medya formatlarını otomatik olarak kapsamaz.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="marka-kimligi-faq-answer-6" id="marka-kimligi-faq-question-6">
+                                Hangi dosya formatları teslim ediliyor?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="marka-kimligi-faq-answer-6" class="faq-answer" role="region" aria-labelledby="marka-kimligi-faq-question-6">
+                            <p>Teslim edilecek dosya formatları tasarımın kullanım alanına ve proje kapsamına göre belirlenir. Dijital kullanım, baskı, şeffaf arka plan veya farklı ölçüler için gereken dosyalar teklif aşamasında netleştirilir. Kaynak ve çalışma dosyalarının teslimi ayrıca kararlaştırılır.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="marka-kimligi-faq-answer-7" id="marka-kimligi-faq-question-7">
+                                Logo tasarımı marka tescilini de kapsar mı?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="marka-kimligi-faq-answer-7" class="faq-answer" role="region" aria-labelledby="marka-kimligi-faq-question-7">
+                            <p>Hayır. Logo ve marka kimliği tasarımı, marka tescili işleminden ayrıdır. Tasarımın hazırlanması markanın otomatik olarak tescil edildiği anlamına gelmez. Tescil ihtiyacı ilgili resmi ve hukuki süreçler üzerinden ayrıca değerlendirilmelidir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="marka-kimligi-faq-answer-8" id="marka-kimligi-faq-question-8">
+                                Marka kimliği ve grafik tasarım fiyatı nasıl belirlenir?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="marka-kimligi-faq-answer-8" class="faq-answer" role="region" aria-labelledby="marka-kimligi-faq-question-8">
+                            <p>Fiyat; logo ve tasarım kapsamına, hazırlanacak alternatiflere, sosyal medya şablonlarına, kurumsal materyallere, marka kimliği rehberinin ayrıntı seviyesine, revize sürecine ve teslim edilecek dosyalara göre belirlenir. İhtiyaçlar netleştirildikten sonra markaya özel teklif hazırlanır.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Disclosures & Info Area -->
+                <div style="margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 4rem;">
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2.5rem; text-align: center;">
+                        Teslim edilecek tasarımlar, kaynak dosyalar, kullanım alanları ve varsa hak devri koşulları yazılı proje kapsamına göre belirlenir. Hizmet, aksi açıkça kararlaştırılmadıkça bütün dosyaların veya hakların otomatik ve sınırsız devri anlamına gelmez.
+                    </p>
+
+                    <!-- CTA Box -->
+                    <div class="cta-box" style="margin-top: 3rem;">
+                        <p class="cta-box-text">
+                            Yeni bir marka kimliği oluşturmak veya mevcut görsel sisteminizi yenilemek için projenizin kapsamını birlikte değerlendirebiliriz.
+                        </p>
+                        <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                            <a href="/contact" class="btn btn-primary">Marka Tasarım Projeni Anlat</a>
+                            <a href="#marka-kimligi-tasarim-sureci" class="btn btn-outline" style="margin-left: 1rem;">Tasarım Sürecini İncele</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer section">
@@ -767,6 +973,36 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqList = document.querySelector('.faq-list');
+            if (faqList) {
+                faqList.classList.add('js-faq-active');
+            }
+
+            const buttons = document.querySelectorAll('.faq-question');
+            buttons.forEach((button, index) => {
+                const answerId = button.getAttribute('aria-controls');
+                const answer = document.getElementById(answerId);
+                
+                // Open first FAQ by default
+                if (index === 0) {
+                    button.setAttribute('aria-expanded', 'true');
+                    if (answer) answer.classList.add('show');
+                } else {
+                    button.setAttribute('aria-expanded', 'false');
+                }
+
+                button.addEventListener('click', () => {
+                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', !isExpanded);
+                    if (answer) {
+                        answer.classList.toggle('show');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
