@@ -133,6 +133,168 @@
             line-height: 1.5;
             margin: 0;
         }
+
+        /* Info Box Styles */
+        .info-box {
+            background: rgba(239, 120, 26, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 2.5rem auto 3rem;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .info-box-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        /* Grid & Cards Styles */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .scope-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            height: 100%;
+        }
+
+        .scope-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .scope-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .scope-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .scope-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Ambassador Example Card Styles */
+        .ambassador-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .ambassador-card {
+            background: rgba(255, 255, 255, 0.01);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            height: 100%;
+        }
+
+        .ambassador-card:hover {
+            border-color: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .ambassador-tag {
+            display: inline-block;
+            background: rgba(239, 120, 26, 0.1);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .ambassador-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .scope-footer-text {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .scope-footer-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px dashed var(--primary-color);
+            padding-bottom: 2px;
+        }
+
+        .scope-footer-text a:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
+        }
+
+        @media screen and (max-width: 992px) {
+            .scope-grid, .ambassador-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .scope-grid, .ambassador-grid {
+                grid-template-columns: 1fr;
+            }
+            .scope-card, .ambassador-card {
+                padding: 2rem 1.5rem;
+            }
+            .scope-footer-text {
+                text-align: left;
+            }
+        }
     </style>
 </head>
 
@@ -196,6 +358,126 @@
                 </div>
             </div>
             <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Sanal Marka Elçisi Hizmet Kapsamı Section -->
+        <section id="sanal-marka-elcisi-hizmet-kapsami" class="section alt-bg" aria-labelledby="sanal-marka-elcisi-hizmet-kapsami-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="sanal-marka-elcisi-hizmet-kapsami-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Sanal Marka Elçisi ve AI Kreatif Çözümler Hizmetimiz Neleri Kapsar?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        NVM sanal marka elçisi ve AI kreatif çözümler hizmeti; karakter fikrinin oluşturulmasından görsel kimlik, kişilik, hikaye, kullanım kuralları ve içerik üretim sistemine kadar markaya özel dijital karakter geliştirme sürecini kapsar. Kesin çalışma kapsamı, karakterin kullanılacağı sektörlere, platformlara, içerik formatlarına ve ticari kullanım ihtiyaçlarına göre belirlenir.
+                    </p>
+                </div>
+
+                <!-- Info Box (Direct Answer Area) -->
+                <div class="info-box">
+                    <p class="info-box-title">Kısaca Neler Yapıyoruz?</p>
+                    <p class="info-box-text">
+                        Markanıza özel bir sanal karakter tasarlıyor; karakterin görünümünü, kişiliğini, hikayesini, konuşma biçimini, görsel dünyasını ve sosyal medya içeriklerinde nasıl kullanılacağını tutarlı bir sistem içinde planlıyoruz.
+                    </p>
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="scope-grid">
+                    <article class="scope-card">
+                        <i class='bx bx-compass scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Karakter Stratejisi ve Amaç</h3>
+                        <p class="scope-desc">Karakterin marka için hangi rolü üstleneceğini belirliyoruz. Sanal marka elçisinin bilgilendirme, eğlendirme, ürün anlatımı, topluluk iletişimi veya marka hikayesi gibi hangi amaçlarla kullanılacağını netleştiriyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-user-pin scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Karakter Tasarımı ve Görsel Kimlik</h3>
+                        <p class="scope-desc">Karakterin yaşını, görünümünü, kıyafetlerini, renklerini, fiziksel özelliklerini ve genel tasarım dilini markanın kimliğiyle uyumlu biçimde oluşturuyoruz. Karakterin farklı içeriklerde tanınabilir kalması için temel görsel kurallar belirliyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-conversation scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Kişilik, Hikaye and Konuşma Dili</h3>
+                        <p class="scope-desc">Karakterin kişiliğini, değerlerini, davranış biçimini, geçmiş hikayesini ve hedef kitleyle nasıl iletişim kuracağını planlıyoruz. Kullanılacak konuşma dili ve anlatım tonu markanın genel iletişim yaklaşımıyla uyumlu hale getiriliyor.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-sync scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Tutarlı Karakter Üretim Sistemi</h3>
+                        <p class="scope-desc">Karakterin yüzü, kıyafeti, oranları ve temel görünüm özelliklerinin farklı görsellerde mümkün olduğunca tutarlı kalmasını sağlayacak üretim kuralları oluşturuyoruz. Karakterin her içerikte birbirinden tamamen farklı görünmesini önlemeyi hedefliyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-category scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">İçerik Formatları ve Kullanım Senaryoları</h3>
+                        <p class="scope-desc">Sanal karakterin sosyal medya gönderileri, Reels, hikayeler, kampanyalar, bilgilendirici içerikler, reklamlar veya marka duyurularında nasıl kullanılacağını planlıyoruz. Her kullanım alanı için uygun içerik formatları ve anlatım biçimleri geliştiriyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-shape-polygon scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Yapay Zeka Destekli Görsel Üretim</h3>
+                        <p class="scope-desc">Karakterin kullanılacağı sahneleri, mekanları, kampanya dünyalarını ve içerik görsellerini yapay zeka destekli üretim araçlarıyla geliştiriyoruz. Üretimleri insan kontrolü, marka kimliği ve içerik amacı doğrultusunda değerlendiriyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-book-open scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Karakter Rehberi ve Kullanım Kuralları</h3>
+                        <p class="scope-desc">Karakterin hangi özelliklerinin değiştirilebileceğini, hangi özelliklerinin korunacağını ve farklı içeriklerde nasıl kullanılacağını açıklayan temel bir karakter rehberi oluşturabiliriz. Böylece üretim sürecinde görsel ve iletişim tutarlılığı korunur.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-slideshow scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Sürekli İçerik Üretimi ve Geliştirme</h3>
+                        <p class="scope-desc">Sanal marka elçisi tek seferlik bir görsel olarak bırakılmaz. İhtiyaca göre karakter için düzenli içerik serileri, yeni sahneler, kampanya uyarlamaları ve farklı platformlara uygun üretimler hazırlanabilir.</p>
+                    </article>
+                </div>
+
+                <!-- Aktif Olarak Kullanılan Örnekler Alt Bölümü -->
+                <div style="margin-top: 5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 5rem;">
+                    <div class="section-header center">
+                        <h2>Aktif Olarak Kullanılan Sanal Marka Elçisi Örneklerimiz</h2>
+                        <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 1.5rem auto 0;">
+                            NVM tarafından geliştirilen sanal marka elçileri farklı sektörlerde aktif olarak kullanılmaktadır. Her karakter, temsil ettiği sektörün hedef kitlesine, iletişim diline ve içerik ihtiyaçlarına özel olarak oluşturulmuştur.
+                        </p>
+                    </div>
+
+                    <!-- Örnek Kartları -->
+                    <div class="ambassador-grid">
+                        <article class="ambassador-card">
+                            <span class="ambassador-tag">Yapı Sektörü</span>
+                            <h3 class="ambassador-title">Panpan Usta</h3>
+                            <p class="scope-desc">Panpan Usta, yapı sektöründeki ürünleri, uygulamaları ve teknik bilgileri daha anlaşılır ve hatırlanabilir bir karakter diliyle anlatmak amacıyla geliştirilmiştir.</p>
+                        </article>
+
+                        <article class="ambassador-card">
+                            <span class="ambassador-tag">Otomobil Sporları</span>
+                            <h3 class="ambassador-title">Ege</h3>
+                            <p class="scope-desc">Ege, otomobil sporları dünyasının enerjisini, hızını ve heyecanını temsil eden bir sanal karakter olarak içerik ve marka iletişiminde aktif biçimde kullanılmaktadır.</p>
+                        </article>
+
+                        <article class="ambassador-card">
+                            <span class="ambassador-tag">Taekwondo Spor Kulübü</span>
+                            <h3 class="ambassador-title">Hepsera</h3>
+                            <p class="scope-desc">Hepsera, taekwondo spor kulübü iletişiminde çocuklara ve ailelere yönelik içeriklerde kullanılan, sporun disiplin, özgüven ve gelişim yönlerini temsil eden bir sanal marka elçisidir.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- Footer Text Area (Bilgilendirmeler ve Bağlantılar) -->
+                <div style="margin-top: 4rem;">
+                    <p class="scope-footer-text">
+                        Yapay zeka destekli üretim süreçlerimizde insan kontrolü, marka tutarlılığı, gizlilik ve ticari kullanım ihtiyaçlarını birlikte değerlendiriyoruz. Ayrıntılı yaklaşımımızı <a href="/ai-kullanim-politikasi">AI Kullanım Politikası</a> sayfamızda inceleyebilirsiniz.
+                    </p>
+                    <p class="scope-footer-text" style="font-size: 0.95rem; opacity: 0.85;">
+                        <strong>Ticari kullanım ve haklar bilgilendirmesi:</strong> Karakterin kullanım alanları, teslim edilecek dosyalar, revize kapsamı ve ticari kullanım koşulları her projede ayrıca belirlenir. Hizmet, aksi yazılı olarak kararlaştırılmadıkça sınırsız kullanım veya bütün hakların otomatik devri anlamına gelmez.
+                    </p>
+                    <p class="scope-footer-text" style="margin-top: 2.5rem;">
+                        Sanal marka elçiniz için düzenli içerik üretimi, video kullanımı veya reklam kampanyaları planlıyorsanız 
+                        <a href="/hizmetler/sosyal-medya-yonetimi">sosyal medya yönetimi</a>, 
+                        <a href="/hizmetler/reels-dikey-video-produksiyonu">Reels ve dikey video prodüksiyonu</a> 
+                        ve 
+                        <a href="/hizmetler/dijital-reklam-yonetimi">dijital reklam yönetimi</a> 
+                        hizmetlerimizi de inceleyebilirsiniz.
+                    </p>
+                </div>
+            </div>
         </section>
     </main>
 
