@@ -406,6 +406,129 @@
                 font-size: 1.05rem;
             }
         }
+
+        /* Offer Section Styles */
+        #video-teklif-al {
+            scroll-margin-top: 100px;
+        }
+
+        .offer-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .offer-subtitle {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .offer-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            color: var(--text-main);
+        }
+
+        .offer-desc {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .prep-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            margin: 3rem 0;
+        }
+
+        .prep-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .prep-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .prep-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .prep-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .prep-note {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            opacity: 0.85;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .offer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0 1.5rem;
+        }
+
+        .trust-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            opacity: 0.75;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media screen and (max-width: 768px) {
+            .prep-list {
+                grid-template-columns: 1fr;
+            }
+            .offer-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .offer-buttons .btn {
+                margin: 0;
+                text-align: center;
+            }
+            .offer-buttons .btn-outline {
+                margin-left: 0 !important;
+                margin-top: 0.5rem;
+            }
+            .offer-title {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 
     <!-- Structured Data (JSON-LD) -->
@@ -809,6 +932,57 @@
                             <a href="/hizmetler/sosyal-medya-yonetimi" class="btn btn-outline" style="margin-left: 1rem;">Sosyal Medya Yönetimini İncele</a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teklif Al / Dönüşüm Section -->
+        <section id="video-teklif-al" class="section" aria-labelledby="video-teklif-al-baslik">
+            <div class="container">
+                <div class="offer-container">
+                    <span class="offer-subtitle">BİRLİKTE ÜRETELİM</span>
+                    <h2 id="video-teklif-al-baslik" class="offer-title">Markanız İçin Etkili Dikey Videolar Üretelim</h2>
+                    
+                    <p class="offer-desc">
+                        Reels, TikTok ve YouTube Shorts için markanızı doğru anlatan, izleme alışkanlıklarına uygun ve sürdürülebilir dikey video içerikleri üretmek istiyorsanız projenizi NVM'ye anlatabilirsiniz.
+                    </p>
+                    <p class="offer-desc">
+                        Video hedefinizi, içerik ihtiyacınızı ve çekim koşullarınızı değerlendirerek markanıza özel prodüksiyon kapsamını, üretim sürecini ve teklif detaylarını birlikte netleştiririz.
+                    </p>
+
+                    <!-- Görüşme Öncesi Hazırlık Bilgileri -->
+                    <div class="prep-box">
+                        <h3 class="prep-title">Video Projesi İçin Neleri Paylaşabilirsiniz?</h3>
+                        <ul class="prep-list">
+                            <li>Markanızın faaliyet alanı ve sunduğu ürün veya hizmetler</li>
+                            <li>Videoların kullanılacağı sosyal medya platformları</li>
+                            <li>Hazırlanmasını düşündüğünüz yaklaşık video sayısı</li>
+                            <li>Çekim yapılmasını istediğiniz mekan</li>
+                            <li>Kamera karşısında yer alacak kişiler</li>
+                            <li>Öne çıkarmak istediğiniz ürün, hizmet veya kampanya</li>
+                            <li>Beğendiğiniz video tarzları veya örnek içerikler</li>
+                        </ul>
+                        <p class="prep-note">
+                            Bütün ayrıntıların hazır olması gerekmez. İlk görüşmede içerik fikirlerini ve prodüksiyon ihtiyaçlarını birlikte netleştirebiliriz.
+                        </p>
+                    </div>
+
+                    <!-- CTA Butonları -->
+                    <div class="offer-buttons">
+                        <a href="/contact" class="btn btn-primary">Video Projeni Anlat</a>
+                        <a href="/hizmetler" class="btn btn-outline" style="margin-left: 1rem;">Tüm Hizmetleri İncele</a>
+                    </div>
+
+                    <!-- Sosyal Medya Yönetimi İç Bağlantısı -->
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; text-align: center; margin: 2rem auto;">
+                        Dikey videoların düzenli bir içerik stratejisi ve yayın planı içinde yönetilmesini istiyorsanız 
+                        <a href="/hizmetler/sosyal-medya-yonetimi" style="color: var(--primary-color); text-decoration: none; border-bottom: 1px dashed var(--primary-color); font-weight: 500; transition: var(--transition);">sosyal medya yönetimi hizmetimizi</a> de inceleyebilirsiniz.
+                    </p>
+
+                    <!-- İletişim Güven Notu -->
+                    <p class="trust-note">
+                        İletişim bilgileriniz yalnızca talebinizi değerlendirmek ve sizinle iletişim kurmak amacıyla kullanılır.
+                    </p>
                 </div>
             </div>
         </section>
