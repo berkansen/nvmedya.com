@@ -348,6 +348,97 @@
                 padding: 1.5rem;
             }
         }
+
+        /* Process List Timeline Styles */
+        #web-tasarim-gelistirme-sureci {
+            scroll-margin-top: 100px;
+        }
+
+        .process-list {
+            max-width: 800px;
+            margin: 3rem auto;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .process-list::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 1.25rem;
+            width: 2px;
+            height: 100%;
+            background: rgba(239, 120, 26, 0.15);
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-badge {
+            position: absolute;
+            top: 0.2rem;
+            left: -3rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .process-badge-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .process-step-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media screen and (max-width: 576px) {
+            .process-list {
+                padding-left: 2rem;
+            }
+            .process-list::before {
+                left: 0.75rem;
+            }
+            .process-badge {
+                width: 1.8rem;
+                height: 1.8rem;
+                left: -2rem;
+                font-size: 0.8rem;
+            }
+            .process-step-title {
+                font-size: 1.15rem;
+            }
+        }
     </style>
 </head>
 
@@ -552,6 +643,130 @@
                         <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
                             <a href="/contact" class="btn btn-primary">Web Projeni Anlat</a>
                             <a href="/hizmetler" class="btn btn-outline" style="margin-left: 1rem;">Tüm Hizmetleri İncele</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nasıl Çalışıyoruz / Süreç Section -->
+        <section id="web-tasarim-gelistirme-sureci" class="section" aria-labelledby="web-tasarim-gelistirme-sureci-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="web-tasarim-gelistirme-sureci-baslik" class="section-title">Web Tasarım ve Geliştirme Sürecinde Nasıl Çalışıyoruz?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 1.5rem auto 0;">
+                        NVM, web sitesi geliştirme sürecini yalnızca arayüz tasarımı veya kodlama olarak ele almaz. Proje hedefi, içerik yapısı, kullanıcı deneyimi, görsel tasarım, teknik geliştirme, test, yayın ve teslim aşamalarını birbirini tamamlayan tek bir çalışma sistemi içinde yönetir.
+                    </p>
+                </div>
+
+                <!-- Timeline / Step Process List -->
+                <div class="process-list">
+                    <article class="process-step">
+                        <div class="process-badge">1</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 1</span>
+                            <h3 class="process-step-title">Proje Hedefi ve İhtiyaç Analizi</h3>
+                            <p class="process-step-desc">Markanın faaliyet alanını, hedef kitlesini, mevcut dijital durumunu ve yeni web sitesinden beklediği temel sonucu değerlendiriyoruz. Tanıtım, güven oluşturma, iletişim, teklif, başvuru, kampanya veya satış gibi öncelikleri bu aşamada netleştiriyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">2</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 2</span>
+                            <h3 class="process-step-title">Sayfa Yapısı ve İçerik Planı</h3>
+                            <p class="process-step-desc">Web sitesinde bulunacak sayfaları, menü yapısını, içerik sırasını ve sayfalar arasındaki bağlantıları planlıyoruz. Hangi bilgilerin ana sayfada, hizmet sayfalarında veya diğer içerik alanlarında yer alacağını belirliyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">3</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 3</span>
+                            <h3 class="process-step-title">Kullanıcı Akışı ve İçerik Hiyerarşisi</h3>
+                            <p class="process-step-desc">Ziyaretçilerin web sitesine girdikten sonra hangi bilgileri hangi sırayla göreceğini ve iletişim, teklif, başvuru veya diğer hedeflenen adımlara nasıl yönlendirileceğini planlıyoruz. Başlıklar, açıklamalar, butonlar, formlar ve içerik blokları bu akışa göre düzenleniyor.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">4</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 4</span>
+                            <h3 class="process-step-title">Arayüz Tasarımı ve Mobil Uyumluluk</h3>
+                            <p class="process-step-desc">Marka kimliğine uygun renk, tipografi, buton, kart, görsel alan ve sayfa düzenlerini tasarlıyoruz. Arayüzü masaüstü, tablet ve mobil ekranlarda kullanılabilir olacak şekilde responsive bir sistem içinde hazırlıyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">5</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 5</span>
+                            <h3 class="process-step-title">Web Geliştirme ve Teknik Uygulama</h3>
+                            <p class="process-step-desc">Onaylanan arayüzü projenin ihtiyaçlarına uygun teknik altyapı üzerinde geliştiriyoruz. Navigasyon, sayfa bileşenleri, formlar, bağlantılar ve gerekli etkileşimleri performans, erişilebilirlik, bakım kolaylığı ve ileride geliştirilebilirlik açısından uyguluyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">6</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 6</span>
+                            <h3 class="process-step-title">İçerik Yerleşimi, Test ve Teknik Kontroller</h3>
+                            <p class="process-step-desc">Proje kapsamında sağlanan veya hazırlanan metinleri, görselleri ve iletişim bilgilerini ilgili sayfalara yerleştiriyoruz. Mobil görünüm, bağlantılar, formlar, tarayıcı uyumluluğu, performans, erişilebilirlik ve temel SEO alanlarını test ediyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">7</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 7</span>
+                            <h3 class="process-step-title">Yayın, Erişimler ve Proje Teslimi</h3>
+                            <p class="process-step-desc">Son kontroller ve onay tamamlandıktan sonra web sitesini belirlenen alan adı ve yayın altyapısında kullanıma hazır hale getiriyoruz. Yönetim erişimleri, teslim edilecek dosyalar, teknik bilgiler ve proje kapsamındaki kullanım detayları belirlenen teslim planına göre paylaşılır.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Süreç Özeti ve Bilgilendirmeler -->
+                <div style="margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 4rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <div class="info-box" style="margin-bottom: 2.5rem;">
+                        <span class="info-box-title">Süreç Kısaca</span>
+                        <p class="info-box-text">
+                            Hedef analizi, sayfa planı, kullanıcı akışı, arayüz tasarımı, teknik geliştirme, test ve yayın aşamaları tek bir web sitesi üretim süreci olarak yönetilir.
+                        </p>
+                    </div>
+
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center;">
+                        Web sitesi projelerinin tamamlanma süresi; sayfa sayısı, içeriklerin hazır olma durumu, tasarım kapsamı, teknik özellikler, entegrasyonlar, geri bildirim süreci ve revize ihtiyaçlarına göre değişir. Sabit bir teslim süresi bütün projeler için geçerli değildir.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Markaya ait güncel bilgiler, hizmet açıklamaları, iletişim bilgileri, yasal metinler, görseller and gerekli hesap erişimleri proje sürecinde marka tarafından sağlanabilir. İçerik üretiminin NVM tarafından hazırlanacağı alanlar ve onay süreci proje teklifinde ayrıca belirlenir.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Sunulacak tasarım seçenekleri, revize adımları ve proje kapsamına dahil özellikler teklif aşamasında belirlenir. Onaylanan kapsamın dışında kalan yeni sayfalar, özellikler, entegrasyonlar veya tasarım talepleri ayrıca değerlendirilir.
+                    </p>
+
+                    <span class="offer-subtitle" style="text-align: center; display: block; font-size: 0.9rem; color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Yayın Altyapısı ve Harici Servisler</span>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center;">
+                        Alan adı, hosting, kurumsal e-posta, SSL, ücretli lisanslar, eklentiler ve harici servis maliyetleri proje teklifinde açıkça belirtilir. Bu hizmetler, aksi yazılı olarak kararlaştırılmadıkça web tasarım ve geliştirme bedeline otomatik olarak dahil değildir.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Yayın sonrası bakım, güvenlik kontrolü, yedekleme, içerik güncelleme, yeni sayfa oluşturma, teknik destek ve özellik geliştirme hizmetleri proje tesliminden ayrı olarak planlanabilir. Web sitesi teslimi süresiz bakım veya sınırsız güncelleme hizmeti anlamına gelmez.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; text-align: center; font-style: italic;">
+                        Teknik SEO ve GEO altyapısı, web sitesinin arama motorları ve yapay zeka sistemleri tarafından daha düzenli biçimde işlenmesini destekler. Ancak belirli bir arama sırası, trafik, satış, başvuru veya yapay zeka cevaplarında kaynak gösterilme garantisi verilemez.
+                    </p>
+
+                    <!-- CTA Box -->
+                    <div class="cta-box">
+                        <p class="cta-box-text">
+                            Yeni web sitenizin kapsamını, sayfa yapısını ve ihtiyaç duyulan teknik özellikleri birlikte planlayabiliriz.
+                        </p>
+                        <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                            <a href="/contact" class="btn btn-primary">Web Projeni Anlat</a>
+                            <a href="#web-tasarim-hizmet-kapsami" class="btn btn-outline" style="margin-left: 1rem;">Hizmet Kapsamını İncele</a>
                         </div>
                     </div>
                 </div>
