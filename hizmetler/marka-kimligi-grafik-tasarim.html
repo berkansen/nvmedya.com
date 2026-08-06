@@ -167,6 +167,142 @@
                 padding: 0.4rem 0.8rem;
             }
         }
+
+        /* Info Box Styles */
+        .info-box {
+            background: rgba(239, 120, 26, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 2.5rem auto 3rem;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .info-box-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        /* Grid & Cards Styles */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .scope-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            height: 100%;
+        }
+
+        .scope-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .scope-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .scope-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .scope-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .scope-footer-text {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .scope-footer-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px dashed var(--primary-color);
+            padding-bottom: 2px;
+        }
+
+        .scope-footer-text a:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
+        }
+
+        /* CTA Area Style */
+        .cta-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            margin: 4rem auto 0;
+            text-align: center;
+        }
+
+        .cta-box-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+        }
+
+        @media screen and (max-width: 992px) {
+            .scope-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+            .scope-card {
+                padding: 2rem 1.5rem;
+            }
+            .scope-footer-text {
+                text-align: left;
+            }
+            .cta-box {
+                padding: 2rem 1.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -240,6 +376,122 @@
                 </div>
             </div>
             <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Marka Kimliği ve Grafik Tasarım Hizmet Kapsamı Section -->
+        <section id="marka-kimligi-hizmet-kapsami" class="section alt-bg" aria-labelledby="marka-kimligi-hizmet-kapsami-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="marka-kimligi-hizmet-kapsami-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Marka Kimliği ve Grafik Tasarım Hizmetimiz Neleri Kapsar?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        NVM marka kimliği ve grafik tasarım hizmeti; markanın görsel karakterinin belirlenmesinden logo, renk paleti, tipografi, sosyal medya tasarımları ve kurumsal iletişim materyallerine kadar uzanan bütünlüklü bir tasarım sistemi oluşturmayı kapsar. Kesin çalışma kapsamı, markanın mevcut durumu, ihtiyaçları, kullanım alanları ve teslim beklentilerine göre belirlenir.
+                    </p>
+                </div>
+
+                <!-- Info Box (Direct Answer Area) -->
+                <div class="info-box">
+                    <p class="info-box-title">Kısaca Neler Yapıyoruz?</p>
+                    <p class="info-box-text">
+                        Markanızın nasıl görünmesi, hangi duyguyu vermesi ve farklı temas noktalarında nasıl tutarlı kalması gerektiğini belirliyor; bu stratejiyi logo, renk, tipografi ve grafik tasarım sistemiyle görünür hale getiriyoruz.
+                    </p>
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="scope-grid">
+                    <article class="scope-card">
+                        <i class='bx bx-navigation scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Marka Konumlandırması ve Görsel Yön</h3>
+                        <p class="scope-desc">Markanın sektörde nasıl konumlandığını, hedef kitlesine hangi duyguyu vermek istediğini ve nasıl bir görsel karaktere ihtiyaç duyduğunu değerlendiriyoruz. Tasarım sürecinin genel yönünü bu stratejik çerçeve üzerinden belirliyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-crown scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Logo Tasarımı ve Logo Sistemi</h3>
+                        <p class="scope-desc">Markanın karakterini yansıtan ana logo, alternatif kullanım biçimleri, yatay veya dikey varyasyonlar ve gerekli durumlarda sembol kullanımını planlıyoruz. Logo sistemini farklı dijital ve basılı alanlarda uygulanabilecek şekilde geliştiriyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-color-fill scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Renk Paleti</h3>
+                        <p class="scope-desc">Markanın iletişim tonuna uygun ana, yardımcı ve vurgu renklerini belirliyoruz. Renklerin dijital ve basılı kullanımda daha tutarlı uygulanabilmesi için temel renk kodlarını ve kullanım yaklaşımını tanımlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-font scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Tipografi Sistemi</h3>
+                        <p class="scope-desc">Başlıklar, metinler, vurgu alanları ve kurumsal materyaller için kullanılabilecek yazı karakterlerini ve tipografik hiyerarşiyi planlıyoruz. Seçimlerde okunabilirlik, marka karakteri ve kullanım alanlarını birlikte değerlendiriyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-layer scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Görsel Dil ve Grafik Unsurlar</h3>
+                        <p class="scope-desc">Markanın sosyal medya, kampanya ve kurumsal iletişim çalışmalarında kullanabileceği şekilleri, desenleri, ikon yaklaşımını, fotoğraf stilini ve grafik kompozisyon kurallarını belirliyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-grid-alt scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Sosyal Medya Tasarım Sistemi</h3>
+                        <p class="scope-desc">Gönderi, kaydırmalı içerik, hikaye, Reels kapağı, duyuru ve kampanya tasarımlarının aynı marka hissini taşıması için temel sosyal medya şablonları ve içerik düzenleri oluşturabiliriz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-briefcase scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Kurumsal İletişim Materyalleri</h3>
+                        <p class="scope-desc">İhtiyaca göre kartvizit, antetli kağıt, sunum, teklif dosyası, e-posta imzası, broşür, afiş ve benzeri dijital veya basılı materyaller için tasarımlar hazırlanabilir. Dahil edilecek materyaller proje kapsamına göre belirlenir.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-book-bookmark scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Marka Kimliği Rehberi</h3>
+                        <p class="scope-desc">Logo kullanımı, renkler, tipografi, görsel dil, boşluklar ve temel tasarım kurallarını açıklayan bir marka kimliği rehberi hazırlanabilir. Rehberin ayrıntı seviyesi ve teslim kapsamı proje ihtiyaçlarına göre belirlenir.</p>
+                    </article>
+                </div>
+
+                <!-- Info note & disclosures -->
+                <div style="margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 4rem;">
+                    <div class="info-box" style="margin-bottom: 2.5rem;">
+                        <p class="info-box-title">Tek Bir Tasarım Değil, Tutarlı Bir Sistem</p>
+                        <p class="info-box-text">
+                            Marka kimliği çalışmasını yalnızca logo teslimi olarak ele almıyoruz. Markanın farklı platformlarda, kampanyalarda ve kurumsal materyallerde aynı dili sürdürebilmesi için birbiriyle uyumlu tasarım kararları oluşturuyoruz.
+                        </p>
+                    </div>
+
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; max-width: 800px; margin: 0 auto 1.5rem; text-align: center;">
+                        Hizmet yalnızca yeni kurulan markalar için değildir. Mevcut logosunu, renklerini veya iletişim materyallerini daha tutarlı hale getirmek isteyen markalar için görsel kimlik yenileme ve tasarım sistemi geliştirme çalışmaları da yapılabilir.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 800px; margin: 2rem auto 1.5rem; text-align: center; font-style: italic;">
+                        Hazırlanacak tasarım sayısı, logo varyasyonları, sosyal medya şablonları, kurumsal materyaller, revize adımları ve teslim edilecek dosya formatları proje teklifinde açıkça belirlenir. Her hizmet paketi bütün tasarım kalemlerini otomatik olarak kapsamaz.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 800px; margin: 0 auto 1.5rem; text-align: center; font-style: italic;">
+                        Tasarım dosyalarının kullanım alanları, kaynak dosya teslimi, ticari kullanım koşulları ve varsa hak devri kapsamı yazılı proje şartlarına göre belirlenir. Hizmet, aksi açıkça kararlaştırılmadıkça bütün kaynak dosyaların veya hakların otomatik ve sınırsız devri anlamına gelmez.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2.5rem; text-align: center; font-style: italic;">
+                        Logo veya marka kimliği tasarımı, marka tescili işlemi değildir. Marka tescili, yetkili resmi kurumlar ve gerekli hukuki süreçler üzerinden ayrıca yürütülür.
+                    </p>
+
+                    <!-- İç Hizmet Bağlantıları -->
+                    <p class="scope-footer-text" style="margin-top: 3rem;">
+                        Oluşturulan marka kimliğinin düzenli içeriklerde, videolarda ve reklam kampanyalarında uygulanması için 
+                        <a href="/hizmetler/sosyal-medya-yonetimi">sosyal medya yönetimi</a>, 
+                        <a href="/hizmetler/reels-dikey-video-produksiyonu">Reels ve dikey video prodüksiyonu</a> 
+                        ve 
+                        <a href="/hizmetler/dijital-reklam-yonetimi">dijital reklam yönetimi</a> 
+                        hizmetlerimizi de inceleyebilirsiniz.
+                    </p>
+
+                    <!-- CTA Box -->
+                    <div class="cta-box">
+                        <p class="cta-box-text">
+                            Markanızın mevcut görsel kimliğini değerlendirmek veya sıfırdan yeni bir marka tasarım sistemi oluşturmak için projenizi bize anlatabilirsiniz.
+                        </p>
+                        <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                            <a href="/contact" class="btn btn-primary">Marka Tasarım Projeni Anlat</a>
+                            <a href="/hizmetler" class="btn btn-outline" style="margin-left: 1rem;">Hizmetlerimizi İncele</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
