@@ -406,6 +406,129 @@
                 font-size: 1.05rem;
             }
         }
+
+        /* Offer Section Styles */
+        #reklam-teklif-al {
+            scroll-margin-top: 100px;
+        }
+
+        .offer-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .offer-subtitle {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        .offer-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.2;
+            color: var(--text-main);
+        }
+
+        .offer-desc {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .prep-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            margin: 3rem 0;
+        }
+
+        .prep-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .prep-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .prep-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .prep-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .prep-note {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            opacity: 0.85;
+            font-style: italic;
+            margin: 0;
+        }
+
+        .offer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0 1.5rem;
+        }
+
+        .trust-note {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            opacity: 0.75;
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media screen and (max-width: 768px) {
+            .prep-list {
+                grid-template-columns: 1fr;
+            }
+            .offer-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .offer-buttons .btn {
+                margin: 0;
+                text-align: center;
+            }
+            .offer-buttons .btn-outline {
+                margin-left: 0 !important;
+                margin-top: 0.5rem;
+            }
+            .offer-title {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 
     <!-- Structured Data (JSON-LD) -->
@@ -818,6 +941,65 @@
                             <a href="/hizmetler/reels-dikey-video-produksiyonu" class="btn btn-outline" style="margin-left: 1rem;">Reels Hizmetini İncele</a>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Teklif Al / Dönüşüm Section -->
+        <section id="reklam-teklif-al" class="section" aria-labelledby="reklam-teklif-al-baslik">
+            <div class="container">
+                <div class="offer-container">
+                    <span class="offer-subtitle">REKLAM STRATEJİNİZİ PLANLAYALIM</span>
+                    <h2 id="reklam-teklif-al-baslik" class="offer-title">Reklam Bütçenizi Daha Planlı Bir Sistemle Yönetin</h2>
+                    
+                    <p class="offer-desc">
+                        Dijital reklam kampanyalarınızın hedef kitle, kreatif, bütçe ve performans süreçlerini birlikte yönetmek istiyorsanız reklam projenizi NVM'ye anlatabilirsiniz.
+                    </p>
+                    <p class="offer-desc">
+                        Markanızı, reklam hedeflerinizi ve mevcut dijital altyapınızı inceleyerek size uygun kampanya kapsamını, çalışma sürecini ve teklif detaylarını birlikte netleştiririz.
+                    </p>
+
+                    <!-- Görüşme Öncesi Hazırlık Bilgileri -->
+                    <div class="prep-box">
+                        <h3 class="prep-title">Reklam Görüşmesi İçin Neleri Paylaşabilirsiniz?</h3>
+                        <ul class="prep-list">
+                            <li>Markanızın faaliyet alanı and sunduğu ürün veya hizmetler</li>
+                            <li>Reklamla ulaşmak istediğiniz temel hedef</li>
+                            <li>Hedeflediğiniz müşteri kitlesi</li>
+                            <li>Kullanmayı düşündüğünüz yaklaşık reklam bütçesi</li>
+                            <li>Reklamlarda öne çıkarmak istediğiniz ürün, hizmet veya kampanya</li>
+                            <li>Varsa mevcut web siteniz, iletişim sayfanız veya satış altyapınız</li>
+                            <li>Daha önce yürüttüğünüz reklam çalışmaları ve mevcut reklam hesaplarınız</li>
+                        </ul>
+                        <p class="prep-note">
+                            Bütün ayrıntıların hazır olması gerekmez. İlk görüşmede reklam hedeflerinizi, bütçe yaklaşımınızı ve teknik ihtiyaçlarınızı birlikte netleştirebiliriz.
+                        </p>
+                    </div>
+
+                    <!-- CTA Butonları -->
+                    <div class="offer-buttons">
+                        <a href="/contact" class="btn btn-primary">Reklam Projeni Anlat</a>
+                        <a href="/hizmetler" class="btn btn-outline" style="margin-left: 1rem;">Tüm Hizmetleri İncele</a>
+                    </div>
+
+                    <!-- İlgili Hizmetlere İç Bağlantılar -->
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; text-align: center; margin: 2rem auto;">
+                        Reklam kampanyalarında kullanılacak içeriklerin üretilmesi ve düzenli bir yayın sistemi içinde yönetilmesi için 
+                        <a href="/hizmetler/reels-dikey-video-produksiyonu" style="color: var(--primary-color); text-decoration: none; border-bottom: 1px dashed var(--primary-color); font-weight: 500; transition: var(--transition);">Reels ve dikey video prodüksiyonu</a> 
+                        ile 
+                        <a href="/hizmetler/sosyal-medya-yonetimi" style="color: var(--primary-color); text-decoration: none; border-bottom: 1px dashed var(--primary-color); font-weight: 500; transition: var(--transition);">sosyal medya yönetimi</a> 
+                        hizmetlerimizi de inceleyebilirsiniz.
+                    </p>
+
+                    <!-- Bütçe Bilgilendirmesi -->
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; text-align: center; max-width: 720px; margin: 1.5rem auto 2.5rem; font-style: italic;">
+                        Reklam platformuna ödenecek medya bütçesi, NVM reklam yönetimi hizmet bedelinden ayrı olarak değerlendirilir.
+                    </p>
+
+                    <!-- İletişim Güven Notu -->
+                    <p class="trust-note">
+                        İletişim bilgileriniz yalnızca talebinizi değerlendirmek ve sizinle iletişim kurmak amacıyla kullanılır.
+                    </p>
                 </div>
             </div>
         </section>
