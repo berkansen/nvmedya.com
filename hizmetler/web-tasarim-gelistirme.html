@@ -156,6 +156,198 @@
             border-color: var(--primary-color);
             background: rgba(239, 120, 26, 0.05);
         }
+
+        /* Info Box Styles */
+        .info-box {
+            background: rgba(239, 120, 26, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 2.5rem auto 3rem;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .info-box-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        /* Grid & Cards Styles */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .scope-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            height: 100%;
+        }
+
+        .scope-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .scope-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .scope-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .scope-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .scope-footer-text {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .scope-footer-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px dashed var(--primary-color);
+            padding-bottom: 2px;
+        }
+
+        .scope-footer-text a:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
+        }
+
+        /* List Box Styles */
+        .prep-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            margin: 3rem auto;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .prep-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .prep-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .prep-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .prep-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .prep-note {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* CTA Area Style */
+        .cta-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            margin: 4rem auto 0;
+            text-align: center;
+        }
+
+        .cta-box-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+        }
+
+        @media screen and (max-width: 992px) {
+            .scope-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .prep-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+            .scope-card {
+                padding: 2rem 1.5rem;
+            }
+            .scope-footer-text {
+                text-align: left;
+            }
+            .prep-box {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -225,10 +417,145 @@
                     <div class="hero-buttons">
                         <a href="/contact" class="btn btn-primary">Web Projeni Anlat</a>
                         <a href="#web-tasarim-hizmet-kapsami" class="btn btn-outline" style="margin-left: 1rem;">Hizmet Kapsamını İncele</a>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Web Tasarım ve Geliştirme Hizmet Kapsamı Section -->
+        <section id="web-tasarim-hizmet-kapsami" class="section alt-bg" aria-labelledby="web-tasarim-hizmet-kapsami-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="web-tasarim-hizmet-kapsami-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Web Tasarım ve Geliştirme Hizmetimiz Neleri Kapsar?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        NVM web tasarım ve geliştirme hizmeti; proje hedeflerinin belirlenmesinden sayfa yapısı, kullanıcı deneyimi, görsel tasarım, mobil uyumluluk, yazılım geliştirme, içerik yerleşimi, performans, erişilebilirlik ve temel SEO altyapısına kadar uzanan bütünlüklü bir web sitesi üretim sürecini kapsar. Kesin çalışma kapsamı, ihtiyaç duyulan sayfalar, özellikler, entegrasyonlar ve teknik altyapıya göre belirlenir.
+                    </p>
+                </div>
+
+                <!-- Info Box (Direct Answer Area) -->
+                <div class="info-box">
+                    <span class="info-box-title">Kısaca Neler Yapıyoruz?</span>
+                    <p class="info-box-text">
+                        Markanızın hedeflerine uygun sayfa yapısını planlıyor, kullanıcıların ihtiyaç duyduğu bilgilere kolayca ulaşabileceği mobil uyumlu arayüzler tasarlıyor ve bu tasarımları hızlı, erişilebilir ve geliştirilebilir bir web altyapısına dönüştürüyoruz.
+                    </p>
+                </div>
+
+                <!-- Scope Cards Grid -->
+                <div class="scope-grid">
+                    <article class="scope-card">
+                        <i class='bx bx-target-lock scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Proje Hedefi ve Web Sitesi Stratejisi</h3>
+                        <p class="scope-desc">Web sitesinin markaya hangi konuda hizmet edeceğini belirliyoruz. Tanıtım, güven oluşturma, hizmet anlatımı, iletişim, teklif, başvuru, kampanya veya satış gibi temel hedefleri değerlendirerek projenin genel yönünü oluşturuyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-sitemap scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Sayfa Yapısı ve Bilgi Mimarisi</h3>
+                        <p class="scope-desc">Ana sayfa, hizmet sayfaları, hakkımızda, iletişim, yasal metinler ve projeye özel diğer sayfaların nasıl düzenleneceğini planlıyoruz. Kullanıcıların bilgiye kolay ulaşabilmesi için menü, sayfa sırası ve içerik ilişkilerini oluşturuyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-user-voice scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Kullanıcı Deneyimi ve İçerik Hiyerarşisi</h3>
+                        <p class="scope-desc">Başlıkların, açıklamaların, görsellerin, formların ve yönlendirme butonlarının sayfa içinde nasıl sıralanacağını planlıyoruz. Ziyaretçiyi gereksiz karmaşaya sokmadan hedeflenen bilgiye ve aksiyona yönlendiren bir kullanıcı deneyimi oluşturmayı amaçlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-mobile-alt scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Arayüz Tasarımı ve Mobil Uyumluluk</h3>
+                        <p class="scope-desc">Web sitesinin renklerini, tipografisini, butonlarını, kartlarını, boşluklarını ve genel görsel dilini marka kimliğiyle uyumlu biçimde tasarlıyoruz. Sayfaların masaüstü, tablet ve mobil ekranlarda düzenli ve kullanılabilir görünmesini sağlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-code-curly scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Web Geliştirme ve Teknik Uygulama</h3>
+                        <p class="scope-desc">Onaylanan arayüzleri projenin ihtiyaçlarına uygun teknik altyapı üzerinde geliştiriyoruz. Sayfa bileşenlerini, navigasyonu, formları ve gerekli etkileşimleri performans, bakım kolaylığı ve ileride geliştirilebilirlik açısından değerlendiriyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-file-blank scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">İçerik Yerleşimi ve Sayfa Kurulumu</h3>
+                        <p class="scope-desc">Proje kapsamında sağlanan veya hazırlanan metinleri, görselleri, hizmet açıklamalarını ve iletişim bilgilerini belirlenen sayfalara yerleştiriyoruz. İçerik üretimi, görsel hazırlığı ve veri girişinin kapsamı teklif aşamasında ayrıca belirlenir.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-tachometer scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Performans ve Erişilebilirlik</h3>
+                        <p class="scope-desc">Sayfa yükleme hızı, mobil kullanım, görsel boyutları, kod yapısı, klavye erişimi, renk kontrastı ve semantik HTML gibi temel performans ve erişilebilirlik unsurlarını proje kapsamında değerlendiriyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-search-alt scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Teknik SEO ve GEO Altyapısı</h3>
+                        <p class="scope-desc">Sayfa başlıkları, meta açıklamalar, canonical adresler, başlık hiyerarşisi, iç bağlantılar, yapılandırılmış veriler ve taranabilir içerik yapısı gibi temel teknik SEO unsurlarını planlıyoruz. Açık ve düzenli içerik yapısı, arama motorlarının ve yapay zeka sistemlerinin sayfaları daha doğru anlamasını desteklenebilir.</p>
+                    </article>
+                </div>
+
+                <!-- Hangi Web Projeleri Hazırlanabilir -->
+                <div class="prep-box">
+                    <span class="prep-title" style="display: block; font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem;">Hangi Web Projeleri Hazırlanabilir?</span>
+                    <ul class="prep-list">
+                        <li>Kurumsal web siteleri</li>
+                        <li>Hizmet ve tanıtım siteleri</li>
+                        <li>Kişisel marka ve uzmanlık siteleri</li>
+                        <li>Kampanya ve landing page çalışmaları</li>
+                        <li>Etkinlik veya proje tanıtım sayfaları</li>
+                        <li>İçerik ve rehber odaklı web siteleri</li>
+                    </ul>
+                    <p class="prep-note">
+                        E-ticaret, üyelik, rezervasyon, ödeme, müşteri paneli, çoklu dil, özel yazılım ve harici sistem entegrasyonu gibi gelişmiş ihtiyaçlar projenin teknik gereksinimlerine göre ayrıca değerlendirilir.
+                    </p>
+                </div>
+
+                <!-- Disclosures Area -->
+                <div style="margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 4rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center;">
+                        İçeriklerin marka tarafından güncellenebilmesi için yönetim paneli veya içerik yönetim sistemi kullanılabilir. Panelin özellikleri, kullanıcı rolleri, güncellenebilir alanlar ve eğitim ihtiyacı proje altyapısına göre belirlenir.
+                    </p>
+
+                    <span class="offer-subtitle" style="text-align: center; display: block; font-size: 0.9rem; color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Alan Adı ve Hosting Hakkında</span>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center;">
+                        Alan adı, hosting, kurumsal e-posta, SSL, ücretli eklenti, lisans ve harici servis maliyetleri proje teklifinde açıkça belirtilir. Bu hizmetler, aksi yazılı olarak kararlaştırılmadıkça web tasarım ve geliştirme bedeline otomatik olarak dahil değildir.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Yayın sonrası bakım, içerik güncelleme, güvenlik kontrolü, yedekleme, teknik destek ve yeni özellik geliştirme hizmetleri proje tesliminden ayrı olarak planlanabilir. Web sitesi teslimi süresiz bakım ve sınırsız güncelleme hizmeti anlamına gelmez.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Web sitesi güncel ve yaygın kullanılan tarayıcılar ile farklı ekran boyutlarında test edilir. Ancak üçüncü taraf servisler, eski tarayıcılar, hosting koşulları, sonradan eklenen içerikler ve dış sistemlerdeki değişiklikler performansı veya görünümü etkileyebilir.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Teknik SEO ve GEO altyapısı, web sitesinin arama motorları ve yapay zeka sistemleri tarafından daha anlaşılır biçimde işlenmesini destekler. Ancak belirli bir arama sırası, trafik miktarı, müşteri dönüşümü veya yapay zeka cevaplarında kaynak gösterilme garantisi verilemez.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; text-align: center; font-style: italic;">
+                        Teslim edilecek sayfalar, tasarım dosyaları, kaynak kodlar, yönetim erişimleri, teknik dokümanlar ve kullanım koşulları proje teklifinde açıkça belirlenir. Hizmet, aksi yazılı olarak kararlaştırılmadıkça bütün üçüncü taraf lisanslarının veya süresiz teknik desteğin otomatik devri anlamına gelmez.
+                    </p>
+
+                    <!-- İç Hizmet Bağlantıları -->
+                    <p class="scope-footer-text" style="margin-top: 3rem;">
+                        Web sitenizin marka kimliği, düzenli içerikleri, tanıtım videoları ve reklam kampanyaları için 
+                        <a href="/hizmetler/marka-kimligi-grafik-tasarim">marka kimliği ve grafik tasarım</a>, 
+                        <a href="/hizmetler/sosyal-medya-yonetimi">sosyal medya yönetimi</a>, 
+                        <a href="/hizmetler/reels-dikey-video-produksiyonu">Reels ve dikey video prodüksiyonu</a> 
+                        ve 
+                        <a href="/hizmetler/dijital-reklam-yonetimi">dijital reklam yönetimi</a> 
+                        hizmetlerimizi de inceleyebilirsiniz.
+                    </p>
+
+                    <!-- CTA Box -->
+                    <div class="cta-box">
+                        <p class="cta-box-text">
+                            Yeni bir web sitesi oluşturmak veya mevcut sitenizi daha kullanışlı ve güncel bir yapıya taşımak için ihtiyaçlarınızı birlikte değerlendirebiliriz.
+                        </p>
+                        <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                            <a href="/contact" class="btn btn-primary">Web Projeni Anlat</a>
+                            <a href="/hizmetler" class="btn btn-outline" style="margin-left: 1rem;">Tüm Hizmetleri İncele</a>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="hero-overlay"></div>
         </section>
     </main>
 
