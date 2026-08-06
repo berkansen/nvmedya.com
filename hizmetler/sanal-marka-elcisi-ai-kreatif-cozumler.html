@@ -402,6 +402,84 @@
                 padding: 2rem 1.5rem;
             }
         }
+
+        /* FAQ Section Styles */
+        #sanal-marka-elcisi-sik-sorulan-sorular {
+            scroll-margin-top: 100px;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 2rem;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-align: left;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-question[aria-expanded="true"] .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Accessibly hide when JS is active, but keep visible if no-js */
+        .js-faq-active .faq-answer {
+            display: none;
+        }
+
+        .js-faq-active .faq-answer.show {
+            display: block;
+        }
+
+        @media screen and (max-width: 576px) {
+            .faq-item {
+                padding: 1.25rem 1.5rem;
+            }
+            .faq-question {
+                font-size: 1.05rem;
+            }
+        }
     </style>
 </head>
 
@@ -537,7 +615,7 @@
                 </div>
 
                 <!-- Aktif Olarak Kullanılan Örnekler Alt Bölümü -->
-                <div style="margin-top: 5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 5rem;">
+                <div id="aktif-sanal-marka-elcisi-ornekleri" style="scroll-margin-top: 100px; margin-top: 5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 5rem;">
                     <div class="section-header center">
                         <h2>Aktif Olarak Kullanılan Sanal Marka Elçisi Örneklerimiz</h2>
                         <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 1.5rem auto 0;">
@@ -692,6 +770,134 @@
                 </div>
             </div>
         </section>
+
+        <!-- Sık Sorulan Sorular Section -->
+        <section id="sanal-marka-elcisi-sik-sorulan-sorular" class="section alt-bg" aria-labelledby="sanal-marka-elcisi-sss-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="sanal-marka-elcisi-sss-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Sanal Marka Elçisi ve AI Kreatif Çözümler Hakkında Sık Sorulan Sorular</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        Sanal marka elçisinin nasıl oluşturulduğu, karakter tutarlılığı, içerik üretimi, insan kontrolü, kullanım hakları ve fiyatlandırma hakkında en çok merak edilen soruları aşağıda yanıtladık.
+                    </p>
+                </div>
+
+                <div class="faq-list">
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="sanal-karakter-faq-answer-1" id="sanal-karakter-faq-question-1">
+                                Sanal marka elçisi nedir?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="sanal-karakter-faq-answer-1" class="faq-answer" role="region" aria-labelledby="sanal-karakter-faq-question-1">
+                            <p>Sanal marka elçisi; bir markayı içeriklerde, kampanyalarda ve dijital iletişim çalışmalarında temsil etmek üzere oluşturulan özgün bir dijital karakterdir. Karakterin görünümü, kişiliği, hikayesi, konuşma biçimi ve kullanım alanları markanın hedef kitlesine ve iletişim stratejisine göre planlanır.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="sanal-karakter-faq-answer-2" id="sanal-karakter-faq-question-2">
+                                Sanal marka elçisi hizmeti neleri kapsar?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="sanal-karakter-faq-answer-2" class="faq-answer" role="region" aria-labelledby="sanal-karakter-faq-question-2">
+                            <p>Hizmet; karakter stratejisi, görsel tasarım, kişilik ve hikaye geliştirme, konuşma dili, test üretimleri, karakter tutarlılığı, kullanım senaryoları, karakter rehberi ve düzenli içerik üretimi gibi aşamaları kapsayabilir. Kesin çalışma kapsamı projenin ihtiyaçlarına göre belirlenir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="sanal-karakter-faq-answer-3" id="sanal-karakter-faq-question-3">
+                                Sanal karakter yalnızca bir görselden mi oluşur?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="sanal-karakter-faq-answer-3" class="faq-answer" role="region" aria-labelledby="sanal-karakter-faq-question-3">
+                            <p>Hayır. Sanal marka elçisi yalnızca tek bir karakter görselinden oluşmaz. Karakterin farklı sahnelerde, içeriklerde ve kampanyalarda kullanılabilmesi için görünüm, kişilik, iletişim dili, kullanım kuralları ve içerik formatları birlikte planlanır.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="sanal-karakter-faq-answer-4" id="sanal-karakter-faq-question-4">
+                                Karakter farklı içeriklerde aynı görünür mü?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="sanal-karakter-faq-answer-4" class="faq-answer" role="region" aria-labelledby="sanal-karakter-faq-question-4">
+                            <p>Karakterin yüzü, oranları, kıyafetleri ve temel görsel özelliklerinin farklı içeriklerde mümkün olduğunca tutarlı kalması için üretim kuralları ve test çalışmaları hazırlanır. Ancak yapay zeka destekli üretimlerde yüzde yüz ve kusursuz görsel tutarlılık garantisi verilemez. Sonuçlar insan kontrolüyle değerlendirilir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="sanal-karakter-faq-answer-5" id="sanal-karakter-faq-question-5">
+                                Yapay zeka ile hazırlanan içerikler insan kontrolünden geçiyor mu?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="sanal-karakter-faq-answer-5" class="faq-answer" role="region" aria-labelledby="sanal-karakter-faq-question-5">
+                            <p>Evet. Yapay zeka destekli karakter ve içerik üretimleri otomatik olarak yayınlanmaz. Karakter görünümü, marka uyumu, içerik amacı, metinler ve görsel tutarlılık NVM tarafından değerlendirilir ve belirlenen onay sürecinden sonra kullanıma hazırlanır.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="sanal-karakter-faq-answer-6" id="sanal-karakter-faq-question-6">
+                                Sanal marka elçisi hangi içeriklerde kullanılabilir?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="sanal-karakter-faq-answer-6" class="faq-answer" role="region" aria-labelledby="sanal-karakter-faq-question-6">
+                            <p>Sanal marka elçisi; sosyal medya gönderileri, Reels, hikayeler, bilgilendirici içerikler, kampanyalar, reklam görselleri, ürün veya hizmet anlatımları ve marka duyurularında kullanılabilir. Kullanılacak formatlar karakterin yapısına ve markanın iletişim hedeflerine göre belirlenir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="sanal-karakter-faq-answer-7" id="sanal-karakter-faq-question-7">
+                                Karakterin ticari kullanım hakları nasıl belirlenir?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="sanal-karakter-faq-answer-7" class="faq-answer" role="region" aria-labelledby="sanal-karakter-faq-question-7">
+                            <p>Karakterin kullanım alanları, teslim edilecek dosyalar, proje süresi, içerik üretim kapsamı ve ticari kullanım koşulları teklif ve sözleşme aşamasında ayrıca belirlenir. Hizmet, aksi yazılı olarak kararlaştırılmadıkça bütün kullanım haklarının veya üretim dosyalarının otomatik ve sınırsız devri anlamına gelmez.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <h3>
+                            <button type="button" class="faq-question" aria-expanded="false" aria-controls="sanal-karakter-faq-answer-8" id="sanal-karakter-faq-question-8">
+                                Sanal marka elçisi fiyatı nasıl belirlenir?
+                                <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                            </button>
+                        </h3>
+                        <div id="sanal-karakter-faq-answer-8" class="faq-answer" role="region" aria-labelledby="sanal-karakter-faq-question-8">
+                            <p>Fiyat; karakter sayısına, görsel stile, tasarım ve test üretimlerinin kapsamına, karakter rehberine, hazırlanacak içerik formatlarına, revize sürecine ve düzenli içerik üretimi ihtiyacına göre belirlenir. Proje kapsamı netleştirildikten sonra markaya özel teklif hazırlanır.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Footer Text Area (Bilgilendirmeler ve Bağlantılar) -->
+                <div style="margin-top: 4rem;">
+                    <p class="scope-footer-text">
+                        NVM tarafından geliştirilen ve aktif olarak kullanılan Panpan Usta, Ege ve Hepsera karakterlerini sayfadaki <a href="#aktif-sanal-marka-elcisi-ornekleri">uygulama örnekleri bölümünde</a> inceleyebilirsiniz.
+                    </p>
+
+                    <!-- CTA Box -->
+                    <div class="cta-box" style="margin-top: 3rem;">
+                        <p class="cta-box-text">
+                            Markanız için nasıl bir sanal karakter oluşturulabileceğini, karakterin hangi içeriklerde kullanılacağını ve proje kapsamını birlikte planlayabiliriz.
+                        </p>
+                        <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                            <a href="/contact" class="btn btn-primary">Sanal Karakter Projeni Anlat</a>
+                            <a href="/ai-kullanim-politikasi" class="btn btn-outline" style="margin-left: 1rem;">AI Kullanım Politikamızı İncele</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer section">
@@ -757,6 +963,36 @@
     </footer>
 
     <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqList = document.querySelector('.faq-list');
+            if (faqList) {
+                faqList.classList.add('js-faq-active');
+            }
+
+            const buttons = document.querySelectorAll('.faq-question');
+            buttons.forEach((button, index) => {
+                const answerId = button.getAttribute('aria-controls');
+                const answer = document.getElementById(answerId);
+                
+                // Open first FAQ by default
+                if (index === 0) {
+                    button.setAttribute('aria-expanded', 'true');
+                    if (answer) answer.classList.add('show');
+                } else {
+                    button.setAttribute('aria-expanded', 'false');
+                }
+
+                button.addEventListener('click', () => {
+                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', !isExpanded);
+                    if (answer) {
+                        answer.classList.toggle('show');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
