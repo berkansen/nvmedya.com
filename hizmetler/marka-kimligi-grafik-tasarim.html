@@ -303,6 +303,109 @@
                 padding: 2rem 1.5rem;
             }
         }
+
+        /* Timeline Styles */
+        #marka-kimligi-tasarim-sureci {
+            scroll-margin-top: 100px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 4rem auto 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 31px;
+            width: 2px;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: 80px;
+            text-align: left;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--card-bg);
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .timeline-item:hover .timeline-badge {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(239, 120, 26, 0.2);
+        }
+
+        .timeline-panel {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover .timeline-panel {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .timeline-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media screen and (max-width: 576px) {
+            .timeline::before {
+                display: none;
+            }
+            .timeline-item {
+                padding-left: 0;
+                margin-bottom: 2rem;
+            }
+            .timeline-badge {
+                position: relative;
+                margin-bottom: 1rem;
+                width: 50px;
+                height: 50px;
+            }
+            .timeline-panel {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -488,6 +591,112 @@
                         <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
                             <a href="/contact" class="btn btn-primary">Marka Tasarım Projeni Anlat</a>
                             <a href="/hizmetler" class="btn btn-outline" style="margin-left: 1rem;">Hizmetlerimizi İncele</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nasıl Çalışıyoruz Section -->
+        <section id="marka-kimligi-tasarim-sureci" class="section" aria-labelledby="marka-kimligi-tasarim-sureci-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="marka-kimligi-tasarim-sureci-baslik" class="section-title">Marka Kimliği ve Grafik Tasarım Sürecinde Nasıl Çalışıyoruz?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 1.5rem auto 0;">
+                        NVM, marka kimliği ve grafik tasarım sürecini yalnızca logo veya tekil görsel üretimi olarak ele almaz. Markanın stratejik yönünü, hedef kitlesini, görsel karakterini, kullanım alanlarını ve uzun vadeli tasarım ihtiyaçlarını birlikte değerlendirerek tutarlı bir görsel iletişim sistemi oluşturur.
+                    </p>
+                </div>
+
+                <!-- Timeline / Süreç Adımları -->
+                <ul class="timeline">
+                    <li class="timeline-item">
+                        <div class="timeline-badge">Adım 1</div>
+                        <article class="timeline-panel">
+                            <h3 class="timeline-title">Marka ve İhtiyaç Analizi</h3>
+                            <p class="timeline-desc">Markanın faaliyet alanını, hedef kitlesini, mevcut görsel kimliğini, iletişim dilini ve tasarım ihtiyaçlarını değerlendiriyoruz. Yeni bir marka oluşturuluyorsa temel marka yönünü, mevcut bir marka yenileniyorsa korunması ve geliştirilmesi gereken unsurları belirliyoruz.</p>
+                        </article>
+                    </li>
+
+                    <li class="timeline-item">
+                        <div class="timeline-badge">Adım 2</div>
+                        <article class="timeline-panel">
+                            <h3 class="timeline-title">Görsel Yön ve Tasarım Stratejisi</h3>
+                            <p class="timeline-desc">Markanın nasıl görünmesi, hangi duyguyu vermesi ve hedef kitlesi tarafından nasıl algılanması gerektiğini planlıyoruz. Renk, tipografi, biçim, kompozisyon ve görsel dil için temel tasarım yönünü oluşturuyoruz.</p>
+                        </article>
+                    </li>
+
+                    <li class="timeline-item">
+                        <div class="timeline-badge">Adım 3</div>
+                        <article class="timeline-panel">
+                            <h3 class="timeline-title">Referans ve Görsel Dünya Araştırması</h3>
+                            <p class="timeline-desc">Sektörün görsel alışkanlıklarını, rakiplerin iletişim yaklaşımını ve markanın farklılaşabileceği tasarım alanlarını inceliyoruz. Referanslar doğrudan kopyalanmaz; markaya özgü görsel kararları desteklemek amacıyla değerlendirilir.</p>
+                        </article>
+                    </li>
+
+                    <li class="timeline-item">
+                        <div class="timeline-badge">Adım 4</div>
+                        <article class="timeline-panel">
+                            <h3 class="timeline-title">Logo ve Temel Kimlik Tasarımı</h3>
+                            <p class="timeline-desc">Proje kapsamına göre logo alternatifleri, renk paleti, tipografi sistemi ve temel grafik unsurlar hazırlanır. Tasarımların dijital ve basılı kullanım alanlarında anlaşılır, uygulanabilir ve tutarlı olması hedeflenir.</p>
+                        </article>
+                    </li>
+
+                    <li class="timeline-item">
+                        <div class="timeline-badge">Adım 5</div>
+                        <article class="timeline-panel">
+                            <h3 class="timeline-title">Sunum, Geri Bildirim ve Revize</h3>
+                            <p class="timeline-desc">Hazırlanan tasarım yönünü ve temel kararları gerekçeleriyle birlikte sunuyoruz. Marka tarafından iletilen geri bildirimleri değerlendiriyor ve proje teklifinde belirlenen revize kapsamı doğrultusunda gerekli düzenlemeleri uyguluyoruz.</p>
+                        </article>
+                    </li>
+
+                    <li class="timeline-item">
+                        <div class="timeline-badge">Adım 6</div>
+                        <article class="timeline-panel">
+                            <h3 class="timeline-title">Uygulama Alanlarının Hazırlanması</h3>
+                            <p class="timeline-desc">Onaylanan marka kimliğini proje kapsamındaki sosyal medya şablonları, kurumsal materyaller, sunumlar, kampanya tasarımları veya diğer kullanım alanlarına uyarlıyoruz. Hazırlanacak uygulama sayısı ve türü teklif aşamasında belirlenir.</p>
+                        </article>
+                    </li>
+
+                    <li class="timeline-item">
+                        <div class="timeline-badge">Adım 7</div>
+                        <article class="timeline-panel">
+                            <h3 class="timeline-title">Dosya Teslimi ve Kullanım Rehberi</h3>
+                            <p class="timeline-desc">Onaylanan tasarımları proje kapsamında belirlenen dosya formatlarında teslim ediyoruz. Dahil edilmişse logo kullanımı, renkler, tipografi ve temel görsel kuralları açıklayan marka kimliği rehberi de hazırlanır.</p>
+                        </article>
+                    </li>
+                </ul>
+
+                <!-- Süreç Özeti ve Bilgilendirmeler -->
+                <div style="margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 4rem;">
+                    <div class="info-box" style="margin-bottom: 2.5rem;">
+                        <p class="info-box-title">Süreç Kısaca</p>
+                        <p class="info-box-text">
+                            Analiz, görsel yön, tasarım, sunum, revize, uygulama ve teslim aşamaları birbirini tamamlayan tek bir marka kimliği süreci olarak yönetilir.
+                        </p>
+                    </div>
+
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; max-width: 800px; margin: 0 auto 1.5rem; text-align: center;">
+                        Tasarım sürecinde sektör, rakipler ve görsel eğilimler araştırılır; ancak hazırlanan çalışmalar mevcut tasarımların doğrudan kopyası olarak oluşturulmaz. Amaç, markanın kendi karakterine ve kullanım ihtiyaçlarına uygun bir görsel sistem geliştirmektir.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 800px; margin: 2rem auto 1.5rem; text-align: center; font-style: italic;">
+                        Revize sayısı, sunulacak tasarım alternatifleri, karar süreci ve ek çalışma talepleri proje teklifinde belirlenen kapsam üzerinden yürütülür. Kapsam dışındaki yeni tasarım veya uygulama talepleri ayrıca değerlendirilir.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 800px; margin: 0 auto 1.5rem; text-align: center; font-style: italic;">
+                        Teslim edilecek dosya türleri, kaynak dosyalar, kullanım alanları ve varsa hak devri koşulları yazılı proje kapsamına göre belirlenir. Logo veya tasarım teslimi, aksi açıkça kararlaştırılmadıkça bütün kaynak dosyaların ve hakların otomatik olarak sınırsız devri anlamına gelmez.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2.5rem; text-align: center; font-style: italic;">
+                        Logo ve marka kimliği tasarım süreci, marka tescili işleminden ayrıdır. Tescil ihtiyacı bulunuyorsa ilgili resmi ve hukuki süreç ayrıca yürütülmelidir.
+                    </p>
+
+                    <!-- CTA Box -->
+                    <div class="cta-box">
+                        <p class="cta-box-text">
+                            Markanız için sıfırdan bir görsel kimlik oluşturmak veya mevcut tasarım sisteminizi daha tutarlı hale getirmek için ihtiyaçlarınızı birlikte değerlendirebiliriz.
+                        </p>
+                        <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                            <a href="/contact" class="btn btn-primary">Marka Tasarım Projeni Anlat</a>
+                            <a href="#marka-kimligi-hizmet-kapsami" class="btn btn-outline" style="margin-left: 1rem;">Hizmet Kapsamını İncele</a>
                         </div>
                     </div>
                 </div>
