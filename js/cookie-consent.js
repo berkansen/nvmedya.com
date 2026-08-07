@@ -2,6 +2,40 @@
 (function() {
     'use strict';
 
+    // Central bio link routes list (tracking-light / consent-free link hubs)
+    const BIO_LINK_ROUTES = [
+        '/nisan-vitrini',
+        '/berkan',
+        '/yeliz',
+        '/iklim-davetiye',
+        '/media',
+        '/hepsert'
+    ];
+
+    function isBioLinkRoute() {
+        let path = (window.location.pathname || '').toLowerCase();
+        if (path.length > 1 && path.endsWith('/')) {
+            path = path.slice(0, -1);
+        }
+        if (path.endsWith('.html')) {
+            path = path.slice(0, -5);
+        }
+        return BIO_LINK_ROUTES.includes(path);
+    }
+
+    // Immediately disable non-essential tracking if on a bio link route
+    if (isBioLinkRoute()) {
+        window['ga-disable-G-JD1C5PBEKD'] = true;
+        if (typeof window.gtag === 'function') {
+            window.gtag('consent', 'default', {
+                'analytics_storage': 'denied',
+                'ad_storage': 'denied'
+            });
+        }
+        // Do NOT initialize cookie consent UI, do NOT modify localStorage
+        return;
+    }
+
     const STORAGE_KEY = 'nvm_cookie_consent_v1';
 
     function getConsent() {
