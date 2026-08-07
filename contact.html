@@ -4,8 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İletişim - Nisan Vitrini Media</title>
-    <meta name="description" content="Nisan Vitrini Media ile iletişime geçin.">
+    <title>İletişim | Nisan Vitrini Media</title>
+    <meta name="description" content="Nisan Vitrini Media ile sosyal medya, içerik, dijital reklam, marka stratejisi, web, tasarım ve yapay zeka destekli kreatif projeleriniz için iletişime geçin.">
+
+    <link rel="canonical" href="https://www.nvmedya.com/contact">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="İletişim | Nisan Vitrini Media">
+    <meta property="og:description" content="Markanızın dijital iletişim, içerik, reklam, tasarım, web ve yeni nesil kreatif ihtiyaçlarını birlikte değerlendirelim.">
+    <meta property="og:url" content="https://www.nvmedya.com/contact">
+    <meta property="og:type" content="website">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,6 +39,135 @@
       gtag('config', 'G-JD1C5PBEKD');
     </script>
 
+    <style>
+        #proje-formu {
+            scroll-margin-top: 100px;
+        }
+
+        /* Breadcrumb Styles */
+        .breadcrumb-nav {
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .breadcrumb-list li:not(:last-child)::after {
+            content: "/";
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .breadcrumb-list a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .breadcrumb-list li.active {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Direct Answer / App Note Box */
+        .app-note-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--accent-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .app-note-label {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .app-note-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Hero Tags Group */
+        .hero-tags-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin: 2rem 0;
+        }
+
+        .hero-tag-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .hero-tag-item:hover {
+            border-color: var(--primary-color);
+            background: rgba(239, 120, 26, 0.05);
+        }
+
+        .reassurance-note {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        /* Contact Hero Scoped Button Alignment */
+        .contact-hero-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        @media screen and (max-width: 576px) {
+            .contact-hero-buttons {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+            }
+
+            .contact-hero-buttons .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -46,7 +184,6 @@
             <ul class="nav-list" id="nav-list">
                 <li class="nav-item"><a href="/" class="nav-link">Ana Sayfa</a></li>
                 <li class="nav-item"><a href="/hizmetler" class="nav-link">Hizmetlerimiz</a></li>
-
                 <li class="nav-item"><a href="/about" class="nav-link">Hakkımızda</a></li>
                 <li class="nav-item"><a href="/contact" class="nav-link active">İletişim</a></li>
             </ul>
@@ -54,15 +191,68 @@
     </header>
 
     <main>
-        <section class="page-header section">
-            <div class="container center">
-                <span class="section-subtitle">Bize Ulaşın</span>
-                <h1 class="section-title">İletişim</h1>
-                <p class="hero-description" style="margin: 0 auto;">Projeleriniz için bir kahve eşliğinde konuşalım.</p>
+        <!-- Hero Section -->
+        <section class="hero section">
+            <div class="container hero-container">
+                <div class="hero-content" style="max-width: 800px;">
+
+                    <!-- Breadcrumb -->
+                    <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+                        <ul class="breadcrumb-list">
+                            <li><a href="/">Ana Sayfa</a></li>
+                            <li class="active" aria-current="page">İletişim</li>
+                        </ul>
+                    </nav>
+
+                    <span class="section-subtitle">İLETİŞİM</span>
+
+                    <h1 class="hero-title" style="margin-top: 0.5rem; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2;">Markanız İçin Bir Sonraki Adımı Birlikte Planlayalım</h1>
+
+                    <p class="hero-description" style="max-width: 720px; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.2rem;">
+                        Nisan Vitrini Media (NVM) ile çalışmak istediğiniz projeyi, markanızın mevcut durumunu ve ulaşmak istediğiniz hedefleri bize anlatın. İhtiyacınızı birlikte değerlendirerek hangi hizmetlerin ve çalışma kapsamının projeniz için daha uygun olabileceğini netleştirelim.
+                    </p>
+
+                    <p class="hero-description" style="max-width: 720px; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Sosyal medya yönetiminden Reels prodüksiyonuna, dijital reklamlardan marka stratejisine, web tasarımından sanal marka karakterleri ve yapay zeka destekli kreatif çözümlere kadar ihtiyacınız olan alanları proje özelinde değerlendirebiliriz.
+                    </p>
+
+                    <!-- Doğrudan Cevap / Bilgi Alanı -->
+                    <div class="app-note-box">
+                        <span class="app-note-label">BİZE NE ANLATMANIZ YETERLİ?</span>
+                        <p class="app-note-text">
+                            Markanızın ne yaptığını, hangi konuda desteğe ihtiyaç duyduğunuzu, projenizin hedefini ve varsa mevcut dijital kanallarınızı paylaşmanız ilk değerlendirme için yeterlidir. Projenin ayrıntılarını sonraki görüşmede birlikte netleştirebiliriz.
+                        </p>
+                    </div>
+
+                    <!-- Güven mesajı -->
+                    <p class="reassurance-note">
+                        Henüz tüm detaylar net değilse sorun değil. İhtiyacınızı birlikte çerçeveleyebiliriz.
+                    </p>
+
+                    <!-- Hizmet etiketleri -->
+                    <div class="hero-tags-group">
+                        <span class="hero-tag-item">Sosyal Medya</span>
+                        <span class="hero-tag-item">Reels ve Video</span>
+                        <span class="hero-tag-item">Dijital Reklam</span>
+                        <span class="hero-tag-item">Marka Stratejisi</span>
+                        <span class="hero-tag-item">Tasarım</span>
+                        <span class="hero-tag-item">Web</span>
+                        <span class="hero-tag-item">AI Kreatif Çözümler</span>
+                    </div>
+
+                    <!-- Hero CTA butonları -->
+                    <div class="contact-hero-buttons">
+                        <a href="#proje-formu" class="btn btn-primary">Projeni Anlat</a>
+                        <a href="/hizmetler" class="btn btn-outline">Hizmetleri İncele</a>
+                    </div>
+
+                </div>
             </div>
+            <div class="hero-overlay"></div>
         </section>
 
-        <section class="contact-section section">
+        <!-- İletişim Bilgileri ve Harita Section -->
+        <section id="proje-formu" class="contact-section section">
             <div class="container contact-container">
                 <div class="contact-info">
                     <div class="contact-card">
@@ -79,7 +269,6 @@
                         <i class='bx bx-phone contact-icon'></i>
                         <h3>Telefon</h3>
                         <p><a href="tel:+905526288131">+90 552 628 81 31</a></p>
-
                     </div>
                     <div class="contact-card">
                         <i class='bx bx-envelope contact-icon'></i>
