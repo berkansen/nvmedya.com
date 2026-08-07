@@ -155,6 +155,100 @@
             gap: 1rem;
         }
 
+        /* Form Container Styles */
+        .contact-form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .contact-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .contact-form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .contact-form-group label {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-main);
+        }
+
+        .contact-form-group input,
+        .contact-form-group select,
+        .contact-form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .contact-form-group select option {
+            background: #111;
+            color: #fff;
+        }
+
+        .contact-form-group input:focus,
+        .contact-form-group select:focus,
+        .contact-form-group textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 10px rgba(239, 120, 26, 0.2);
+        }
+
+        .form-success-box {
+            display: none;
+            background: rgba(39, 174, 96, 0.1);
+            border: 1px solid rgba(39, 174, 96, 0.3);
+            color: #27ae60;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-error-box {
+            display: none;
+            background: rgba(231, 76, 60, 0.1);
+            border: 1px solid rgba(231, 76, 60, 0.3);
+            color: #e74c3c;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .contact-form-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-form-group.full-width {
+                grid-column: span 1;
+            }
+            .contact-form-container {
+                padding: 1.5rem;
+            }
+        }
+
         @media screen and (max-width: 576px) {
             .contact-hero-buttons {
                 flex-direction: column;
@@ -251,8 +345,100 @@
             <div class="hero-overlay"></div>
         </section>
 
+        <!-- Proje / İletişim Formu Section -->
+        <section id="proje-formu" class="section alt-bg" aria-labelledby="proje-formu-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-subtitle">PROJENİZİ ANLATIN</span>
+                    <h2 id="proje-formu-baslik" class="section-title" style="margin-top: 0.5rem;">Projenizi Birlikte Değerlendirelim</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 720px; margin: 1rem auto 2.5rem;">
+                        Birkaç temel bilgi paylaşmanız ilk değerlendirme için yeterli. Projenizin henüz tüm ayrıntıları net değilse de formu gönderebilirsiniz; gerekli noktaları sonraki iletişimde birlikte netleştirebiliriz.
+                    </p>
+                </div>
+
+                <div class="contact-form-container">
+                    <!-- Başarı Mesajı Kutusu -->
+                    <div id="successMessage" class="form-success-box" role="status">
+                        <i class='bx bx-check-circle' style="font-size: 3rem; margin-bottom: 0.5rem; display: inline-block;"></i>
+                        <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem; color: #27ae60;">Teşekkürler, projenizle ilgili bilgileri aldık.</h3>
+                        <p style="margin: 0; color: var(--text-main);">Paylaştığınız bilgileri inceleyip uygun iletişim adımını belirleyeceğiz.</p>
+                    </div>
+
+                    <!-- Hata Mesajı Kutusu -->
+                    <div id="errorMessage" class="form-error-box" role="alert">
+                        Form gönderilirken bir sorun oluştu. Lütfen bilgilerinizi kontrol edip tekrar deneyin.
+                    </div>
+
+                    <!-- Proje İletişim Formu -->
+                    <form id="projectForm" action="https://formsubmit.co/ajax/nisanvitrini@gmail.com" method="POST">
+                        <input type="text" name="_honey" style="display:none" aria-hidden="true">
+
+                        <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">* Zorunlu alanlar</p>
+
+                        <div class="contact-form-grid">
+                            <!-- Ad Soyad -->
+                            <div class="contact-form-group">
+                                <label for="fullName">Ad Soyad *</label>
+                                <input type="text" id="fullName" name="isim_Soyisim" autocomplete="name" placeholder="Adınız ve soyadınız" required>
+                            </div>
+
+                            <!-- Marka / Şirket -->
+                            <div class="contact-form-group">
+                                <label for="companyName">Marka / Şirket <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">(İsteğe bağlı)</span></label>
+                                <input type="text" id="companyName" name="Firma" autocomplete="organization" placeholder="Marka veya şirket adınız">
+                            </div>
+
+                            <!-- E-posta -->
+                            <div class="contact-form-group">
+                                <label for="emailAddress">E-posta *</label>
+                                <input type="email" id="emailAddress" name="E_Posta" autocomplete="email" placeholder="ornek@marka.com" required>
+                            </div>
+
+                            <!-- Telefon / WhatsApp -->
+                            <div class="contact-form-group">
+                                <label for="phoneNumber">Telefon / WhatsApp <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">(İsteğe bağlı)</span></label>
+                                <input type="tel" id="phoneNumber" name="Telefon" autocomplete="tel" placeholder="05XX XXX XX XX">
+                            </div>
+
+                            <!-- Hizmet Seçimi -->
+                            <div class="contact-form-group full-width">
+                                <label for="serviceSelect">Hangi konuda destek arıyorsunuz? *</label>
+                                <select id="serviceSelect" name="Hizmet" required>
+                                    <option value="" disabled selected>Bir hizmet seçin</option>
+                                    <option value="Sosyal Medya Yönetimi">Sosyal Medya Yönetimi</option>
+                                    <option value="Reels ve Dikey Video Prodüksiyonu">Reels ve Dikey Video Prodüksiyonu</option>
+                                    <option value="Dijital Reklam Yönetimi">Dijital Reklam Yönetimi</option>
+                                    <option value="Sanal Marka Elçisi ve AI Kreatif Çözümler">Sanal Marka Elçisi ve AI Kreatif Çözümler</option>
+                                    <option value="Marka Kimliği ve Grafik Tasarım">Marka Kimliği ve Grafik Tasarım</option>
+                                    <option value="Web Tasarım ve Geliştirme">Web Tasarım ve Geliştirme</option>
+                                    <option value="Jingle ve Müzik Tasarımı">Jingle ve Müzik Tasarımı</option>
+                                    <option value="Dijital İletişim ve Marka Stratejisi">Dijital İletişim ve Marka Stratejisi</option>
+                                    <option value="Birden Fazla Hizmet">Birden Fazla Hizmet</option>
+                                    <option value="Henüz Emin Değilim">Henüz Emin Değilim</option>
+                                </select>
+                            </div>
+
+                            <!-- Proje Açıklaması -->
+                            <div class="contact-form-group full-width">
+                                <label for="projectDescription">Projenizi kısaca anlatın *</label>
+                                <textarea id="projectDescription" name="Proje_Detayi" rows="4" placeholder="Markanız, hedefiniz ve ihtiyaç duyduğunuz destek hakkında birkaç cümle yazabilirsiniz." required></textarea>
+                            </div>
+
+                            <!-- Submit Butonu ve Not -->
+                            <div class="contact-form-group full-width" style="margin-top: 1rem;">
+                                <button type="submit" class="btn btn-primary submit-btn" id="submitBtn" style="width: 100%;">Projeyi Gönder</button>
+                                <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-top: 1rem;">
+                                    Formu göndermeniz herhangi bir hizmet satın alma yükümlülüğü oluşturmaz.
+                                </p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <!-- İletişim Bilgileri ve Harita Section -->
-        <section id="proje-formu" class="contact-section section">
+        <section class="contact-section section">
             <div class="container contact-container">
                 <div class="contact-info">
                     <div class="contact-card">
@@ -351,6 +537,79 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectForm = document.getElementById('projectForm');
+            if (!projectForm) return;
+
+            projectForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+
+                const fullName = document.getElementById('fullName').value.trim();
+                const companyName = document.getElementById('companyName').value.trim();
+                const emailAddress = document.getElementById('emailAddress').value.trim();
+                const phoneNumber = document.getElementById('phoneNumber').value.trim();
+                const serviceSelect = document.getElementById('serviceSelect').value;
+                const projectDescription = document.getElementById('projectDescription').value.trim();
+
+                const submitBtn = document.getElementById('submitBtn');
+                const errorMessage = document.getElementById('errorMessage');
+                const successMessage = document.getElementById('successMessage');
+
+                if (errorMessage) errorMessage.style.display = 'none';
+
+                // Check basic required fields
+                if (!fullName || !emailAddress || !serviceSelect || !projectDescription) {
+                    if (errorMessage) {
+                        errorMessage.textContent = 'Lütfen tüm zorunlu alanları doldurun.';
+                        errorMessage.style.display = 'block';
+                    }
+                    return;
+                }
+
+                submitBtn.innerText = 'Gönderiliyor...';
+                submitBtn.disabled = true;
+
+                fetch("https://formsubmit.co/ajax/nisanvitrini@gmail.com", {
+                    method: "POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        isim_Soyisim: fullName,
+                        Firma: companyName || 'Belirtilmedi',
+                        E_Posta: emailAddress,
+                        Telefon: phoneNumber || 'Belirtilmedi',
+                        Hizmet: serviceSelect,
+                        Proje_Detayi: projectDescription,
+                        _subject: "Nisan Vitrini Media - Yeni Proje İletişim Başvurusu",
+                        _template: "table"
+                    })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Form gönderimi sırasında sunucu hatası oluştu.');
+                    }
+                })
+                .then(data => {
+                    projectForm.style.display = 'none';
+                    if (successMessage) successMessage.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error("Gönderim hatası:", error);
+                    submitBtn.innerText = 'Projeyi Gönder';
+                    submitBtn.disabled = false;
+                    if (errorMessage) {
+                        errorMessage.textContent = 'Form gönderilirken bir sorun oluştu. Lütfen bilgilerinizi kontrol edip tekrar deneyin.';
+                        errorMessage.style.display = 'block';
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
