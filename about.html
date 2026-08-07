@@ -220,6 +220,126 @@
             }
         }
 
+    
+        /* İnsan + Yapay Zeka Yaklaşımı Section Styles */
+        .step-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            flex: 1 1 calc(25% - 2rem);
+            min-width: 250px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgba(239, 120, 26, 0.15);
+            line-height: 1;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.75rem;
+        }
+
+        .step-text {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 2 Column lists styles */
+        .responsibility-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .responsibility-column {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .responsibility-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            padding-bottom: 0.75rem;
+        }
+
+        .responsibility-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .responsibility-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .responsibility-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        @media screen and (max-width: 992px) {
+            .step-card {
+                flex: 1 1 calc(50% - 2rem);
+            }
+            .responsibility-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .step-card {
+                flex: 1 1 100%;
+            }
+            .responsibility-column {
+                padding: 1.5rem;
+            }
+        }
+
     </style>
 </head>
 
@@ -377,6 +497,104 @@
                         </p>
                     </article>
                 </div>
+            </div>
+        </section>
+
+        <!-- İnsan + Yapay Zeka Destekli Çalışma Sistemi Section -->
+        <section id="insan-yapay-zeka-yaklasimi" class="section" aria-labelledby="insan-yapay-zeka-baslik" style="scroll-margin-top: 100px;">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-subtitle">İNSAN + TEKNOLOJİ</span>
+                    <h2 id="insan-yapay-zeka-baslik" class="section-title" style="margin-top: 0.5rem;">Yapay Zekayı İnsan Değerlendirmesinin Yerine Değil, Yanına Koyuyoruz</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 1rem auto 1.5rem; text-align: left;">
+                        NVM'de yapay zeka; araştırmayı hızlandırmak, farklı fikir yönlerini değerlendirmek, üretim süreçlerini desteklemek ve bazı operasyonel işleri daha verimli yürütmek için kullandığımız araçlardan biridir. Ancak markanın ne söylemesi gerektiği, hangi fikrin uygulanacağı ve üretilen çalışmanın yayına hazır olup olmadığı gibi kararları yalnızca otomatik sistemlere bırakmayız.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2.5rem; text-align: left;">
+                        Kullandığımız araç ve yöntem, projenin ihtiyacına göre değişebilir. Ama temel yaklaşımımız değişmez: teknoloji üretim kapasitesini destekler; marka bağlamı, yaratıcı değerlendirme, doğruluk kontrolü ve son karar insan sorumluluğunda kalır.
+                    </p>
+                </div>
+
+                <!-- Doğrudan Cevap / Bilgi Alanı -->
+                <div class="positioning-box" style="max-width: 800px; margin: 0 auto 3rem;">
+                    <span class="positioning-label">NVM YAPAY ZEKAYI NASIL KULLANIYOR?</span>
+                    <p class="positioning-text">
+                        NVM yapay zekayı araştırma, fikir geliştirme, içerik ve görsel üretim desteği, analiz, varyasyon geliştirme ve iş akışlarını hızlandırma gibi alanlarda kullanabilir. Yapay zeka çıktıları proje bağlamına göre değerlendirilir; doğruluk, marka uyumu, yaratıcı yön ve yayın kararı insan kontrolünden geçer.
+                    </p>
+                </div>
+
+                <!-- 4 Aşamalı Çalışma Modeli -->
+                <div class="step-container">
+                    <!-- Aşama 1 -->
+                    <article class="step-card">
+                        <span class="step-number" aria-hidden="true">01</span>
+                        <h3 class="step-title">İhtiyacı ve Bağlamı Anlamak</h3>
+                        <p class="step-text">
+                            Önce markanın hedefini, hedef kitlesini, iletişim tonunu, mevcut içeriklerini ve proje kapsamını değerlendiririz. Yapay zeka araçlarının kullanılıp kullanılmayacağına veya hangi aşamada yararlı olacağına bu bağlama göre karar veririz.
+                        </p>
+                    </article>
+
+                    <!-- Aşama 2 -->
+                    <article class="step-card">
+                        <span class="step-number" aria-hidden="true">02</span>
+                        <h3 class="step-title">Araştırmak ve Alternatifler Üretmek</h3>
+                        <p class="step-text">
+                            Projeye göre yapay zeka destekli araçlardan araştırma, konu keşfi, fikir varyasyonları, metin taslakları, görsel konseptler, üretim alternatifleri veya veri düzenleme gibi alanlarda yararlanabiliriz.
+                        </p>
+                    </article>
+
+                    <!-- Aşama 3 -->
+                    <article class="step-card">
+                        <span class="step-number" aria-hidden="true">03</span>
+                        <h3 class="step-title">İnsan Değerlendirmesi ve Kreatif Karar</h3>
+                        <p class="step-text">
+                            Üretilen alternatifleri marka bağlamı, iletişim hedefi, doğruluk, yaratıcılık ve uygulanabilirlik açısından değerlendiririz. Hangi fikrin geliştirileceği veya hangi çıktının kullanılacağı konusunda nihai kreatif karar insan değerlendirmesiyle verilir.
+                        </p>
+                    </article>
+
+                    <!-- Aşama 4 -->
+                    <article class="step-card">
+                        <span class="step-number" aria-hidden="true">04</span>
+                        <h3 class="step-title">Kontrol Etmek ve Yayına Hazırlamak</h3>
+                        <p class="step-text">
+                            Yayın veya teslim öncesinde metin, görsel, bağlantı, marka tutarlılığı ve proje gereksinimleri mümkün olan kapsamda kontrol edilir. Yapay zeka çıktısı olması, içeriğin otomatik olarak doğru veya yayına hazır kabul edildiği anlamına gelmez.
+                        </p>
+                    </article>
+                </div>
+
+                <!-- Yapay Zeka / İnsan Karşılaştırma Alanları -->
+                <div class="responsibility-container">
+                    <!-- Yapay Zeka Alanı -->
+                    <div class="responsibility-column">
+                        <h3 class="responsibility-title">Yapay Zeka Hangi Alanlarda Süreci Destekleyebilir?</h3>
+                        <ul class="responsibility-list">
+                            <li>Araştırma ve konu keşfi</li>
+                            <li>İçerik ve kampanya fikirlerinin çeşitlendirilmesi</li>
+                            <li>Metin taslağı ve varyasyon geliştirme</li>
+                            <li>Görsel konsept ve kreatif üretim desteği</li>
+                            <li>Sanal marka karakterleri ve yeni nesil görsel üretim süreçleri</li>
+                            <li>Verilerin, notların ve araştırma çıktılarının düzenlenmesi</li>
+                            <li>Tekrarlayan bazı operasyonel işlerin hızlandırılması</li>
+                        </ul>
+                    </div>
+
+                    <!-- İnsan Kontrolü Alanı -->
+                    <div class="responsibility-column">
+                        <h3 class="responsibility-title">İnsan Kontrolünde Kalan Temel Noktalar</h3>
+                        <ul class="responsibility-list">
+                            <li>Marka hedefinin ve iletişim yönünün belirlenmesi</li>
+                            <li>Kreatif fikrin seçilmesi ve geliştirilmesi</li>
+                            <li>Marka dili ve bağlam değerlendirmesi</li>
+                            <li>Doğruluk ve uygunluk kontrolü</li>
+                            <li>Hangi içeriğin müşteriye sunulacağına karar verilmesi</li>
+                            <li>Yayın veya teslim öncesi son değerlendirme</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- AI Politikası Doğal Linki -->
+                <p style="text-align: center; margin-top: 3.5rem; font-size: 0.95rem; color: var(--text-muted);">
+                    Yaratıcı süreçlerimizdeki teknoloji ve etik ilkelerimiz hakkında daha fazla bilgi edinmek isterseniz <a href="/ai-kullanim-politikasi" style="color: var(--primary-color); text-decoration: none; border-bottom: 1px dashed var(--primary-color);">AI Kullanım Politikamızı</a> inceleyebilirsiniz.
+                </p>
             </div>
         </section>
 
