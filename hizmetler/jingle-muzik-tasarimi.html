@@ -370,6 +370,97 @@
                 padding: 1.5rem;
             }
         }
+
+        /* Process List Timeline Styles */
+        #jingle-muzik-tasarim-sureci {
+            scroll-margin-top: 100px;
+        }
+
+        .process-list {
+            max-width: 800px;
+            margin: 3rem auto;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .process-list::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 1.25rem;
+            width: 2px;
+            height: 100%;
+            background: rgba(239, 120, 26, 0.15);
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-badge {
+            position: absolute;
+            top: 0.2rem;
+            left: -3rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .process-badge-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .process-step-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        @media screen and (max-width: 576px) {
+            .process-list {
+                padding-left: 2rem;
+            }
+            .process-list::before {
+                left: 0.75rem;
+            }
+            .process-badge {
+                width: 1.8rem;
+                height: 1.8rem;
+                left: -2rem;
+                font-size: 0.8rem;
+            }
+            .process-step-title {
+                font-size: 1.15rem;
+            }
+        }
     </style>
 </head>
 
@@ -592,6 +683,139 @@
                         <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
                             <a href="/contact" class="btn btn-primary">Müzik Projeni Anlat</a>
                             <a href="/hizmetler" class="btn btn-outline" style="margin-left: 1rem;">Tüm Hizmetleri İncele</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Nasıl Çalışıyoruz / Süreç Section -->
+        <section id="jingle-muzik-tasarim-sureci" class="section" aria-labelledby="jingle-muzik-tasarim-sureci-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="jingle-muzik-tasarim-sureci-baslik" class="section-title">Jingle ve Müzik Tasarımı Sürecinde Nasıl Çalışıyoruz?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 1.5rem auto 0;">
+                        NVM, jingle ve müzik tasarımı sürecini yalnızca bir parça üretmek olarak ele almaz. Markanın karakteri, kullanım amacı, yaratıcı yön, müzik fikri, prodüksiyon, geri bildirim, versiyonlama ve kullanım kapsamını birbirini tamamlayan tek bir üretim süreci içinde planlar.
+                    </p>
+                </div>
+
+                <!-- Timeline / Step Process List -->
+                <div class="process-list">
+                    <article class="process-step">
+                        <div class="process-badge">1</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 1</span>
+                            <h3 class="process-step-title">Marka ve Proje Analizi</h3>
+                            <p class="process-step-desc">Markanın karakterini, hedef kitlesini, iletişim tonunu ve müziğin hangi proje veya içeriklerde kullanılacağını değerlendiriyoruz. Jingle, reklam, sosyal medya, kurumsal video, etkinlik veya başka bir kullanım amacı varsa yaratıcı yönü bu ihtiyaçlara göre tanımlıyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">2</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 2</span>
+                            <h3 class="process-step-title">Yaratıcı Yön ve Müzik Briefi</h3>
+                            <p class="process-step-desc">Müziğin vermesi gereken duygu, tempo, enerji, stil, kullanım süresi ve marka ile kuracağı ilişki için yaratıcı bir müzik briefi oluşturuyoruz. Referanslar kullanılabilir ancak başka bir eserin doğrudan kopyalanmasını hedefleyen bir üretim yaklaşımı kullanmıyoruz. Referanslar yalnızca enerji, tempo, genel atmosfer, enstrümantasyon yaklaşımı, duygu ve yapısal tercihler gibi yaratıcı yönleri anlamak için kullanılır.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">3</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 3</span>
+                            <h3 class="process-step-title">Müzik Fikri ve İlk Demo</h3>
+                            <p class="process-step-desc">Belirlenen yaratıcı yön doğrultusunda melodi, ritim, armoni, ses dokusu veya jingle fikrini geliştirerek ilk demo çalışmasını hazırlıyoruz. Demo, nihai prodüksiyondan önce projenin yaratıcı yönünün değerlendirilmesini sağlar. Her projede sunulacak demo sayısı ve çalışma sınırları brief kapsamına göre planlanır.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">4</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 4</span>
+                            <h3 class="process-step-title">Geri Bildirim ve Yaratıcı Revize</h3>
+                            <p class="process-step-desc">İlk demo üzerinden markanın geri bildirimlerini değerlendiriyor ve proje kapsamında belirlenen revize adımlarını uyguluyoruz. Tempo, yapı, melodi, ses seçimi veya genel yaratıcı yön gibi unsurlar üzerinde gerekli düzenlemeleri planlıyoruz. Çalışmada sınırsız revize imkanı bulunmamakta olup revize hakları proje teklif şartlarına tabidir.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">5</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 5</span>
+                            <h3 class="process-step-title">Prodüksiyon ve Düzenleme</h3>
+                            <p class="process-step-desc">Onaylanan yaratıcı yönü nihai prodüksiyona taşıyor; düzenleme, ses seçimi, gerekli katmanlar, geçişler ve projenin kullanım alanına uygun müzik yapısını tamamlayıp miks ve mastering adımlarını yürütüyoruz. Vokal, canlı enstrüman, harici müzisyen veya stüdyo ihtiyacı varsa bunlar proje kapsamına göre ayrıca planlanır ve teklife dahil edilir.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">6</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 6</span>
+                            <h3 class="process-step-title">Versiyonlama ve Teknik Hazırlık</h3>
+                            <p class="process-step-desc">Proje kapsamında ihtiyaç duyulan süre, kurgu ve kullanım versiyonlarını hazırlıyoruz. Ana parça, kısa versiyon, intro, outro, loop veya farklı medya formatları gerekiyorsa teslim kapsamına göre teknik olarak düzenliyoruz. Her projede bütün versiyonların otomatik dahil olduğu varsayılmamalıdır.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge">7</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 7</span>
+                            <h3 class="process-step-title">Teslim ve Kullanım Kapsamının Netleştirilmesi</h3>
+                            <p class="process-step-desc">Onaylanan ses dosyalarını belirlenen formatlarda teslim ediyor; kullanım mecraları, süre, bölge, reklam veya organik kullanım, münhasırlık ve varsa lisans veya hak koşullarını proje kapsamında belirlenen şartlara göre netleştiriyoruz. Müzik projesinin tamamlanıp teslim edilmesi bütün hakların otomatik ve sınırsız biçimde devredildiği anlamına gelmez.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Süreç Özeti ve Bilgilendirmeler -->
+                <div style="margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 4rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <div class="info-box" style="margin-bottom: 2.5rem;">
+                        <span class="info-box-title">Süreç Kısaca</span>
+                        <p class="info-box-text">
+                            Marka analizi, yaratıcı brief, demo, geri bildirim, prodüksiyon, versiyonlama ve teslim aşamaları tek bir müzik tasarımı süreci olarak yönetilir.
+                        </p>
+                    </div>
+
+                    <p style="color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center;">
+                        Jingle ve müzik tasarımı projelerinin süresi; yaratıcı kapsam, demo sayısı, geri bildirim süreci, revize ihtiyacı, vokal veya canlı kayıt gereksinimleri, hazırlanacak versiyonlar ve teslim formatlarına göre değişir. Bütün projeler için geçerli sabit bir teslim süresi bulunmaz.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Markanın iletişim dili, hedef kitlesi, kampanya mesajı, kullanım mecraları, varsa söz veya slogan ihtiyaçları ve yaratıcı referansları proje başlangıcında paylaşılabilir. Bütün ayrıntıların hazır olması gerekmez; gerekli yaratıcı yön ilk değerlendirme sürecinde birlikte netleştirilebilir.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Demo sayısı, geri bildirim aşamaları, revize kapsamı ve hazırlanacak alternatif veya versiyonlar proje teklifinde belirlenir. Onaylanan yaratıcı yönün dışında kalan yeni müzik yönleri veya ek üretim talepleri ayrıca değerlendirilebilir.
+                    </p>
+
+                    <span class="offer-subtitle" style="text-align: center; display: block; font-size: 0.9rem; color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Yapay Zeka Destekli Araçlar</span>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center;">
+                        Yaratıcı araştırma, demo geliştirme veya üretimin belirli aşamalarında proje ihtiyacına göre yapay zeka destekli araçlardan yararlanılabilir. Kullanılan yöntem yaratıcı karar sürecinin yerine geçmez ve tek başına telif, münhasırlık veya sınırsız kullanım hakkı garantisi oluşturmaz.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Projede sample, ses kütüphanesi, sanal enstrüman, efekt veya başka bir üçüncü taraf kaynak kullanılması gerektiğinde ilgili lisans koşulları dikkate alınır. Bu kaynakların kullanım ve mülkiyeti koşulları, proje için özgün olarak üretilen unsurlardan farklı olabilir.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Vokalist, seslendirme sanatçısı, canlı müzisyen, harici stüdyo veya başka bir prodüksiyon hizmeti gerekiyorsa ihtiyaç ve maliyet proje kapsamında ayrıca belirlenir. Bu hizmetler bütün jingle ve müzik projelerine otomatik olarak dahil değildir.
+                    </p>
+
+                    <span class="offer-subtitle" style="text-align: center; display: block; font-size: 0.9rem; color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Kullanım Hakları</span>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center;">
+                        Müziğin hangi mecralarda, ne kadar süreyle ve hangi kapsamda kullanılabileceği; reklam kullanımı, organik paylaşım, bölge, münhasırlık ve varsa hak devri gibi konular proje teklifinde açıkça belirlenir. Bir müziğin teslim edilmesi bütün hakların otomatik ve sınırsız biçimde devredildiği anlamına gelmez.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; text-align: center; font-style: italic;">
+                        Spotify, Apple Music ve benzeri dijital müzik platformlarında dağıtım veya yayın yönetimi, aksi proje kapsamına açıkça dahil edilmedikçe jingle ve müzik tasarımı hizmetinin standart bir parçası değildir.
+                    </p>
+
+                    <!-- CTA Box -->
+                    <div class="cta-box">
+                        <p class="cta-box-text">
+                            Markanız için nasıl bir müzik dili oluşturulabileceğini ve projenin hangi kullanım alanlarına göre hazırlanacağını birlikte planlayabiliriz.
+                        </p>
+                        <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                            <a href="/contact" class="btn btn-primary">Müzik Projeni Anlat</a>
+                            <a href="#jingle-muzik-hizmet-kapsami" class="btn btn-outline" style="margin-left: 1rem;">Hizmet Kapsamını İncele</a>
                         </div>
                     </div>
                 </div>
