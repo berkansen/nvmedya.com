@@ -26,7 +26,7 @@
 
     <meta
       property="og:description"
-      content="Markanızın ne söylediğini, kime söylediğini ve dijitalde nasıl konumlandığını netlestiren stratejik iletişim çözümleri."
+      content="Markanızın ne söylediğini, kime söylediğini ve dijitalde nasıl konumlandığını netleştiren stratejik iletişim çözümleri."
     />
 
     <meta
@@ -55,10 +55,15 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+
       gtag('config', 'G-JD1C5PBEKD');
     </script>
 
     <style>
+        #marka-stratejisi-hizmet-kapsami {
+            scroll-margin-top: 100px;
+        }
+
         /* Breadcrumb Styles */
         .breadcrumb-nav {
             margin-bottom: 2rem;
@@ -200,6 +205,213 @@
                 max-width: 18px;
             }
         }
+
+        /* Info Box Styles */
+        .info-box {
+            background: rgba(239, 120, 26, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 2.5rem auto 3rem;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .info-box-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        /* Grid & Cards Styles */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .scope-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            height: 100%;
+        }
+
+        .scope-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .scope-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .scope-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .scope-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .scope-footer-text {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .scope-footer-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px dashed var(--primary-color);
+            padding-bottom: 2px;
+        }
+
+        .scope-footer-text a:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
+        }
+
+        /* List Box Styles */
+        .prep-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            margin: 3rem auto;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .prep-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .prep-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .prep-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .prep-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .prep-note {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* CTA Area Style */
+        .cta-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            margin: 4rem auto 0;
+            text-align: center;
+        }
+
+        .cta-box-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+        }
+
+        .offer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0 0;
+        }
+
+        @media screen and (max-width: 992px) {
+            .scope-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .prep-list {
+                grid-template-columns: 1fr;
+            }
+            .offer-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .offer-buttons .btn {
+                margin: 0;
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+            .scope-card {
+                padding: 2rem 1.5rem;
+            }
+            .scope-footer-text {
+                text-align: left;
+            }
+            .prep-box {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -241,10 +453,10 @@
 
                     <span class="section-subtitle">DİJİTAL İLETİŞİM VE MARKA STRATEJİSİ</span>
 
-                    <h1 class="hero-title" style="margin-top: 0.5rem; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2;">Markanızın Dijitalde Ne Söylediğini, Kime Söylediğini ve Nasıl Hatırlandığını Netlestirin</h1>
+                    <h1 class="hero-title" style="margin-top: 0.5rem; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.2;">Markanızın Dijitalde Ne Söylediğini, Kime Söylediğini ve Nasıl Hatırlandığını Netleştirin</h1>
 
                     <p class="hero-description" style="max-width: 720px; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.2rem;">
-                        Nisan Vitrini Media (NVM), markaların dijital iletişimini birbirinden bağımsız paylaşımlar ve kampanyalar yerine ortak bir stratejik yön içinde planlar. Marka konumlandırması, hedef kitle, iletişim dili, içerik temaları, dijital temas noktaları ve pazarlama önceliklerini birlikte değlendirerek markanın dijitalde nasıl görünmesi ve konuşması gerektiğini netlestiririz.
+                        Nisan Vitrini Media (NVM), markaların dijital iletişimini birbirinden bağımsız paylaşımlar ve kampanyalar yerine ortak bir stratejik yön içinde planlar. Marka konumlandırması, hedef kitle, iletişim dili, içerik temaları, dijital temas noktaları ve pazarlama önceliklerini birlikte değerlendirerek markanın dijitalde nasıl görünmesi ve konuşması gerektiğini netleştiririz.
                     </p>
                     <p class="hero-description" style="max-width: 720px; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
                         Amaç yalnızca daha fazla içerik üretmek değil; markanın neyi temsil ettiğini açık biçimde anlatan, farklı platformlarda tutarlılığını koruyan ve içerik, reklam, tasarım, video ve web çalışmalarının aynı marka hedeflerine hizmet etmesini sağlayan uygulanabilir bir iletişim sistemi oluşturmaktır.
@@ -269,7 +481,7 @@
 
                     <!-- Dogrudan cevap alani -->
                     <div class="app-note-box">
-                        <span class="app-note-label">MARKA STRATEJİSİ NEYİ NETLESTİRİR?</span>
+                        <span class="app-note-label">MARKA STRATEJİSİ NEYİ NETLEŞTİRİR?</span>
                         <p class="app-note-text">
                             Dijital iletişim ve marka stratejisi; markanın hedef kitlesini, konumlandırmasını, mesajlarını, iletişim tonunu, içerik yönünü ve farklı dijital kanallardaki önceliklerini ortak bir çerçevede tanımlayarak pazarlama çalışmalarının daha tutarlı planlanmasını sağlar.
                         </p>
@@ -287,13 +499,156 @@
 
                     <!-- Hero CTA butonlari -->
                     <div class="hero-buttons">
-                        <a href="/contact" class="btn btn-primary">Marka Stratejini Konuşalim</a>
+                        <a href="/contact" class="btn btn-primary">Marka Stratejini Konuşalım</a>
                         <a href="#marka-stratejisi-hizmet-kapsami" class="btn btn-outline">Hizmet Kapsamını İncele</a>
                     </div>
 
                 </div>
             </div>
             <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Dijital İletişim ve Marka Stratejisi Hizmet Kapsamı Section -->
+        <section id="marka-stratejisi-hizmet-kapsami" class="section alt-bg" aria-labelledby="marka-stratejisi-hizmet-kapsami-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="marka-stratejisi-hizmet-kapsami-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Dijital İletişim ve Marka Stratejisi Hizmetimiz Neleri Kapsar?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        NVM dijital iletişim ve marka stratejisi hizmeti; markanın konumlandırmasını, hedef kitle önceliklerini, iletişim dilini, ana mesajlarını, içerik yönünü, dijital kanal rollerini ve pazarlama önceliklerini ortak bir stratejik çerçevede değerlendirmeyi kapsar. Kesin çalışma kapsamı markanın mevcut durumu, hedefleri, ihtiyaç duyduğu analizler ve uygulanacak iletişim alanlarına göre belirlenir.
+                    </p>
+                </div>
+
+                <!-- Info Box (Direct Answer Area) -->
+                <div class="info-box">
+                    <span class="info-box-title">Kısaca Ne Netleştiriyoruz?</span>
+                    <p class="info-box-text">
+                        Markanın kimlere seslendiğini, hangi konumda durmak istediğini, ne söylemesi gerektiğini, hangi iletişim tonunu kullanacağını ve içerik, reklam, video, tasarım ve web çalışmalarının hangi ortak hedeflere hizmet edeceğini netleştiriyoruz.
+                    </p>
+                </div>
+
+                <!-- Scope Cards Grid -->
+                <div class="scope-grid">
+                    <article class="scope-card">
+                        <i class='bx bx-target-lock scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Marka Konumlandırması</h3>
+                        <p class="scope-desc">Markanın pazarda ve hedef kitlenin zihninde nasıl bir yerde durmak istediğini değerlendiriyoruz. Sunduklarını, güçlü yönlerini, marka karakterini, iletişim biçimini ve benzer markalardan ayrışabileceği alanları inceleyerek stratejik konumlandırma yönünü netleştiriyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-group scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Hedef Kitle ve Öncelikli Segmentler</h3>
+                        <p class="scope-desc">Markanın kimlerle iletişim kurduğunu, hangi ihtiyaçlara cevap verdiğini ve farklı hedef kitle gruplarının hangi mesajlara daha fazla önem verebileceğini değerlendiriyoruz. Çalışmanın derinliği mevcut veriler ve proje kapsamına göre belirlenir.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-conversation scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">İletişim Dili ve Marka Tonu</h3>
+                        <p class="scope-desc">Markanın dijitalde nasıl konuşacağını; samimiyet, uzmanlık, güven, dinamizm, açıklık veya premium algı gibi özellikler üzerinden tanımlıyoruz. Böylece farklı içeriklerde ve platformlarda tutarlı bir iletişim tonu oluşturmayı amaçlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-key scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Ana Mesajlar ve Değer Önerileri</h3>
+                        <p class="scope-desc">Markanın hedef kitlesine hangi temel faydaları, değerleri ve farklılaşma noktalarını anlatması gerektiğini belirliyoruz. Ana mesajların içeriklerde, kampanyalarda, web sayfalarında ve diğer dijital temas noktalarında daha tutarlı kullanılabileceği bir çerçeve oluşturuyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-layer scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">İçerik Temaları ve İletişim Eksenleri</h3>
+                        <p class="scope-desc">Markanın düzenli olarak hangi konular etrafında iletişim kurabileceğini planlıyoruz. Eğitim, uzmanlık, ürün veya hizmet anlatımı, güven oluşturma, marka hikayesi, topluluk, kampanya ve benzeri içerik eksenlerini markanın hedeflerine göre yapılandırıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-sitemap scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Dijital Kanal Stratejisi</h3>
+                        <p class="scope-desc">Web sitesi, sosyal medya, reklam, video ve diğer dijital temas noktalarının marka iletişimindeki rollerini değerlendiriyoruz. Her kanalın aynı içeriği tekrar etmesi yerine, kullanıcı yolculuğundaki işlevine göre nasıl kullanılabileceğini planlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-search-alt scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Rakip ve Pazar İletişimi İncelemesi</h3>
+                        <p class="scope-desc">Rakiplerin ve sektörün dijital iletişim biçimlerini inceleyerek yaygın mesaj kalıplarını, içerik yaklaşımlarını ve potansiyel farklılaşma alanlarını değerlendiriyoruz. Amaç başka markaları kopyalamak değil, markanın kendi iletişim fırsatlarını daha net görebilmektir.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-map-alt scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Stratejik Yol Haritası ve Öncelikler</h3>
+                        <p class="scope-desc">Elde edilen değerlendirmeleri uygulanabilir önceliklere dönüştürüyoruz. Markanın hangi iletişim konularına, kanallara, içerik türlerine veya dijital çalışmalara önce odaklanmasının daha anlamlı olabileceğini proje kapsamına göre sıralıyoruz.</p>
+                    </article>
+                </div>
+
+                <!-- Strateji Çıktıları Alanı -->
+                <div class="prep-box">
+                    <span class="prep-title" style="display:block;">Strateji Çalışmasının Çıktıları Neler Olabilir?</span>
+                    <ul class="prep-list">
+                        <li>Marka konumlandırma yönü</li>
+                        <li>Öncelikli hedef kitle tanımları</li>
+                        <li>Marka tonu ve iletişim dili çerçevesi</li>
+                        <li>Ana mesaj ve değer önerileri</li>
+                        <li>İçerik temaları ve iletişim eksenleri</li>
+                        <li>Dijital kanal rolleri</li>
+                        <li>Rakip ve pazar iletişimi gözlemleri</li>
+                        <li>Uygulanabilir iletişim öncelikleri ve yol haritası</li>
+                    </ul>
+                    <p class="prep-note">
+                        Teslim edilecek dokümanların formatı, kapsamı ve ayrıntı seviyesi proje teklifinde belirlenir. Her strateji projesinde aynı sayıda analiz, çıktı veya doküman hazırlanmaz.
+                    </p>
+                </div>
+
+                <!-- Sosyal Medya Yönetiminden Ayrım -->
+                <div class="app-note-box" style="max-width: 800px; margin: 3rem auto;">
+                    <span class="app-note-label">Strateji ile Uygulama Aynı Şey Değildir</span>
+                    <p class="app-note-text">
+                        Dijital iletişim ve marka stratejisi, markanın hangi yönde ilerlemesi gerektiğini tanımlar. Günlük sosyal medya yönetimi, içerik üretimi, grafik tasarım, video prodüksiyonu, reklam kampanyası kurulumu veya web geliştirme gibi uygulama hizmetleri ise ihtiyaç halinde ayrıca planlanabilir.
+                    </p>
+                </div>
+
+                <!-- Araştırma Kapsamı, Rakip Analizi, Veri Sınırı, AI, Garanti, Güncellik Metinleri -->
+                <div style="margin-top: 2rem;">
+                    <p class="scope-footer-text">
+                        Strateji çalışmasında markanın mevcut dijital kanalları, içerikleri, iletişim materyalleri, performans verileri, hedef kitle bilgileri, sektör ve rakipler incelenebilir. Kullanılacak veri kaynakları ve araştırma derinliği proje ihtiyacına göre belirlenir.
+                    </p>
+
+                    <p class="scope-footer-text">
+                        Rakip incelemeleri başka markaların sloganlarını, kampanyalarını, içerik yapılarını veya görsel kimliklerini kopyalamak amacıyla yapılmaz. İncelemeler pazar iletişimini anlamak, tekrar eden kalıpları görmek ve markanın kendi farklılaşma alanlarını değerlendirmek için kullanılır.
+                    </p>
+
+                    <p class="scope-footer-text">
+                        Stratejik öneriler mevcut bilgiler, erişilebilen veriler, marka tarafından sağlanan girdiler ve proje kapsamında yapılan analizler üzerinden geliştirilir. Eksik, güncel olmayan veya doğrulanamayan veriler stratejik değerlendirmelerin kapsamını etkileyebilir.
+                    </p>
+
+                    <div class="app-note-box" style="max-width: 800px; margin: 2rem auto;">
+                        <span class="app-note-label">Yapay Zeka Destekli Araçlar</span>
+                        <p class="app-note-text">
+                            Araştırma düzenleme, içerik analizi, fikir geliştirme veya veri sınıflandırma gibi belirli aşamalarda proje ihtiyacına göre yapay zeka destekli araçlardan yararlanılabilir. Bu araçlar stratejik kararların yerine geçmez; nihai değerlendirmeler marka bağlamı, insan yorumu ve mevcut veriler birlikte ele alınarak yapılır.
+                        </p>
+                    </div>
+
+                    <p class="scope-footer-text">
+                        Marka stratejisi; iletişim kararlarının daha tutarlı, anlaşılır ve hedef odaklı planlanmasını destekler. Ancak belirli satış, takipçi, erişim, trafik, marka bilinirliği, müşteri kazanımı veya pazar payı sonucu garanti edilemez.
+                    </p>
+
+                    <p class="scope-footer-text">
+                        Markalar, hedef kitle davranışları, rekabet ortamı ve dijital platformlar zaman içinde değişebilir. Bu nedenle stratejik çerçeve gerektiğinde yeni veriler, yeni hedefler veya değişen pazar koşulları doğrultusunda yeniden değerlendirilebilir.
+                    </p>
+
+                    <p class="scope-footer-text" style="margin-top: 2rem;">
+                        Belirlenen stratejinin uygulama aşamasında <a href="/hizmetler/sosyal-medya-yonetimi">sosyal medya yönetimi</a>, <a href="/hizmetler/reels-dikey-video-produksiyonu">Reels ve dikey video prodüksiyonu</a>, <a href="/hizmetler/dijital-reklam-yonetimi">dijital reklam yönetimi</a>, <a href="/hizmetler/marka-kimligi-grafik-tasarim">marka kimliği ve grafik tasarım</a> ve <a href="/hizmetler/web-tasarim-gelistirme">web tasarım ve geliştirme</a> hizmetlerimizi de inceleyebilirsiniz.
+                    </p>
+                </div>
+
+                <!-- Bölüm Sonu CTA -->
+                <div class="cta-box">
+                    <p class="cta-box-text">
+                        Markanızın hangi hedef kitleye, hangi mesajlarla ve hangi dijital önceliklerle ilerlemesi gerektiğini birlikte değerlendirebiliriz.
+                    </p>
+                    <div class="offer-buttons">
+                        <a href="/contact" class="btn btn-primary">Marka Stratejini Konuşalım</a>
+                        <a href="/hizmetler" class="btn btn-outline">Tüm Hizmetleri İncele</a>
+                    </div>
+                </div>
+
+            </div>
         </section>
     </main>
 
