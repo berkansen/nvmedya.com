@@ -340,6 +340,83 @@
             }
         }
 
+    
+        /* Uzmanlık Alanları Section Styles */
+        .uzmanlik-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .uzmanlik-row {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: var(--transition);
+        }
+
+        .uzmanlik-row:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+        }
+
+        .uzmanlik-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-top: 0.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .uzmanlik-content {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .uzmanlik-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        .uzmanlik-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .uzmanlik-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-top: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .uzmanlik-link:hover {
+            gap: 0.5rem;
+        }
+
+        @media screen and (max-width: 992px) {
+            .uzmanlik-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
 </head>
 
@@ -595,6 +672,142 @@
                 <p style="text-align: center; margin-top: 3.5rem; font-size: 0.95rem; color: var(--text-muted);">
                     Yaratıcı süreçlerimizdeki teknoloji ve etik ilkelerimiz hakkında daha fazla bilgi edinmek isterseniz <a href="/ai-kullanim-politikasi" style="color: var(--primary-color); text-decoration: none; border-bottom: 1px dashed var(--primary-color);">AI Kullanım Politikamızı</a> inceleyebilirsiniz.
                 </p>
+            </div>
+        </section>
+
+        <!-- NVM Uzmanlık Alanları Section -->
+        <section id="nvm-uzmanlik-alanlari" class="section alt-bg" aria-labelledby="nvm-uzmanlik-alanlari-baslik" style="scroll-margin-top: 100px;">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-subtitle">NELER YAPIYORUZ?</span>
+                    <h2 id="nvm-uzmanlik-alanlari-baslik" class="section-title" style="margin-top: 0.5rem;">Dijital İletişimin Farklı Parçalarını Aynı Marka Hedefinde Buluşturuyoruz</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 1rem auto 1.5rem; text-align: left;">
+                        NVM'nin çalışma alanları içerik üretiminden dijital reklama, marka stratejisinden tasarım ve web geliştirmeye kadar farklı disiplinleri kapsar. Her projede bütün hizmetlerin birlikte kullanılması gerekmez; ihtiyaç duyulan alanları markanın hedeflerine ve proje kapsamına göre bir araya getiririz.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2.5rem; text-align: left;">
+                        Bazı projelerde yalnızca tek bir uzmanlık alanında çalışırken, bazı projelerde içerik, reklam, video, tasarım veya teknoloji gibi farklı çalışmalar aynı iletişim yönü altında ilerleyebilir.
+                    </p>
+                </div>
+
+                <!-- Doğrudan Cevap / Bilgi Alanı -->
+                <div class="positioning-box" style="max-width: 800px; margin: 0 auto 3rem;">
+                    <span class="positioning-label">NVM HANGİ ALANLARDA HİZMET VERİYOR?</span>
+                    <p class="positioning-text">
+                        NVM; sosyal medya yönetimi, Reels ve dikey video prodüksiyonu, dijital reklam yönetimi, sanal marka karakterleri ve yapay zeka destekli kreatif çözümler, marka kimliği ve grafik tasarım, web tasarım ve geliştirme, jingle ve müzik tasarımı ile dijital iletişim ve marka stratejisi alanlarında hizmet verir.
+                    </p>
+                </div>
+
+                <!-- 8 Uzmanlık Alanı Listesi -->
+                <div class="uzmanlik-container">
+                    <!-- Hizmet 1 -->
+                    <article class="uzmanlik-row">
+                        <div class="uzmanlik-icon" aria-hidden="true">
+                            <i class='bx bx-conversation'></i>
+                        </div>
+                        <div class="uzmanlik-content">
+                            <h3 class="uzmanlik-title">Sosyal Medya Yönetimi</h3>
+                            <p class="uzmanlik-desc">Markanın içerik planını, iletişim dilini ve sosyal medya yayın sürecini ortak bir stratejik yön içinde ele alıyoruz.</p>
+                            <a href="/hizmetler/sosyal-medya-yonetimi" class="uzmanlik-link">Hizmeti İncele <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Hizmet 2 -->
+                    <article class="uzmanlik-row">
+                        <div class="uzmanlik-icon" aria-hidden="true">
+                            <i class='bx bx-video'></i>
+                        </div>
+                        <div class="uzmanlik-content">
+                            <h3 class="uzmanlik-title">Reels ve Dikey Video Prodüksiyonu</h3>
+                            <p class="uzmanlik-desc">Reels, Shorts ve diğer dikey video formatları için fikir, çekim ve kurgu süreçlerini platform kullanımına uygun biçimde planlıyoruz.</p>
+                            <a href="/hizmetler/reels-dikey-video-produksiyonu" class="uzmanlik-link">Hizmeti İncele <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Hizmet 3 -->
+                    <article class="uzmanlik-row">
+                        <div class="uzmanlik-icon" aria-hidden="true">
+                            <i class='bx bx-trending-up'></i>
+                        </div>
+                        <div class="uzmanlik-content">
+                            <h3 class="uzmanlik-title">Dijital Reklam Yönetimi</h3>
+                            <p class="uzmanlik-desc">Dijital reklam çalışmalarını hedef, hedef kitle, kreatif, kampanya yapısı ve ölçümleme bileşenleriyle birlikte değerlendiriyoruz.</p>
+                            <a href="/hizmetler/dijital-reklam-yonetimi" class="uzmanlik-link">Hizmeti İncele <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Hizmet 4 -->
+                    <article class="uzmanlik-row">
+                        <div class="uzmanlik-icon" aria-hidden="true">
+                            <i class='bx bx-bot'></i>
+                        </div>
+                        <div class="uzmanlik-content">
+                            <h3 class="uzmanlik-title">Sanal Marka Elçisi ve AI Kreatif Çözümler</h3>
+                            <p class="uzmanlik-desc">Markalara özel sanal karakterler, yapay zeka destekli kreatif üretimler ve yeni nesil içerik formatları geliştiriyoruz.</p>
+                            <a href="/hizmetler/sanal-marka-elcisi-ai-kreatif-cozumler" class="uzmanlik-link">Hizmeti İncele <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Hizmet 5 -->
+                    <article class="uzmanlik-row">
+                        <div class="uzmanlik-icon" aria-hidden="true">
+                            <i class='bx bx-palette'></i>
+                        </div>
+                        <div class="uzmanlik-content">
+                            <h3 class="uzmanlik-title">Marka Kimliği ve Grafik Tasarım</h3>
+                            <p class="uzmanlik-desc">Markanın görsel iletişimini destekleyen kimlik, tasarım sistemi ve dijital kreatifleri tutarlı bir görsel yön altında geliştiriyoruz.</p>
+                            <a href="/hizmetler/marka-kimligi-grafik-tasarim" class="uzmanlik-link">Hizmeti İncele <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Hizmet 6 -->
+                    <article class="uzmanlik-row">
+                        <div class="uzmanlik-icon" aria-hidden="true">
+                            <i class='bx bx-code-alt'></i>
+                        </div>
+                        <div class="uzmanlik-content">
+                            <h3 class="uzmanlik-title">Web Tasarım ve Geliştirme</h3>
+                            <p class="uzmanlik-desc">Markanın dijital varlığını içerik yapısı, kullanıcı deneyimi, performans ve teknik geliştirme açısından birlikte ele alan web projeleri oluşturuyoruz.</p>
+                            <a href="/hizmetler/web-tasarim-gelistirme" class="uzmanlik-link">Hizmeti İncele <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Hizmet 7 -->
+                    <article class="uzmanlik-row">
+                        <div class="uzmanlik-icon" aria-hidden="true">
+                            <i class='bx bx-music'></i>
+                        </div>
+                        <div class="uzmanlik-content">
+                            <h3 class="uzmanlik-title">Jingle ve Müzik Tasarımı</h3>
+                            <p class="uzmanlik-desc">Marka, kampanya ve projeler için kullanılabilecek özgün jingle, müzik ve ses kimliği çalışmalarını proje kapsamına göre geliştiriyoruz.</p>
+                            <a href="/hizmetler/jingle-muzik-tasarimi" class="uzmanlik-link">Hizmeti İncele <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </article>
+
+                    <!-- Hizmet 8 -->
+                    <article class="uzmanlik-row">
+                        <div class="uzmanlik-icon" aria-hidden="true">
+                            <i class='bx bx-compass'></i>
+                        </div>
+                        <div class="uzmanlik-content">
+                            <h3 class="uzmanlik-title">Dijital İletişim ve Marka Stratejisi</h3>
+                            <p class="uzmanlik-desc">Marka konumlandırması, hedef kitle, iletişim dili, ana mesajlar, içerik yönü ve dijital kanal önceliklerini ortak bir stratejik çerçevede değerlendiriyoruz.</p>
+                            <a href="/hizmetler/dijital-iletisim-marka-stratejisi" class="uzmanlik-link">Hizmeti İncele <i class='bx bx-right-arrow-alt'></i></a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Tüm Hizmetler Linki -->
+                <div style="text-align: center; margin-top: 1rem; margin-bottom: 3rem;">
+                    <a href="/hizmetler" class="btn btn-outline">Tüm Hizmetleri İncele</a>
+                </div>
+
+                <!-- Proje Kapsamı Notu -->
+                <div class="positioning-box" style="max-width: 800px; margin: 0 auto;">
+                    <span class="positioning-label">PROJE KAPSAMI NASIL BELİRLENİR?</span>
+                    <p class="positioning-text">
+                        Bir projenin kapsamı markanın ihtiyacına göre belirlenir. Tek bir hizmetle çalışılabileceği gibi, birbirini destekleyen farklı uzmanlık alanları da aynı proje kapsamında birlikte planlanabilir.
+                    </p>
+                </div>
             </div>
         </section>
 
