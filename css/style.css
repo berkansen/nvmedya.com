@@ -483,6 +483,11 @@ header {
     margin-right: 0;
 }
 
+/* Hero Buttons — Ana Sayfa: Sol hizalı override */
+#home .hero-buttons {
+    justify-content: flex-start;
+}
+
 @media screen and (max-width: 576px) {
     .hero-buttons {
         flex-direction: column;
@@ -494,6 +499,17 @@ header {
         text-align: center;
         margin-left: 0;
         margin-right: 0;
+    }
+
+    /* Ana Sayfa: Mobilde sol hizalama koru */
+    #home .hero-buttons {
+        align-items: flex-start;
+        width: auto;
+    }
+
+    #home .hero-buttons .btn {
+        width: auto;
+        text-align: left;
     }
 }
 
