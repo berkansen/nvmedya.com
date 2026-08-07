@@ -60,7 +60,8 @@
     </script>
 
     <style>
-        #marka-stratejisi-hizmet-kapsami {
+        #marka-stratejisi-hizmet-kapsami,
+        #marka-stratejisi-sureci {
             scroll-margin-top: 100px;
         }
 
@@ -353,6 +354,75 @@
             margin: 0;
         }
 
+        /* Process List Timeline Styles */
+        .process-list {
+            max-width: 800px;
+            margin: 3rem auto;
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .process-list::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 1.25rem;
+            width: 2px;
+            height: 100%;
+            background: rgba(239, 120, 26, 0.15);
+        }
+
+        .process-step {
+            position: relative;
+            margin-bottom: 3rem;
+            text-align: left;
+        }
+
+        .process-step:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-badge {
+            position: absolute;
+            top: 0.2rem;
+            left: -3rem;
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background: var(--bg-color);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            font-weight: 700;
+            z-index: 1;
+        }
+
+        .process-badge-label {
+            display: inline-block;
+            font-size: 0.85rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .process-step-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-main);
+        }
+
+        .process-step-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
         /* CTA Area Style */
         .cta-box {
             background: rgba(255, 255, 255, 0.02);
@@ -410,6 +480,21 @@
             }
             .prep-box {
                 padding: 1.5rem;
+            }
+            .process-list {
+                padding-left: 2rem;
+            }
+            .process-list::before {
+                left: 0.75rem;
+            }
+            .process-badge {
+                width: 1.8rem;
+                height: 1.8rem;
+                left: -2rem;
+                font-size: 0.8rem;
+            }
+            .process-step-title {
+                font-size: 1.15rem;
             }
         }
     </style>
@@ -648,6 +733,81 @@
                     </div>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- Dijital İletişim ve Marka Stratejisi Süreci Section -->
+        <section id="marka-stratejisi-sureci" class="section" aria-labelledby="marka-stratejisi-sureci-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-subtitle">NASIL ÇALIŞIYORUZ?</span>
+                    <h2 id="marka-stratejisi-sureci-baslik" class="section-title" style="max-width: 800px; margin: 0.5rem auto 1.5rem;">Dijital İletişim ve Marka Stratejisi Sürecimiz Nasıl İlerler?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 3rem;">
+                        Strateji çalışmasını hazır bir şablonu markaya uygulamak yerine, mevcut durumun ve hedeflerin anlaşılmasıyla başlayan adım adım bir süreç olarak ele alıyoruz. Analizlerden çıkan bulguları marka konumlandırması, iletişim dili, mesajlar, içerik yönü ve dijital kanal öncelikleriyle ilişkilendirerek uygulanabilir bir stratejik çerçeve oluşturuyoruz.
+                    </p>
+                </div>
+
+                <!-- Timeline Process List -->
+                <div class="process-list">
+                    <article class="process-step">
+                        <div class="process-badge" aria-hidden="true">1</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 1</span>
+                            <h3 class="process-step-title">Mevcut Durumu ve Hedefleri Netleştiriyoruz</h3>
+                            <p class="process-step-desc">İlk aşamada markanın mevcut dijital iletişimini, sunduğu ürün veya hizmetleri, hedeflerini, mevcut içeriklerini, dijital kanallarını ve ulaşılabilir performans verilerini değerlendiriyoruz. Marka tarafından sağlanan bilgilerle birlikte hangi iletişim sorunlarının veya fırsatlarının öncelikli olduğunu belirliyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge" aria-hidden="true">2</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 2</span>
+                            <h3 class="process-step-title">Konumlandırma ve Hedef Kitle Çerçevesini Oluşturuyoruz</h3>
+                            <p class="process-step-desc">Markanın hangi hedef kitlelerle ilişki kurmak istediğini, bu grupların temel ihtiyaçlarını ve markanın hangi değer alanında konumlanmasının anlamlı olabileceğini değerlendiriyoruz. Sektör ve rakip iletişiminden elde edilen gözlemleri de kullanarak markanın kendi güçlü yönlerini daha net ifade edebileceği alanları belirliyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge" aria-hidden="true">3</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 3</span>
+                            <h3 class="process-step-title">İletişim Dilini ve Ana Mesajları Belirliyoruz</h3>
+                            <p class="process-step-desc">Markanın hedef kitlesiyle nasıl konuşacağını, hangi değerleri ve faydaları öne çıkaracağını ve farklı iletişim durumlarında hangi tonu koruyacağını planlıyoruz. Ana mesajları, destekleyici mesajları ve çağrı biçimlerini markanın karakteri ve stratejik hedefleriyle uyumlu hale getiriyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge" aria-hidden="true">4</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 4</span>
+                            <h3 class="process-step-title">İçerik ve Dijital Kanal Yönünü Planlıyoruz</h3>
+                            <p class="process-step-desc">Markanın hangi içerik temalarında düzenli iletişim kurabileceğini ve web sitesi, sosyal medya, reklam, video veya diğer uygun dijital temas noktalarının strateji içinde hangi rolleri üstlenebileceğini belirliyoruz. Her kanalın aynı içeriği tekrar etmesi yerine, marka hedeflerine göre farklı işlevler üstlenmesini planlıyoruz.</p>
+                        </div>
+                    </article>
+
+                    <article class="process-step">
+                        <div class="process-badge" aria-hidden="true">5</div>
+                        <div style="padding-left: 0.5rem;">
+                            <span class="process-badge-label">ADIM 5</span>
+                            <h3 class="process-step-title">Stratejik Yol Haritasını ve Öncelikleri Oluşturuyoruz</h3>
+                            <p class="process-step-desc">Analiz ve stratejik kararları uygulanabilir bir yol haritasında bir araya getiriyoruz. Markanın hangi iletişim konularına, kanallara, içerik türlerine veya dijital çalışmalara önce odaklanabileceğini, içerik, reklam, tasarım, video ve web çalışmalarının nasıl ilişkilendirilebileceğini ve sonraki uygulama adımlarının hangi önceliklerle ilerleyebileceğini netleştiriyoruz.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Süreç Uyarlama Notu ve Uygulama Ayrımı -->
+                <div style="margin-top: 4rem;">
+                    <div class="app-note-box" style="max-width: 800px; margin: 0 auto 2rem;">
+                        <span class="app-note-label">SÜREÇ PROJEYE GÖRE UYARLANIR</span>
+                        <p class="app-note-text">
+                            Strateji sürecinin kapsamı ve ayrıntı seviyesi markanın mevcut yapısına, hedeflerine, sağlanan verilere ve ihtiyaç duyulan analizlere göre değişebilir. Bazı projelerde belirli adımlar birlikte ele alınabilir veya ek araştırma ve değerlendirme aşamaları ayrıca planlanabilir.
+                        </p>
+                    </div>
+
+                    <p class="scope-footer-text" style="max-width: 800px; margin: 0 auto;">
+                        Stratejik yol haritasının oluşturulması, sosyal medya paylaşımı, reklam kampanyası kurulumu, video prodüksiyonu, grafik tasarım veya web geliştirme çalışmalarının otomatik olarak bu hizmete dahil olduğu anlamına gelmez. Uygulama hizmetleri ihtiyaç halinde ayrıca planlanabilir.
+                    </p>
+                </div>
             </div>
         </section>
     </main>
