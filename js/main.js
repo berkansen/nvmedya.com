@@ -33,15 +33,17 @@ document.addEventListener('DOMContentLoaded', () => {
     /* --- Header Background on Scroll --- */
     const header = document.getElementById('header');
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.background = 'rgba(5, 5, 5, 0.95)';
-            header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
-        } else {
-            header.style.background = 'rgba(5, 5, 5, 0.8)';
-            header.style.boxShadow = 'none';
-        }
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(5, 5, 5, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.3)';
+            } else {
+                header.style.background = 'rgba(5, 5, 5, 0.8)';
+                header.style.boxShadow = 'none';
+            }
+        }, { passive: true });
+    }
 
     /* --- Marquee Duplication --- */
     window.addEventListener('load', () => {
