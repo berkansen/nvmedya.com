@@ -61,7 +61,8 @@
 
     <style>
         #marka-stratejisi-hizmet-kapsami,
-        #marka-stratejisi-sureci {
+        #marka-stratejisi-sureci,
+        #marka-stratejisi-sik-sorulan-sorular {
             scroll-margin-top: 100px;
         }
 
@@ -423,6 +424,85 @@
             line-height: 1.6;
         }
 
+        /* FAQ Section Styles */
+        .faq-list {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem 2rem;
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            width: 100%;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-align: left;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: inherit;
+        }
+
+        .faq-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-question[aria-expanded="true"] .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 1rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .faq-answer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px dashed var(--primary-color);
+            padding-bottom: 2px;
+        }
+
+        .faq-answer a:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
+        }
+
+        /* Accessibly hide when JS is active, but keep visible if no-js */
+        .js-faq-active .faq-answer {
+            display: none;
+        }
+
+        .js-faq-active .faq-answer.show {
+            display: block;
+        }
+
         /* CTA Area Style */
         .cta-box {
             background: rgba(255, 255, 255, 0.02);
@@ -495,6 +575,12 @@
             }
             .process-step-title {
                 font-size: 1.15rem;
+            }
+            .faq-item {
+                padding: 1.25rem 1.5rem;
+            }
+            .faq-question {
+                font-size: 1.05rem;
             }
         }
     </style>
@@ -807,6 +893,131 @@
                     <p class="scope-footer-text" style="max-width: 800px; margin: 0 auto;">
                         Stratejik yol haritasının oluşturulması, sosyal medya paylaşımı, reklam kampanyası kurulumu, video prodüksiyonu, grafik tasarım veya web geliştirme çalışmalarının otomatik olarak bu hizmete dahil olduğu anlamına gelmez. Uygulama hizmetleri ihtiyaç halinde ayrıca planlanabilir.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sık Sorulan Sorular Section -->
+        <section id="marka-stratejisi-sik-sorulan-sorular" class="section alt-bg" aria-labelledby="marka-stratejisi-sss-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-subtitle">SIK SORULAN SORULAR</span>
+                    <h2 id="marka-stratejisi-sss-baslik" class="section-title" style="max-width: 800px; margin: 0.5rem auto 1.5rem;">Dijital İletişim ve Marka Stratejisi Hakkında Merak Edilenler</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        Marka stratejisinin kapsamı, araştırma derinliği ve uygulama biçimi markanın mevcut durumuna ve hedeflerinize göre değişebilir. Aşağıda dijital iletişim ve marka stratejisi çalışmaları hakkında en sık karşılaşılan soruları yanıtlıyoruz.
+                    </p>
+                </div>
+
+                <div class="faq-list">
+                    <article class="faq-item">
+                        <button type="button" id="strateji-faq-question-1" aria-expanded="false" aria-controls="strateji-faq-answer-1" class="faq-question">
+                            Dijital iletişim ve marka stratejisi nedir?
+                            <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                        </button>
+                        <div id="strateji-faq-answer-1" role="region" aria-labelledby="strateji-faq-question-1" class="faq-answer">
+                            <p>Dijital iletişim ve marka stratejisi; markanın kimlere sesleneceğini, pazarda nasıl konumlanacağını, hangi mesajları öne çıkaracağını, nasıl bir iletişim dili kullanacağını ve farklı dijital kanalların hangi amaçlarla kullanılabileceğini ortak bir çerçevede planlayan stratejik çalışmadır. Amaç birbirinden bağımsız içerikler üretmek yerine markanın farklı iletişim faaliyetlerini ortak bir yön altında ilişkilendirmektir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button type="button" id="strateji-faq-question-2" aria-expanded="false" aria-controls="strateji-faq-answer-2" class="faq-question">
+                            Marka stratejisi ile sosyal medya yönetimi aynı şey midir?
+                            <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                        </button>
+                        <div id="strateji-faq-answer-2" role="region" aria-labelledby="strateji-faq-question-2" class="faq-answer">
+                            <p>Hayır. Marka stratejisi daha üst seviyede konumlandırma, hedef kitle, iletişim dili, ana mesajlar, içerik yönü ve dijital kanal rollerini belirler. Sosyal medya yönetimi ise bu stratejik yön doğrultusunda içerik planlama, yayınlama ve hesap yönetimi gibi uygulama çalışmalarını kapsayabilir. Sosyal medya yönetimi strateji hizmetine otomatik olarak dahil değildir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button type="button" id="strateji-faq-question-3" aria-expanded="false" aria-controls="strateji-faq-answer-3" class="faq-question">
+                            Marka konumlandırması nasıl belirlenir?
+                            <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                        </button>
+                        <div id="strateji-faq-answer-3" role="region" aria-labelledby="strateji-faq-question-3" class="faq-answer">
+                            <p>Konumlandırma çalışmasında markanın sunduğu ürün veya hizmetler, güçlü yönleri, hedef kitlesi, mevcut iletişimi, sektör yapısı ve rakiplerin iletişim biçimleri birlikte değerlendirilir. Amaç başka markaları taklit etmek değil, markanın hedef kitlesi için anlamlı olabilecek kendi değer alanlarını ve iletişim fırsatlarını daha net tanımlamaktır.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button type="button" id="strateji-faq-question-4" aria-expanded="false" aria-controls="strateji-faq-answer-4" class="faq-question">
+                            Hedef kitle analizi nasıl yapılır?
+                            <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                        </button>
+                        <div id="strateji-faq-answer-4" role="region" aria-labelledby="strateji-faq-question-4" class="faq-answer">
+                            <p>Hedef kitle değerlendirmesinde markanın ulaşmak istediği kişi veya kurum grupları, bu grupların ihtiyaçları, karar motivasyonları, markayla temas biçimleri ve mevcut veriler incelenebilir. Kullanılan yöntem ve analiz derinliği projede erişilebilen verilere ve çalışma kapsamına göre belirlenir; her projede saha araştırması, anket veya kapsamlı pazar araştırması yapılması zorunlu değildir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button type="button" id="strateji-faq-question-5" aria-expanded="false" aria-controls="strateji-faq-answer-5" class="faq-question">
+                            Marka iletişim dili ve tonu nasıl oluşturulur?
+                            <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                        </button>
+                        <div id="strateji-faq-answer-5" role="region" aria-labelledby="strateji-faq-question-5" class="faq-answer">
+                            <p>İletişim tonu; markanın karakteri, hedef kitlesi, sektörü ve oluşturmak istediği algı birlikte değerlendirilerek belirlenir. Samimiyet, uzmanlık, açıklık, dinamizm, güven veya premium algı gibi özelliklerin hangi ölçüde kullanılacağı tanımlanır ve farklı içeriklerde korunabilecek tutarlı bir iletişim çerçevesi oluşturulur.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button type="button" id="strateji-faq-question-6" aria-expanded="false" aria-controls="strateji-faq-answer-6" class="faq-question">
+                            İçerik stratejisi de bu çalışmanın bir parçası mıdır?
+                            <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                        </button>
+                        <div id="strateji-faq-answer-6" role="region" aria-labelledby="strateji-faq-question-6" class="faq-answer">
+                            <p>İçerik yönünün belirlenmesi strateji çalışmasının bir parçası olabilir. Markanın hangi konu alanlarında düzenli iletişim kurabileceği, hangi içeriklerin bilgilendirme, güven oluşturma, uzmanlık gösterme veya dönüşüm gibi amaçlara hizmet edebileceği planlanabilir. Ancak günlük içerik takvimi hazırlanması, tasarım üretimi veya içeriklerin yayınlanması otomatik olarak bu hizmet kapsamına dahil değildir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button type="button" id="strateji-faq-question-7" aria-expanded="false" aria-controls="strateji-faq-answer-7" class="faq-question">
+                            Rakip analizi marka stratejisinde nasıl kullanılır?
+                            <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                        </button>
+                        <div id="strateji-faq-answer-7" role="region" aria-labelledby="strateji-faq-question-7" class="faq-answer">
+                            <p>Rakip incelemeleri sektör iletişimindeki ortak kalıpları, kullanılan mesajları, içerik yaklaşımlarını ve potansiyel farklılaşma alanlarını anlamak için kullanılabilir. Amaç rakiplerin sloganlarını, kampanyalarını, içeriklerini veya görsel kimliğini kopyalamak değil, markanın kendi iletişim alanlarını daha bilinçli değerlendirmektir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button type="button" id="strateji-faq-question-8" aria-expanded="false" aria-controls="strateji-faq-answer-8" class="faq-question">
+                            Strateji çalışmasında yapay zeka kullanılıyor mu?
+                            <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                        </button>
+                        <div id="strateji-faq-answer-8" role="region" aria-labelledby="strateji-faq-question-8" class="faq-answer">
+                            <p>Projenin ihtiyacına göre araştırma düzenleme, veri sınıflandırma, içerik analizi veya fikir geliştirme gibi belirli aşamalarda yapay zeka destekli araçlardan yararlanılabilir. Bu araçlar stratejik değerlendirme ve insan kararlarının yerine geçmez; çıktılar marka bağlamı, doğruluk ve kullanılabilirlik açısından değerlendirilir.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button type="button" id="strateji-faq-question-9" aria-expanded="false" aria-controls="strateji-faq-answer-9" class="faq-question">
+                            Marka stratejisi satış veya büyüme garantisi verir mi?
+                            <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                        </button>
+                        <div id="strateji-faq-answer-9" role="region" aria-labelledby="strateji-faq-question-9" class="faq-answer">
+                            <p>Hayır. Marka stratejisi iletişim kararlarının daha tutarlı, anlaşılır ve hedef odaklı planlanmasını destekler ancak satış, takipçi, erişim, trafik, marka bilinirliği, müşteri kazanımı veya pazar payı gibi sonuçlar birçok farklı faktöre bağlıdır. Bu nedenle belirli bir performans seviyesi garanti edilemez.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button type="button" id="strateji-faq-question-10" aria-expanded="false" aria-controls="strateji-faq-answer-10" class="faq-question">
+                            Strateji tamamlandıktan sonra uygulama çalışmalarını da NVM yapabilir mi?
+                            <i class='bx bx-chevron-down faq-icon' aria-hidden="true"></i>
+                        </button>
+                        <div id="strateji-faq-answer-10" role="region" aria-labelledby="strateji-faq-question-10" class="faq-answer">
+                            <p>Evet, ihtiyaç halinde stratejinin uygulama aşamaları NVM'nin ilgili hizmetleriyle ayrıca planlanabilir. <a href="/hizmetler/sosyal-medya-yonetimi">Sosyal medya yönetimi</a>, <a href="/hizmetler/reels-dikey-video-produksiyonu">Reels ve dikey video prodüksiyonu</a>, <a href="/hizmetler/dijital-reklam-yonetimi">dijital reklam yönetimi</a>, <a href="/hizmetler/marka-kimligi-grafik-tasarim">marka kimliği ve grafik tasarım</a> veya <a href="/hizmetler/web-tasarim-gelistirme">web tasarım ve geliştirme</a> gibi çalışmalar projenin ihtiyaçlarına göre ayrı kapsamlarla ele alınabilir.</p>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- SSS Sonu Kısa CTA -->
+                <div class="cta-box" style="margin-top: 4rem;">
+                    <p class="cta-box-text">
+                        Markanızın iletişim yönünü birlikte değerlendirmek ve projeniz için uygun strateji kapsamını konuşmak ister misiniz?
+                    </p>
+                    <div class="offer-buttons">
+                        <a href="/contact" class="btn btn-primary">Marka Stratejini Konuşalım</a>
+                    </div>
                 </div>
             </div>
         </section>
