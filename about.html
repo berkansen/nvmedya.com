@@ -417,6 +417,29 @@
             }
         }
 
+    
+        /* Final CTA Section Styles */
+        .cta-center-group {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        @media screen and (max-width: 576px) {
+            .cta-center-group {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .cta-center-group .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
     </style>
 </head>
 
@@ -876,6 +899,26 @@
             </div>
         </section>
 
+        <!-- Final CTA Section -->
+        <section id="hakkimizda-iletisim" class="section" aria-labelledby="hakkimizda-iletisim-baslik" style="scroll-margin-top: 100px;">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-subtitle">BİRLİKTE ÇALIŞALIM</span>
+                    <h2 id="hakkimizda-iletisim-baslik" class="section-title" style="margin-top: 0.5rem;">Markanız İçin Doğru Dijital Çalışma Modelini Birlikte Belirleyelim</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 1rem auto 1.2rem;">
+                        Markanızın içerik, reklam, strateji, tasarım, web veya yeni nesil kreatif ihtiyaçlarını birlikte değerlendirebiliriz. Projenizin hedeflerini ve mevcut durumunu konuşarak hangi çalışma alanlarının sizin için anlamlı olabileceğini netleştirelim.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2rem;">
+                        Henüz kapsam tamamen net değilse de iletişime geçebilirsiniz. İlk adım, ihtiyacınızı anlamak ve uygun sonraki adımı belirlemektir.
+                    </p>
+                    
+                    <div class="cta-center-group">
+                        <a href="/contact" class="btn btn-primary">Projenizi Konuşalım</a>
+                        <a href="/hizmetler" class="btn btn-outline">Hizmetleri İncele</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
