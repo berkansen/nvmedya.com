@@ -128,7 +128,7 @@
         .btn-iklim     { background-color: #E2A0B1; }
         .btn-aras      { background-color: #0047AB; }
 
-        /* ─── Accordion ─────────────────────────────────── */
+        /* ─── Accordion Group & Items ────────────────────── */
         .accordion-group {
             width: 100%;
             display: flex;
@@ -138,104 +138,201 @@
 
         .accordion-item {
             width: 100%;
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 14px;
+            border-radius: 20px;
             overflow: hidden;
-            background: rgba(255,255,255,0.04);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
         }
 
+        /* Accordion Triggers - Renkli & İkonlu */
         .accordion-trigger {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             width: 100%;
             padding: 0.875rem 1.25rem;
-            background: none;
             border: none;
             cursor: pointer;
-            color: var(--text-main);
+            color: #ffffff;
             font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.04em;
             text-transform: uppercase;
             min-height: 52px;
             box-sizing: border-box;
-            transition: background 0.2s ease;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            position: relative;
         }
 
         .accordion-trigger:hover {
-            background: rgba(255,255,255,0.05);
+            filter: brightness(1.1);
+            transform: translateY(-2px);
         }
 
         .accordion-trigger:focus-visible {
             outline: 3px solid var(--primary-color);
-            outline-offset: -3px;
+            outline-offset: 3px;
+        }
+
+        /* Specific Accordion Trigger Backgrounds */
+        .acc-trigger-davetiyeler {
+            background-color: #E2A0B1; /* Davetiye pudra pembe */
+        }
+
+        .acc-trigger-instagram {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+        }
+
+        .acc-trigger-daha-fazlasi {
+            background-color: var(--primary-color); /* NVM Ana Kırmızı/Mor accent */
+        }
+
+        .accordion-title-icon {
+            font-size: 1.4rem;
+            margin-right: 0.75rem;
+            flex-shrink: 0;
+            color: #ffffff;
+        }
+
+        .accordion-title-text {
+            flex-grow: 1;
+            text-align: left;
         }
 
         .accordion-icon {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            transition: transform 0.25s ease;
+            font-size: 1.4rem;
+            color: #ffffff;
+            transition: transform 0.3s ease;
             flex-shrink: 0;
-            line-height: 1;
+            margin-left: 0.5rem;
+            opacity: 0.9;
         }
 
         .accordion-trigger[aria-expanded="true"] .accordion-icon {
             transform: rotate(180deg);
         }
 
+        /* Accordion Panels & Child Links */
         .accordion-panel {
             display: none;
             flex-direction: column;
-            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 0.5rem;
+            gap: 0.375rem;
+            background: rgba(10, 10, 10, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .accordion-panel.is-open {
             display: flex;
         }
 
-        /* ─── Compact link row ──────────────────────────── */
+        /* Compact link row with tint & icon */
         .compact-link {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.75rem 1.25rem;
+            padding: 0.75rem 1rem;
             text-decoration: none;
             color: var(--text-main);
-            font-size: 0.9rem;
+            font-size: 0.925rem;
             font-weight: 500;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
             min-height: 48px;
             box-sizing: border-box;
-            transition: background 0.2s ease;
-        }
-
-        .compact-link:last-child {
-            border-bottom: none;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
         }
 
         .compact-link:hover {
-            background: rgba(255,255,255,0.05);
+            filter: brightness(1.25);
+            transform: translateX(3px);
         }
 
         .compact-link:focus-visible {
-            outline: 3px solid var(--primary-color);
-            outline-offset: -3px;
+            outline: 2px solid var(--primary-color);
+            outline-offset: -2px;
+        }
+
+        .compact-link-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .compact-icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
         }
 
         .compact-link-arrow {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.1rem;
             flex-shrink: 0;
+            opacity: 0.7;
+            transition: transform 0.2s ease;
         }
 
-        /* ─── Social icons row ──────────────────────────── */
+        .compact-link:hover .compact-link-arrow {
+            transform: translateX(2px);
+            opacity: 1;
+        }
+
+        /* Child Link Specific Tinted Styles */
+        .link-iklim {
+            background: rgba(226, 160, 177, 0.12);
+            border-left-color: #E2A0B1;
+        }
+
+        .link-fenomen {
+            background: rgba(225, 29, 72, 0.12);
+            border-left-color: var(--primary-color);
+        }
+
+        .link-aras {
+            background: rgba(0, 71, 171, 0.12);
+            border-left-color: #0047AB;
+        }
+
+        .link-ig-main {
+            background: rgba(225, 48, 108, 0.12);
+            border-left-color: #E1306C;
+        }
+
+        .link-ig-davetiye {
+            background: rgba(226, 160, 177, 0.12);
+            border-left-color: #E2A0B1;
+        }
+
+        .link-ig-nvm {
+            background: rgba(131, 58, 180, 0.12);
+            border-left-color: #833ab4;
+        }
+
+        .link-blog {
+            background: rgba(225, 29, 72, 0.12);
+            border-left-color: var(--primary-color);
+        }
+
+        .link-phone-sub {
+            background: rgba(52, 183, 241, 0.12);
+            border-left-color: #34b7f1;
+        }
+
+        .link-map-sub {
+            background: rgba(234, 67, 53, 0.12);
+            border-left-color: #EA4335;
+        }
+
+        /* ─── Social Icons Row (Renkli Brand Platformları) ─── */
         .social-icons-row {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.625rem;
             width: 100%;
             margin-top: 0.25rem;
         }
@@ -247,26 +344,53 @@
             width: 48px;
             height: 48px;
             border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.15);
-            color: var(--text-main);
             text-decoration: none;
-            font-size: 1.3rem;
+            font-size: 1.35rem;
             transition: all 0.25s ease;
-            background: rgba(255,255,255,0.05);
             flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
         }
 
         .social-icon-link:hover {
-            background: rgba(255,255,255,0.12);
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.05);
+            filter: brightness(1.15);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
         }
 
         .social-icon-link:focus-visible {
             outline: 3px solid var(--primary-color);
-            outline-offset: 2px;
+            outline-offset: 3px;
         }
 
-        /* ─── QR section (unchanged) ────────────────────── */
+        /* Platform Brand Colors */
+        .social-ig {
+            background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+            color: #ffffff;
+        }
+
+        .social-tiktok {
+            background: #010101;
+            color: #ffffff;
+            border: 1px solid rgba(37, 244, 238, 0.6);
+            box-shadow: -2px 0 8px rgba(37, 244, 238, 0.3), 2px 0 8px rgba(254, 9, 121, 0.3);
+        }
+
+        .social-yt {
+            background: #FF0000;
+            color: #ffffff;
+        }
+
+        .social-linkedin {
+            background: #0A66C2;
+            color: #ffffff;
+        }
+
+        .social-wa {
+            background: #25D366;
+            color: #ffffff;
+        }
+
+        /* ─── QR Section (Unchanged) ────────────────────── */
         .qr-section {
             margin-top: 1.5rem;
             padding: 1rem;
@@ -292,12 +416,12 @@
             opacity: 0.7;
         }
 
-        /* ─── Spacing helpers ───────────────────────────── */
+        /* ─── Spacing Helpers ───────────────────────────── */
         .section-gap {
             margin-top: 0.75rem;
         }
 
-        /* ─── Reduced motion ────────────────────────────── */
+        /* ─── Reduced Motion ────────────────────────────── */
         @media (prefers-reduced-motion: reduce) {
             .accordion-icon { transition: none; }
             .link-btn, .accordion-trigger, .compact-link, .social-icon-link {
@@ -369,12 +493,13 @@
             <div class="accordion-item">
                 <button
                     type="button"
-                    class="accordion-trigger"
+                    class="accordion-trigger acc-trigger-davetiyeler"
                     id="acc-trigger-davetiyeler"
                     aria-expanded="true"
                     aria-controls="acc-panel-davetiyeler"
                 >
-                    <span>DAVETİYELER</span>
+                    <i class='bx bx-envelope accordion-title-icon' aria-hidden="true"></i>
+                    <span class="accordion-title-text">DAVETİYELER</span>
                     <i class='bx bx-chevron-up accordion-icon' aria-hidden="true"></i>
                 </button>
                 <div
@@ -383,16 +508,25 @@
                     role="region"
                     aria-labelledby="acc-trigger-davetiyeler"
                 >
-                    <a href="https://www.nisanvitrini.com/urunler/davetiye/iklim-davetiye/" target="_blank" rel="noopener noreferrer" class="compact-link">
-                        <span>İklim Serisi Davetiye</span>
+                    <a href="https://www.nisanvitrini.com/urunler/davetiye/iklim-davetiye/" target="_blank" rel="noopener noreferrer" class="compact-link link-iklim">
+                        <div class="compact-link-content">
+                            <i class='bx bx-envelope-open compact-icon' style="color: #E2A0B1;" aria-hidden="true"></i>
+                            <span>İklim Serisi Davetiye</span>
+                        </div>
                         <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
                     </a>
-                    <a href="https://www.nisanvitrini.com/urunler/davetiye/fenomen-davetiye/" target="_blank" rel="noopener noreferrer" class="compact-link">
-                        <span>Fenomen Serisi Davetiye</span>
+                    <a href="https://www.nisanvitrini.com/urunler/davetiye/fenomen-davetiye/" target="_blank" rel="noopener noreferrer" class="compact-link link-fenomen">
+                        <div class="compact-link-content">
+                            <i class='bx bx-envelope compact-icon' style="color: var(--primary-color);" aria-hidden="true"></i>
+                            <span>Fenomen Serisi Davetiye</span>
+                        </div>
                         <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
                     </a>
-                    <a href="https://www.nisanvitrini.com/urunler/davetiye/aras-davetiye/" target="_blank" rel="noopener noreferrer" class="compact-link">
-                        <span>Sünnet Davetiyeleri (Aras)</span>
+                    <a href="https://www.nisanvitrini.com/urunler/davetiye/aras-davetiye/" target="_blank" rel="noopener noreferrer" class="compact-link link-aras">
+                        <div class="compact-link-content">
+                            <i class='bx bx-party compact-icon' style="color: #0047AB;" aria-hidden="true"></i>
+                            <span>Sünnet Davetiyeleri (Aras)</span>
+                        </div>
                         <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
                     </a>
                 </div>
@@ -402,12 +536,13 @@
             <div class="accordion-item">
                 <button
                     type="button"
-                    class="accordion-trigger"
+                    class="accordion-trigger acc-trigger-instagram"
                     id="acc-trigger-instagram"
                     aria-expanded="false"
                     aria-controls="acc-panel-instagram"
                 >
-                    <span>INSTAGRAM</span>
+                    <i class='bx bxl-instagram accordion-title-icon' aria-hidden="true"></i>
+                    <span class="accordion-title-text">INSTAGRAM</span>
                     <i class='bx bx-chevron-up accordion-icon' aria-hidden="true"></i>
                 </button>
                 <div
@@ -416,16 +551,25 @@
                     role="region"
                     aria-labelledby="acc-trigger-instagram"
                 >
-                    <a href="https://www.instagram.com/nisanvitrini" target="_blank" rel="noopener noreferrer" class="compact-link">
-                        <span>Nisan Vitrini Instagram</span>
+                    <a href="https://www.instagram.com/nisanvitrini" target="_blank" rel="noopener noreferrer" class="compact-link link-ig-main">
+                        <div class="compact-link-content">
+                            <i class='bx bxl-instagram compact-icon' style="color: #E1306C;" aria-hidden="true"></i>
+                            <span>Nisan Vitrini Instagram</span>
+                        </div>
                         <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
                     </a>
-                    <a href="https://www.instagram.com/iklimdavetiyeizmir" target="_blank" rel="noopener noreferrer" class="compact-link">
-                        <span>Davetiye Instagram</span>
+                    <a href="https://www.instagram.com/iklimdavetiyeizmir" target="_blank" rel="noopener noreferrer" class="compact-link link-ig-davetiye">
+                        <div class="compact-link-content">
+                            <i class='bx bxl-instagram-alt compact-icon' style="color: #E2A0B1;" aria-hidden="true"></i>
+                            <span>Davetiye Instagram</span>
+                        </div>
                         <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
                     </a>
-                    <a href="https://www.instagram.com/nisanvitrinimedia" target="_blank" rel="noopener noreferrer" class="compact-link">
-                        <span>NVM Instagram</span>
+                    <a href="https://www.instagram.com/nisanvitrinimedia" target="_blank" rel="noopener noreferrer" class="compact-link link-ig-nvm">
+                        <div class="compact-link-content">
+                            <i class='bx bxl-instagram compact-icon' style="color: #833ab4;" aria-hidden="true"></i>
+                            <span>NVM Instagram</span>
+                        </div>
                         <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
                     </a>
                 </div>
@@ -435,12 +579,13 @@
             <div class="accordion-item">
                 <button
                     type="button"
-                    class="accordion-trigger"
+                    class="accordion-trigger acc-trigger-daha-fazlasi"
                     id="acc-trigger-daha-fazlasi"
                     aria-expanded="false"
                     aria-controls="acc-panel-daha-fazlasi"
                 >
-                    <span>DAHA FAZLASI</span>
+                    <i class='bx bx-grid-alt accordion-title-icon' aria-hidden="true"></i>
+                    <span class="accordion-title-text">DAHA FAZLASI</span>
                     <i class='bx bx-chevron-up accordion-icon' aria-hidden="true"></i>
                 </button>
                 <div
@@ -449,16 +594,25 @@
                     role="region"
                     aria-labelledby="acc-trigger-daha-fazlasi"
                 >
-                    <a href="https://www.nisanvitrini.com/blog/" target="_blank" rel="noopener noreferrer" class="compact-link">
-                        <span>BLOG</span>
+                    <a href="https://www.nisanvitrini.com/blog/" target="_blank" rel="noopener noreferrer" class="compact-link link-blog">
+                        <div class="compact-link-content">
+                            <i class='bx bx-news compact-icon' style="color: var(--primary-color);" aria-hidden="true"></i>
+                            <span>BLOG</span>
+                        </div>
                         <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
                     </a>
-                    <a href="tel:+905526288131" class="compact-link">
-                        <span>BİZİ ARAYIN</span>
+                    <a href="tel:+905526288131" class="compact-link link-phone-sub">
+                        <div class="compact-link-content">
+                            <i class='bx bx-phone-call compact-icon' style="color: #34b7f1;" aria-hidden="true"></i>
+                            <span>BİZİ ARAYIN</span>
+                        </div>
                         <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
                     </a>
-                    <a href="https://maps.app.goo.gl/Z8FqoT3SZAJkxRmK7" target="_blank" rel="noopener noreferrer" class="compact-link">
-                        <span>Konumumuz</span>
+                    <a href="https://maps.app.goo.gl/Z8FqoT3SZAJkxRmK7" target="_blank" rel="noopener noreferrer" class="compact-link link-map-sub">
+                        <div class="compact-link-content">
+                            <i class='bx bx-map compact-icon' style="color: #EA4335;" aria-hidden="true"></i>
+                            <span>Konumumuz</span>
+                        </div>
                         <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
                     </a>
                 </div>
@@ -474,13 +628,13 @@
             </a>
         </div>
 
-        <!-- ── Sosyal Medya İkon Satırı ──────────────── -->
+        <!-- ── Sosyal Medya İkon Satırı (Renkli Marka Platformları) ── -->
         <div class="social-icons-row section-gap" role="list" aria-label="Sosyal medya hesaplarımız">
             <a
                 href="https://www.instagram.com/nisanvitrini"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="social-icon-link"
+                class="social-icon-link social-ig"
                 aria-label="Nisan Vitrini Instagram"
                 role="listitem"
             >
@@ -490,7 +644,7 @@
                 href="https://www.tiktok.com/@nisanvitrini"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="social-icon-link"
+                class="social-icon-link social-tiktok"
                 aria-label="Nisan Vitrini TikTok"
                 role="listitem"
             >
@@ -500,7 +654,7 @@
                 href="https://www.youtube.com/@nisanvitrini"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="social-icon-link"
+                class="social-icon-link social-yt"
                 aria-label="Nisan Vitrini YouTube"
                 role="listitem"
             >
@@ -510,7 +664,7 @@
                 href="https://www.linkedin.com/company/nisanvitrini"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="social-icon-link"
+                class="social-icon-link social-linkedin"
                 aria-label="Nisan Vitrini LinkedIn"
                 role="listitem"
             >
@@ -520,7 +674,7 @@
                 href="https://wa.me/905526288131"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="social-icon-link"
+                class="social-icon-link social-wa"
                 aria-label="Nisan Vitrini WhatsApp"
                 role="listitem"
             >
@@ -576,8 +730,6 @@
                         openPanel(trigger, panel);
                     }
                 });
-
-                // Klavye: Enter ve Space zaten button'da çalışır, ek handler gerekmez
             });
         })();
     </script>
