@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setMetaTag('og:type', 'article', true);
             setMetaTag('og:url', window.location.href, true);
 
-            const imgHtml = post.image ? `<img src="${post.image}" alt="${post.title}" class="detay-image" onerror="this.style.display='none';">` : '';
+            const imgHtml = post.image ? `<img src="${post.image}" alt="${post.title}" class="detay-image">` : '';
 
             // Render Content
             detailContainer.innerHTML = `
@@ -83,6 +83,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
             `;
+
+            // Attach error handler to blog image programmatically (avoids inline event)
+            if (post.image) {
+                const blogImg = detailContainer.querySelector('.detay-image');
+                if (blogImg) {
+                    blogImg.addEventListener('error', function () {
+                        this.style.display = 'none';
+                    });
+                }
+            }
         })
         .catch(err => {
             console.error(err);

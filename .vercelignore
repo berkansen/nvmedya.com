@@ -1,0 +1,18 @@
+# Vercel deployment exclusions
+# Backup / dev files that should not be deployed to production
+*.zip
+*.bak
+*.sql
+*.log
+*.backup
+*.tar
+*.gz
+*.old
+
+# Development / admin tools (not public site)
+# Note: admin-blog.html, board.html, login.html, panel.html
+# are intentionally included in deployment (internal tools)
+# but scratch/test files should not be
+scratch/
+.gemini/
+temp/
