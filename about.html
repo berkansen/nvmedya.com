@@ -155,6 +155,71 @@
                 text-align: center;
             }
         }
+    
+        /* NVM Yaklaşımı Section Styles */
+        .yaklasim-flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+
+        .prensip-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            flex: 1 1 calc(33.333% - 2rem);
+            min-width: 280px;
+            max-width: 380px;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+        }
+
+        .prensip-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .prensip-icon-wrapper {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .prensip-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .prensip-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @media screen and (max-width: 992px) {
+            .prensip-card {
+                flex: 1 1 calc(50% - 2rem);
+                max-width: 100%;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .prensip-card {
+                flex: 1 1 100%;
+                padding: 2rem 1.5rem;
+            }
+        }
+
     </style>
 </head>
 
@@ -231,6 +296,88 @@
                 </div>
             </div>
             <div class="hero-overlay"></div>
+        </section>
+
+        <!-- NVM Çalışma Yaklaşımı Section -->
+        <section id="nvm-yaklasimi" class="section alt-bg" aria-labelledby="nvm-yaklasimi-baslik" style="scroll-margin-top: 100px;">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-subtitle">NASIL ÇALIŞIYORUZ?</span>
+                    <h2 id="nvm-yaklasimi-baslik" class="section-title" style="margin-top: 0.5rem;">NVM Yaklaşımı: Strateji, Kreatif ve Teknolojiyi Birlikte Düşünmek</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 1rem auto 1.5rem; text-align: left;">
+                        Bir markanın dijital iletişimini yalnızca sosyal medya paylaşımları, reklam kampanyaları veya tekil tasarım işleri üzerinden değerlendirmiyoruz. NVM'de strateji, içerik, kreatif üretim, medya, teknoloji ve dijital temas noktalarının birbirini nasıl desteklediğine bakarak markanın ihtiyacına uygun bir çalışma çerçevesi oluşturuyoruz.
+                    </p>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto 2.5rem; text-align: left;">
+                        Her projede aynı hizmetlerin veya aynı yöntemlerin kullanılması gerekmez. Önceliğimiz, markanın mevcut durumunu ve hedeflerini anlamak; ardından gerçekten ihtiyaç duyulan alanları ortak bir iletişim yönü altında planlamaktır.
+                    </p>
+                </div>
+
+                <!-- Doğrudan Cevap / Bilgi Alanı -->
+                <div class="positioning-box" style="max-width: 800px; margin: 0 auto 3rem;">
+                    <span class="positioning-label">NVM'NİN ÇALIŞMA YAKLAŞIMI NEDİR?</span>
+                    <p class="positioning-text">
+                        NVM'nin çalışma yaklaşımı; markanın hedeflerini ve iletişim ihtiyaçlarını anlamak, doğru stratejik öncelikleri belirlemek ve içerik, kreatif, reklam, tasarım, web ile yapay zeka destekli araçları gerektiği yerde birbirini tamamlayan parçalar olarak kullanmak üzerine kuruludur.
+                    </p>
+                </div>
+
+                <!-- 5 Temel Prensip Grid/Flex -->
+                <div class="yaklasim-flex-container">
+                    <!-- Prensip 1 -->
+                    <article class="prensip-card">
+                        <div class="prensip-icon-wrapper" aria-hidden="true">
+                            <i class='bx bx-compass'></i>
+                        </div>
+                        <h3 class="prensip-title">Önce İhtiyacı ve Yönü Anlamak</h3>
+                        <p class="prensip-text">
+                            İçerik veya uygulama üretimine başlamadan önce markanın mevcut durumunu, hedeflerini, hedef kitlesini ve önceliklerini anlamaya çalışırız. Böylece yapılacak işlerin yalnızca üretim takvimini değil, hangi amaca hizmet ettiğini de netleştiririz.
+                        </p>
+                    </article>
+
+                    <!-- Prensip 2 -->
+                    <article class="prensip-card">
+                        <div class="prensip-icon-wrapper" aria-hidden="true">
+                            <i class='bx bx-git-merge'></i>
+                        </div>
+                        <h3 class="prensip-title">Disiplinleri Birbirinden Koparmamak</h3>
+                        <p class="prensip-text">
+                            Sosyal medya, video, reklam, marka dili, tasarım ve web gibi alanların aynı marka iletişiminin farklı temas noktaları olduğunu düşünürüz. Proje kapsamı gerektirdiğinde bu alanların birbirini desteklemesini sağlayacak ortak bir yön oluştururuz.
+                        </p>
+                    </article>
+
+                    <!-- Prensip 3 -->
+                    <article class="prensip-card">
+                        <div class="prensip-icon-wrapper" aria-hidden="true">
+                            <i class='bx bx-slider-alt'></i>
+                        </div>
+                        <h3 class="prensip-title">Hazır Kalıplar Yerine Marka Bağlamını Değerlendirmek</h3>
+                        <p class="prensip-text">
+                            Bir sektörde veya başka bir markada işe yarayan yöntemi doğrudan kopyalamak yerine, markanın hedef kitlesi, iletişim dili, mevcut kaynakları ve dijital konumuna göre hangi yaklaşımın anlamlı olduğunu değerlendiririz.
+                        </p>
+                    </article>
+
+                    <!-- Prensip 4 -->
+                    <article class="prensip-card">
+                        <div class="prensip-icon-wrapper" aria-hidden="true">
+                            <i class='bx bx-bot'></i>
+                        </div>
+                        <h3 class="prensip-title">İnsan Değerlendirmesi ile Teknolojiyi Birleştirmek</h3>
+                        <p class="prensip-text">
+                            Yapay zeka ve dijital araçları araştırma, fikir geliştirme, üretim ve çalışma süreçlerini destekleyen teknolojiler olarak kullanırız. Stratejik karar, marka bağlamı, yaratıcı değerlendirme ve yayın sorumluluğunu yalnızca otomatik sistemlere bırakmayız. Ayrıntılı bilgi için <a href="/ai-kullanim-politikasi" style="color: var(--primary-color); text-decoration: none; border-bottom: 1px dashed var(--primary-color);">AI Kullanım Politikamızı</a> inceleyebilirsiniz.
+                        </p>
+                    </article>
+
+                    <!-- Prensip 5 -->
+                    <article class="prensip-card">
+                        <div class="prensip-icon-wrapper" aria-hidden="true">
+                            <i class='bx bx-cog'></i>
+                        </div>
+                        <h3 class="prensip-title">Uygulanabilir Bir Sistem Kurmak</h3>
+                        <p class="prensip-text">
+                            Stratejinin yalnızca sunum dosyasında kalmaması gerektiğini düşünüyoruz. Önerileri markanın mevcut imkanları, üretim kapasitesi, dijital kanalları ve proje kapsamıyla birlikte değerlendirerek uygulanabilir bir çalışma düzenine dönüştürmeyi hedefliyoruz.
+                        </p>
+                    </article>
+                </div>
+            </div>
         </section>
 
         <!-- Mevcut Alt Bölümler (Sonraki Adımlar İçin Korundu) -->
