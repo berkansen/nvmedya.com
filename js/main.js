@@ -6,7 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (navToggle) {
         navToggle.addEventListener('click', () => {
+            const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
             navList.classList.toggle('show');
+            navToggle.setAttribute('aria-expanded', String(!isExpanded));
+            navToggle.setAttribute('aria-label', isExpanded ? 'Gezinti menüsünü aç' : 'Gezinti menüsünü kapat');
+        });
+
+        // Keyboard support: Enter and Space activate the toggle
+        navToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                navToggle.click();
+            }
         });
     }
 
@@ -14,6 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             navList.classList.remove('show');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Gezinti menüsünü aç');
         });
     });
 
