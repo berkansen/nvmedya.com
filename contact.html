@@ -40,7 +40,8 @@
     </script>
 
     <style>
-        #proje-formu {
+        #proje-formu,
+        #iletisim-kanallari {
             scroll-margin-top: 100px;
         }
 
@@ -237,6 +238,60 @@
             font-size: 0.95rem;
         }
 
+        /* Alt İletişim Kanalları Grid */
+        .channels-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .channel-card {
+            background: var(--card-bg);
+            padding: 2rem 1.5rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        .channel-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .channel-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .channel-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .channel-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin-bottom: 1rem;
+            overflow-wrap: anywhere;
+        }
+
+        @media screen and (max-width: 992px) {
+            .channels-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media screen and (max-width: 768px) {
             .contact-form-grid {
                 grid-template-columns: 1fr;
@@ -250,6 +305,10 @@
         }
 
         @media screen and (max-width: 576px) {
+            .channels-grid {
+                grid-template-columns: 1fr;
+            }
+
             .contact-hero-buttons {
                 flex-direction: column;
                 align-items: flex-start;
@@ -371,7 +430,7 @@
 
                     <!-- Proje İletişim Formu -->
                     <form id="projectForm" action="https://formsubmit.co/ajax/nisanvitrini@gmail.com" method="POST">
-                        <input type="text" name="_honey" style="display:none" aria-hidden="true">
+                        <input type="text" name="_honey" style="display:none" aria-hidden="true" tabindex="-1" autocomplete="off">
 
                         <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.5rem;">* Zorunlu alanlar</p>
 
@@ -424,7 +483,7 @@
                                 <textarea id="projectDescription" name="Proje_Detayi" rows="4" placeholder="Markanız, hedefiniz ve ihtiyaç duyduğunuz destek hakkında birkaç cümle yazabilirsiniz." required></textarea>
                             </div>
 
-                                                        <!-- Veri Bilgilendirme Metni -->
+                            <!-- Veri Bilgilendirme Metni -->
                             <div class="contact-form-group full-width" style="margin-top: 0.5rem;">
                                 <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin: 0; text-align: left;">
                                     Form üzerinden paylaştığınız bilgiler, talebinizi değerlendirmek ve sizinle iletişim kurmak amacıyla işlenebilir. Kişisel verilerin işlenmesine ilişkin ayrıntıları <a href="/ai-kullanim-politikasi" style="color: var(--primary-color); text-decoration: none; border-bottom: 1px dashed var(--primary-color);">AI Kullanım Politikası ve Gizlilik Yaklaşımı</a> belgemizden inceleyebilirsiniz.
@@ -444,14 +503,65 @@
             </div>
         </section>
 
-        <!-- İletişim Bilgileri ve Harita Section -->
-        <section class="contact-section section">
+        <!-- Alternatif İletişim Kanalları Section -->
+        <section id="iletisim-kanallari" class="section" aria-labelledby="iletisim-kanallari-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="section-subtitle">DİĞER İLETİŞİM YOLLARI</span>
+                    <h2 id="iletisim-kanallari-baslik" class="section-title" style="margin-top: 0.5rem;">Size Uygun Kanaldan İletişime Geçebilirsiniz</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 720px; margin: 1rem auto 2.5rem;">
+                        Proje formunu kullanmak istemiyorsanız, aşağıdaki mevcut iletişim kanallarımızdan size uygun olanı tercih edebilirsiniz. Projenizle ilgili kısa bir bilgi paylaşmanız ilk değerlendirme için yeterlidir.
+                    </p>
+                </div>
+
+                <div class="channels-grid">
+                    <!-- WhatsApp -->
+                    <article class="channel-card">
+                        <i class='bx bxl-whatsapp channel-icon' aria-hidden="true"></i>
+                        <h3 class="channel-title">WhatsApp</h3>
+                        <p class="channel-desc">Hızlı mesaj için WhatsApp hattımız</p>
+                        <a href="https://wa.me/905526288131" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top: auto; width: 100%;">Mesaj Gönder</a>
+                    </article>
+
+                    <!-- E-posta -->
+                    <article class="channel-card">
+                        <i class='bx bx-envelope channel-icon' aria-hidden="true"></i>
+                        <h3 class="channel-title">E-posta</h3>
+                        <p class="channel-desc">nisanvitrini@gmail.com</p>
+                        <a href="mailto:nisanvitrini@gmail.com" class="btn btn-outline" style="margin-top: auto; width: 100%;">E-posta Gönder</a>
+                    </article>
+
+                    <!-- Telefon -->
+                    <article class="channel-card">
+                        <i class='bx bx-phone channel-icon' aria-hidden="true"></i>
+                        <h3 class="channel-title">Telefon</h3>
+                        <p class="channel-desc">+90 552 628 81 31</p>
+                        <a href="tel:+905526288131" class="btn btn-outline" style="margin-top: auto; width: 100%;">Hemen Ara</a>
+                    </article>
+
+                    <!-- Instagram -->
+                    <article class="channel-card">
+                        <i class='bx bxl-instagram channel-icon' aria-hidden="true"></i>
+                        <h3 class="channel-title">Instagram</h3>
+                        <p class="channel-desc">@nisanvitrinimedia</p>
+                        <a href="https://www.instagram.com/nisanvitrinimedia" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="margin-top: auto; width: 100%;">Profilimizi Görüntüleyin</a>
+                    </article>
+                </div>
+
+                <p style="text-align: center; color: var(--text-muted); font-size: 0.95rem; margin-top: 3rem;">
+                    Projeniz hakkında daha ayrıntılı bilgi paylaşmak isterseniz <a href="#proje-formu" style="color: var(--primary-color); text-decoration: none; border-bottom: 1px dashed var(--primary-color);">proje formunu</a> kullanabilirsiniz.
+                </p>
+            </div>
+        </section>
+
+        <!-- Adres ve Harita Section -->
+        <section class="contact-section section alt-bg">
             <div class="container contact-container">
                 <div class="contact-info">
                     <div class="contact-card">
                         <i class='bx bxl-whatsapp contact-icon'></i>
                         <h3>WhatsApp</h3>
-                        <p><a href="https://wa.me/905526288131" target="_blank">Mesaj Gönder</a></p>
+                        <p><a href="https://wa.me/905526288131" target="_blank" rel="noopener noreferrer">Mesaj Gönder</a></p>
                     </div>
                     <div class="contact-card">
                         <i class='bx bx-map contact-icon'></i>
@@ -506,16 +616,16 @@
             <div class="footer-box">
                 <h4 class="footer-title">Bizi Takip Edin</h4>
                 <div class="social-links">
-                    <a href="https://www.instagram.com/nisanvitrinimedia" target="_blank" class="social-link instagram">
+                    <a href="https://www.instagram.com/nisanvitrinimedia" target="_blank" rel="noopener noreferrer" class="social-link instagram">
                         <i class='bx bxl-instagram'></i>
                     </a>
-                    <a href="https://www.threads.com/@nisanvitrinimedia" target="_blank" class="social-link threads">
+                    <a href="https://www.threads.com/@nisanvitrinimedia" target="_blank" rel="noopener noreferrer" class="social-link threads">
                         <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 1.2rem; height: 1.2rem; fill: currentColor;"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg>
                     </a>
-                    <a href="https://www.youtube.com/@nisanvitrinimedia" target="_blank" class="social-link youtube">
+                    <a href="https://www.youtube.com/@nisanvitrinimedia" target="_blank" rel="noopener noreferrer" class="social-link youtube">
                         <i class='bx bxl-youtube'></i>
                     </a>
-                    <a href="https://tr.linkedin.com/company/nisan-vitrini-media" target="_blank" class="social-link linkedin">
+                    <a href="https://tr.linkedin.com/company/nisan-vitrini-media" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
                         <i class='bx bxl-linkedin'></i>
                     </a>
                 </div>
@@ -524,16 +634,16 @@
 
         <div class="container footer-parent-brand">
             <p class="footer-parent-text">nisan vitrini media bir <a href="https://www.nisanvitrini.com/hakkimizda/"
-                    target="_blank">nisan vitrini</a> markasıdır.</p>
+                    target="_blank" rel="noopener noreferrer">nisan vitrini</a> markasıdır.</p>
             <h4 class="footer-parent-title">nisan vitrini sosyal medya hesapları</h4>
             <div class="social-links">
-                <a href="https://www.instagram.com/nisanvitrini" target="_blank" class="social-link"><i
+                <a href="https://www.instagram.com/nisanvitrini" target="_blank" rel="noopener noreferrer" class="social-link"><i
                         class='bx bxl-instagram'></i></a>
-                <a href="https://www.tiktok.com/@nisanvitrini" target="_blank" class="social-link"><i
+                <a href="https://www.tiktok.com/@nisanvitrini" target="_blank" rel="noopener noreferrer" class="social-link"><i
                         class='bx bxl-tiktok'></i></a>
-                <a href="https://www.youtube.com/@nisanvitrini" target="_blank" class="social-link"><i
+                <a href="https://www.youtube.com/@nisanvitrini" target="_blank" rel="noopener noreferrer" class="social-link"><i
                         class='bx bxl-youtube'></i></a>
-                <a href="https://www.linkedin.com/company/nisanvitrini" target="_blank" class="social-link"><i
+                <a href="https://www.linkedin.com/company/nisanvitrini" target="_blank" rel="noopener noreferrer" class="social-link"><i
                         class='bx bxl-linkedin'></i></a>
             </div>
         </div>
@@ -552,9 +662,8 @@
             projectForm.addEventListener('submit', function(e) {
                 e.preventDefault();
 
-                                const honey = document.querySelector('input[name="_honey"]');
+                const honey = document.querySelector('input[name="_honey"]');
                 if (honey && honey.value) {
-                    // Bot detected, silently drop
                     return;
                 }
 
