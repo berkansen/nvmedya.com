@@ -1172,7 +1172,32 @@
         </div>
     </footer>
 
-    <script src="../js/main.js"></script>
+        <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqList = document.querySelector('.faq-list');
+            if (faqList) {
+                faqList.classList.add('js-faq-active');
+            }
+
+            const buttons = document.querySelectorAll('.faq-question');
+            buttons.forEach((button) => {
+                const answerId = button.getAttribute('aria-controls');
+                const answer = document.getElementById(answerId);
+                
+                button.setAttribute('aria-expanded', 'false');
+                if (answer) answer.classList.remove('show');
+
+                button.addEventListener('click', () => {
+                    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                    button.setAttribute('aria-expanded', !isExpanded);
+                    if (answer) {
+                        answer.classList.toggle('show');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
