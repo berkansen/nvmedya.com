@@ -178,6 +178,198 @@
                 animation: none;
             }
         }
+
+        /* Info Box Styles */
+        .info-box {
+            background: rgba(239, 120, 26, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 2rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin: 2.5rem auto 3rem;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .info-box-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-box-text {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin: 0;
+        }
+
+        /* Grid & Cards Styles */
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .scope-card {
+            background: var(--card-bg);
+            padding: 2.5rem 2rem;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            height: 100%;
+        }
+
+        .scope-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .scope-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .scope-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .scope-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .scope-footer-text {
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            text-align: center;
+        }
+
+        .scope-footer-text a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px dashed var(--primary-color);
+            padding-bottom: 2px;
+        }
+
+        .scope-footer-text a:hover {
+            color: var(--text-main);
+            border-bottom-color: var(--text-main);
+        }
+
+        /* List Box Styles */
+        .prep-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            margin: 3rem auto;
+            max-width: 800px;
+            text-align: left;
+        }
+
+        .prep-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: var(--text-main);
+        }
+
+        .prep-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .prep-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        .prep-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .prep-note {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* CTA Area Style */
+        .cta-box {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 3rem 2rem;
+            border-radius: var(--border-radius);
+            max-width: 800px;
+            margin: 4rem auto 0;
+            text-align: center;
+        }
+
+        .cta-box-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 2rem;
+        }
+
+        @media screen and (max-width: 992px) {
+            .scope-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .prep-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .scope-grid {
+                grid-template-columns: 1fr;
+            }
+            .scope-card {
+                padding: 2rem 1.5rem;
+            }
+            .scope-footer-text {
+                text-align: left;
+            }
+            .prep-box {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 
@@ -266,8 +458,145 @@
             <div class="hero-overlay"></div>
         </section>
 
-        <!-- Empty target for secondary button scroll (to be implemented in next tasks) -->
-        <section id="jingle-muzik-hizmet-kapsami" style="scroll-margin-top: 100px; padding: 0;"></section>
+        <!-- Jingle ve Müzik Tasarımı Hizmet Kapsamı Section -->
+        <section id="jingle-muzik-hizmet-kapsami" class="section alt-bg" aria-labelledby="jingle-muzik-hizmet-kapsami-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="jingle-muzik-hizmet-kapsami-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1.5rem;">Jingle ve Müzik Tasarımı Hizmetimiz Neleri Kapsar?</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+                        NVM jingle ve müzik tasarımı hizmeti; markanın ses karakterinin belirlenmesinden yaratıcı müzik yönüne, melodi ve ritim geliştirmeden düzenleme, prodüksiyon, teslim formatları ve kullanım kapsamının planlanmasına kadar uzanan proje bazlı bir üretim sürecini kapsar. Çalışmanın içeriği, kullanılacağı mecra, süre, format ve yaratıcı ihtiyaçlara göre belirlenir.
+                    </p>
+                </div>
+
+                <!-- Info Box (Direct Answer Area) -->
+                <div class="info-box">
+                    <span class="info-box-title">Kısaca Ne Üretiyoruz?</span>
+                    <p class="info-box-text">
+                        Markanın tonu ve kullanım alanına göre jingle, reklam müziği, sosyal medya müziği, intro, outro ve projeye özel müzik çalışmaları geliştiriyor; parçanın yaratıcı yönünü, kullanım biçimini ve teslim kapsamını proje ihtiyaçlarına göre planlıyoruz.
+                    </p>
+                </div>
+
+                <!-- Scope Cards Grid -->
+                <div class="scope-grid">
+                    <article class="scope-card">
+                        <i class='bx bx-brain scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Marka Ses Yönü ve Sonic Kimlik</h3>
+                        <p class="scope-desc">Markanın karakterini, hedef kitlesini, iletişim tonunu ve kullanım alanlarını değerlendirerek müziğin nasıl bir duygu, enerji ve algı oluşturması gerektiğini belirliyoruz. Böylece yaratıcı kararları markanın genel kimliğiyle uyumlu bir ses yönüne bağlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-music scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Marka Jingle'ı</h3>
+                        <p class="scope-desc">Markanın adı, sloganı veya iletişim karakteriyle ilişki kurabilecek kısa ve akılda kalıcı müzik fikirleri geliştiriyoruz. Jingle'ın uzunluğu, sözlü veya sözsüz olması, vokal kullanımı ve farklı versiyon ihtiyaçları proje kapsamında belirlenir.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-slideshow scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Reklam ve Kampanya Müziği</h3>
+                        <p class="scope-desc">Reklam filmi, kampanya videosu, tanıtım içeriği veya belirli bir iletişim dönemi için görsel akış, tempo ve mesajla uyumlu müzik tasarımı hazırlıyoruz. Çalışmanın uzunluğu ve versiyonları kullanılacağı mecralara göre planlanır.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-video-plus scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Sosyal Medya İçerik Müziği</h3>
+                        <p class="scope-desc">Reels, Shorts, TikTok ve diğer sosyal medya içeriklerinde kullanılabilecek marka uyumlu kısa müzikler, loop yapıları, geçiş bölümleri ve seri içeriklerde tekrar kullanılabilecek ses çözümleri geliştiriyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-microphone scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Intro, Outro ve Ses İmzaları</h3>
+                        <p class="scope-desc">Video serileri, podcast, kurumsal içerikler, etkinlikler veya dijital yayınlar için kısa intro, outro ve ses imzası çalışmaları hazırlıyoruz. Kullanım süresi ve formatları projenin yayın yapısına göre belirlenir.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-waveform scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Projeye Özel Müzik Tasarımı</h3>
+                        <p class="scope-desc">Kurumsal video, etkinlik, lansman, proje tanıtımı veya özel içerik serileri için hazır müzik seçmek yerine projenin temposuna ve anlatımına göre özgün müzik yönleri geliştiriyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-slider-alt scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Düzenleme, Prodüksiyon ve Versiyonlama</h3>
+                        <p class="scope-desc">Onaylanan müzik fikrini kullanım alanına uygun biçimde düzenliyor, gerekli prodüksiyon çalışmalarını yapıyor ve proje kapsamında ihtiyaç duyulan farklı süre veya kurgu versiyonlarını hazırlıyoruz.</p>
+                    </article>
+
+                    <article class="scope-card">
+                        <i class='bx bx-export scope-icon' aria-hidden="true"></i>
+                        <h3 class="scope-title">Teslim Formatları ve Kullanım Kapsamı</h3>
+                        <p class="scope-desc">Teslim edilecek ses dosyası formatlarını, versiyonları, kullanım mecralarını, kullanım süresini ve varsa lisans veya hak koşullarını proje başlangıcında belirliyoruz. Teslim kapsamı her proje için yazılı olarak netleştirilir.</p>
+                    </article>
+                </div>
+
+                <!-- Kullanım Alanları Bölümü -->
+                <div class="prep-box">
+                    <span class="prep-title" style="display: block; font-size: 1.2rem; font-weight: 600; margin-bottom: 1.5rem;">Hangi Alanlarda Kullanılabilir?</span>
+                    <ul class="prep-list">
+                        <li>Marka ve kurumsal iletişim çalışmaları</li>
+                        <li>Reklam filmleri ve dijital reklam kampanyaları</li>
+                        <li>Reels, Shorts ve sosyal medya içerikleri</li>
+                        <li>Kurumsal ve tanıtım videoları</li>
+                        <li>Video serileri için intro ve outro</li>
+                        <li>Podcast ve dijital yayın projeleri</li>
+                        <li>Lansman, etkinlik ve organizasyon içerikleri</li>
+                        <li>Projeye özel dijital iletişim çalışmaları</li>
+                    </ul>
+                    <p class="prep-note">
+                        Kullanım mecraları ve kullanım kapsamı proje başlangıcında belirlenir. Bir çalışma için kararlaştırılan kullanım izni, aksi ayrıca belirtilmedikçe otomatik olarak bütün medya, platform, ülke veya süreleri kapsamaz.
+                    </p>
+                </div>
+
+                <!-- Disclosures Area -->
+                <div style="margin-top: 4rem; border-top: 1px solid rgba(255, 255, 255, 0.05); padding-top: 4rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    <span class="offer-subtitle" style="text-align: center; display: block; font-size: 0.9rem; color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Vokal ve Ek Prodüksiyon İhtiyaçları</span>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center;">
+                        Vokal kayıtları, söz yazımı, seslendirme, canlı enstrüman kaydı, harici müzisyen veya stüdyo ihtiyacı projenin yaratıcı yönüne göre ayrıca planlanabilir. Bu çalışmalar her jingle veya müzik tasarımı projesine otomatik olarak dahil değildir.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Yaratıcı araştırma, demo geliştirme, ses fikirleri veya üretim sürecinin belirli aşamalarında yapay zeka destekli araçlardan yararlanılabilir. Kullanılan yöntem, projenin yaratıcı ve teknik ihtiyaçlarına göre belirlenir; yapay zeka kullanımı tek başına telif, münhasırlık veya sınırsız kullanım hakkı garantisi oluşturmaz.
+                    </p>
+
+                    <span class="offer-subtitle" style="text-align: center; display: block; font-size: 0.9rem; color: var(--accent-color); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Sample ve Üçüncü Taraf Sesler</span>
+                    <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center;">
+                        Projede üçüncü taraf sample, ses kütüphanesi, efekt, sanal enstrüman veya benzeri lisanslı kaynaklar kullanılması gerekiyorsa ilgili kullanım koşulları dikkate alınır. Bu içeriklerin mülkiyeti veya lisans şartları, özgün olarak üretilen proje unsurlarından farklı olabilir.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Müzik çalışmasının kullanım mecrası, kullanım süresi, bölgesi, reklam kullanımı, organik içerik kullanımı, münhasırlık durumu ve varsa hak devri proje teklifinde açıkça belirlenir. Bir parçanın hazırlanmış olması bütün hakların otomatik ve sınırsız biçimde devredildiği anlamına gelmez.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem; text-align: center; font-style: italic;">
+                        Telif ve kullanım koşulları projenin üretim yöntemi, kullanılan kaynaklar, yaratıcı katkılar ve yayın planına göre değerlendirilir. NVM, kapsamı açık biçimde tanımlamayı amaçlar ancak bu bilgilendirme tek başına hukuki görüş veya marka adına yapılmış resmi hak tescili anlamına gelmez.
+                    </p>
+
+                    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2.5rem; text-align: center; font-style: italic;">
+                        Spotify, Apple Music ve benzeri dijital müzik platformlarında yayınlama veya dağıtım hizmetleri, aksi proje kapsamında açıkça belirtilmedikçe jingle ve müzik tasarımı hizmetine otomatik olarak dahil değildir.
+                    </p>
+
+                    <!-- İç Hizmet Bağlantıları -->
+                    <p class="scope-footer-text" style="margin-top: 3rem;">
+                        Jingle veya marka müziğinizin kullanılacağı içerikler için 
+                        <a href="/hizmetler/reels-dikey-video-produksiyonu">Reels ve dikey video prodüksiyonu</a>, 
+                        <a href="/hizmetler/sosyal-medya-yonetimi">sosyal medya yönetimi</a>, 
+                        <a href="/hizmetler/dijital-reklam-yonetimi">dijital reklam yönetimi</a> 
+                        ve 
+                        <a href="/hizmetler/marka-kimligi-grafik-tasarim">marka kimliği ve grafik tasarım</a> 
+                        hizmetlerimizi de inceleyebilirsiniz.
+                    </p>
+
+                    <!-- CTA Box -->
+                    <div class="cta-box">
+                        <p class="cta-box-text">
+                            Markanızın nasıl bir sese ihtiyacı olduğunu, müziğin nerelerde kullanılacağını ve projenin yaratıcı kapsamını birlikte değerlendirebiliriz.
+                        </p>
+                        <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                            <a href="/contact" class="btn btn-primary">Müzik Projeni Anlat</a>
+                            <a href="/hizmetler" class="btn btn-outline" style="margin-left: 1rem;">Tüm Hizmetleri İncele</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer section">
