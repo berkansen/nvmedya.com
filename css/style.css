@@ -121,7 +121,6 @@ img {
 
 .btn-outline {
     border: 2px solid rgba(255, 255, 255, 0.2);
-    margin-left: 1rem;
 }
 
 .btn-outline:hover,
@@ -468,6 +467,34 @@ header {
 
 .footer-parent-brand .social-links {
     justify-content: center;
+}
+
+/* Hero Buttons — CTA Group Layout */
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.hero-buttons .btn {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media screen and (max-width: 576px) {
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 /* Responsive */

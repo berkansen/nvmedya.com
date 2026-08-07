@@ -522,6 +522,31 @@
         #web-tasarim-teklif-al {
             scroll-margin-top: 100px;
         }
+
+        .offer-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 3rem 0 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .offer-buttons .btn {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        @media screen and (max-width: 576px) {
+            .offer-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .offer-buttons .btn {
+                width: 100%;
+                text-align: center;
+                margin: 0;
+            }
+        }
     </style>
 
     <!-- Structured Data (JSON-LD) -->
@@ -641,7 +666,7 @@
                     
                     <div class="hero-buttons">
                         <a href="/contact" class="btn btn-primary">Web Projeni Anlat</a>
-                        <a href="#web-tasarim-hizmet-kapsami" class="btn btn-outline" style="margin-left: 1rem;">Hizmet Kapsamını İncele</a>
+                        <a href="#web-tasarim-hizmet-kapsami" class="btn btn-outline">Hizmet Kapsamını İncele</a>
             </div>
             <div class="hero-overlay"></div>
         </section>
@@ -776,7 +801,7 @@
                         </p>
                         <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
                             <a href="/contact" class="btn btn-primary">Web Projeni Anlat</a>
-                            <a href="/hizmetler" class="btn btn-outline" style="margin-left: 1rem;">Tüm Hizmetleri İncele</a>
+                            <a href="/hizmetler" class="btn btn-outline">Tüm Hizmetleri İncele</a>
                         </div>
                     </div>
                 </div>
@@ -900,7 +925,7 @@
                         </p>
                         <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
                             <a href="/contact" class="btn btn-primary">Web Projeni Anlat</a>
-                            <a href="#web-tasarim-hizmet-kapsami" class="btn btn-outline" style="margin-left: 1rem;">Hizmet Kapsamını İncele</a>
+                            <a href="#web-tasarim-hizmet-kapsami" class="btn btn-outline">Hizmet Kapsamını İncele</a>
                         </div>
                     </div>
                 </div>
@@ -1044,7 +1069,7 @@
                         </p>
                         <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
                             <a href="/contact" class="btn btn-primary">Web Projeni Anlat</a>
-                            <a href="#web-tasarim-gelistirme-sureci" class="btn btn-outline" style="margin-left: 1rem;">Web Tasarım Sürecini İncele</a>
+                            <a href="#web-tasarim-gelistirme-sureci" class="btn btn-outline">Web Tasarım Sürecini İncele</a>
                         </div>
                     </div>
 
@@ -1093,7 +1118,7 @@
                     <!-- CTA Butonları -->
                     <div class="offer-buttons">
                         <a href="/contact" class="btn btn-primary">Web Projeni Anlat</a>
-                        <a href="/hizmetler" class="btn btn-outline" style="margin-left: 1rem;">Tüm Hizmetleri İncele</a>
+                        <a href="/hizmetler" class="btn btn-outline">Tüm Hizmetleri İncele</a>
                     </div>
 
                     <!-- İlgili Hizmetlere İç Bağlantılar -->
