@@ -424,6 +424,13 @@
                                 <textarea id="projectDescription" name="Proje_Detayi" rows="4" placeholder="Markanız, hedefiniz ve ihtiyaç duyduğunuz destek hakkında birkaç cümle yazabilirsiniz." required></textarea>
                             </div>
 
+                                                        <!-- Veri Bilgilendirme Metni -->
+                            <div class="contact-form-group full-width" style="margin-top: 0.5rem;">
+                                <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin: 0; text-align: left;">
+                                    Form üzerinden paylaştığınız bilgiler, talebinizi değerlendirmek ve sizinle iletişim kurmak amacıyla işlenebilir. Kişisel verilerin işlenmesine ilişkin ayrıntıları <a href="/ai-kullanim-politikasi" style="color: var(--primary-color); text-decoration: none; border-bottom: 1px dashed var(--primary-color);">AI Kullanım Politikası ve Gizlilik Yaklaşımı</a> belgemizden inceleyebilirsiniz.
+                                </p>
+                            </div>
+
                             <!-- Submit Butonu ve Not -->
                             <div class="contact-form-group full-width" style="margin-top: 1rem;">
                                 <button type="submit" class="btn btn-primary submit-btn" id="submitBtn" style="width: 100%;">Projeyi Gönder</button>
@@ -544,6 +551,12 @@
 
             projectForm.addEventListener('submit', function(e) {
                 e.preventDefault();
+
+                                const honey = document.querySelector('input[name="_honey"]');
+                if (honey && honey.value) {
+                    // Bot detected, silently drop
+                    return;
+                }
 
                 const fullName = document.getElementById('fullName').value.trim();
                 const companyName = document.getElementById('companyName').value.trim();
