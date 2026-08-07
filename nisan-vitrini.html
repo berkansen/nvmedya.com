@@ -19,14 +19,14 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
+        /* ─── Bio page base ─────────────────────────────── */
         body {
             background-color: var(--bg-color);
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
             min-height: 100vh;
-            padding: 2rem 1.5rem;
+            padding: 1.5rem 1rem 2rem;
             text-align: center;
         }
 
@@ -36,59 +36,66 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2rem;
+            gap: 0;
         }
 
+        /* ─── Profile section ───────────────────────────── */
         .profile-section {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 1rem;
+            gap: 0.5rem;
+            padding-bottom: 1.25rem;
         }
 
         .profile-img {
-            width: 150px;
-            height: 150px;
+            width: 130px;
+            height: 130px;
             object-fit: contain;
             border-radius: 50%;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             background-color: #fff;
         }
 
         .profile-name {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--text-main);
+            margin: 0;
         }
 
         .profile-bio {
             color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-top: -0.5rem;
+            font-size: 0.875rem;
+            margin: 0;
         }
 
+        /* ─── Links section ─────────────────────────────── */
         .links-section {
             width: 100%;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
+        /* ─── Main action button ────────────────────────── */
         .link-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 1rem;
+            padding: 0.875rem 1rem;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1.1rem;
+            font-size: 1rem;
             text-decoration: none;
             color: #fff;
             transition: all 0.3s ease;
             position: relative;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            min-height: 52px;
+            box-sizing: border-box;
         }
 
         .link-btn:hover {
@@ -97,52 +104,169 @@
             filter: brightness(1.1);
         }
 
-        .link-btn i {
-            font-size: 1.5rem;
-            position: absolute;
-            left: 1.5rem;
+        .link-btn:focus-visible {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 3px;
         }
 
-        /* Specific Colors */
+        .link-btn i {
+            font-size: 1.4rem;
+            position: absolute;
+            left: 1.25rem;
+        }
+
+        /* ─── Button colours (unchanged) ───────────────── */
         .btn-instagram {
             background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
         }
 
-        .btn-whatsapp {
-            background-color: #25D366;
-        }
-        
-        .btn-phone {
-            background-color: #34b7f1;
+        .btn-whatsapp  { background-color: #25D366; }
+        .btn-phone     { background-color: #34b7f1; }
+        .btn-website   { background-color: var(--primary-color); }
+        .btn-calendar  { background-color: #4285F4; }
+        .btn-location  { background-color: #EA4335; }
+        .btn-iklim     { background-color: #E2A0B1; }
+        .btn-aras      { background-color: #0047AB; }
+
+        /* ─── Accordion ─────────────────────────────────── */
+        .accordion-group {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
         }
 
-        .btn-website {
-            background-color: var(--primary-color);
+        .accordion-item {
+            width: 100%;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.04);
         }
 
-        .btn-calendar {
-            background-color: #4285F4;
-        }
-        
-        .btn-location {
-            background-color: #EA4335;
+        .accordion-trigger {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 0.875rem 1.25rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            min-height: 52px;
+            box-sizing: border-box;
+            transition: background 0.2s ease;
         }
 
-        .btn-iklim {
-            background-color: #E2A0B1; /* Pudra Rengi */
+        .accordion-trigger:hover {
+            background: rgba(255,255,255,0.05);
         }
 
-        .btn-aras {
-            background-color: #0047AB; /* Nazar Boncuğu Mavisi */
+        .accordion-trigger:focus-visible {
+            outline: 3px solid var(--primary-color);
+            outline-offset: -3px;
         }
 
-        .footer-minimal {
-            margin-top: 3rem;
-            font-size: 0.8rem;
+        .accordion-icon {
+            font-size: 1.2rem;
             color: var(--text-muted);
-            opacity: 0.7;
+            transition: transform 0.25s ease;
+            flex-shrink: 0;
+            line-height: 1;
         }
 
+        .accordion-trigger[aria-expanded="true"] .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-panel {
+            display: none;
+            flex-direction: column;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .accordion-panel.is-open {
+            display: flex;
+        }
+
+        /* ─── Compact link row ──────────────────────────── */
+        .compact-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1.25rem;
+            text-decoration: none;
+            color: var(--text-main);
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            min-height: 48px;
+            box-sizing: border-box;
+            transition: background 0.2s ease;
+        }
+
+        .compact-link:last-child {
+            border-bottom: none;
+        }
+
+        .compact-link:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        .compact-link:focus-visible {
+            outline: 3px solid var(--primary-color);
+            outline-offset: -3px;
+        }
+
+        .compact-link-arrow {
+            color: var(--text-muted);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* ─── Social icons row ──────────────────────────── */
+        .social-icons-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            margin-top: 0.25rem;
+        }
+
+        .social-icon-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.15);
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: all 0.25s ease;
+            background: rgba(255,255,255,0.05);
+            flex-shrink: 0;
+        }
+
+        .social-icon-link:hover {
+            background: rgba(255,255,255,0.12);
+            transform: translateY(-2px);
+        }
+
+        .social-icon-link:focus-visible {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* ─── QR section (unchanged) ────────────────────── */
         .qr-section {
             margin-top: 1.5rem;
             padding: 1rem;
@@ -159,7 +283,34 @@
             height: 120px;
             display: block;
         }
+
+        /* ─── Footer ────────────────────────────────────── */
+        .footer-minimal {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        /* ─── Spacing helpers ───────────────────────────── */
+        .section-gap {
+            margin-top: 0.75rem;
+        }
+
+        /* ─── Reduced motion ────────────────────────────── */
+        @media (prefers-reduced-motion: reduce) {
+            .accordion-icon { transition: none; }
+            .link-btn, .accordion-trigger, .compact-link, .social-icon-link {
+                transition: none;
+            }
+        }
+
+        /* ─── Desktop: keep compact character ───────────── */
+        @media (min-width: 600px) {
+            body { padding: 2.5rem 1.5rem 3rem; }
+        }
     </style>
+
     <link rel="icon" type="image/png" href="assets/favicon.png">
     <link rel="apple-touch-icon" href="assets/favicon.png">
 
@@ -169,7 +320,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-JD1C5PBEKD');
     </script>
 
@@ -178,94 +328,262 @@
 <body>
 
     <div class="media-container">
-        <!-- Profile Section -->
+
+        <!-- ── Profile / Marka Alanı ─────────────────── -->
         <div class="profile-section">
-            <img src="assets/nisan-vitrini-logo.png" alt="Nisan Vitrini" class="profile-img">
-            <h1 class="profile-name">Nisan Vitrini <i class='bx bxs-badge-check' style='color: #3897f0; vertical-align: middle; margin-left: 4px;'></i></h1>
+            <img src="assets/nisan-vitrini-logo.png" alt="Nisan Vitrini" class="profile-img" width="130" height="130">
+            <h1 class="profile-name">
+                Nisan Vitrini
+                <i class='bx bxs-badge-check' style='color: #3897f0; vertical-align: middle; margin-left: 4px;' aria-hidden="true"></i>
+            </h1>
             <p class="profile-bio">Hatıralar Asla Ölmez</p>
         </div>
 
-        <!-- Links Section -->
+        <!-- ── 4 Sabit Ana Buton ─────────────────────── -->
         <div class="links-section">
-            <!-- Web Sitemiz -->
-            <a href="https://www.nisanvitrini.com" target="_blank" class="link-btn btn-website">
-                <i class='bx bx-globe'></i>
+            <a href="https://www.nisanvitrini.com" target="_blank" rel="noopener noreferrer" class="link-btn btn-website">
+                <i class='bx bx-globe' aria-hidden="true"></i>
                 Web Sitemiz
             </a>
 
-            <!-- Instagram -->
-            <a href="https://www.instagram.com/nisanvitrini" target="_blank" class="link-btn btn-instagram">
-                <i class='bx bxl-instagram'></i>
-                Instagram
-            </a>
-
-            <!-- İklim Serisi Davetiye -->
-            <a href="https://www.nisanvitrini.com/urunler/davetiye/iklim-davetiye/" target="_blank" class="link-btn btn-iklim">
-                <i class='bx bx-envelope'></i>
-                İklim Serisi Davetiye
-            </a>
-
-            <!-- Fenomen Serisi Davetiye -->
-            <a href="https://www.nisanvitrini.com/urunler/davetiye/fenomen-davetiye/" target="_blank" class="link-btn btn-website">
-                <i class='bx bx-envelope-open'></i>
-                Fenomen Serisi Davetiye
-            </a>
-
-            <!-- Sünnet Davetiyeleri (Aras) -->
-            <a href="https://www.nisanvitrini.com/urunler/davetiye/aras-davetiye/" target="_blank" class="link-btn btn-aras">
-                <i class='bx bx-party'></i>
-                Sünnet Davetiyeleri (Aras)
-            </a>
-
-            <!-- Davetiye instagram -->
-            <a href="https://www.instagram.com/iklimdavetiyeizmir" target="_blank" class="link-btn btn-instagram">
-                <i class='bx bxl-instagram'></i>
-                Davetiye instagram
-            </a>
-
-            <!-- WhatsApp -->
-            <a href="https://wa.me/905526288131" target="_blank" class="link-btn btn-whatsapp">
-                <i class='bx bxl-whatsapp'></i>
+            <a href="https://wa.me/905526288131" target="_blank" rel="noopener noreferrer" class="link-btn btn-whatsapp">
+                <i class='bx bxl-whatsapp' aria-hidden="true"></i>
                 WhatsApp
             </a>
-            
-            <!-- Bizi Arayın -->
-            <a href="tel:+905526288131" target="_blank" class="link-btn btn-phone">
-                <i class='bx bx-phone-call'></i>
-                Bizi Arayın
+
+            <a href="tel:+905526288131" class="link-btn btn-phone">
+                <i class='bx bx-phone-call' aria-hidden="true"></i>
+                BİZİ ARAYIN
             </a>
-            
-            <!-- Konumumuz -->
-            <a href="https://maps.app.goo.gl/Z8FqoT3SZAJkxRmK7" target="_blank" class="link-btn btn-location">
-                <i class='bx bx-map'></i>
+
+            <a href="https://maps.app.goo.gl/Z8FqoT3SZAJkxRmK7" target="_blank" rel="noopener noreferrer" class="link-btn btn-location">
+                <i class='bx bx-map' aria-hidden="true"></i>
                 Konumumuz
-            </a>
-
-            <!-- Rezervasyon Takvimi -->
-            <a href="https://calendar.app.google/aPTN53mxjhJyppTK8" target="_blank" class="link-btn btn-calendar">
-                <i class='bx bx-calendar'></i>
-                Rezervasyon Takvimi
-            </a>
-
-            <!-- Nisan Vitrini Blog -->
-            <a href="https://www.nisanvitrini.com/blog/" target="_blank" class="link-btn btn-website">
-                <i class='bx bx-news'></i>
-                Nisan Vitrini Blog
             </a>
         </div>
 
-        <!-- Section QR Code -->
+        <!-- ── Accordion Grubu ───────────────────────── -->
+        <div class="accordion-group section-gap" id="nv-accordions">
+
+            <!-- Accordion 1: DAVETİYELER (varsayılan: AÇIK) -->
+            <div class="accordion-item">
+                <button
+                    type="button"
+                    class="accordion-trigger"
+                    id="acc-trigger-davetiyeler"
+                    aria-expanded="true"
+                    aria-controls="acc-panel-davetiyeler"
+                >
+                    <span>DAVETİYELER</span>
+                    <i class='bx bx-chevron-up accordion-icon' aria-hidden="true"></i>
+                </button>
+                <div
+                    class="accordion-panel is-open"
+                    id="acc-panel-davetiyeler"
+                    role="region"
+                    aria-labelledby="acc-trigger-davetiyeler"
+                >
+                    <a href="https://www.nisanvitrini.com/urunler/davetiye/iklim-davetiye/" target="_blank" rel="noopener noreferrer" class="compact-link">
+                        <span>İklim Serisi Davetiye</span>
+                        <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.nisanvitrini.com/urunler/davetiye/fenomen-davetiye/" target="_blank" rel="noopener noreferrer" class="compact-link">
+                        <span>Fenomen Serisi Davetiye</span>
+                        <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.nisanvitrini.com/urunler/davetiye/aras-davetiye/" target="_blank" rel="noopener noreferrer" class="compact-link">
+                        <span>Sünnet Davetiyeleri (Aras)</span>
+                        <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Accordion 2: INSTAGRAM (varsayılan: KAPALI) -->
+            <div class="accordion-item">
+                <button
+                    type="button"
+                    class="accordion-trigger"
+                    id="acc-trigger-instagram"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-instagram"
+                >
+                    <span>INSTAGRAM</span>
+                    <i class='bx bx-chevron-up accordion-icon' aria-hidden="true"></i>
+                </button>
+                <div
+                    class="accordion-panel"
+                    id="acc-panel-instagram"
+                    role="region"
+                    aria-labelledby="acc-trigger-instagram"
+                >
+                    <a href="https://www.instagram.com/nisanvitrini" target="_blank" rel="noopener noreferrer" class="compact-link">
+                        <span>Nisan Vitrini Instagram</span>
+                        <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.instagram.com/iklimdavetiyeizmir" target="_blank" rel="noopener noreferrer" class="compact-link">
+                        <span>Davetiye Instagram</span>
+                        <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
+                    </a>
+                    <a href="https://www.instagram.com/nisanvitrinimedia" target="_blank" rel="noopener noreferrer" class="compact-link">
+                        <span>NVM Instagram</span>
+                        <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Accordion 3: DAHA FAZLASI (varsayılan: KAPALI) -->
+            <div class="accordion-item">
+                <button
+                    type="button"
+                    class="accordion-trigger"
+                    id="acc-trigger-daha-fazlasi"
+                    aria-expanded="false"
+                    aria-controls="acc-panel-daha-fazlasi"
+                >
+                    <span>DAHA FAZLASI</span>
+                    <i class='bx bx-chevron-up accordion-icon' aria-hidden="true"></i>
+                </button>
+                <div
+                    class="accordion-panel"
+                    id="acc-panel-daha-fazlasi"
+                    role="region"
+                    aria-labelledby="acc-trigger-daha-fazlasi"
+                >
+                    <a href="https://www.nisanvitrini.com/blog/" target="_blank" rel="noopener noreferrer" class="compact-link">
+                        <span>BLOG</span>
+                        <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
+                    </a>
+                    <a href="tel:+905526288131" class="compact-link">
+                        <span>BİZİ ARAYIN</span>
+                        <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
+                    </a>
+                    <a href="https://maps.app.goo.gl/Z8FqoT3SZAJkxRmK7" target="_blank" rel="noopener noreferrer" class="compact-link">
+                        <span>Konumumuz</span>
+                        <i class='bx bx-chevron-right compact-link-arrow' aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div><!-- /accordion-group -->
+
+        <!-- ── Final Rezervasyon Butonu ──────────────── -->
+        <div class="links-section section-gap">
+            <a href="https://calendar.app.google/aPTN53mxjhJyppTK8" target="_blank" rel="noopener noreferrer" class="link-btn btn-calendar">
+                <i class='bx bx-calendar' aria-hidden="true"></i>
+                Rezervasyon Takvimi
+            </a>
+        </div>
+
+        <!-- ── Sosyal Medya İkon Satırı ──────────────── -->
+        <div class="social-icons-row section-gap" role="list" aria-label="Sosyal medya hesaplarımız">
+            <a
+                href="https://www.instagram.com/nisanvitrini"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon-link"
+                aria-label="Nisan Vitrini Instagram"
+                role="listitem"
+            >
+                <i class='bx bxl-instagram' aria-hidden="true"></i>
+            </a>
+            <a
+                href="https://www.tiktok.com/@nisanvitrini"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon-link"
+                aria-label="Nisan Vitrini TikTok"
+                role="listitem"
+            >
+                <i class='bx bxl-tiktok' aria-hidden="true"></i>
+            </a>
+            <a
+                href="https://www.youtube.com/@nisanvitrini"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon-link"
+                aria-label="Nisan Vitrini YouTube"
+                role="listitem"
+            >
+                <i class='bx bxl-youtube' aria-hidden="true"></i>
+            </a>
+            <a
+                href="https://www.linkedin.com/company/nisanvitrini"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon-link"
+                aria-label="Nisan Vitrini LinkedIn"
+                role="listitem"
+            >
+                <i class='bx bxl-linkedin' aria-hidden="true"></i>
+            </a>
+            <a
+                href="https://wa.me/905526288131"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-icon-link"
+                aria-label="Nisan Vitrini WhatsApp"
+                role="listitem"
+            >
+                <i class='bx bxl-whatsapp' aria-hidden="true"></i>
+            </a>
+        </div>
+
+        <!-- ── QR Kod (AYNEN KORUNDU) ────────────────── -->
         <div class="qr-section">
             <img src="assets/qr-nisan-vitrini.png" alt="QR Code" class="qr-code">
         </div>
 
-        <!-- Footer -->
+        <!-- ── Footer ────────────────────────────────── -->
         <footer class="footer-minimal">
             &copy; 2026 Nisan Vitrini Media
         </footer>
-    </div>
+
+    </div><!-- /media-container -->
+
+    <!-- Accordion JS — bağımsız, QR veya cookie JS ile çakışmaz -->
+    <script>
+        (function () {
+            'use strict';
+
+            var triggers = document.querySelectorAll('.accordion-trigger');
+
+            function openPanel(trigger, panel) {
+                trigger.setAttribute('aria-expanded', 'true');
+                panel.classList.add('is-open');
+            }
+
+            function closePanel(trigger, panel) {
+                trigger.setAttribute('aria-expanded', 'false');
+                panel.classList.remove('is-open');
+            }
+
+            triggers.forEach(function (trigger) {
+                trigger.addEventListener('click', function () {
+                    var panelId = trigger.getAttribute('aria-controls');
+                    var panel   = document.getElementById(panelId);
+                    var isOpen  = trigger.getAttribute('aria-expanded') === 'true';
+
+                    // Tüm accordion'ları kapat (max 1 açık)
+                    triggers.forEach(function (t) {
+                        var p = document.getElementById(t.getAttribute('aria-controls'));
+                        if (t !== trigger) { closePanel(t, p); }
+                    });
+
+                    // Tıklananı toggle et
+                    if (isOpen) {
+                        closePanel(trigger, panel);
+                    } else {
+                        openPanel(trigger, panel);
+                    }
+                });
+
+                // Klavye: Enter ve Space zaten button'da çalışır, ek handler gerekmez
+            });
+        })();
+    </script>
 
     <script src="js/cookie-consent.js"></script>
+
 </body>
 
 </html>
