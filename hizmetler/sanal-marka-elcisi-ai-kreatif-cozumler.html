@@ -603,6 +603,198 @@
                 font-size: 1.8rem;
             }
         }
+
+        /* Panpan Usta Sample Project Section Styles */
+        #panpan-usta-ornek-proje {
+            scroll-margin-top: 100px;
+        }
+
+        .panpan-meta-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            padding: 0.3rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .panpan-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .panpan-image-card {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            aspect-ratio: 1 / 1;
+            transition: var(--transition);
+        }
+
+        .panpan-image-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(239, 120, 26, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .panpan-image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .panpan-image-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .panpan-video-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .panpan-video-card {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+            aspect-ratio: 9 / 16;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transition: var(--transition);
+        }
+
+        .panpan-video-card:hover {
+            border-color: rgba(239, 120, 26, 0.4);
+            box-shadow: 0 18px 40px rgba(239, 120, 26, 0.15);
+        }
+
+        .panpan-video-facade {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: transparent;
+            padding: 0;
+            cursor: pointer;
+            position: relative;
+            display: block;
+            text-align: center;
+            color: var(--text-main);
+            font-family: inherit;
+        }
+
+        .panpan-video-thumb {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .panpan-video-facade:hover .panpan-video-thumb,
+        .panpan-video-facade:focus-visible .panpan-video-thumb {
+            transform: scale(1.05);
+        }
+
+        .panpan-video-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1.5rem;
+            transition: background 0.3s ease;
+        }
+
+        .panpan-video-facade:hover .panpan-video-overlay,
+        .panpan-video-facade:focus-visible .panpan-video-overlay {
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 100%);
+        }
+
+        .panpan-play-btn {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            box-shadow: 0 0 25px rgba(239, 120, 26, 0.6);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s;
+            padding-left: 4px;
+        }
+
+        .panpan-video-facade:hover .panpan-play-btn,
+        .panpan-video-facade:focus-visible .panpan-play-btn {
+            transform: scale(1.12);
+            background: #ff8c2b;
+        }
+
+        .panpan-video-badge {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            padding: 0.3rem 0.85rem;
+            border-radius: 50px;
+            text-transform: uppercase;
+        }
+
+        .panpan-video-play-text {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .panpan-video-iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        @media screen and (max-width: 992px) {
+            .panpan-gallery {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .panpan-gallery {
+                grid-template-columns: repeat(1, 1fr);
+                max-width: 450px;
+                margin: 0 auto 2rem;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .panpan-video-card {
+                max-width: 290px;
+            }
+        }
     </style>
 
     <!-- Structured Data (JSON-LD) -->
@@ -852,6 +1044,61 @@
                         <a href="/hizmetler/dijital-reklam-yonetimi">dijital reklam yönetimi</a> 
                         hizmetlerimizi de inceleyebilirsiniz.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panpan Usta Örnek Proje Section -->
+        <section id="panpan-usta-ornek-proje" class="section" aria-labelledby="panpan-usta-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="ambassador-tag" style="margin-bottom: 0.75rem;">ÖRNEK PROJE</span>
+                    <h2 id="panpan-usta-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1rem;">Panpan Usta</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 760px; margin: 0 auto 1.5rem;">
+                        Panpan Usta, NVM tarafından geliştirilen yapay zeka destekli sanal karakter örneğidir. Karakter üretimi, görsel içerik dili ve kısa video kullanımıyla hizmetin gerçek çıktısını gösterir.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 1rem;">
+                        <span class="panpan-meta-badge">Sanal Karakter</span>
+                        <span class="panpan-meta-badge">Görsel İçerik</span>
+                        <span class="panpan-meta-badge">Kısa Video İçeriği</span>
+                    </div>
+                </div>
+
+                <!-- 3 Görsel Galerisi -->
+                <div class="panpan-gallery">
+                    <div class="panpan-image-card">
+                        <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/panpan-usta/panpan-usta-01.png" 
+                             alt="Panpan Usta Sanal Karakter Tasarımı - Görsel 1" 
+                             width="600" height="600" loading="lazy">
+                    </div>
+                    <div class="panpan-image-card">
+                        <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/panpan-usta/panpan-usta-02.png" 
+                             alt="Panpan Usta Yapı Sektörü Görsel İçerik Üretimi - Görsel 2" 
+                             width="600" height="600" loading="lazy">
+                    </div>
+                    <div class="panpan-image-card">
+                        <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/panpan-usta/panpan-usta-03.png" 
+                             alt="Panpan Usta Dijital Karakter Örneği - Görsel 3" 
+                             width="600" height="600" loading="lazy">
+                    </div>
+                </div>
+
+                <!-- YouTube Facade Video Alanı -->
+                <div class="panpan-video-wrapper">
+                    <div class="panpan-video-card" id="panpan-video-card">
+                        <button type="button" class="panpan-video-facade" aria-label="Panpan Usta YouTube Shorts videosunu izle" onclick="loadPanpanVideo(this)">
+                            <img src="https://i.ytimg.com/vi/iv-6yN7GzEs/hqdefault.jpg" 
+                                 alt="Panpan Usta Shorts Video Kapağı" 
+                                 width="340" height="600" loading="lazy" class="panpan-video-thumb">
+                            <div class="panpan-video-overlay">
+                                <div class="panpan-play-btn" aria-hidden="true">
+                                    <i class='bx bx-play'></i>
+                                </div>
+                                <span class="panpan-video-badge">KISA VİDEO İÇERİĞİ</span>
+                                <span class="panpan-video-play-text">Videoyu İzle</span>
+                            </div>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1270,6 +1517,13 @@
                 });
             });
         });
+
+        function loadPanpanVideo(btn) {
+            const card = document.getElementById('panpan-video-card');
+            if (card) {
+                card.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/iv-6yN7GzEs?autoplay=1" title="Panpan Usta Yapay Zeka Sanal Karakter Video İçeriği" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="panpan-video-iframe"></iframe>';
+            }
+        }
     </script>
     <script src="../js/cookie-consent.js"></script>
 </body>
