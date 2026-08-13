@@ -620,83 +620,45 @@
             font-weight: 500;
         }
 
-        /* Integrated Showcase Layout (Desktop 2-Column: Left Gallery + Right Video) */
-        .panpan-showcase {
+        /* 4-Card Equal Aspect-Ratio Media Grid */
+        .panpan-media-grid {
             display: grid;
-            grid-template-columns: 1.35fr 0.85fr;
-            gap: 2rem;
-            align-items: stretch;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
             margin-top: 2.5rem;
-            max-width: 1040px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
-        /* Left Column: Image Mosaic Gallery */
-        .panpan-gallery {
-            display: grid;
-            grid-template-columns: 1.1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .panpan-image-card {
+        .panpan-card {
             position: relative;
+            width: 100%;
+            aspect-ratio: 3 / 4;
             border-radius: var(--border-radius);
             overflow: hidden;
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: var(--transition);
         }
 
-        .panpan-img-main {
-            grid-row: 1 / span 2;
-        }
-
-        .panpan-image-card:hover {
+        .panpan-card:hover {
             transform: translateY(-4px);
             border-color: rgba(239, 120, 26, 0.4);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
 
-        .panpan-image-card img {
+        .panpan-card-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
             display: block;
             transition: transform 0.4s ease;
         }
 
-        .panpan-image-card:hover img {
+        .panpan-card-img:hover img {
             transform: scale(1.04);
         }
 
-        /* Right Column: Video Wrapper & Card */
-        .panpan-video-wrapper {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-        }
-
-        .panpan-video-card {
-            position: relative;
-            width: 100%;
-            max-width: 330px;
-            aspect-ratio: 9 / 16;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-            transition: var(--transition);
-        }
-
-        .panpan-video-card:hover {
-            border-color: rgba(239, 120, 26, 0.4);
-            box-shadow: 0 18px 40px rgba(239, 120, 26, 0.15);
-        }
-
+        /* Video Card Facade */
         .panpan-video-facade {
             width: 100%;
             height: 100%;
@@ -715,6 +677,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center center;
             display: block;
             transition: transform 0.4s ease;
         }
@@ -743,15 +706,15 @@
         }
 
         .panpan-play-btn {
-            width: 64px;
-            height: 64px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             background: var(--primary-color);
             color: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             box-shadow: 0 0 25px rgba(239, 120, 26, 0.6);
             transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.3s;
             padding-left: 4px;
@@ -777,46 +740,23 @@
             display: block;
         }
 
+        /* Tablet & Mobile Responsiveness */
         @media screen and (max-width: 992px) {
-            .panpan-showcase {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-                max-width: 650px;
-            }
-
-            .panpan-gallery {
-                grid-template-columns: 1.1fr 1fr;
-                grid-template-rows: 1fr 1fr;
-                height: 380px;
-            }
-
-            .panpan-video-card {
-                max-width: 320px;
-            }
-        }
-
-        @media screen and (max-width: 768px) {
-            .panpan-gallery {
-                grid-template-columns: 1fr;
-                grid-template-rows: auto;
-                height: auto;
-                gap: 1rem;
-            }
-
-            .panpan-img-main,
-            .panpan-img-sub1,
-            .panpan-img-sub2 {
-                grid-row: auto;
-                aspect-ratio: 1 / 1;
+            .panpan-media-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem;
             }
         }
 
         @media screen and (max-width: 576px) {
-            .panpan-video-card {
-                max-width: 290px;
+            .panpan-media-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+                max-width: 360px;
+                margin-left: auto;
+                margin-right: auto;
             }
         }
-    </style>
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -1085,42 +1025,35 @@
                     </div>
                 </div>
 
-                <!-- Integrated Showcase Layout (Desktop: Left Gallery + Right Video) -->
-                <div class="panpan-showcase">
-                    <!-- 3 Görsel Mozaik Galerisi -->
-                    <div class="panpan-gallery">
-                        <div class="panpan-image-card panpan-img-main">
-                            <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/panpan-usta/panpan-usta-01.png" 
-                                 alt="Panpan Usta Sanal Karakter Tasarımı - Görsel 1" 
-                                 width="600" height="600" loading="lazy">
-                        </div>
-                        <div class="panpan-image-card panpan-img-sub1">
-                            <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/panpan-usta/panpan-usta-02.png" 
-                                 alt="Panpan Usta Yapı Sektörü Görsel İçerik Üretimi - Görsel 2" 
-                                 width="600" height="600" loading="lazy">
-                        </div>
-                        <div class="panpan-image-card panpan-img-sub2">
-                            <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/panpan-usta/panpan-usta-03.png" 
-                                 alt="Panpan Usta Dijital Karakter Örneği - Görsel 3" 
-                                 width="600" height="600" loading="lazy">
-                        </div>
+                <!-- Panpan Usta Medya Grid (4 Eşit Kart: 3 Görsel + 1 Video) -->
+                <div class="panpan-media-grid">
+                    <div class="panpan-card panpan-card-img">
+                        <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/panpan-usta/panpan-usta-01.png" 
+                             alt="Panpan Usta Sanal Karakter Tasarımı - Görsel 1" 
+                             width="600" height="800" loading="lazy">
                     </div>
-
-                    <!-- YouTube Facade Video Alanı -->
-                    <div class="panpan-video-wrapper">
-                        <div class="panpan-video-card" id="panpan-video-card">
-                            <button type="button" class="panpan-video-facade" aria-label="Panpan Usta YouTube Shorts videosunu izle" onclick="loadPanpanVideo(this)">
-                                <img src="https://i.ytimg.com/vi/iv-6yN7GzEs/hqdefault.jpg" 
-                                     alt="Panpan Usta Shorts Video Kapağı" 
-                                     width="340" height="600" loading="lazy" class="panpan-video-thumb">
-                                <div class="panpan-video-overlay">
-                                    <div class="panpan-play-btn" aria-hidden="true">
-                                        <i class='bx bx-play'></i>
-                                    </div>
-                                    <span class="panpan-video-play-text">Videoyu İzle</span>
+                    <div class="panpan-card panpan-card-img">
+                        <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/panpan-usta/panpan-usta-02.png" 
+                             alt="Panpan Usta Yapı Sektörü Görsel İçerik Üretimi - Görsel 2" 
+                             width="600" height="800" loading="lazy">
+                    </div>
+                    <div class="panpan-card panpan-card-img">
+                        <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/panpan-usta/panpan-usta-03.png" 
+                             alt="Panpan Usta Dijital Karakter Örneği - Görsel 3" 
+                             width="600" height="800" loading="lazy">
+                    </div>
+                    <div class="panpan-card" id="panpan-video-card">
+                        <button type="button" class="panpan-video-facade" aria-label="Panpan Usta YouTube Shorts videosunu izle" onclick="loadPanpanVideo(this)">
+                            <img src="https://i.ytimg.com/vi/iv-6yN7GzEs/hqdefault.jpg" 
+                                 alt="Panpan Usta Shorts Video Kapağı" 
+                                 width="340" height="600" loading="lazy" class="panpan-video-thumb">
+                            <div class="panpan-video-overlay">
+                                <div class="panpan-play-btn" aria-hidden="true">
+                                    <i class='bx bx-play'></i>
                                 </div>
-                            </button>
-                        </div>
+                                <span class="panpan-video-play-text">Videoyu İzle</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
             </div>
