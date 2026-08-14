@@ -36,6 +36,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.nvmedya.com/projeler/ufuk-sengun-sigorta</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.nvmedya.com/about</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

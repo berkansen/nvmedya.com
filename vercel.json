@@ -17,6 +17,10 @@
     {
       "source": "/projeler/muge-mutlu",
       "destination": "/projeler/muge-mutlu.html"
+    },
+    {
+      "source": "/projeler/ufuk-sengun-sigorta",
+      "destination": "/projeler/ufuk-sengun-sigorta.html"
     }
   ],
   "headers": [
