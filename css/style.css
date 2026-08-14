@@ -2117,3 +2117,130 @@ header {
     color: var(--text-main);
     text-decoration: none;
 }
+
+/* Home Featured Projects Section */
+.home-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    margin-bottom: 2.5rem;
+}
+
+.home-project-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.home-project-card:hover {
+    border-color: rgba(239, 120, 26, 0.3);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+.home-project-img-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.home-project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.home-project-card:hover .home-project-img {
+    transform: scale(1.04);
+}
+
+.home-project-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: rgba(239, 120, 26, 0.9);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.25rem 0.65rem;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.home-project-content {
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.home-project-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 0.85rem;
+}
+
+.home-project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+}
+
+.home-project-metric {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-bottom: 1.25rem;
+}
+
+.home-project-metric .metric-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    display: block;
+    line-height: 1.1;
+}
+
+.home-project-metric .metric-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+.home-project-link {
+    margin-top: auto;
+    align-self: flex-start;
+    padding-left: 0;
+}
+
+.home-projects-cta {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+@media screen and (max-width: 992px) {
+    .home-projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .home-projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
