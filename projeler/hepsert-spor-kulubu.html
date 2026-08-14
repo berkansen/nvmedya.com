@@ -217,17 +217,23 @@
         /* Approach Grid Cards */
         .approach-grid {
             display: grid;
-            grid-template-columns: repeat( auto-fit, minmax(260px, 1fr) );
+            grid-template-columns: repeat(6, 1fr);
             gap: 1.5rem;
             margin-top: 2rem;
         }
 
         .approach-card {
+            grid-column: span 2;
             background: var(--card-bg);
             border-radius: var(--border-radius);
             border: 1px solid rgba(255, 255, 255, 0.06);
             padding: 1.75rem 1.5rem;
             transition: var(--transition);
+        }
+
+        .approach-card:nth-child(4),
+        .approach-card:nth-child(5) {
+            grid-column: span 3;
         }
 
         .approach-card:hover {
@@ -254,12 +260,12 @@
             line-height: 1.6;
         }
 
-        /* Hepsera Spotlight Box & Media Grid */
+        /* Hepsera Spotlight Box (Compact) */
         .hepsera-spotlight {
             background: linear-gradient(135deg, rgba(239, 120, 26, 0.08) 0%, rgba(18, 18, 18, 0.9) 100%);
             border: 1px solid rgba(239, 120, 26, 0.25);
             border-radius: var(--border-radius);
-            padding: 2.5rem;
+            padding: 2.25rem 2rem;
             margin-top: 1rem;
         }
 
@@ -277,63 +283,33 @@
         }
 
         .hepsera-title {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 1rem;
+            margin-bottom: 0.85rem;
         }
 
         .hepsera-text {
             color: var(--text-muted);
             font-size: 1.05rem;
             line-height: 1.7;
-            margin-bottom: 2rem;
+            margin-bottom: 1.25rem;
         }
 
-        .hepsera-gallery-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 1.25rem;
-            align-items: stretch;
-        }
-
-        .hepsera-img-main {
-            border-radius: calc(var(--border-radius) - 4px);
-            overflow: hidden;
-            border: 1px solid rgba(239, 120, 26, 0.3);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-            background: rgba(0, 0, 0, 0.3);
-            height: 100%;
-        }
-
-        .hepsera-img-supports {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-            height: 100%;
-        }
-
-        .hepsera-img-sub {
-            border-radius: calc(var(--border-radius) - 4px);
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-            background: rgba(0, 0, 0, 0.3);
-            flex: 1;
-        }
-
-        .hepsera-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-            display: block;
+        .hepsera-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
             transition: var(--transition);
         }
 
-        .hepsera-img-main:hover .hepsera-img,
-        .hepsera-img-sub:hover .hepsera-img {
-            transform: scale(1.03);
+        .hepsera-link:hover {
+            color: #fff;
+            transform: translateX(4px);
         }
 
         /* Results Display Grid */
@@ -366,21 +342,21 @@
             font-weight: 500;
         }
 
-        /* Media Showcase Area */
+        /* Media Showcase Area (Compact Height) */
         .case-media-box {
             position: relative;
             background: rgba(0, 0, 0, 0.4);
             border-radius: var(--border-radius);
             border: 1px solid rgba(255, 255, 255, 0.08);
             overflow: hidden;
-            max-width: 900px;
+            max-width: 860px;
             margin: 2rem auto 0;
+            max-height: 380px;
         }
 
         .case-media-img {
             width: 100%;
-            height: auto;
-            max-height: 480px;
+            height: 380px;
             object-fit: cover;
             object-position: center top;
             display: block;
@@ -415,6 +391,18 @@
             box-shadow: 0 10px 25px rgba(239, 120, 26, 0.3);
         }
 
+        @media screen and (max-width: 992px) {
+            .approach-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .approach-card,
+            .approach-card:nth-child(4),
+            .approach-card:nth-child(5) {
+                grid-column: span 1;
+            }
+        }
+
         @media screen and (max-width: 768px) {
             .case-results-grid {
                 grid-template-columns: 1fr;
@@ -429,22 +417,12 @@
                 padding: 1.5rem;
             }
 
-            .hepsera-gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 1rem;
+            .case-media-box {
+                max-height: 280px;
             }
 
-            .hepsera-img-supports {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hepsera-img-main {
-                height: 340px;
-            }
-
-            .hepsera-img-sub {
-                height: 250px;
+            .case-media-img {
+                height: 280px;
             }
         }
     </style>
@@ -566,7 +544,7 @@
                         Hepsert Spor Kulübü için temel hedef, sosyal medya iletişimini düzenli içerik üretimi, dikey video, reklam çalışmaları ve marka karakteriyle birlikte sürdürülebilir bir sistem içinde ele almaktı. 
                     </p>
                     <p>
-                        Spor kulübünün dinamizmini, antrenman heyecanını ve eğitim disiplinini potansiyel öğrencilere ve velilere dijital kanallarda tutarlı biçimde yansıtacak bir iletişim yapısı kurgulandı.
+                        Spor kulübünün dinamizmini, antrenman atmosferini ve eğitim yaklaşımını dijital kanallarda tutarlı biçimde yansıtacak bir iletişim yapısı kurgulandı.
                     </p>
                 </div>
             </div>
@@ -596,12 +574,17 @@
                     <div class="approach-card">
                         <i class='bx bx-target-lock approach-icon' aria-hidden="true"></i>
                         <h3 class="approach-title">Meta Reklamları</h3>
-                        <p class="approach-desc">Kulübün bölgesel görünürlüğünü ve kayıt taleplerini destekleyen hedef odaklı Meta reklam çalışmaları yürütüldü.</p>
+                        <p class="approach-desc">Kulübün dijital iletişimini destekleyen hedef odaklı Meta reklam çalışmaları yürütüldü.</p>
                     </div>
                     <div class="approach-card">
                         <i class='bx bx-chat approach-icon' aria-hidden="true"></i>
                         <h3 class="approach-title">Dijital İletişim</h3>
                         <p class="approach-desc">İçerik, video ve reklam dili aynı marka vizyonu ve kurumsal güven çatısı altında birleştirildi.</p>
+                    </div>
+                    <div class="approach-card">
+                        <i class='bx bx-bot approach-icon' aria-hidden="true"></i>
+                        <h3 class="approach-title">Sanal Marka Elçisi</h3>
+                        <p class="approach-desc">Hepsera, Hepsert Spor Kulübü için sanal marka elçisi olarak geliştirildi ve markanın kreatif dijital iletişim sistemine dahil edildi.</p>
                     </div>
                 </div>
             </div>
@@ -622,39 +605,20 @@
             </div>
         </section>
 
-        <!-- Hepsera Spotlight Section -->
+        <!-- Hepsera Spotlight Section (Compact) -->
         <section class="case-section">
-            <div class="container" style="max-width: 960px;">
+            <div class="container" style="max-width: 860px;">
                 <div class="hepsera-spotlight">
-                    <div class="hepsera-content">
-                        <div class="hepsera-badge"><i class='bx bx-bot' aria-hidden="true"></i> SANAL MARKA ELÇİSİ</div>
-                        <h2 class="hepsera-title">
-                            Hepsera: AI Tabanlı Sanal Marka Elçisi
-                        </h2>
-                        <p class="hepsera-text">
-                            Hepsera, Hepsert Spor Kulübü için özel olarak geliştirilen yapay zeka destekli sanal marka elçisi projesidir. Karakter, kulübün dijital iletişiminde yenilikçi formatlar ve kreatif görsel paylaşımlar sunmak üzere projenin ayrılmaz bir parçası olarak kurgulandı.
-                        </p>
-                    </div>
-
-                    <div class="hepsera-gallery-grid">
-                        <div class="hepsera-img-main">
-                            <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/hepsera/hepser-01.png" 
-                                 alt="Hepsert Spor Kulübü için geliştirilen Hepsera sanal marka elçisi" 
-                                 width="600" height="750" loading="lazy" class="hepsera-img">
-                        </div>
-                        <div class="hepsera-img-supports">
-                            <div class="hepsera-img-sub">
-                                <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/hepsera/hepsert-02.png" 
-                                     alt="Hepsera sanal marka elçisinin Hepsert Spor Kulübü için hazırlanan içerik görseli" 
-                                     width="400" height="500" loading="lazy" class="hepsera-img">
-                            </div>
-                            <div class="hepsera-img-sub">
-                                <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/hepsera/hepsert-03.png" 
-                                     alt="Hepsera karakterinin Hepsert Spor Kulübü dijital iletişiminde kullanılan kreatif görseli" 
-                                     width="400" height="500" loading="lazy" class="hepsera-img">
-                            </div>
-                        </div>
-                    </div>
+                    <div class="hepsera-badge"><i class='bx bx-bot' aria-hidden="true"></i> SANAL MARKA ELÇİSİ</div>
+                    <h2 class="hepsera-title">
+                        Hepsera: Yapay Zeka Destekli Sanal Marka Elçisi
+                    </h2>
+                    <p class="hepsera-text">
+                        Hepsera, Hepsert Spor Kulübü için özel olarak geliştirilen yapay zeka destekli sanal marka elçisi projesidir. Karakter, kulübün dijital iletişiminde yenilikçi formatlar ve kreatif görsel paylaşımlar sunmak üzere projenin ayrılmaz bir parçası olarak kurgulandı.
+                    </p>
+                    <a href="/hizmetler/sanal-marka-elcisi-ai-kreatif-cozumler" class="hepsera-link">
+                        Sanal Marka Elçisi çalışmalarımızı inceleyin <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
+                    </a>
                 </div>
             </div>
         </section>
