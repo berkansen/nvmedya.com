@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seçili Projeler ve Çalışmalarımız | Nisan Vitrini Media</title>
+    <meta name="description" content="Nisan Vitrini Media'nın sosyal medya, dikey video, dijital reklam, marka, web ve yapay zeka destekli kreatif projelerinden seçili çalışmaları inceleyin.">
+
+    <link rel="canonical" href="https://www.nvmedya.com/projeler">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Seçili Projeler ve Çalışmalarımız | Nisan Vitrini Media">
+    <meta property="og:description" content="Nisan Vitrini Media tarafından geliştirilen sosyal medya yönetimi, dikey video prodüksiyonu, dijital reklam ve AI destekli kreatif projelerinden seçili örnekler.">
+    <meta property="og:url" content="https://www.nvmedya.com/projeler">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JD1C5PBEKD"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JD1C5PBEKD');
+    </script>
+
+    <style>
+        /* Breadcrumb Styles */
+        .breadcrumb-nav {
+            margin-bottom: 2rem;
+        }
+
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .breadcrumb-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .breadcrumb-list li:not(:last-child)::after {
+            content: "/";
+            color: var(--text-muted);
+            opacity: 0.5;
+        }
+
+        .breadcrumb-list a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb-list a:hover {
+            color: var(--primary-color);
+        }
+
+        .breadcrumb-list li.active {
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        /* Scoped Selected Projects Page Styles */
+        #selected-projects-list {
+            scroll-margin-top: 100px;
+        }
+
+        .projects-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-top: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .project-block {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 0;
+            transition: var(--transition);
+        }
+
+        .project-block:hover {
+            border-color: rgba(239, 120, 26, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Alternating reverse block layout on desktop */
+        .project-block.reverse {
+            grid-template-columns: 1fr 1.1fr;
+        }
+
+        .project-block.reverse .project-media-container {
+            order: 2;
+        }
+
+        .project-block.reverse .project-info {
+            order: 1;
+        }
+
+        /* Media Container & Placeholder Slots */
+        .project-media-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.02);
+            border-right: 1px solid rgba(255, 255, 255, 0.04);
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .project-block.reverse .project-media-container {
+            border-right: none;
+            border-left: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .project-media-slot {
+            width: 100%;
+            height: 100%;
+            min-height: 320px;
+            border-radius: calc(var(--border-radius) - 4px);
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px dashed rgba(255, 255, 255, 0.12);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            color: var(--text-muted);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-media-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        .project-media-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-muted);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .project-media-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            opacity: 0.8;
+        }
+
+        /* Project Info Column */
+        .project-info {
+            padding: 3rem 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .project-eyebrow {
+            display: inline-block;
+            background: rgba(239, 120, 26, 0.1);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            line-height: 1.25;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            line-height: 1.65;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Tags List */
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-tag {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--text-main);
+            padding: 0.3rem 0.85rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* Metrics & Highlight Area */
+        .project-metrics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            width: 100%;
+        }
+
+        .metric-item {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .metric-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            line-height: 1.1;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+
+        .project-highlight-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(239, 120, 26, 0.08);
+            border: 1px solid rgba(239, 120, 26, 0.2);
+            color: var(--primary-color);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* Responsive Breakpoints */
+        @media screen and (max-width: 992px) {
+            .project-block,
+            .project-block.reverse {
+                grid-template-columns: 1fr;
+            }
+
+            .project-block.reverse .project-media-container {
+                order: 1;
+                border-left: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            }
+
+            .project-block.reverse .project-info {
+                order: 2;
+            }
+
+            .project-media-container {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+                min-height: 300px;
+                padding: 1.5rem;
+            }
+
+            .project-info {
+                padding: 2rem 1.5rem;
+            }
+
+            .project-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .projects-wrapper {
+                gap: 2.5rem;
+                margin-top: 2rem;
+            }
+
+            .project-metrics {
+                gap: 1.25rem;
+            }
+
+            .metric-value {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": "https://www.nvmedya.com/projeler#webpage",
+          "url": "https://www.nvmedya.com/projeler",
+          "name": "Seçili Projeler ve Çalışmalarımız | Nisan Vitrini Media",
+          "description": "Nisan Vitrini Media tarafından geliştirilen sosyal medya yönetimi, dikey video prodüksiyonu, dijital reklam ve yapay zeka destekli kreatif projelerinden seçili çalışmalar.",
+          "provider": {
+            "@type": "Organization",
+            "@id": "https://www.nvmedya.com/#organization",
+            "name": "Nisan Vitrini Media",
+            "alternateName": "NVM",
+            "url": "https://www.nvmedya.com/"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.nvmedya.com/projeler#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Ana Sayfa",
+              "item": "https://www.nvmedya.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Projeler"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <header id="header">
+        <nav class="navbar container">
+            <a href="/" class="logo">
+                <img src="assets/nisanvitrini-logo.png" alt="Nisan Vitrini Media" width="140" height="140">
+            </a>
+
+            <div class="nav-toggle" id="nav-toggle" role="button" aria-label="Gezinti menüsünü aç" aria-expanded="false" aria-controls="nav-list" tabindex="0">
+                <i class='bx bx-menu' aria-hidden="true"></i>
+            </div>
+
+            <ul class="nav-list" id="nav-list">
+                <li class="nav-item"><a href="/" class="nav-link">Ana Sayfa</a></li>
+                <li class="nav-item"><a href="/hizmetler" class="nav-link">Hizmetlerimiz</a></li>
+                <li class="nav-item"><a href="/blog" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="/about" class="nav-link">Hakkımızda</a></li>
+                <li class="nav-item"><a href="/contact" class="nav-link">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero section">
+            <div class="container hero-container">
+                <div class="hero-content" style="max-width: 800px;">
+                    <!-- Breadcrumb -->
+                    <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+                        <ul class="breadcrumb-list">
+                            <li><a href="/">Ana Sayfa</a></li>
+                            <li class="active" aria-current="page">Projeler</li>
+                        </ul>
+                    </nav>
+
+                    <span class="section-subtitle">PROJELER</span>
+                    <h1 class="hero-title" style="margin-top: 0.5rem; font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1.2;">Seçili Projeler</h1>
+                    
+                    <p class="hero-description" style="max-width: 720px; font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                        Farklı sektörlerdeki markalar için geliştirdiğimiz sosyal medya, dikey video, dijital reklam, marka, web ve yapay zeka destekli kreatif çalışmalarından seçili örnekler.
+                    </p>
+                </div>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+
+        <!-- Selected Projects Section -->
+        <section id="selected-projects-list" class="section alt-bg" aria-labelledby="selected-projects-title">
+            <div class="container">
+                <div class="section-header center">
+                    <h2 id="selected-projects-title" class="section-title" style="max-width: 800px; margin: 0 auto 1rem;">Gerçek İşler, Doğrulanmış Çıktılar</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 780px; margin: 0 auto;">
+                        NVM olarak çalıştığımız her marka için hedef kitleye dokunan görsel dil, sürdürülebilir içerik sistemleri ve ölçülebilir dijital iletişim çözümleri sunuyoruz.
+                    </p>
+                </div>
+
+                <div class="projects-wrapper">
+                    <!-- Proje 1: Hepsert Spor Kulübü -->
+                    <article class="project-block" data-video-ref="https://www.instagram.com/reel/DbqfRs4I5nm/">
+                        <div class="project-media-container hepsert-project-media">
+                            <div class="project-media-slot">
+                                <i class='bx bx-play-circle project-media-icon' aria-hidden="true"></i>
+                                <span class="project-media-badge"><i class='bx bx-landscape'></i> Görsel & Video Çerçevesi</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-eyebrow">SPOR & DİJİTAL İLETİŞİM</span>
+                            <h3 class="project-title">Hepsert Spor Kulübü</h3>
+                            <p class="project-desc">
+                                Hepsert Spor Kulübü için sosyal medya yönetiminden dikey video prodüksiyonuna, Meta reklamlarından dijital iletişime ve sanal marka elçisi Hepsera'ya uzanan bütünleşik bir iletişim sistemi oluşturduk.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Sosyal Medya</span>
+                                <span class="project-tag">Dikey Video</span>
+                                <span class="project-tag">Meta Reklamları</span>
+                                <span class="project-tag">Dijital İletişim</span>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">200.000+</span>
+                                    <span class="metric-label">Görüntülenme</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">600+</span>
+                                    <span class="metric-label">Yeni Takipçi</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proje 2: Nisan Vitrini (Kurucu Proje - Reverse layout) -->
+                    <article class="project-block reverse" data-video-ref="https://www.instagram.com/reel/DU8akbbiFyf/">
+                        <div class="project-media-container nisan-vitrini-project-media">
+                            <div class="project-media-slot">
+                                <i class='bx bx-store-alt project-media-icon' aria-hidden="true"></i>
+                                <span class="project-media-badge"><i class='bx bx-landscape'></i> Görsel & Web Çerçevesi</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-eyebrow">NVM'NİN KURUCU PROJESİ</span>
+                            <h3 class="project-title">Nisan Vitrini</h3>
+                            <p class="project-desc">
+                                Nisan Vitrini, NVM'nin bugün sunduğu dijital iletişim, içerik, reklam, tasarım ve web hizmetlerinin gerçek bir marka üzerinde geliştirilmesini sağlayan kurucu projesidir. Markanın dijital büyüme süreci, NVM'nin bugün kullandığı çalışma sisteminin temelini oluşturdu.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Sosyal Medya</span>
+                                <span class="project-tag">Dikey Video</span>
+                                <span class="project-tag">Meta Reklamları</span>
+                                <span class="project-tag">Web Tasarım</span>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">0'dan 60.000+</span>
+                                    <span class="metric-label">Takipçi</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">1,5 Milyon+</span>
+                                    <span class="metric-label">Aylık Görüntülenme</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proje 3: Ufuk Şengün Yapı -->
+                    <article class="project-block" data-video-ref="https://www.youtube.com/shorts/iv-6yN7GzEs">
+                        <div class="project-media-container ufuk-sengun-yapi-project-media">
+                            <div class="project-media-slot">
+                                <i class='bx bx-bot project-media-icon' aria-hidden="true"></i>
+                                <span class="project-media-badge"><i class='bx bx-landscape'></i> Panpan Usta Medya Çerçevesi</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-eyebrow">YAPI SEKTÖRÜ & AI</span>
+                            <h3 class="project-title">Ufuk Şengün Yapı</h3>
+                            <p class="project-desc">
+                                Ufuk Şengün Yapı için sosyal medya yönetimi, dikey video, Meta reklamları ve dijital iletişimin yanında logo tasarımı, sanal marka elçisi Panpan Usta ve projeye özel jingle üretimini kapsayan çok kanallı bir marka iletişimi geliştirdik.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Sosyal Medya</span>
+                                <span class="project-tag">Dikey Video</span>
+                                <span class="project-tag">Sanal Marka Elçisi</span>
+                                <span class="project-tag">Jingle</span>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">7.000+</span>
+                                    <span class="metric-label">Takipçi</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">2.000.000+</span>
+                                    <span class="metric-label">Video Görüntülenmesi</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proje 4: Müge Mutlu (Reverse layout) -->
+                    <article class="project-block reverse" data-video-ref="https://www.instagram.com/reel/DZ5UmX_snP4/">
+                        <div class="project-media-container muge-mutlu-project-media">
+                            <div class="project-media-slot">
+                                <i class='bx bx-user-voice project-media-icon' aria-hidden="true"></i>
+                                <span class="project-media-badge"><i class='bx bx-landscape'></i> Görsel & Video Çerçevesi</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-eyebrow">KİŞİSEL MARKA & EĞİTİM</span>
+                            <h3 class="project-title">Müge Mutlu</h3>
+                            <p class="project-desc">
+                                Müge Mutlu'nun kişisel marka iletişimi için sosyal medya yönetimi ve düzenli dikey video prodüksiyonu gerçekleştirdik. İçerik sistemini uzmanlığın doğal ve sürdürülebilir şekilde anlatılması üzerine kurduk.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Sosyal Medya</span>
+                                <span class="project-tag">Dikey Video</span>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">1 Ayda 2.000+</span>
+                                    <span class="metric-label">Yeni Takipçi</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proje 5: Ufuk Şengün Sigorta -->
+                    <article class="project-block" data-video-ref="https://www.instagram.com/reel/DVBGEjnjLu4/">
+                        <div class="project-media-container ufuk-sengun-sigorta-project-media">
+                            <div class="project-media-slot">
+                                <i class='bx bx-shield-quarter project-media-icon' aria-hidden="true"></i>
+                                <span class="project-media-badge"><i class='bx bx-landscape'></i> Kurumsal Kimlik & Medya Çerçevesi</span>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-eyebrow">KURUMSAL İLETİŞİM & MARKA</span>
+                            <h3 class="project-title">Ufuk Şengün Sigorta</h3>
+                            <p class="project-desc">
+                                Ufuk Şengün Sigorta'nın dijital iletişimini sosyal medya yönetimi, dikey video prodüksiyonu ve Meta reklamlarıyla desteklerken logo ve kurumsal kimlik çalışmalarını da aynı marka sistemi altında geliştirdik.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Sosyal Medya</span>
+                                <span class="project-tag">Dikey Video</span>
+                                <span class="project-tag">Meta Reklamları</span>
+                                <span class="project-tag">Kurumsal Kimlik</span>
+                            </div>
+                            <div class="project-metrics">
+                                <span class="project-highlight-badge"><i class='bx bx-check-circle'></i> Bütüncül Marka İletişimi</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section class="section" aria-labelledby="projects-cta-title">
+            <div class="container">
+                <div class="cta-box" style="margin-top: 0;">
+                    <h2 id="projects-cta-title" style="font-size: 2rem; font-weight: 700; color: var(--text-main); margin-bottom: 1rem;">
+                        Bir Sonraki Proje Sizin Markanız İçin Olabilir
+                    </h2>
+                    <p class="cta-box-text" style="max-width: 680px; margin: 0 auto 2rem;">
+                        Markanızın ihtiyacını birlikte değerlendirelim ve doğru dijital iletişim sistemini oluşturalım.
+                    </p>
+                    <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
+                        <a href="/contact" class="btn btn-primary">Projenizi Birlikte Planlayalım</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer section">
+        <div class="container footer-container">
+            <div class="footer-box">
+                <a href="/" class="footer-logo">nisan vitrini media<span class="dot">.</span></a>
+                <p>Yeni nesil medya.</p>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">Linkler</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Ana Sayfa</a></li>
+                    <li><a href="/about">Hakkımızda</a></li>
+                    <li><a href="/hizmetler">Hizmetlerimiz</a></li>
+                    <li><a href="/contact">İletişim</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">Yasal</h4>
+                <ul class="footer-links">
+                    <li><a href="/yasal">Yasal Bilgilendirmeler</a></li>
+                    <li><a href="/yasal/web-sitesi-kvkk-aydinlatma-metni">Web Sitesi KVKK Aydınlatma Metni</a></li>
+                    <li><a href="/yasal/iletisim-formu-aydinlatma-metni">İletişim Formu KVKK Aydınlatma Metni</a></li>
+                    <li><a href="/yasal/gizlilik-politikasi">Gizlilik Politikası</a></li>
+                    <li><a href="/yasal/cerez-politikasi">Çerez Politikası</a></li>
+                    <li><a href="/yasal/kvkk-basvuru">KVKK Başvuru</a></li>
+                    <li><a href="/yasal/kullanim-kosullari">Site Kullanım Koşulları</a></li>
+                    <li><a href="/ai-kullanim-politikasi">AI Kullanım Politikası</a></li>
+                    <li><a href="#cerez-tercihleri" class="cookie-settings-btn">Çerez Tercihleri</a></li>
+                </ul>
+            </div>
+            <div class="footer-box">
+                <h4 class="footer-title">Bizi Takip Edin</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/nisanvitrinimedia" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                        <i class='bx bxl-instagram'></i>
+                    </a>
+                    <a href="https://www.threads.com/@nisanvitrinimedia" target="_blank" rel="noopener noreferrer" class="social-link threads">
+                        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="width: 1.2rem; height: 1.2rem; fill: currentColor;"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@nisanvitrinimedia" target="_blank" rel="noopener noreferrer" class="social-link youtube">
+                        <i class='bx bxl-youtube'></i>
+                    </a>
+                    <a href="https://tr.linkedin.com/company/nisan-vitrini-media" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+                        <i class='bx bxl-linkedin'></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="container footer-parent-brand">
+            <p class="footer-parent-text">nisan vitrini media bir <a href="https://www.nisanvitrini.com/hakkimizda/"
+                    target="_blank" rel="noopener noreferrer">nisan vitrini</a> markasıdır.</p>
+            <h4 class="footer-parent-title">nisan vitrini sosyal medya hesapları</h4>
+            <div class="social-links">
+                <a href="https://www.instagram.com/nisanvitrini" target="_blank" rel="noopener noreferrer" class="social-link"><i
+                        class='bx bxl-instagram'></i></a>
+                <a href="https://www.tiktok.com/@nisanvitrini" target="_blank" rel="noopener noreferrer" class="social-link"><i
+                        class='bx bxl-tiktok'></i></a>
+                <a href="https://www.youtube.com/@nisanvitrini" target="_blank" rel="noopener noreferrer" class="social-link"><i
+                        class='bx bxl-youtube'></i></a>
+                <a href="https://www.linkedin.com/company/nisanvitrini" target="_blank" rel="noopener noreferrer" class="social-link"><i
+                        class='bx bxl-linkedin'></i></a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Nisan Vitrini Media. Tüm hakları saklıdır.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/cookie-consent.js"></script>
+</body>
+
+</html>
