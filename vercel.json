@@ -13,6 +13,10 @@
     {
       "source": "/projeler/ufuk-sengun-yapi",
       "destination": "/projeler/ufuk-sengun-yapi.html"
+    },
+    {
+      "source": "/projeler/muge-mutlu",
+      "destination": "/projeler/muge-mutlu.html"
     }
   ],
   "headers": [
