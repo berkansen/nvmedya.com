@@ -160,23 +160,52 @@
             background: rgba(239, 120, 26, 0.08);
         }
 
-        .case-study-hero-img-wrapper {
+        /* Panpan Editorial Two-Layer Hero Frame */
+        .panpan-hero-frame {
+            position: relative;
             width: 100%;
             max-width: 900px;
+            height: 480px;
             margin: 0 auto;
             border-radius: var(--border-radius);
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(239, 120, 26, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            background: #0b0b0b;
         }
 
-        .case-study-hero-img-wrapper img {
+        .panpan-bg-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .panpan-bg-layer img {
             width: 100%;
-            height: auto;
-            max-height: 520px;
+            height: 100%;
             object-fit: cover;
-            object-position: center 68%;
+            object-position: center 60%;
+            filter: blur(16px) brightness(0.35);
+            transform: scale(1.1);
+        }
+
+        .panpan-fg-layer {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.25rem 0;
+        }
+
+        .panpan-fg-layer img {
+            max-width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.7));
             display: block;
         }
 
@@ -343,53 +372,79 @@
             font-weight: 500;
         }
 
-        /* Media Showcase Area (Compact Height) */
-        .case-media-box {
-            position: relative;
-            background: rgba(0, 0, 0, 0.4);
+        /* Compact Video Facade Card */
+        .panpan-facade-card {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            background: linear-gradient(135deg, rgba(239, 120, 26, 0.08) 0%, rgba(18, 18, 18, 0.95) 100%);
+            border: 1px solid rgba(239, 120, 26, 0.25);
             border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            overflow: hidden;
+            padding: 1.5rem 2rem;
             max-width: 860px;
             margin: 2rem auto 0;
-            max-height: 380px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
-        .case-media-img {
+        .panpan-facade-thumb {
+            flex: 0 0 160px;
+            height: 213px;
+            border-radius: calc(var(--border-radius) - 4px);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .panpan-facade-thumb img {
             width: 100%;
-            height: 380px;
+            height: 100%;
             object-fit: cover;
-            object-position: center 68%;
+            object-position: center 65%;
             display: block;
         }
 
-        .case-video-btn {
-            position: absolute;
-            bottom: 1.5rem;
-            left: 1.5rem;
-            right: 1.5rem;
-            background: rgba(18, 18, 18, 0.85);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 50px;
-            padding: 0.75rem 1.5rem;
+        .panpan-facade-content {
+            flex: 1;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            flex-direction: column;
+            align-items: flex-start;
         }
 
-        .case-video-btn:hover {
-            background: rgba(239, 120, 26, 0.95);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(239, 120, 26, 0.3);
+        .panpan-facade-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.25);
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .panpan-facade-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .panpan-facade-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .panpan-facade-btn {
+            padding: 0.65rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         @media screen and (max-width: 992px) {
@@ -423,12 +478,26 @@
                 padding: 1.5rem;
             }
 
-            .case-media-box {
-                max-height: 280px;
+            .panpan-hero-frame {
+                height: 380px;
+            }
+        }
+
+        @media screen and (max-width: 640px) {
+            .panpan-facade-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
             }
 
-            .case-media-img {
-                height: 280px;
+            .panpan-facade-thumb {
+                flex: 0 0 auto;
+                width: 150px;
+                height: 200px;
+            }
+
+            .panpan-facade-content {
+                align-items: center;
             }
         }
     </style>
@@ -535,10 +604,15 @@
                     <a href="/hizmetler/jingle-muzik-tasarimi" class="case-study-tag-link">Jingle</a>
                 </div>
 
-                <div class="case-study-hero-img-wrapper">
-                    <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/panpanusta-kapak-01.png" 
-                         alt="Ufuk Şengün Yapı için geliştirilen Panpan Usta sanal marka elçisi" 
-                         width="900" height="520" loading="eager">
+                <div class="panpan-hero-frame">
+                    <div class="panpan-bg-layer" aria-hidden="true">
+                        <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/panpanusta-kapak-01.png" alt="" loading="eager">
+                    </div>
+                    <div class="panpan-fg-layer">
+                        <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/panpanusta-kapak-01.png" 
+                             alt="Ufuk Şengün Yapı için geliştirilen Panpan Usta sanal marka elçisi" 
+                             width="600" height="800" loading="eager">
+                    </div>
                 </div>
             </div>
         </section>
@@ -672,19 +746,25 @@
                     </p>
                 </div>
 
-                <div class="case-media-box">
-                    <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/panpanusta-kapak-01.png" 
-                         alt="Ufuk Şengün Yapı Panpan Usta dijital iletişim görseli" 
-                         width="860" height="380" loading="lazy" class="case-media-img">
-                    <a href="https://www.youtube.com/shorts/iv-6yN7GzEs" target="_blank" rel="noopener noreferrer" class="case-video-btn" aria-label="Ufuk Şengün Yapı Panpan Usta YouTube Shorts videosunu izle">
-                        <span style="display: flex; align-items: center; gap: 0.5rem;">
-                            <i class='bx bxl-youtube' style="font-size: 1.3rem; color: #ff0000;" aria-hidden="true"></i>
-                            <span>Panpan Usta Video İçeriği</span>
-                        </span>
-                        <span style="color: var(--primary-color); font-weight: 600; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px;">
-                            Videoyu İzle <i class='bx bx-export' aria-hidden="true"></i>
-                        </span>
-                    </a>
+                <div class="panpan-facade-card">
+                    <div class="panpan-facade-thumb">
+                        <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/panpanusta-kapak-01.png" 
+                             alt="Panpan Usta sanal marka elçisi video görseli" 
+                             width="300" height="400" loading="lazy">
+                    </div>
+                    <div class="panpan-facade-content">
+                        <div class="panpan-facade-badge">
+                            <i class='bx bxl-youtube' style="color: #ff0000; font-size: 1.2rem;" aria-hidden="true"></i>
+                            <span>YOUTUBE SHORTS</span>
+                        </div>
+                        <h3 class="panpan-facade-title">Panpan Usta Video İçeriği</h3>
+                        <p class="panpan-facade-desc">
+                            Ufuk Şengün Yapı için hazırlanan yapay zeka destekli Panpan Usta dikey video içeriğini izleyin.
+                        </p>
+                        <a href="https://www.youtube.com/shorts/iv-6yN7GzEs" target="_blank" rel="noopener noreferrer" class="btn btn-primary panpan-facade-btn" aria-label="Panpan Usta YouTube Shorts videosunu izle">
+                            <span>VİDEOYU İZLE</span> <i class='bx bx-export' aria-hidden="true"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <div style="text-align: center; margin-top: 2.5rem;">
