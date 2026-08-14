@@ -125,16 +125,17 @@
             order: 1;
         }
 
-        /* Media Container & Placeholder Slots */
+        /* Media Container & Image / Facade Layout */
         .project-media-container {
             position: relative;
-            background: rgba(255, 255, 255, 0.02);
+            background: rgba(0, 0, 0, 0.4);
             border-right: 1px solid rgba(255, 255, 255, 0.04);
             min-height: 380px;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 0;
+            overflow: hidden;
         }
 
         .project-block.reverse .project-media-container {
@@ -142,50 +143,92 @@
             border-left: 1px solid rgba(255, 255, 255, 0.04);
         }
 
-        .project-media-slot {
+        .project-main-img {
             width: 100%;
             height: 100%;
-            min-height: 320px;
-            border-radius: calc(var(--border-radius) - 4px);
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px dashed rgba(255, 255, 255, 0.12);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            color: var(--text-muted);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-media-slot img {
-            width: 100%;
-            height: 100%;
+            min-height: 380px;
+            max-height: 480px;
             object-fit: cover;
             object-position: center top;
             display: block;
+            transition: transform 0.5s ease;
         }
 
-        .project-media-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: var(--text-muted);
-            padding: 0.4rem 1rem;
+        .project-block:hover .project-main-img {
+            transform: scale(1.03);
+        }
+
+        .project-video-facade-btn {
+            position: absolute;
+            bottom: 1.25rem;
+            left: 1.25rem;
+            right: 1.25rem;
+            background: rgba(18, 18, 18, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 50px;
+            padding: 0.65rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            color: #fff;
+            text-decoration: none;
             font-size: 0.85rem;
             font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+
+        .project-video-facade-btn:hover {
+            background: rgba(239, 120, 26, 0.95);
+            border-color: var(--primary-color);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(239, 120, 26, 0.3);
+        }
+
+        .project-video-facade-btn i.bxl-instagram {
+            font-size: 1.25rem;
+            color: #e1306c;
+            transition: color 0.3s;
+        }
+
+        .project-video-facade-btn i.bxl-youtube {
+            font-size: 1.25rem;
+            color: #ff0000;
+            transition: color 0.3s;
+        }
+
+        .project-video-facade-btn:hover i.bxl-instagram,
+        .project-video-facade-btn:hover i.bxl-youtube {
+            color: #fff;
+        }
+
+        .facade-label {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .project-video-facade-btn:hover .facade-label {
+            color: #fff;
+        }
+
+        .facade-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .project-media-icon {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            opacity: 0.8;
+        .project-video-facade-btn:hover .facade-cta {
+            color: #fff;
         }
 
         /* Project Info Column */
@@ -436,10 +479,16 @@
                     <!-- Proje 1: Hepsert Spor Kulübü -->
                     <article class="project-block" data-video-ref="https://www.instagram.com/reel/DbqfRs4I5nm/">
                         <div class="project-media-container hepsert-project-media">
-                            <div class="project-media-slot">
-                                <i class='bx bx-play-circle project-media-icon' aria-hidden="true"></i>
-                                <span class="project-media-badge"><i class='bx bx-landscape'></i> Görsel & Video Çerçevesi</span>
-                            </div>
+                            <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/hepsert-01.png" 
+                                 alt="Hepsert Spor Kulübü taekwondo antrenman ve dijital iletişim görseli" 
+                                 width="600" height="800" loading="lazy" class="project-main-img">
+                            <a href="https://www.instagram.com/reel/DbqfRs4I5nm/" target="_blank" rel="noopener noreferrer" class="project-video-facade-btn" aria-label="Hepsert Spor Kulübü video içeriğini izle">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class='bx bxl-instagram' aria-hidden="true"></i>
+                                    <span class="facade-label">Video İçeriği</span>
+                                </span>
+                                <span class="facade-cta">Videoyu İzle <i class='bx bx-export' aria-hidden="true"></i></span>
+                            </a>
                         </div>
                         <div class="project-info">
                             <span class="project-eyebrow">SPOR & DİJİTAL İLETİŞİM</span>
@@ -470,10 +519,16 @@
                     <!-- Proje 2: Nisan Vitrini (Kurucu Proje - Reverse layout) -->
                     <article class="project-block reverse" data-video-ref="https://www.instagram.com/reel/DU8akbbiFyf/">
                         <div class="project-media-container nisan-vitrini-project-media">
-                            <div class="project-media-slot">
-                                <i class='bx bx-store-alt project-media-icon' aria-hidden="true"></i>
-                                <span class="project-media-badge"><i class='bx bx-landscape'></i> Görsel & Web Çerçevesi</span>
-                            </div>
+                            <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/nv-kapak-01.png" 
+                                 alt="Nisan Vitrini kurucu projesi premium ürün ve marka görseli" 
+                                 width="600" height="800" loading="lazy" class="project-main-img">
+                            <a href="https://www.instagram.com/reel/DU8akbbiFyf/" target="_blank" rel="noopener noreferrer" class="project-video-facade-btn" aria-label="Nisan Vitrini video içeriğini izle">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class='bx bxl-instagram' aria-hidden="true"></i>
+                                    <span class="facade-label">Video İçeriği</span>
+                                </span>
+                                <span class="facade-cta">Videoyu İzle <i class='bx bx-export' aria-hidden="true"></i></span>
+                            </a>
                         </div>
                         <div class="project-info">
                             <span class="project-eyebrow">NVM'NİN KURUCU PROJESİ</span>
@@ -506,10 +561,16 @@
                     <!-- Proje 3: Ufuk Şengün Yapı -->
                     <article class="project-block" data-video-ref="https://www.youtube.com/shorts/iv-6yN7GzEs">
                         <div class="project-media-container ufuk-sengun-yapi-project-media">
-                            <div class="project-media-slot">
-                                <i class='bx bx-bot project-media-icon' aria-hidden="true"></i>
-                                <span class="project-media-badge"><i class='bx bx-landscape'></i> Panpan Usta Medya Çerçevesi</span>
-                            </div>
+                            <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/panpan-usta/panpan-usta-01.png" 
+                                 alt="Ufuk Şengün Yapı için geliştirilen Panpan Usta sanal marka elçisi görseli" 
+                                 width="600" height="800" loading="lazy" class="project-main-img">
+                            <a href="https://www.youtube.com/shorts/iv-6yN7GzEs" target="_blank" rel="noopener noreferrer" class="project-video-facade-btn" aria-label="Ufuk Şengün Yapı Panpan Usta videosunu izle">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class='bx bxl-youtube' aria-hidden="true"></i>
+                                    <span class="facade-label">Panpan Usta Videosu</span>
+                                </span>
+                                <span class="facade-cta">Videoyu İzle <i class='bx bx-export' aria-hidden="true"></i></span>
+                            </a>
                         </div>
                         <div class="project-info">
                             <span class="project-eyebrow">YAPI SEKTÖRÜ & AI</span>
@@ -542,10 +603,16 @@
                     <!-- Proje 4: Müge Mutlu (Reverse layout) -->
                     <article class="project-block reverse" data-video-ref="https://www.instagram.com/reel/DZ5UmX_snP4/">
                         <div class="project-media-container muge-mutlu-project-media">
-                            <div class="project-media-slot">
-                                <i class='bx bx-user-voice project-media-icon' aria-hidden="true"></i>
-                                <span class="project-media-badge"><i class='bx bx-landscape'></i> Görsel & Video Çerçevesi</span>
-                            </div>
+                            <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/mm-kapak-01.png" 
+                                 alt="Müge Mutlu için hazırlanan kişisel marka ve dikey video projesi görseli" 
+                                 width="600" height="800" loading="lazy" class="project-main-img">
+                            <a href="https://www.instagram.com/reel/DZ5UmX_snP4/" target="_blank" rel="noopener noreferrer" class="project-video-facade-btn" aria-label="Müge Mutlu video içeriğini izle">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class='bx bxl-instagram' aria-hidden="true"></i>
+                                    <span class="facade-label">Video İçeriği</span>
+                                </span>
+                                <span class="facade-cta">Videoyu İzle <i class='bx bx-export' aria-hidden="true"></i></span>
+                            </a>
                         </div>
                         <div class="project-info">
                             <span class="project-eyebrow">KİŞİSEL MARKA & EĞİTİM</span>
@@ -569,10 +636,16 @@
                     <!-- Proje 5: Ufuk Şengün Sigorta -->
                     <article class="project-block" data-video-ref="https://www.instagram.com/reel/DVBGEjnjLu4/">
                         <div class="project-media-container ufuk-sengun-sigorta-project-media">
-                            <div class="project-media-slot">
-                                <i class='bx bx-shield-quarter project-media-icon' aria-hidden="true"></i>
-                                <span class="project-media-badge"><i class='bx bx-landscape'></i> Kurumsal Kimlik & Medya Çerçevesi</span>
-                            </div>
+                            <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/sigorta-kapak-01.png" 
+                                 alt="Ufuk Şengün Sigorta için hazırlanan kurumsal marka ve iletişim projesi görseli" 
+                                 width="600" height="800" loading="lazy" class="project-main-img">
+                            <a href="https://www.instagram.com/reel/DVBGEjnjLu4/" target="_blank" rel="noopener noreferrer" class="project-video-facade-btn" aria-label="Ufuk Şengün Sigorta video içeriğini izle">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class='bx bxl-instagram' aria-hidden="true"></i>
+                                    <span class="facade-label">Video İçeriği</span>
+                                </span>
+                                <span class="facade-cta">Videoyu İzle <i class='bx bx-export' aria-hidden="true"></i></span>
+                            </a>
                         </div>
                         <div class="project-info">
                             <span class="project-eyebrow">KURUMSAL İLETİŞİM & MARKA</span>
