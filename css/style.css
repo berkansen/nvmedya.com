@@ -2200,6 +2200,14 @@ header {
     margin-bottom: 1.25rem;
 }
 
+.home-project-services {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+    font-weight: 500;
+}
+
 .home-project-metric {
     margin-top: auto;
     padding-top: 1rem;
