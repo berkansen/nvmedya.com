@@ -168,7 +168,7 @@
             height: auto;
             max-height: 480px;
             object-fit: cover;
-            object-position: center 30%;
+            object-position: center top;
             display: block;
         }
 
@@ -194,6 +194,13 @@
             background: var(--primary-color);
             margin-top: 0.5rem;
             border-radius: 2px;
+        }
+
+        [style*="text-align: center"] > .case-section-title::after,
+        [style*="text-align:center"] > .case-section-title::after,
+        .text-center > .case-section-title::after {
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .case-text-block {
