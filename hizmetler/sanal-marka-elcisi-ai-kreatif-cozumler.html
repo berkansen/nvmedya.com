@@ -1061,6 +1061,56 @@
             </div>
         </section>
 
+        <!-- Hepsera Örnek Proje Section -->
+        <section id="hepsera-ornek-proje" class="section alt-bg" aria-labelledby="hepsera-baslik">
+            <div class="container">
+                <div class="section-header center">
+                    <span class="ambassador-tag" style="margin-bottom: 0.75rem;">GERÇEK PROJE</span>
+                    <h2 id="hepsera-baslik" class="section-title" style="max-width: 800px; margin: 0 auto 1rem;">Hepsera</h2>
+                    <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6; max-width: 760px; margin: 0 auto 1.5rem;">
+                        Hepsera, Hepsert Spor Kulübü için geliştirilen yapay zeka destekli sanal marka elçisidir. Karakter tasarımı, görsel içerik dili ve kısa video üretimi aynı karakter kimliği etrafında sürdürülebilir bir sosyal medya sistemine dönüştürülür.
+                    </p>
+                    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-top: 1rem;">
+                        <span class="panpan-meta-badge">Sanal Karakter</span>
+                        <span class="panpan-meta-badge">Görsel İçerik</span>
+                        <span class="panpan-meta-badge">Kısa Video İçeriği</span>
+                    </div>
+                </div>
+
+                <!-- Hepsera Medya Grid (4 Eşit Kart: 3 Görsel + 1 Video) -->
+                <div class="panpan-media-grid">
+                    <div class="panpan-card panpan-card-img">
+                        <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/hepsera/hepser-01.png" 
+                             alt="Hepsert Spor Kulübü için geliştirilen Hepsera sanal marka elçisi" 
+                             width="600" height="800" loading="lazy" style="object-position: center top;">
+                    </div>
+                    <div class="panpan-card panpan-card-img">
+                        <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/hepsera/hepsert-02.png" 
+                             alt="Hepsera sanal marka elçisinin Hepsert Spor Kulübü için hazırlanan görsel içeriği" 
+                             width="600" height="800" loading="lazy" style="object-position: center top;">
+                    </div>
+                    <div class="panpan-card panpan-card-img">
+                        <img src="https://ik.imagekit.io/nvmedya/nvm-sanal-karakterler/hepsera/hepsert-03.png" 
+                             alt="Hepsera karakterinin Hepsert Spor Kulübü sosyal medya içeriğinde kullanımı" 
+                             width="600" height="800" loading="lazy" style="object-position: center top;">
+                    </div>
+                    <div class="panpan-card" id="hepsera-video-card">
+                        <button type="button" class="panpan-video-facade" aria-label="Hepsera YouTube Shorts videosunu izle" onclick="loadHepseraVideo(this)">
+                            <img src="https://i.ytimg.com/vi/ryxuYN1zu34/hqdefault.jpg" 
+                                 alt="Hepsera Shorts Video Kapağı" 
+                                 width="340" height="600" loading="lazy" class="panpan-video-thumb">
+                            <div class="panpan-video-overlay">
+                                <div class="panpan-play-btn" aria-hidden="true">
+                                    <i class='bx bx-play'></i>
+                                </div>
+                                <span class="panpan-video-play-text">Videoyu İzle</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Nasıl Çalışıyoruz Section -->
         <section id="sanal-marka-elcisi-gelistirme-sureci" class="section" aria-labelledby="sanal-marka-elcisi-gelistirme-sureci-baslik">
             <div class="container">
@@ -1481,6 +1531,13 @@
             const card = document.getElementById('panpan-video-card');
             if (card) {
                 card.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/iv-6yN7GzEs?autoplay=1" title="Panpan Usta Yapay Zeka Sanal Karakter Video İçeriği" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="panpan-video-iframe"></iframe>';
+            }
+        }
+
+        function loadHepseraVideo(btn) {
+            const card = document.getElementById('hepsera-video-card');
+            if (card) {
+                card.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/ryxuYN1zu34?autoplay=1" title="Hepsera Sanal Marka Elçisi Video İçeriği" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="panpan-video-iframe"></iframe>';
             }
         }
     </script>
