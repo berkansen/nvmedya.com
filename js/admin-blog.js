@@ -71,6 +71,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Auth State
     auth.onAuthStateChanged(user => {
         if (user) {
+            const email = (user.email || '').toLowerCase();
+            const isAuthorized = email === 'berkan@nisanvitrini.com' || email === 'admin@nisanvitrini.com';
+
+            if (!isAuthorized) {
+                alert('Bu panele erişim yetkiniz bulunmamaktadır.');
+                auth.signOut().then(() => {
+                    loginOverlay.style.display = 'flex';
+                });
+                return;
+            }
+
             loginOverlay.style.display = 'none';
             fetchBlogs(); // Load blogs after login
         } else {
