@@ -16,6 +16,17 @@ const db = firebase.firestore();
 const auth = firebase.auth();
 
 
+// --- Authorized Owner Resolution by Firebase UID ---
+const BOARD_OWNER_MAP = {
+    '1fkHpAlnCkTVp0h4k8BOqI2PBGt2': 'Berkan',
+    'psQCOhkAU6MwzoOCJ0Gt1lkna1x1': 'Yeliz'
+};
+
+function getAuthorizedOwner(user) {
+    if (!user || !user.uid) return null;
+    return BOARD_OWNER_MAP[user.uid] || null;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- Auth Logic & State ---
     const loginOverlay = document.getElementById('loginOverlay');
@@ -84,10 +95,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Auth State Change
     auth.onAuthStateChanged(user => {
         if (user) {
-            // Derive display name
-            let displayName = 'Misafir';
-            if (user.email.includes('berkan')) displayName = 'Berkan';
-            else if (user.email.includes('yeliz')) displayName = 'Yeliz';
+            // Derive display name from authenticated UID
+            const ownerName = getAuthorizedOwner(user);
+            const displayName = ownerName || 'Misafir';
 
             localStorage.setItem('nvm_active_user', displayName);
             unlock();
@@ -126,15 +136,20 @@ document.addEventListener('DOMContentLoaded', () => {
             renderArchive();
         }));
 
-        // 4. Listen for Personal Notes
-        unsubscribers.push(db.collection('personal_notes').onSnapshot(snapshot => {
-            const activeUser = localStorage.getItem('nvm_active_user');
-            personalNotes = snapshot.docs
-                .map(doc => ({ id: doc.id, ...doc.data() }))
-                .filter(note => note.owner === activeUser);
-            personalNotes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        // 4. Listen for Personal Notes (Strict owner-based Firestore query)
+        const ownerName = getAuthorizedOwner(user);
+        if (ownerName) {
+            unsubscribers.push(db.collection('personal_notes')
+                .where('owner', '==', ownerName)
+                .onSnapshot(snapshot => {
+                    personalNotes = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    personalNotes.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                    renderPersonalNotes();
+                }, err => console.error('Personal Notes Error:', err)));
+        } else {
+            personalNotes = [];
             renderPersonalNotes();
-        }));
+        }
     }
 
     // --- State Management ---
@@ -695,11 +710,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = newPersonalNoteInput.value.trim();
         if (!text) return;
 
-        const activeUser = localStorage.getItem('nvm_active_user');
+        const currentUser = auth.currentUser;
+        const ownerName = getAuthorizedOwner(currentUser);
+
+        if (!ownerName) {
+            alert('Kişisel not ekleme yetkiniz bulunmamaktadır.');
+            return;
+        }
 
         db.collection('personal_notes').add({
             text: text,
-            owner: activeUser,
+            owner: ownerName,
             createdAt: new Date().toISOString()
         });
 
