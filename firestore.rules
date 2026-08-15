@@ -1,0 +1,45 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.admin == true ||
+        request.auth.token.email.matches('^.+@nisanvitrini\\.com$')
+      );
+    }
+
+    function isValidBlogPost() {
+      let data = request.resource.data;
+      let allowedKeys = ['title', 'content', 'excerpt', 'metaDescription', 'keywords', 'image', 'createdAt', 'updatedAt'];
+      return data.keys().hasOnly(allowedKeys) &&
+             data.title is string && data.title.size() > 0 && data.title.size() <= 200 &&
+             data.content is string && data.content.size() > 0 &&
+             data.excerpt is string &&
+             data.metaDescription is string &&
+             data.keywords is string &&
+             data.image is string;
+    }
+
+    // Blog Posts Collection
+    match /blog_posts/{postId} {
+      // Public Read (All published blog articles are viewable)
+      allow read: if true;
+
+      // Admin Write Only (Create, Update, Delete)
+      allow create: if isAdmin() && isValidBlogPost() && request.resource.data.createdAt is string;
+      allow update: if isAdmin() && isValidBlogPost();
+      allow delete: if isAdmin();
+    }
+
+    // Default deny all other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

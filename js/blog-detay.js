@@ -67,19 +67,38 @@ document.addEventListener('DOMContentLoaded', () => {
             setMetaTag('og:type', 'article', true);
             setMetaTag('og:url', window.location.href, true);
 
-            const imgHtml = post.image ? `<img src="${post.image}" alt="${post.title}" class="detay-image">` : '';
+            // Strict DOMPurify sanitization profile for blog content
+            const purifyConfig = {
+                ALLOWED_TAGS: [
+                    'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'hr',
+                    'strong', 'b', 'em', 'i', 'u', 's', 'strike',
+                    'ul', 'ol', 'li', 'blockquote', 'code', 'pre',
+                    'a', 'img', 'figure', 'figcaption', 'span', 'div'
+                ],
+                ALLOWED_ATTR: ['href', 'title', 'target', 'rel', 'src', 'alt', 'class', 'width', 'height'],
+                ALLOWED_URI_REGEXP: /^(?:(?:(?:f|ht)tps?|mailto|tel):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i,
+                ADD_ATTR: ['target'],
+                FORBID_TAGS: ['script', 'iframe', 'object', 'embed', 'form', 'input', 'button', 'style'],
+                FORBID_ATTR: ['onerror', 'onclick', 'onload', 'onmouseover', 'style']
+            };
 
-            // Render Content
+            const rawBody = post.content ? post.content.replace(/\n/g, '<br>') : '';
+            const cleanBody = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(rawBody, purifyConfig) : rawBody;
+            const cleanTitle = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(post.title || '') : (post.title || '');
+
+            const imgHtml = post.image ? `<img src="${post.image}" alt="${cleanTitle}" class="detay-image">` : '';
+
+            // Render Sanitized Content
             detailContainer.innerHTML = `
                 ${imgHtml}
                 <div class="detay-content">
-                    <h1 class="detay-title">${post.title}</h1>
+                    <h1 class="detay-title">${cleanTitle}</h1>
                     <div class="detay-meta">
                         <span><i class='bx bx-calendar'></i> ${dateStr}</span>
                         <span><i class='bx bx-time'></i> ${readTime} dk okuma</span>
                     </div>
                     <div class="detay-body">
-                        ${post.content.replace(/\n/g, '<br>')}
+                        ${cleanBody}
                     </div>
                 </div>
             `;

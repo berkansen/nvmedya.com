@@ -21,16 +21,31 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginBtn = document.getElementById('loginBtn');
     const logoutBtn = document.getElementById('logoutBtn');
 
+    // Set SESSION Persistence for Admin Panel
+    auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
+        .catch(err => console.error("Persistence error:", err));
+
     // Login Action
-    loginBtn?.addEventListener('click', () => {
+    loginBtn?.addEventListener('click', async () => {
         const username = document.getElementById('loginUsername').value.trim().toLowerCase();
         const password = document.getElementById('loginPassword').value.trim();
+
+        if (!username || !password) {
+            alert('Lütfen kullanıcı adı ve şifrenizi giriniz.');
+            return;
+        }
 
         let email = username;
         if (!email.includes('@')) email = `${username}@nisanvitrini.com`;
 
-        auth.signInWithEmailAndPassword(email, password)
-            .catch(error => alert('Giriş başarısız: ' + error.message));
+        try {
+            await auth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+            await auth.signInWithEmailAndPassword(email, password);
+        } catch (error) {
+            console.error("Auth error:", error.code);
+            // Generic security error message (Prevents user enumeration)
+            alert('Giriş bilgileri hatalı veya erişim yetkiniz bulunmuyor.');
+        }
     });
 
     // Logout Action
@@ -102,16 +117,36 @@ document.addEventListener('DOMContentLoaded', () => {
         const title = document.getElementById('blogTitle').value.trim();
         const image = document.getElementById('blogImage').value.trim();
         const excerpt = document.getElementById('blogExcerpt').value.trim();
-        const content = document.getElementById('blogContent').value.trim();
+        const rawContent = document.getElementById('blogContent').value.trim();
 
         // SEO Fields
         const metaDesc = document.getElementById('blogMetaDesc').value.trim();
         const keywords = document.getElementById('blogKeywords').value.trim();
 
-        if (!title || !content) {
+        if (!title || !rawContent) {
             alert('Lütfen en az "Başlık" ve "İçerik" alanlarını doldurun.');
             return;
         }
+
+        // Save-time sanitization (Defense in depth)
+        const purifyConfig = {
+            ALLOWED_TAGS: [
+                'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'hr',
+                'strong', 'b', 'em', 'i', 'u', 's', 'strike',
+                'ul', 'ol', 'li', 'blockquote', 'code', 'pre',
+                'a', 'img', 'figure', 'figcaption', 'span', 'div'
+            ],
+            ALLOWED_ATTR: ['href', 'title', 'target', 'rel', 'src', 'alt', 'class', 'width', 'height'],
+            ALLOWED_URI_REGEXP: /^(?:(?:(?:f|ht)tps?|mailto|tel):|[^a-z]|[a-z+.\-]+(?:[^a-z+.\-:]|$))/i,
+            ADD_ATTR: ['target'],
+            FORBID_TAGS: ['script', 'iframe', 'object', 'embed', 'form', 'input', 'button', 'style'],
+            FORBID_ATTR: ['onerror', 'onclick', 'onload', 'onmouseover', 'style']
+        };
+
+        const cleanContent = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(rawContent, purifyConfig) : rawContent;
+        const cleanTitle = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(title) : title;
+        const cleanExcerpt = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(excerpt) : excerpt;
+        const cleanMetaDesc = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(metaDesc) : metaDesc;
 
         saveBtn.disabled = true;
         saveBtn.innerText = 'Kaydediliyor...';
@@ -119,22 +154,22 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             if (currentEditId) {
                 await db.collection('blog_posts').doc(currentEditId).update({
-                    title: title,
-                    image: image || 'assets/blog-placeholder.jpg',
-                    excerpt: excerpt,
-                    metaDescription: metaDesc || excerpt,
+                    title: cleanTitle,
+                    image: image || 'assets/blog-placeholder.svg',
+                    excerpt: cleanExcerpt,
+                    metaDescription: cleanMetaDesc || cleanExcerpt,
                     keywords: keywords,
-                    content: content
+                    content: cleanContent
                 });
                 alert('Blog başarıyla güncellendi!');
             } else {
                 await db.collection('blog_posts').add({
-                    title: title,
-                    image: image || 'assets/blog-placeholder.jpg',
-                    excerpt: excerpt,
-                    metaDescription: metaDesc || excerpt,
+                    title: cleanTitle,
+                    image: image || 'assets/blog-placeholder.svg',
+                    excerpt: cleanExcerpt,
+                    metaDescription: cleanMetaDesc || cleanExcerpt,
                     keywords: keywords,
-                    content: content,
+                    content: cleanContent,
                     createdAt: new Date().toISOString()
                 });
                 alert('Blog başarıyla yayınlandı!');
@@ -142,7 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
             resetForm();
             fetchBlogs();
         } catch (error) {
-            alert('Hata oluştu: ' + error);
+            console.error("Save error:", error);
+            alert('Kayıt sırasında yetki veya işlem hatası oluştu: ' + (error.message || ''));
         } finally {
             saveBtn.disabled = false;
             saveBtn.innerHTML = currentEditId ? "<i class='bx bx-edit'></i> Blog Yazısını Güncelle" : "<i class='bx bx-save'></i> Blog Yazısını Yayınla";
