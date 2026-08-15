@@ -92,8 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    let currentAuthUser = null;
+
     // Auth State Change
     auth.onAuthStateChanged(user => {
+        currentAuthUser = user;
         if (user) {
             // Derive display name from authenticated UID
             const ownerName = getAuthorizedOwner(user);
@@ -707,11 +710,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Personal Notes Logic ---
     function addPersonalNote() {
-        const text = newPersonalNoteInput.value.trim();
-        if (!text) return;
+        let text = newPersonalNoteInput ? newPersonalNoteInput.value.trim() : '';
+        if (!text) {
+            const prompted = prompt('Yeni kişisel notunuzu giriniz:');
+            if (prompted && prompted.trim()) {
+                text = prompted.trim();
+            } else {
+                if (newPersonalNoteInput) newPersonalNoteInput.focus();
+                return;
+            }
+        }
 
-        const currentUser = auth.currentUser;
-        const ownerName = getAuthorizedOwner(currentUser);
+        const user = auth.currentUser || currentAuthUser;
+        let ownerName = getAuthorizedOwner(user);
+        if (!ownerName) {
+            const active = localStorage.getItem('nvm_active_user');
+            if (active === 'Berkan' || active === 'Yeliz') ownerName = active;
+        }
 
         if (!ownerName) {
             alert('Kişisel not ekleme yetkiniz bulunmamaktadır.');
@@ -722,11 +737,24 @@ document.addEventListener('DOMContentLoaded', () => {
             text: text,
             owner: ownerName,
             createdAt: new Date().toISOString()
+        }).then(() => {
+            if (newPersonalNoteInput) {
+                newPersonalNoteInput.value = '';
+                newPersonalNoteInput.focus();
+            }
+        }).catch(err => {
+            console.error("Personal note create error:", err);
+            alert("Not kaydedilirken hata oluştu: " + (err.message || err));
         });
-
-        newPersonalNoteInput.value = '';
-        newPersonalNoteInput.focus();
     }
+
+    window.addPersonalNote = addPersonalNote;
+    window.openPersonalNotesModal = () => {
+        if (personalNotesModal) {
+            personalNotesModal.style.display = 'block';
+            if (newPersonalNoteInput) newPersonalNoteInput.focus();
+        }
+    };
 
     window.shareNote = (e, taskId, index) => {
         e.stopPropagation();
