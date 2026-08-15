@@ -14,8 +14,14 @@ if (!firebase.apps.length) {
 }
 const db = firebase.firestore();
 
-// SVG Fallback for missing/broken cover images (loop-proof)
-const defaultBlogPlaceholder = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='400' viewBox='0 0 800 400'%3E%3Crect width='800' height='400' fill='%23111116'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23ff5e15' font-family='sans-serif' font-size='22' font-weight='600' opacity='0.7'%3Enisan vitrini media%3C/text%3E%3C/svg%3E";
+// Asset fallback for missing/broken cover images (loop-proof)
+const defaultBlogPlaceholder = 'assets/blog-placeholder.svg';
+
+window.handleBlogImgError = function(img) {
+    if (!img) return;
+    img.onerror = null;
+    img.src = defaultBlogPlaceholder;
+};
 
 document.addEventListener('DOMContentLoaded', () => {
     const listContainer = document.getElementById('publicBlogList');
@@ -41,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 html += `
                     <a href="/blog-detay.html?id=${doc.id}" class="blog-card fade-in">
-                        <img src="${coverImg}" alt="${post.title}" class="blog-image" onerror="this.onerror=null; this.src='${defaultBlogPlaceholder}';">
+                        <img src="${coverImg}" alt="${post.title}" class="blog-image" onerror="handleBlogImgError(this);">
                         <div class="blog-content">
                             <h2 class="blog-title">${post.title}</h2>
                             <p class="blog-excerpt">${post.excerpt}</p>
