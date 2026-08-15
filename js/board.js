@@ -456,10 +456,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Actions ---
     function addTask() {
-        const text = taskInput.value.trim();
-        if (!text) return;
+        const text = taskInput ? taskInput.value.trim() : '';
+        if (!text) {
+            if (taskInput) taskInput.focus();
+            return;
+        }
 
-        const activeUser = localStorage.getItem('nvm_active_user') || 'Bilinmeyen';
+        const currentUser = auth.currentUser || currentAuthUser;
+        const ownerName = getAuthorizedOwner(currentUser);
+        const activeUser = ownerName || localStorage.getItem('nvm_active_user') || 'Berkan';
 
         // Assign a color
         const colorIndex = tasks.length % 7;
@@ -472,10 +477,18 @@ document.addEventListener('DOMContentLoaded', () => {
             createdAt: new Date().toISOString(),
             notes: [],
             colorIndex: colorIndex
+        }).then(() => {
+            if (taskInput) {
+                taskInput.value = '';
+                taskInput.focus();
+            }
+        }).catch(err => {
+            console.error('Task add error:', err);
+            alert('Görev eklenirken hata oluştu: ' + (err.message || err));
         });
-
-        taskInput.value = '';
     }
+
+    window.addTask = addTask;
 
     function updateTaskStatus(id, newStatus) {
         db.collection('tasks').doc(id).update({ status: newStatus })
