@@ -181,6 +181,11 @@
                 <input type="text" id="blogTitle" class="form-input" placeholder="Örn: SEO Nedir ve Nasıl Yapılır?">
             </div>
             <div class="form-group">
+                <label class="form-label">URL Slug (Kalıcı Bağlantı)</label>
+                <input type="text" id="blogSlug" class="form-input" placeholder="Örn: 2026-instagram-stratejisi-reels-ai">
+                <small style="color: var(--text-muted); font-size: 0.8rem; display: block; margin-top: 4px;">Yazının kalıcı URL adresi. Başlıktan otomatik üretilir; ilk yayından sonra değiştirilemez.</small>
+            </div>
+            <div class="form-group">
                 <label class="form-label">Kapak Resmi Linki <span
                         style="font-size: 0.8rem; color: #4da6ff; margin-left: 10px;">(1200x630px
                         önerilir)</span></label>
@@ -258,7 +263,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
     <script src="js/dompurify.min.js"></script>
-    <script src="js/admin-blog.js?v=3"></script>
+    <script src="js/admin-blog.js?v=4"></script>
     <script src="js/cookie-consent.js"></script>
 </body>
 

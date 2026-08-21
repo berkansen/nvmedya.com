@@ -90,10 +90,53 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- Slug Normalization Standard ---
+    function slugify(text) {
+        if (!text) return '';
+        const trMap = {
+            'ç': 'c', 'Ç': 'c',
+            'ğ': 'g', 'Ğ': 'g',
+            'ı': 'i', 'I': 'i', 'İ': 'i',
+            'ö': 'o', 'Ö': 'o',
+            'ş': 's', 'Ş': 's',
+            'ü': 'u', 'Ü': 'u'
+        };
+        let str = text.toString();
+        for (const [key, val] of Object.entries(trMap)) {
+            str = str.split(key).join(val);
+        }
+        return str
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '') // remove diacritics
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9\s-]/g, '') // remove non-alphanumeric except space and hyphen
+            .replace(/[\s_]+/g, '-') // spaces and underscores to hyphen
+            .replace(/-+/g, '-') // collapse consecutive hyphens
+            .replace(/^-+|-+$/g, '') // trim hyphens
+            .substring(0, 120); // max 120 chars
+    }
+
     // --- Editor Logic ---
     let currentEditId = null;
+    let isSlugManuallyEdited = false;
+
+    const titleInput = document.getElementById('blogTitle');
+    const slugInput = document.getElementById('blogSlug');
     const metaDescInput = document.getElementById('blogMetaDesc');
     const metaCounter = document.getElementById('metaCounter');
+
+    if (titleInput && slugInput) {
+        titleInput.addEventListener('input', () => {
+            if (!isSlugManuallyEdited && !slugInput.disabled) {
+                slugInput.value = slugify(titleInput.value);
+            }
+        });
+
+        slugInput.addEventListener('input', () => {
+            isSlugManuallyEdited = slugInput.value.trim().length > 0;
+        });
+    }
 
     if (metaDescInput && metaCounter) {
         metaDescInput.addEventListener('input', () => {
@@ -112,7 +155,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resetForm() {
         if (document.getElementById('blogStatus')) document.getElementById('blogStatus').value = 'draft';
-        document.getElementById('blogTitle').value = '';
+        if (titleInput) titleInput.value = '';
+        if (slugInput) {
+            slugInput.value = '';
+            slugInput.disabled = false;
+            slugInput.style.opacity = '1';
+            slugInput.style.cursor = 'text';
+        }
+        isSlugManuallyEdited = false;
         document.getElementById('blogImage').value = '';
         if (document.getElementById('blogImageAlt')) document.getElementById('blogImageAlt').value = '';
         if (document.getElementById('blogAuthor')) document.getElementById('blogAuthor').value = 'Nisan Vitrini Media';
@@ -133,6 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
     saveBtn?.addEventListener('click', async () => {
         const status = (document.getElementById('blogStatus')?.value || 'draft') === 'published' ? 'published' : 'draft';
         const title = document.getElementById('blogTitle').value.trim();
+        const rawSlug = document.getElementById('blogSlug')?.value.trim() || '';
         const image = document.getElementById('blogImage').value.trim();
         const imageAlt = document.getElementById('blogImageAlt')?.value.trim() || '';
         const authorName = document.getElementById('blogAuthor')?.value.trim() || 'Nisan Vitrini Media';
@@ -147,6 +198,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!title || !rawContent) {
             alert('Lütfen en az "Başlık" ve "İçerik" alanlarını doldurun.');
+            return;
+        }
+
+        // Slug Validation & Normalization
+        const cleanSlug = slugify(rawSlug || title);
+        const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+        if (!cleanSlug || !slugRegex.test(cleanSlug) || cleanSlug.length > 120) {
+            alert('Geçersiz URL Slug formatı. Slug yalnızca küçük harfler, rakamlar ve tire içermelidir (En fazla 120 karakter).');
             return;
         }
 
@@ -175,17 +235,32 @@ document.addEventListener('DOMContentLoaded', () => {
         const cleanGeoSummary = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(geoSummary) : geoSummary;
 
         saveBtn.disabled = true;
-        saveBtn.innerText = 'Kaydediliyor...';
+        saveBtn.innerText = 'Doğrulanıyor ve Kaydediliyor...';
 
         try {
+            // Slug Uniqueness Check (Operational Protection)
+            const slugCheckSnap = await db.collection('blog_posts').where('slug', '==', cleanSlug).get();
+            const isDuplicate = slugCheckSnap.docs.some(docSnap => docSnap.id !== currentEditId);
+
+            if (isDuplicate) {
+                alert(`"${cleanSlug}" URL slugı başka bir blog yazısında kullanılıyor. Lütfen benzersiz bir URL slugı belirleyin.`);
+                saveBtn.disabled = false;
+                saveBtn.innerHTML = currentEditId ? "<i class='bx bx-edit'></i> Blog Yazısını Güncelle" : "<i class='bx bx-save'></i> Blog Yazısını Kaydet";
+                return;
+            }
+
             const now = new Date().toISOString();
 
             if (currentEditId) {
                 const docRef = await db.collection('blog_posts').doc(currentEditId).get();
                 const prevData = docRef.exists ? docRef.data() : {};
 
+                // Slug Immutability: If post was previously published (has publishedAt), keep original slug
+                const finalSlug = prevData.publishedAt ? (prevData.slug || cleanSlug) : cleanSlug;
+
                 const updatePayload = {
                     title: cleanTitle,
+                    slug: finalSlug,
                     image: image || 'assets/blog-placeholder.svg',
                     imageAlt: cleanImageAlt || cleanTitle,
                     authorName: cleanAuthor || 'Nisan Vitrini Media',
@@ -211,6 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 const createPayload = {
                     title: cleanTitle,
+                    slug: cleanSlug,
                     image: image || 'assets/blog-placeholder.svg',
                     imageAlt: cleanImageAlt || cleanTitle,
                     authorName: cleanAuthor || 'Nisan Vitrini Media',
@@ -290,7 +366,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (document.getElementById('blogStatus')) {
                     document.getElementById('blogStatus').value = post.status === 'published' ? 'published' : 'draft';
                 }
-                document.getElementById('blogTitle').value = post.title || '';
+                if (document.getElementById('blogTitle')) {
+                    document.getElementById('blogTitle').value = post.title || '';
+                }
+                const editSlugInput = document.getElementById('blogSlug');
+                if (editSlugInput) {
+                    editSlugInput.value = post.slug || slugify(post.title || '');
+                    if (post.publishedAt) {
+                        editSlugInput.disabled = true;
+                        editSlugInput.style.opacity = '0.6';
+                        editSlugInput.style.cursor = 'not-allowed';
+                    } else {
+                        editSlugInput.disabled = false;
+                        editSlugInput.style.opacity = '1';
+                        editSlugInput.style.cursor = 'text';
+                    }
+                }
+                isSlugManuallyEdited = true;
                 document.getElementById('blogImage').value = (post.image === 'assets/blog-placeholder.svg' || post.image === 'assets/blog-placeholder.jpg') ? '' : (post.image || '');
                 if (document.getElementById('blogImageAlt')) {
                     document.getElementById('blogImageAlt').value = post.imageAlt || '';
