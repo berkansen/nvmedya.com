@@ -169,6 +169,14 @@
             </div>
 
             <div class="form-group">
+                <label class="form-label">Yayın Durumu</label>
+                <select id="blogStatus" class="form-input" style="background: rgba(255,255,255,0.05); color: #fff; cursor: pointer;">
+                    <option value="draft" selected>Taslak (Draft)</option>
+                    <option value="published">Yayında (Published)</option>
+                </select>
+                <small style="color: var(--text-muted); font-size: 0.8rem; display: block; margin-top: 4px;">Yeni blog yazıları varsayılan olarak Taslak olarak kaydedilir.</small>
+            </div>
+            <div class="form-group">
                 <label class="form-label">Blog Başlığı</label>
                 <input type="text" id="blogTitle" class="form-input" placeholder="Örn: SEO Nedir ve Nasıl Yapılır?">
             </div>
@@ -179,14 +187,28 @@
                 <input type="text" id="blogImage" class="form-input" placeholder="Örn: https://orneksite.com/resim.jpg">
             </div>
             <div class="form-group">
-                <label class="form-label">Kısa Açıklama (Panel Seçim Listesinde Görünecek)</label>
+                <label class="form-label">Kapak Görseli Alt Metni (SEO & Erişilebilirlik)</label>
+                <input type="text" id="blogImageAlt" class="form-input" placeholder="Örn: Yapay zeka arama motorları GEO optimizasyonu">
+                <small style="color: var(--text-muted); font-size: 0.8rem; display: block; margin-top: 4px;">Boş bırakılırsa blog başlığı kullanılır.</small>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Yazar Adı (Author)</label>
+                <input type="text" id="blogAuthor" class="form-input" value="Nisan Vitrini Media" placeholder="Örn: Nisan Vitrini Media">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Kısa Açıklama (Panel Seçim Listesinde ve Kartlarda Görünecek)</label>
                 <input type="text" id="blogExcerpt" class="form-input"
                     placeholder="Bu blog yazısında SEO'nun temellerini anlatıyoruz...">
             </div>
 
             <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
-            <h3 style="margin-bottom: 1.5rem;">SEO Bilgileri</h3>
+            <h3 style="margin-bottom: 1.5rem;">SEO & GEO Bilgileri</h3>
 
+            <div class="form-group">
+                <label class="form-label">Özel SEO Başlığı (Meta Title)</label>
+                <input type="text" id="blogSeoTitle" class="form-input" placeholder="Örn: 2026 SEO ve GEO Rehberi | Nisan Vitrini Media">
+                <small style="color: var(--text-muted); font-size: 0.8rem; display: block; margin-top: 4px;">Boş bırakılırsa ana blog başlığı kullanılır.</small>
+            </div>
             <div class="form-group">
                 <label class="form-label">Meta Açıklama (Google/Sosyal Medya Özeti) <span class="char-counter"
                         id="metaCounter">0 / 160</span></label>
@@ -197,6 +219,12 @@
                 <label class="form-label">Odak Anahtar Kelimeler</label>
                 <input type="text" id="blogKeywords" class="form-input"
                     placeholder="Örn: seo rehberi, dijital pazarlama, 2026 seo (Virgülle ayırın)">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Kısa Cevap / GEO Özeti (AI Arama Motorları Doğrudan Yanıt Alanı)</label>
+                <textarea id="blogGeoSummary" class="form-input" style="min-height: 80px;"
+                    placeholder="Makalenin temel sorusuna 2-3 cümlelik net ve doğrudan cevap (Makale başında görünür kutuda basılır)..."></textarea>
+                <small style="color: var(--text-muted); font-size: 0.8rem; display: block; margin-top: 4px;">Google AI Overviews ve Perplexity gibi GEO sistemleri için doğrudan yanıt niteliğinde olmalıdır.</small>
             </div>
 
             <hr style="border: 0; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
@@ -210,7 +238,7 @@
             <div style="display: flex; gap: 1rem;">
                 <button id="saveBlogBtn" class="btn btn-primary"
                     style="flex: 1; justify-content: center; padding: 1rem;"><i class='bx bx-save'></i> Blog Yazısını
-                    Yayınla</button>
+                    Kaydet</button>
                 <button id="cancelEditBtn" class="btn btn-outline"
                     style="display: none; padding: 1rem; border-color: #aaa; color: #aaa;"><i class='bx bx-x'></i> İptal</button>
             </div>
@@ -230,7 +258,7 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
 
     <script src="js/dompurify.min.js"></script>
-    <script src="js/admin-blog.js?v=2"></script>
+    <script src="js/admin-blog.js?v=3"></script>
     <script src="js/cookie-consent.js"></script>
 </body>
 

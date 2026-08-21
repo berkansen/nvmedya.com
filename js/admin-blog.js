@@ -68,11 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const BERKAN_ADMIN_UID = '1fkHpAlnCkTVp0h4k8BOqI2PBGt2';
+
     // Auth State
     auth.onAuthStateChanged(user => {
         if (user) {
-            const email = (user.email || '').toLowerCase();
-            const isAuthorized = email === 'berkan@nisanvitrini.com' || email === 'admin@nisanvitrini.com';
+            const isAuthorized = user.uid === BERKAN_ADMIN_UID;
 
             if (!isAuthorized) {
                 alert('Bu panele erişim yetkiniz bulunmamaktadır.');
@@ -110,29 +111,39 @@ document.addEventListener('DOMContentLoaded', () => {
     const cancelEditBtn = document.getElementById('cancelEditBtn');
 
     function resetForm() {
+        if (document.getElementById('blogStatus')) document.getElementById('blogStatus').value = 'draft';
         document.getElementById('blogTitle').value = '';
         document.getElementById('blogImage').value = '';
+        if (document.getElementById('blogImageAlt')) document.getElementById('blogImageAlt').value = '';
+        if (document.getElementById('blogAuthor')) document.getElementById('blogAuthor').value = 'Nisan Vitrini Media';
         document.getElementById('blogExcerpt').value = '';
+        if (document.getElementById('blogSeoTitle')) document.getElementById('blogSeoTitle').value = '';
         document.getElementById('blogMetaDesc').value = '';
         document.getElementById('blogKeywords').value = '';
+        if (document.getElementById('blogGeoSummary')) document.getElementById('blogGeoSummary').value = '';
         document.getElementById('blogContent').value = '';
         if (metaCounter) metaCounter.textContent = '0 / 160';
         currentEditId = null;
-        if (saveBtn) saveBtn.innerHTML = "<i class='bx bx-save'></i> Blog Yazısını Yayınla";
+        if (saveBtn) saveBtn.innerHTML = "<i class='bx bx-save'></i> Blog Yazısını Kaydet";
         if (cancelEditBtn) cancelEditBtn.style.display = 'none';
     }
 
     cancelEditBtn?.addEventListener('click', resetForm);
 
     saveBtn?.addEventListener('click', async () => {
+        const status = (document.getElementById('blogStatus')?.value || 'draft') === 'published' ? 'published' : 'draft';
         const title = document.getElementById('blogTitle').value.trim();
         const image = document.getElementById('blogImage').value.trim();
+        const imageAlt = document.getElementById('blogImageAlt')?.value.trim() || '';
+        const authorName = document.getElementById('blogAuthor')?.value.trim() || 'Nisan Vitrini Media';
         const excerpt = document.getElementById('blogExcerpt').value.trim();
         const rawContent = document.getElementById('blogContent').value.trim();
 
-        // SEO Fields
+        // SEO & GEO Fields
+        const seoTitle = document.getElementById('blogSeoTitle')?.value.trim() || '';
         const metaDesc = document.getElementById('blogMetaDesc').value.trim();
         const keywords = document.getElementById('blogKeywords').value.trim();
+        const geoSummary = document.getElementById('blogGeoSummary')?.value.trim() || '';
 
         if (!title || !rawContent) {
             alert('Lütfen en az "Başlık" ve "İçerik" alanlarını doldurun.');
@@ -158,32 +169,68 @@ document.addEventListener('DOMContentLoaded', () => {
         const cleanTitle = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(title) : title;
         const cleanExcerpt = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(excerpt) : excerpt;
         const cleanMetaDesc = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(metaDesc) : metaDesc;
+        const cleanImageAlt = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(imageAlt) : imageAlt;
+        const cleanSeoTitle = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(seoTitle) : seoTitle;
+        const cleanAuthor = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(authorName) : authorName;
+        const cleanGeoSummary = (typeof DOMPurify !== 'undefined') ? DOMPurify.sanitize(geoSummary) : geoSummary;
 
         saveBtn.disabled = true;
         saveBtn.innerText = 'Kaydediliyor...';
 
         try {
+            const now = new Date().toISOString();
+
             if (currentEditId) {
-                await db.collection('blog_posts').doc(currentEditId).update({
+                const docRef = await db.collection('blog_posts').doc(currentEditId).get();
+                const prevData = docRef.exists ? docRef.data() : {};
+
+                const updatePayload = {
                     title: cleanTitle,
                     image: image || 'assets/blog-placeholder.svg',
+                    imageAlt: cleanImageAlt || cleanTitle,
+                    authorName: cleanAuthor || 'Nisan Vitrini Media',
                     excerpt: cleanExcerpt,
+                    seoTitle: cleanSeoTitle || cleanTitle,
                     metaDescription: cleanMetaDesc || cleanExcerpt,
                     keywords: keywords,
-                    content: cleanContent
-                });
+                    geoSummary: cleanGeoSummary,
+                    content: cleanContent,
+                    status: status,
+                    updatedAt: now
+                };
+
+                // Manage publishedAt timestamp preservation
+                if (status === 'published') {
+                    updatePayload.publishedAt = prevData.publishedAt || now;
+                } else if (prevData.publishedAt) {
+                    updatePayload.publishedAt = prevData.publishedAt;
+                }
+
+                await db.collection('blog_posts').doc(currentEditId).update(updatePayload);
                 alert('Blog başarıyla güncellendi!');
             } else {
-                await db.collection('blog_posts').add({
+                const createPayload = {
                     title: cleanTitle,
                     image: image || 'assets/blog-placeholder.svg',
+                    imageAlt: cleanImageAlt || cleanTitle,
+                    authorName: cleanAuthor || 'Nisan Vitrini Media',
                     excerpt: cleanExcerpt,
+                    seoTitle: cleanSeoTitle || cleanTitle,
                     metaDescription: cleanMetaDesc || cleanExcerpt,
                     keywords: keywords,
+                    geoSummary: cleanGeoSummary,
                     content: cleanContent,
-                    createdAt: new Date().toISOString()
-                });
-                alert('Blog başarıyla yayınlandı!');
+                    status: status,
+                    createdAt: now,
+                    updatedAt: now
+                };
+
+                if (status === 'published') {
+                    createPayload.publishedAt = now;
+                }
+
+                await db.collection('blog_posts').add(createPayload);
+                alert(status === 'published' ? 'Blog başarıyla yayınlandı!' : 'Blog taslak olarak kaydedildi!');
             }
             resetForm();
             fetchBlogs();
@@ -192,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Kayıt sırasında yetki veya işlem hatası oluştu: ' + (error.message || ''));
         } finally {
             saveBtn.disabled = false;
-            saveBtn.innerHTML = currentEditId ? "<i class='bx bx-edit'></i> Blog Yazısını Güncelle" : "<i class='bx bx-save'></i> Blog Yazısını Yayınla";
+            saveBtn.innerHTML = currentEditId ? "<i class='bx bx-edit'></i> Blog Yazısını Güncelle" : "<i class='bx bx-save'></i> Blog Yazısını Kaydet";
         }
     });
 
@@ -204,18 +251,21 @@ document.addEventListener('DOMContentLoaded', () => {
         db.collection('blog_posts')
             .orderBy('createdAt', 'desc')
             .onSnapshot(snapshot => {
-                // Sadece başlık etiketini ve mevcut öğeleri tutarak güncelle (Eğer h3 var diye tüm innerHTML silinirse, header gidiyor)
                 let html = '<h3 style="margin-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.5rem;">Mevcut Blog Yazıları</h3>';
 
                 snapshot.forEach(doc => {
                     const post = doc.data();
-                    const dateStr = new Date(post.createdAt).toLocaleDateString('tr-TR');
+                    const dateStr = new Date(post.createdAt || Date.now()).toLocaleDateString('tr-TR');
+                    const isPublished = post.status === 'published';
+                    const statusBadge = isPublished
+                        ? '<span style="background: rgba(46, 213, 115, 0.15); color: #2ed573; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin-left: 8px; font-weight: 500;">Yayında</span>'
+                        : '<span style="background: rgba(255, 171, 0, 0.15); color: #ffab00; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; margin-left: 8px; font-weight: 500;">Taslak</span>';
 
                     html += `
                         <div class="blog-item">
                             <div>
-                                <strong>${post.title}</strong>
-                                <div style="font-size: 0.8rem; color: #aaa;">Yayın: ${dateStr}</div>
+                                <strong>${post.title}</strong> ${statusBadge}
+                                <div style="font-size: 0.8rem; color: #aaa; margin-top: 4px;">Kayıt: ${dateStr}${post.publishedAt ? ' • Yayın: ' + new Date(post.publishedAt).toLocaleDateString('tr-TR') : ''}</div>
                             </div>
                             <div style="display: flex; gap: 0.5rem;">
                                 <button class="btn btn-outline" style="border-color: #4da6ff; color: #4da6ff; padding: 0.5rem 1rem;" onclick="editBlog('${doc.id}')">Düzenle</button>
@@ -237,11 +287,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (docRef.exists) {
                 const post = docRef.data();
                 
+                if (document.getElementById('blogStatus')) {
+                    document.getElementById('blogStatus').value = post.status === 'published' ? 'published' : 'draft';
+                }
                 document.getElementById('blogTitle').value = post.title || '';
-                document.getElementById('blogImage').value = (post.image === 'assets/blog-placeholder.jpg') ? '' : (post.image || '');
+                document.getElementById('blogImage').value = (post.image === 'assets/blog-placeholder.svg' || post.image === 'assets/blog-placeholder.jpg') ? '' : (post.image || '');
+                if (document.getElementById('blogImageAlt')) {
+                    document.getElementById('blogImageAlt').value = post.imageAlt || '';
+                }
+                if (document.getElementById('blogAuthor')) {
+                    document.getElementById('blogAuthor').value = post.authorName || 'Nisan Vitrini Media';
+                }
                 document.getElementById('blogExcerpt').value = post.excerpt || '';
+                if (document.getElementById('blogSeoTitle')) {
+                    document.getElementById('blogSeoTitle').value = post.seoTitle || '';
+                }
                 document.getElementById('blogMetaDesc').value = post.metaDescription || '';
                 document.getElementById('blogKeywords').value = post.keywords || '';
+                if (document.getElementById('blogGeoSummary')) {
+                    document.getElementById('blogGeoSummary').value = post.geoSummary || '';
+                }
                 document.getElementById('blogContent').value = post.content || '';
                 
                 if (metaCounter) {
