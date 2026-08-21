@@ -28,40 +28,78 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!listContainer) return;
 
     db.collection('blog_posts')
-        .orderBy('createdAt', 'desc')
+        .where('status', '==', 'published')
         .onSnapshot(snapshot => {
             if (snapshot.empty) {
-                listContainer.innerHTML = '<div class="loader">Henüz blog yazısı bulunmamaktadır.</div>';
+                listContainer.innerHTML = '<div class="loader">Henüz yayınlanmış blog yazısı bulunmamaktadır.</div>';
                 return;
             }
 
-            let html = '';
-            snapshot.forEach(doc => {
-                const post = doc.data();
-                const dateStr = new Date(post.createdAt).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' });
+            // Client-side sort by publishedAt / createdAt desc (safe against missing composite index)
+            const posts = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            posts.sort((a, b) => new Date(b.publishedAt || b.createdAt || 0) - new Date(a.publishedAt || a.createdAt || 0));
+
+            listContainer.innerHTML = '';
+
+            posts.forEach(post => {
+                const dateVal = post.publishedAt || post.createdAt;
+                const dateStr = dateVal ? new Date(dateVal).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
 
                 // Read time tahmini (Basit: her 200 kelime 1 dk)
-                const wordCount = post.content ? post.content.split(' ').length : 0;
+                const wordCount = post.content ? post.content.split(/\s+/).filter(Boolean).length : 0;
                 const readTime = Math.max(1, Math.ceil(wordCount / 200));
                 const coverImg = post.image && post.image.trim() !== '' ? post.image : defaultBlogPlaceholder;
+                const imgAlt = post.imageAlt && post.imageAlt.trim() !== '' ? post.imageAlt : (post.title || '');
 
-                html += `
-                    <a href="/blog-detay.html?id=${doc.id}" class="blog-card fade-in">
-                        <img src="${coverImg}" alt="${post.title}" class="blog-image" onerror="handleBlogImgError(this);">
-                        <div class="blog-content">
-                            <h2 class="blog-title">${post.title}</h2>
-                            <p class="blog-excerpt">${post.excerpt}</p>
-                            <div class="blog-meta">
-                                <span><i class='bx bx-calendar'></i> ${dateStr}</span>
-                                <span><i class='bx bx-time'></i> ${readTime} dk okuma</span>
-                                <span class="blog-card-cta">Devamını Oku <i class='bx bx-right-arrow-alt'></i></span>
-                            </div>
-                        </div>
-                    </a>
-                `;
+                const cardLink = document.createElement('a');
+                cardLink.href = `/blog-detay.html?id=${encodeURIComponent(post.id)}`;
+                cardLink.className = 'blog-card fade-in';
+
+                const cardImg = document.createElement('img');
+                cardImg.src = coverImg;
+                cardImg.alt = imgAlt;
+                cardImg.className = 'blog-image';
+                cardImg.onerror = function () { handleBlogImgError(this); };
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'blog-content';
+
+                const titleEl = document.createElement('h2');
+                titleEl.className = 'blog-title';
+                titleEl.textContent = post.title || '';
+
+                const excerptEl = document.createElement('p');
+                excerptEl.className = 'blog-excerpt';
+                excerptEl.textContent = post.excerpt || '';
+
+                const metaDiv = document.createElement('div');
+                metaDiv.className = 'blog-meta';
+
+                const dateSpan = document.createElement('span');
+                dateSpan.innerHTML = "<i class='bx bx-calendar'></i> ";
+                dateSpan.appendChild(document.createTextNode(dateStr));
+
+                const timeSpan = document.createElement('span');
+                timeSpan.innerHTML = "<i class='bx bx-time'></i> ";
+                timeSpan.appendChild(document.createTextNode(`${readTime} dk okuma`));
+
+                const ctaSpan = document.createElement('span');
+                ctaSpan.className = 'blog-card-cta';
+                ctaSpan.innerHTML = "Devamını Oku <i class='bx bx-right-arrow-alt'></i>";
+
+                metaDiv.appendChild(dateSpan);
+                metaDiv.appendChild(timeSpan);
+                metaDiv.appendChild(ctaSpan);
+
+                contentDiv.appendChild(titleEl);
+                contentDiv.appendChild(excerptEl);
+                contentDiv.appendChild(metaDiv);
+
+                cardLink.appendChild(cardImg);
+                cardLink.appendChild(contentDiv);
+
+                listContainer.appendChild(cardLink);
             });
-
-            listContainer.innerHTML = html;
         }, error => {
             console.error(error);
             listContainer.innerHTML = '<div class="loader" style="color:#ff4d4d;">Yazılar yüklenirken bir hata oluştu.</div>';
