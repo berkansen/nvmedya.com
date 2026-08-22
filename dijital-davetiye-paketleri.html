@@ -66,10 +66,10 @@
             --wedding-gold: #D4AF37;
             --wedding-gold-light: #F4E8C1;
             --wedding-gold-dark: #9A7B20;
-            --wedding-rose: #C5A880;
+            --wedding-champagne: #EFE6DA;
             --wedding-bg-card: rgba(255, 255, 255, 0.03);
-            --wedding-border: rgba(212, 175, 55, 0.18);
-            --wedding-border-hover: rgba(212, 175, 55, 0.4);
+            --wedding-border: rgba(212, 175, 55, 0.2);
+            --wedding-border-hover: rgba(212, 175, 55, 0.45);
             --font-serif: 'Cormorant Garamond', Georgia, serif;
         }
 
@@ -78,11 +78,19 @@
             overflow-x: hidden;
         }
 
+        /* 1. HERO SECTION */
         .hero-wedding {
-            padding-top: calc(var(--header-height) + 3.5rem);
-            padding-bottom: 5rem;
+            padding-top: calc(var(--header-height) + 3rem);
+            padding-bottom: 4.5rem;
             position: relative;
-            background: radial-gradient(circle at 50% 15%, rgba(212, 175, 55, 0.08) 0%, transparent 65%);
+            background: radial-gradient(circle at 50% 15%, rgba(212, 175, 55, 0.09) 0%, transparent 65%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 3.5rem;
+            align-items: center;
         }
 
         .hero-badge {
@@ -97,32 +105,31 @@
             font-size: 0.85rem;
             font-weight: 500;
             letter-spacing: 0.5px;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .hero-wedding-title {
-            font-size: clamp(2.4rem, 6vw, 4.2rem);
+            font-size: clamp(2.3rem, 4.8vw, 3.8rem);
             font-weight: 700;
             line-height: 1.15;
             color: var(--text-main);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
             letter-spacing: -0.5px;
         }
 
         .hero-wedding-subtitle {
-            font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
             color: var(--wedding-gold-light);
             font-weight: 500;
             line-height: 1.5;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.1rem;
         }
 
         .hero-wedding-support {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--text-muted);
-            line-height: 1.7;
-            max-width: 720px;
-            margin-bottom: 2.25rem;
+            line-height: 1.65;
+            margin-bottom: 2rem;
         }
 
         .hero-btn-group {
@@ -144,6 +151,7 @@
             transition: all 0.3s ease;
             text-decoration: none;
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+            font-size: 0.95rem;
         }
 
         .btn-gold:hover {
@@ -164,6 +172,7 @@
             gap: 0.5rem;
             transition: all 0.3s ease;
             text-decoration: none;
+            font-size: 0.95rem;
         }
 
         .btn-gold-outline:hover {
@@ -172,99 +181,197 @@
             background: rgba(212, 175, 55, 0.05);
         }
 
-        /* Campaign Banner Section */
+        /* Hero Product Mockup */
+        .hero-mockup-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-frame {
+            width: 100%;
+            max-width: 320px;
+            background: #151312;
+            border: 2px solid rgba(212, 175, 55, 0.35);
+            border-radius: 36px;
+            padding: 12px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 35px rgba(212, 175, 55, 0.15);
+            position: relative;
+        }
+
+        .phone-screen {
+            background: #FAF7F2;
+            border-radius: 26px;
+            overflow: hidden;
+            color: #2C2725;
+            text-align: center;
+        }
+
+        .phone-header-bar {
+            background: #F3ECE2;
+            padding: 0.5rem 0.75rem;
+            font-size: 0.72rem;
+            color: #6E655F;
+            border-bottom: 1px solid rgba(184, 142, 82, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            font-family: monospace;
+        }
+
+        .phone-hero-img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .phone-inner-content {
+            padding: 1rem 0.85rem;
+        }
+
+        .phone-couple-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #2C2725;
+            margin-bottom: 0.2rem;
+        }
+
+        .phone-date {
+            font-size: 0.75rem;
+            color: #9A7B20;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .phone-chips-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.35rem;
+        }
+
+        .phone-chip {
+            background: #FFFFFF;
+            border: 1px solid rgba(184, 142, 82, 0.25);
+            border-radius: 8px;
+            padding: 0.35rem 0.2rem;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: #2C2725;
+        }
+
+        .hero-float-tag {
+            position: absolute;
+            background: rgba(20, 18, 16, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--wedding-border);
+            padding: 0.5rem 0.9rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--wedding-gold-light);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            white-space: nowrap;
+        }
+
+        .tag-top-left {
+            top: 15%;
+            left: -15px;
+        }
+
+        .tag-bottom-right {
+            bottom: 12%;
+            right: -15px;
+        }
+
+        /* 2. CAMPAIGN BANNER SECTION */
         .campaign-section {
-            padding: 2rem 0 5rem;
+            padding: 1rem 0 4rem;
         }
 
         .campaign-card {
-            background: linear-gradient(135deg, rgba(35, 28, 20, 0.8) 0%, rgba(20, 18, 16, 0.95) 100%);
+            background: linear-gradient(135deg, rgba(35, 28, 20, 0.85) 0%, rgba(20, 18, 16, 0.95) 100%);
             border: 1px solid rgba(212, 175, 55, 0.35);
             border-radius: 24px;
-            padding: clamp(2rem, 5vw, 3.5rem);
+            padding: clamp(1.75rem, 4vw, 2.75rem);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-        }
-
-        .campaign-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
-            pointer-events: none;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
         .campaign-badge {
             display: inline-block;
             background: linear-gradient(135deg, #D4AF37 0%, #AA841E 100%);
             color: #0F0D0C;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
-            padding: 0.35rem 1rem;
+            padding: 0.3rem 0.9rem;
             border-radius: 50px;
             letter-spacing: 0.5px;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
             text-transform: uppercase;
         }
 
         .campaign-title {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
             font-weight: 700;
             color: #FFFFFF;
-            line-height: 1.2;
-            margin-bottom: 1rem;
+            line-height: 1.25;
+            margin-bottom: 0.75rem;
         }
 
         .campaign-text {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--wedding-gold-light);
-            line-height: 1.6;
-            margin-bottom: 0.75rem;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
             font-weight: 500;
         }
 
         .campaign-support {
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
         }
 
         .campaign-value-tag {
             display: inline-flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.6rem;
             background: rgba(212, 175, 55, 0.12);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 0.75rem 1.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            padding: 0.65rem 1.3rem;
             border-radius: 12px;
             color: #FFFFFF;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1rem;
         }
 
         .campaign-value-tag span {
             color: var(--wedding-gold);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
         }
 
         .campaign-footnote {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             color: rgba(255, 255, 255, 0.5);
             margin: 0;
             font-style: italic;
         }
 
-        /* Demo Cards Grid */
+        /* 3. DEMO CARDS GRID */
         .section-header-centered {
             text-align: center;
             max-width: 720px;
-            margin: 0 auto 3.5rem;
+            margin: 0 auto 3rem;
         }
 
         .demos-grid {
@@ -293,7 +400,7 @@
         .demo-preview-wrap {
             position: relative;
             width: 100%;
-            height: 280px;
+            height: 270px;
             overflow: hidden;
             background: #1A1614;
         }
@@ -325,47 +432,44 @@
         }
 
         .demo-body {
-            padding: 1.5rem;
+            padding: 1.4rem;
             display: flex;
             flex-direction: column;
             flex: 1;
         }
 
         .demo-title {
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--text-main);
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
             font-family: var(--font-serif);
         }
 
         .demo-desc {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
+            line-height: 1.55;
+            margin-bottom: 1.25rem;
             flex: 1;
         }
 
-        .btn-demo-inactive {
-            width: 100%;
-            padding: 0.75rem 1rem;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 0.88rem;
-            font-weight: 500;
-            text-align: center;
-            cursor: default;
-            user-select: none;
-            display: flex;
+        .demo-badge-subtle {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
             gap: 0.4rem;
+            font-size: 0.8rem;
+            color: var(--wedding-gold-light);
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0.4rem 0.85rem;
+            border-radius: 8px;
+            font-weight: 500;
+            width: fit-content;
+            user-select: none;
         }
 
-        /* Features Grid */
+        /* 4. FEATURES GRID */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -377,7 +481,9 @@
             background: var(--wedding-bg-card);
             border: 1px solid var(--wedding-border);
             border-radius: 18px;
-            padding: 1.75rem;
+            padding: 1.6rem;
+            display: flex;
+            flex-direction: column;
             transition: all 0.3s ease;
         }
 
@@ -396,28 +502,29 @@
             align-items: center;
             justify-content: center;
             color: var(--wedding-gold);
-            font-size: 1.5rem;
-            margin-bottom: 1.25rem;
+            font-size: 1.45rem;
+            margin-bottom: 1.1rem;
+            flex-shrink: 0;
         }
 
         .feature-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-main);
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.5rem;
         }
 
         .feature-desc {
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.55;
             margin: 0;
         }
 
         .feature-link-badge {
             display: inline-block;
             margin-top: 0.6rem;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             font-family: monospace;
             background: rgba(255, 255, 255, 0.05);
             padding: 0.2rem 0.5rem;
@@ -425,20 +532,21 @@
             color: var(--wedding-gold-light);
         }
 
-        /* Packages Section */
+        /* 5. PACKAGES SECTION */
         .packages-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
-            max-width: 1000px;
+            max-width: 980px;
             margin: 0 auto 4rem;
+            align-items: stretch;
         }
 
         .package-card {
             background: var(--wedding-bg-card);
             border: 1px solid var(--wedding-border);
             border-radius: 24px;
-            padding: clamp(2rem, 4vw, 2.75rem);
+            padding: clamp(1.8rem, 3.5vw, 2.5rem);
             display: flex;
             flex-direction: column;
             position: relative;
@@ -446,18 +554,18 @@
         }
 
         .package-card.featured {
-            background: linear-gradient(135deg, rgba(40, 32, 22, 0.85) 0%, rgba(20, 18, 16, 0.95) 100%);
-            border: 2px solid var(--wedding-gold);
-            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+            background: linear-gradient(135deg, rgba(38, 30, 20, 0.85) 0%, rgba(20, 18, 16, 0.95) 100%);
+            border: 1.5px solid var(--wedding-gold);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
         }
 
         .package-ribbon {
             position: absolute;
             top: -12px;
-            right: 2rem;
+            right: 1.8rem;
             background: linear-gradient(135deg, #D4AF37 0%, #AA841E 100%);
             color: #0F0D0C;
-            font-size: 0.78rem;
+            font-size: 0.75rem;
             font-weight: 700;
             padding: 0.3rem 0.9rem;
             border-radius: 50px;
@@ -466,37 +574,49 @@
         }
 
         .package-name {
-            font-size: 1.5rem;
+            font-size: 1.45rem;
             font-weight: 700;
             color: #FFFFFF;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
             letter-spacing: 0.5px;
         }
 
         .package-price {
-            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-size: clamp(2rem, 3.5vw, 2.6rem);
             font-weight: 700;
             color: var(--wedding-gold);
-            margin-bottom: 1rem;
+            margin-bottom: 0.85rem;
             display: flex;
             align-items: baseline;
             gap: 0.3rem;
         }
 
         .package-price-gift {
-            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-size: clamp(1.6rem, 3vw, 2.2rem);
             font-weight: 700;
-            color: #27ae60;
-            margin-bottom: 1rem;
+            color: var(--wedding-gold);
+            margin-bottom: 0.85rem;
         }
 
         .package-lead {
-            font-size: 0.98rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
-            line-height: 1.6;
-            margin-bottom: 1.75rem;
-            padding-bottom: 1.5rem;
+            line-height: 1.55;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.25rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            min-height: 48px;
+        }
+
+        .package-gift-highlight {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1.25rem;
+            color: var(--wedding-gold-light);
+            font-size: 0.92rem;
+            font-weight: 600;
         }
 
         .package-features {
@@ -509,25 +629,33 @@
         .package-features li {
             display: flex;
             align-items: flex-start;
-            gap: 0.75rem;
-            font-size: 0.95rem;
+            gap: 0.7rem;
+            font-size: 0.92rem;
             color: var(--text-main);
-            margin-bottom: 0.85rem;
-            line-height: 1.5;
+            margin-bottom: 0.75rem;
+            line-height: 1.45;
         }
 
         .package-features li i {
             color: var(--wedding-gold);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-top: 0.15rem;
             flex-shrink: 0;
         }
 
-        .package-card.featured .package-features li i {
-            color: #27ae60;
+        .package-bottom-action {
+            margin-top: auto;
+            padding-top: 1rem;
         }
 
-        /* Steps Section */
+        .package-bottom-price-note {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--wedding-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* 6. STEPS SECTION */
         .steps-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -539,75 +667,76 @@
             background: var(--wedding-bg-card);
             border: 1px solid var(--wedding-border);
             border-radius: 20px;
-            padding: 2rem 1.5rem;
-            position: relative;
+            padding: 1.75rem 1.4rem;
+            display: flex;
+            flex-direction: column;
         }
 
         .step-num {
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 700;
             color: var(--wedding-gold);
             font-family: var(--font-serif);
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             line-height: 1;
             opacity: 0.9;
         }
 
         .step-title {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-main);
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.5rem;
         }
 
         .step-desc {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.55;
             margin: 0;
         }
 
-        /* LCV Showcase Box */
+        /* 7. LCV SHOWCASE BOX */
         .lcv-showcase {
             background: linear-gradient(135deg, rgba(26, 22, 20, 0.85) 0%, rgba(15, 13, 12, 0.95) 100%);
             border: 1px solid var(--wedding-border);
             border-radius: 24px;
-            padding: clamp(2rem, 5vw, 3.5rem);
+            padding: clamp(1.8rem, 4vw, 3rem);
             margin-bottom: 4rem;
         }
 
         .lcv-grid {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
-            gap: 3rem;
+            gap: 2.5rem;
             align-items: center;
         }
 
         .lcv-pills-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 0.85rem;
-            margin-top: 1.5rem;
+            gap: 0.75rem;
+            margin-top: 1.25rem;
         }
 
         .lcv-pill {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
-            padding: 0.75rem 1rem;
+            padding: 0.65rem 0.9rem;
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            font-size: 0.9rem;
+            gap: 0.5rem;
+            font-size: 0.88rem;
             color: var(--text-main);
         }
 
         .lcv-pill i {
             color: var(--wedding-gold);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
         }
 
-        /* Why Us List */
+        /* 8. WHY US LIST */
         .why-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -619,76 +748,104 @@
             background: var(--wedding-bg-card);
             border: 1px solid var(--wedding-border);
             border-radius: 18px;
-            padding: 1.75rem;
+            padding: 1.6rem;
             display: flex;
-            gap: 1.25rem;
+            gap: 1.1rem;
             align-items: flex-start;
         }
 
         .why-card i {
             color: var(--wedding-gold);
-            font-size: 1.75rem;
-            margin-top: 0.2rem;
+            font-size: 1.6rem;
+            margin-top: 0.15rem;
             flex-shrink: 0;
         }
 
         .why-card-text h4 {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--text-main);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.35rem;
+            font-weight: 600;
         }
 
         .why-card-text p {
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.55;
             margin: 0;
         }
 
-        /* FAQ Section */
-        .faq-grid {
-            max-width: 850px;
+        /* 9. FAQ ACCORDION */
+        .faq-accordion {
+            max-width: 800px;
             margin: 0 auto 4rem;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.85rem;
         }
 
-        .faq-card {
+        .faq-item {
             background: var(--wedding-bg-card);
             border: 1px solid var(--wedding-border);
             border-radius: 16px;
-            padding: 1.5rem 1.75rem;
-            transition: border-color 0.2s ease;
+            overflow: hidden;
+            transition: all 0.25s ease;
         }
 
-        .faq-card:hover {
+        .faq-item[open] {
             border-color: var(--wedding-border-hover);
+            background: rgba(255, 255, 255, 0.05);
         }
 
-        .faq-q {
-            font-size: 1.1rem;
+        .faq-summary {
+            padding: 1.25rem 1.5rem;
+            font-size: 1.05rem;
             font-weight: 600;
             color: var(--text-main);
-            margin-bottom: 0.6rem;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            user-select: none;
+        }
+
+        .faq-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-summary-content {
             display: flex;
             align-items: center;
             gap: 0.6rem;
         }
 
-        .faq-q i {
+        .faq-summary-content i {
             color: var(--wedding-gold);
+            font-size: 1.25rem;
+            flex-shrink: 0;
         }
 
-        .faq-a {
-            font-size: 0.95rem;
+        .faq-icon-chevron {
+            color: var(--wedding-gold);
+            font-size: 1.3rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .faq-item[open] .faq-icon-chevron {
+            transform: rotate(180deg);
+        }
+
+        .faq-body {
+            padding: 0 1.5rem 1.35rem 3.35rem;
+            font-size: 0.93rem;
             color: var(--text-muted);
             line-height: 1.6;
-            margin: 0;
-            padding-left: 1.75rem;
         }
 
-        /* Final CTA */
+        /* 10. FINAL CTA */
         .final-cta-section {
             padding-bottom: 5rem;
         }
@@ -697,43 +854,43 @@
             background: radial-gradient(circle at 50% 30%, rgba(212, 175, 55, 0.12) 0%, rgba(20, 18, 16, 0.95) 75%);
             border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 28px;
-            padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 4vw, 3rem);
+            padding: clamp(2.25rem, 5vw, 4rem) clamp(1.25rem, 3vw, 2.5rem);
             text-align: center;
-            max-width: 900px;
+            max-width: 880px;
             margin: 0 auto;
         }
 
         .final-cta-title {
-            font-size: clamp(2rem, 4.5vw, 3.2rem);
+            font-size: clamp(1.9rem, 4vw, 2.9rem);
             font-weight: 700;
             color: #FFFFFF;
-            margin-bottom: 1rem;
-            line-height: 1.2;
+            margin-bottom: 0.85rem;
+            line-height: 1.25;
         }
 
         .final-cta-desc {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--text-muted);
-            max-width: 680px;
-            margin: 0 auto 2rem;
-            line-height: 1.7;
+            max-width: 650px;
+            margin: 0 auto 1.75rem;
+            line-height: 1.65;
         }
 
         .final-cta-pricing {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1.25rem;
             flex-wrap: wrap;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2.25rem;
         }
 
         .final-price-pill {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--wedding-border);
-            padding: 0.6rem 1.4rem;
+            padding: 0.55rem 1.3rem;
             border-radius: 50px;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 600;
             color: #FFFFFF;
         }
@@ -743,16 +900,23 @@
         }
 
         .final-price-pill.highlight {
-            border-color: #27ae60;
-            background: rgba(39, 174, 96, 0.1);
+            border-color: var(--wedding-gold);
+            background: rgba(212, 175, 55, 0.12);
         }
 
         .final-price-pill.highlight span {
-            color: #2ecc71;
+            color: var(--wedding-gold-light);
         }
 
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .hero-mockup-container {
+                order: 2;
+            }
             .demos-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -792,8 +956,14 @@
             .lcv-pills-grid {
                 grid-template-columns: 1fr;
             }
-            .faq-a {
-                padding-left: 0;
+            .faq-body {
+                padding-left: 1.5rem;
+            }
+            .tag-top-left {
+                left: 0;
+            }
+            .tag-bottom-right {
+                right: 0;
             }
         }
 
@@ -836,29 +1006,62 @@
         <!-- 1. HERO SECTION -->
         <section class="hero-wedding section">
             <div class="container">
-                <div class="hero-badge">
-                    <i class='bx bx-sparkles'></i> NVM DİJİTAL DAVETİYE ALTYAPISI
-                </div>
+                <div class="hero-grid">
+                    <!-- Sol: Metin ve Aksiyonlar -->
+                    <div class="hero-text-content">
+                        <div class="hero-badge">
+                            <i class='bx bx-sparkles'></i> KİŞİYE ÖZEL DİJİTAL DAVETİYE
+                        </div>
 
-                <h1 class="hero-wedding-title">
-                    Davetiyeniz artık<br>sadece kağıtta değil.
-                </h1>
+                        <h1 class="hero-wedding-title">
+                            Davetiyeniz artık<br>sadece kağıtta değil.
+                        </h1>
 
-                <p class="hero-wedding-subtitle">
-                    Düğününüzün tüm detaylarını misafirlerinizle tek bir bağlantı üzerinden paylaşın.
-                </p>
+                        <p class="hero-wedding-subtitle">
+                            Düğününüzün tüm detaylarını misafirlerinizle tek bir bağlantı üzerinden paylaşın.
+                        </p>
 
-                <p class="hero-wedding-support">
-                    Size özel hazırlanan dijital davetiyenizde fotoğraflarınız, düğün programınız, mekan konumu, geri sayım ve LCV bilgileri bir arada.
-                </p>
+                        <p class="hero-wedding-support">
+                            Size özel hazırlanan dijital davetiyenizde fotoğraflarınız, düğün programınız, mekan konumu, geri sayım ve LCV bilgileri bir arada.
+                        </p>
 
-                <div class="hero-btn-group">
-                    <a href="#ornekler" class="btn-gold">
-                        <i class='bx bx-images'></i> Dijital Davetiyeleri İncele
-                    </a>
-                    <a href="#paketler" class="btn-gold-outline">
-                        <i class='bx bx-package'></i> Paketleri Gör
-                    </a>
+                        <div class="hero-btn-group">
+                            <a href="#ornekler" class="btn-gold">
+                                <i class='bx bx-images'></i> Dijital Davetiyeleri İncele
+                            </a>
+                            <a href="#paketler" class="btn-gold-outline">
+                                <i class='bx bx-package'></i> Paketleri Gör
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Sağ: Zarif Telefon Mockup'ı -->
+                    <div class="hero-mockup-container">
+                        <div class="hero-float-tag tag-top-left">
+                            <i class='bx bx-link-alt' style="color: var(--wedding-gold);"></i> Size Özel Bağlantı
+                        </div>
+                        <div class="phone-frame">
+                            <div class="phone-screen">
+                                <div class="phone-header-bar">
+                                    <i class='bx bx-lock-alt' style="font-size: 0.75rem;"></i>
+                                    <span>gelin-damat-tarih.nvmedya.com</span>
+                                </div>
+                                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Dijital Davetiye Önizleme" class="phone-hero-img">
+                                <div class="phone-inner-content">
+                                    <div class="phone-couple-title">Gelin &amp; Damat</div>
+                                    <div class="phone-date">15 Ağustos 2027 • Cumartesi</div>
+                                    <div class="phone-chips-grid">
+                                        <div class="phone-chip"><i class='bx bx-camera'></i> Galeri</div>
+                                        <div class="phone-chip"><i class='bx bx-map-pin'></i> Konum</div>
+                                        <div class="phone-chip"><i class='bx bx-envelope'></i> LCV</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-float-tag tag-bottom-right">
+                            <i class='bx bx-mobile-alt' style="color: var(--wedding-gold);"></i> %100 Mobil Uyumlu
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -879,7 +1082,7 @@
                     </p>
 
                     <div class="campaign-value-tag">
-                        <i class='bx bxs-gift' style="color: var(--wedding-gold); font-size: 1.4rem;"></i>
+                        <i class='bx bxs-gift' style="color: var(--wedding-gold); font-size: 1.35rem;"></i>
                         <div><span>1.000 TL DEĞERİNDE</span> DİJİTAL DAVETİYE HEDİYE</div>
                     </div>
 
@@ -911,13 +1114,13 @@
                     <article class="demo-card">
                         <div class="demo-preview-wrap">
                             <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Zamansız Zarafet Dijital Davetiye Teması" class="demo-preview-img" loading="lazy">
-                            <span class="demo-tag">Klasik & Modern</span>
+                            <span class="demo-tag">Klasik &amp; Modern</span>
                         </div>
                         <div class="demo-body">
                             <h4 class="demo-title">Zamansız Zarafet</h4>
                             <p class="demo-desc">Krem, champagne ve zarif tipografiyle klasik ama modern bir düğün davetiyesi.</p>
-                            <div class="btn-demo-inactive" aria-disabled="true">
-                                <i class='bx bx-lock-alt'></i> Örneği İncele (Çok Yakında)
+                            <div class="demo-badge-subtle">
+                                <i class='bx bx-time-five'></i> Örnek yakında
                             </div>
                         </div>
                     </article>
@@ -926,13 +1129,13 @@
                     <article class="demo-card">
                         <div class="demo-preview-wrap">
                             <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Modern Minimal Dijital Davetiye Teması" class="demo-preview-img" loading="lazy">
-                            <span class="demo-tag">Sade & Güçlü</span>
+                            <span class="demo-tag">Sade &amp; Güçlü</span>
                         </div>
                         <div class="demo-body">
                             <h4 class="demo-title">Modern Minimal</h4>
                             <p class="demo-desc">Güçlü fotoğraflar, temiz tipografi ve sade detaylarla modern bir görünüm.</p>
-                            <div class="btn-demo-inactive" aria-disabled="true">
-                                <i class='bx bx-lock-alt'></i> Örneği İncele (Çok Yakında)
+                            <div class="demo-badge-subtle">
+                                <i class='bx bx-time-five'></i> Örnek yakında
                             </div>
                         </div>
                     </article>
@@ -941,13 +1144,13 @@
                     <article class="demo-card">
                         <div class="demo-preview-wrap">
                             <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Romantik Dijital Davetiye Teması" class="demo-preview-img" loading="lazy">
-                            <span class="demo-tag">Floral & Zarif</span>
+                            <span class="demo-tag">Floral &amp; Zarif</span>
                         </div>
                         <div class="demo-body">
                             <h4 class="demo-title">Romantik</h4>
                             <p class="demo-desc">Yumuşak tonlar, zarif floral detaylar ve duygusal bir atmosfer.</p>
-                            <div class="btn-demo-inactive" aria-disabled="true">
-                                <i class='bx bx-lock-alt'></i> Örneği İncele (Çok Yakında)
+                            <div class="demo-badge-subtle">
+                                <i class='bx bx-time-five'></i> Örnek yakında
                             </div>
                         </div>
                     </article>
@@ -955,14 +1158,14 @@
                     <!-- Kart 4: Gece Şıklığı -->
                     <article class="demo-card">
                         <div class="demo-preview-wrap">
-                            <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=600&q=80" alt="Gece Şıklığı Dijital Davetiye Teması" class="demo-preview-img" loading="lazy">
-                            <span class="demo-tag">Koyu & Altın Vurgu</span>
+                            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=600&q=80" alt="Gece Şıklığı Dijital Davetiye Teması" class="demo-preview-img" loading="lazy">
+                            <span class="demo-tag">Koyu &amp; Altın Vurgu</span>
                         </div>
                         <div class="demo-body">
                             <h4 class="demo-title">Gece Şıklığı</h4>
                             <p class="demo-desc">Koyu tonlar, zarif altın detaylar ve daha iddialı premium bir görünüm.</p>
-                            <div class="btn-demo-inactive" aria-disabled="true">
-                                <i class='bx bx-lock-alt'></i> Örneği İncele (Çok Yakında)
+                            <div class="demo-badge-subtle">
+                                <i class='bx bx-time-five'></i> Örnek yakında
                             </div>
                         </div>
                     </article>
@@ -1020,7 +1223,7 @@
                     <!-- 6 -->
                     <div class="feature-card">
                         <div class="feature-icon"><i class='bx bx-envelope-open'></i></div>
-                        <h3 class="feature-title">Online LCV</h3>
+                        <h3 class="feature-title">Online LCV / Katılım Bildirimi</h3>
                         <p class="feature-desc">Misafirleriniz gelip gelmeyeceklerini doğrudan dijital davetiyenizden bildirsin.</p>
                     </div>
 
@@ -1079,12 +1282,12 @@
                             <li><i class='bx bx-check-circle'></i> Düğün programı</li>
                             <li><i class='bx bx-check-circle'></i> Mekan ve adres bilgileri</li>
                             <li><i class='bx bx-check-circle'></i> Google Maps yol tarifi</li>
-                            <li><i class='bx bx-check-circle'></i> Online LCV</li>
-                            <li><i class='bx bx-check-circle'></i> Yetişkin ve çocuk misafir sayısı takibi</li>
-                            <li><i class='bx bx-check-circle'></i> Takvime ekleme & Mobil uyumlu tasarım</li>
+                            <li><i class='bx bx-check-circle'></i> Online LCV katılım bildirimi</li>
+                            <li><i class='bx bx-check-circle'></i> Yetişkin ve çocuk misafir takibi</li>
+                            <li><i class='bx bx-check-circle'></i> Takvime ekleme &amp; Mobil uyumlu tasarım</li>
                         </ul>
-                        <div style="margin-top: auto;">
-                            <div style="font-size: 1.4rem; font-weight: 700; color: var(--wedding-gold); margin-bottom: 1.25rem;">
+                        <div class="package-bottom-action">
+                            <div class="package-bottom-price-note">
                                 1.000 TL
                             </div>
                             <a href="https://wa.me/905526288131?text=Merhaba%2C%20Dijital%20Davetiye%20paketi%20(1.000%20TL)%20hakk%C4%B1nda%20bilgi%20almak%20ve%20sipari%C5%9F%20vermek%20istiyorum." 
@@ -1099,13 +1302,13 @@
 
                     <!-- PAKET 2: FİZİKSEL + DİJİTAL -->
                     <div class="package-card featured">
-                        <div class="package-ribbon">EN ÇOK TERCİH EDİLEN</div>
+                        <div class="package-ribbon">AVANTAJLI PAKET</div>
                         <div class="package-name">FİZİKSEL + DİJİTAL</div>
                         <div class="package-price-gift">DİJİTAL DAVETİYE HEDİYE</div>
                         <p class="package-lead">
                             Nişan Vitrini'nden 2.500 TL ve üzeri fiziksel davetiye siparişi verdiğinizde dijital davetiyenizi ayrıca satın almanıza gerek yok.
                         </p>
-                        <div style="background: rgba(39, 174, 96, 0.15); border: 1px solid rgba(39, 174, 96, 0.35); border-radius: 12px; padding: 0.85rem 1rem; margin-bottom: 1.5rem; color: #FFFFFF; font-size: 0.95rem; font-weight: 600;">
+                        <div class="package-gift-highlight">
                             ✨ 1.000 TL değerindeki dijital davetiye paketiniz bizden hediye.
                         </div>
                         <ul class="package-features">
@@ -1116,16 +1319,16 @@
                             <li><i class='bx bx-check-circle'></i> Online LCV ve Misafir listesi takibi</li>
                             <li><i class='bx bx-check-circle'></i> Fotoğraf galerisi ve mekan yol tarifi</li>
                         </ul>
-                        <div style="margin-top: auto;">
-                            <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.3rem;">2.500 TL ve üzeri fiziksel davetiye siparişlerinde</div>
-                            <div style="font-size: 1.35rem; font-weight: 700; color: #2ecc71; margin-bottom: 1.25rem;">
+                        <div class="package-bottom-action">
+                            <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.2rem;">2.500 TL ve üzeri fiziksel davetiye siparişlerinde</div>
+                            <div class="package-bottom-price-note">
                                 DİJİTAL DAVETİYE HEDİYE
                             </div>
                             <a href="https://www.nisanvitrini.com" 
                                target="_blank" 
                                rel="noopener noreferrer" 
                                class="btn-gold" 
-                               style="width: 100%; justify-content: center; background: linear-gradient(135deg, #27ae60 0%, #1e824c 100%); color: #fff; box-shadow: 0 8px 25px rgba(39, 174, 96, 0.3);">
+                               style="width: 100%; justify-content: center;">
                                 <i class='bx bx-store-alt'></i> Fiziksel Davetiyeleri İncele
                             </a>
                         </div>
@@ -1179,11 +1382,11 @@
                     <div class="lcv-grid">
                         <div>
                             <span class="section-subtitle">KOLAY MİSAFİR YÖNETİMİ</span>
-                            <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.6rem); color: #FFFFFF; font-weight: 700; margin: 0.5rem 0 1rem; line-height: 1.2;">
+                            <h2 style="font-size: clamp(1.8rem, 3.5vw, 2.5rem); color: #FFFFFF; font-weight: 700; margin: 0.5rem 0 1rem; line-height: 1.25;">
                                 Kim geliyor? Kaç kişi geliyor?
                             </h2>
-                            <p style="font-size: 1.05rem; color: var(--wedding-gold-light); line-height: 1.6; margin-bottom: 1.25rem;">
-                                Telefon trafiği ve dağınık mesajlar yerine misafirleriniz katılım durumlarını doğrudan dijital davetiyeniz üzerinden bildirebilir.
+                            <p style="font-size: 1.05rem; color: var(--wedding-gold-light); line-height: 1.6; margin-bottom: 1.1rem;">
+                                Telefon trafiği ve dağınık mesajlar yerine misafirleriniz katılım durumlarını (LCV) doğrudan dijital davetiyeniz üzerinden bildirebilir.
                             </p>
                             <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">
                                 Böylece düğün öncesindeki misafir listenizi çok daha düzenli yönetebilirsiniz.
@@ -1191,7 +1394,7 @@
                         </div>
 
                         <div>
-                            <h4 style="font-size: 0.95rem; color: #FFFFFF; font-weight: 600; margin-bottom: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase;">
+                            <h4 style="font-size: 0.92rem; color: #FFFFFF; font-weight: 600; margin-bottom: 0.85rem; letter-spacing: 0.5px; text-transform: uppercase;">
                                 Takip Edilebilecek Bilgiler
                             </h4>
                             <div class="lcv-pills-grid">
@@ -1265,7 +1468,7 @@
             </div>
         </section>
 
-        <!-- 9. SIK SORULAN SORULAR SECTION -->
+        <!-- 9. SIK SORULAN SORULAR (ACCORDION) SECTION -->
         <section class="section">
             <div class="container">
                 <div class="section-header-centered">
@@ -1275,41 +1478,104 @@
                     </h2>
                 </div>
 
-                <div class="faq-grid">
-                    <div class="faq-card">
-                        <h3 class="faq-q"><i class='bx bx-help-circle'></i> Dijital davetiyeyi nasıl paylaşabilirim?</h3>
-                        <p class="faq-a">Size özel bağlantıyı WhatsApp, SMS, Instagram veya istediğiniz herhangi bir dijital kanaldan paylaşabilirsiniz.</p>
-                    </div>
+                <div class="faq-accordion">
+                    <!-- Soru 1 (Açık) -->
+                    <details class="faq-item" open>
+                        <summary class="faq-summary">
+                            <span class="faq-summary-content">
+                                <i class='bx bx-help-circle'></i>
+                                <span>Dijital davetiyeyi nasıl paylaşabilirim?</span>
+                            </span>
+                            <i class='bx bx-chevron-down faq-icon-chevron'></i>
+                        </summary>
+                        <div class="faq-body">
+                            Size özel bağlantıyı WhatsApp, SMS, Instagram veya istediğiniz herhangi bir dijital kanaldan misafirlerinizle kolayca paylaşabilirsiniz.
+                        </div>
+                    </details>
 
-                    <div class="faq-card">
-                        <h3 class="faq-q"><i class='bx bx-help-circle'></i> Misafirlerimin uygulama indirmesi gerekiyor mu?</h3>
-                        <p class="faq-a">Hayır. Davetiye doğrudan internet tarayıcısında açılır; misafirlerinizin herhangi bir uygulama indirmesine gerek yoktur.</p>
-                    </div>
+                    <!-- Soru 2 -->
+                    <details class="faq-item">
+                        <summary class="faq-summary">
+                            <span class="faq-summary-content">
+                                <i class='bx bx-help-circle'></i>
+                                <span>Misafirlerimin uygulama indirmesi gerekiyor mu?</span>
+                            </span>
+                            <i class='bx bx-chevron-down faq-icon-chevron'></i>
+                        </summary>
+                        <div class="faq-body">
+                            Hayır. Davetiye doğrudan internet tarayıcısında açılır; misafirlerinizin herhangi bir mobil uygulama indirmesine gerek yoktur.
+                        </div>
+                    </details>
 
-                    <div class="faq-card">
-                        <h3 class="faq-q"><i class='bx bx-help-circle'></i> LCV yanıtlarını görebilecek miyim?</h3>
-                        <p class="faq-a">Evet. Katılım yanıtları sizin için oluşturulan misafir listesinde toplanır ve dilediğiniz an güncel durumu görebilirsiniz.</p>
-                    </div>
+                    <!-- Soru 3 -->
+                    <details class="faq-item">
+                        <summary class="faq-summary">
+                            <span class="faq-summary-content">
+                                <i class='bx bx-help-circle'></i>
+                                <span>LCV yanıtlarını görebilecek miyim?</span>
+                            </span>
+                            <i class='bx bx-chevron-down faq-icon-chevron'></i>
+                        </summary>
+                        <div class="faq-body">
+                            Evet. Katılım yanıtları sizin için oluşturulan misafir listesinde toplanır ve güncel misafir durumunuzu dilediğiniz an inceleyebilirsiniz.
+                        </div>
+                    </details>
 
-                    <div class="faq-card">
-                        <h3 class="faq-q"><i class='bx bx-help-circle'></i> Davetiyede kendi fotoğraflarımızı kullanabilir miyiz?</h3>
-                        <p class="faq-a">Evet. Dijital davetiye sizin gönderdiğiniz çift fotoğraflarıyla kişiselleştirilir.</p>
-                    </div>
+                    <!-- Soru 4 -->
+                    <details class="faq-item">
+                        <summary class="faq-summary">
+                            <span class="faq-summary-content">
+                                <i class='bx bx-help-circle'></i>
+                                <span>Davetiyede kendi fotoğraflarımızı kullanabilir miyiz?</span>
+                            </span>
+                            <i class='bx bx-chevron-down faq-icon-chevron'></i>
+                        </summary>
+                        <div class="faq-body">
+                            Evet. Dijital davetiye sizin gönderdiğiniz çift fotoğraflarıyla özenle kişiselleştirilir.
+                        </div>
+                    </details>
 
-                    <div class="faq-card">
-                        <h3 class="faq-q"><i class='bx bx-help-circle'></i> Mekan konumu ekleniyor mu?</h3>
-                        <p class="faq-a">Evet. Misafirleriniz davetiye üzerinden tek dokunuşla Google Maps yol tarifini açabilir.</p>
-                    </div>
+                    <!-- Soru 5 -->
+                    <details class="faq-item">
+                        <summary class="faq-summary">
+                            <span class="faq-summary-content">
+                                <i class='bx bx-help-circle'></i>
+                                <span>Mekan konumu ekleniyor mu?</span>
+                            </span>
+                            <i class='bx bx-chevron-down faq-icon-chevron'></i>
+                        </summary>
+                        <div class="faq-body">
+                            Evet. Misafirleriniz davetiye üzerinden tek dokunuşla Google Maps yol tarifini açabilir ve mekana rahatça ulaşabilir.
+                        </div>
+                    </details>
 
-                    <div class="faq-card">
-                        <h3 class="faq-q"><i class='bx bx-help-circle'></i> Fiziksel davetiye alırsam dijital davetiye ücretli mi?</h3>
-                        <p class="faq-a">Nişan Vitrini'nden <strong>2.500 TL ve üzeri fiziksel davetiye siparişinizde dijital davetiye paketiniz hediye edilir.</strong></p>
-                    </div>
+                    <!-- Soru 6 -->
+                    <details class="faq-item">
+                        <summary class="faq-summary">
+                            <span class="faq-summary-content">
+                                <i class='bx bx-help-circle'></i>
+                                <span>Fiziksel davetiye alırsam dijital davetiye ücretli mi?</span>
+                            </span>
+                            <i class='bx bx-chevron-down faq-icon-chevron'></i>
+                        </summary>
+                        <div class="faq-body">
+                            Nişan Vitrini'nden <strong>2.500 TL ve üzeri fiziksel davetiye siparişinizde dijital davetiye paketiniz hediye edilir.</strong>
+                        </div>
+                    </details>
 
-                    <div class="faq-card">
-                        <h3 class="faq-q"><i class='bx bx-help-circle'></i> Sadece dijital davetiye satın alabilir miyim?</h3>
-                        <p class="faq-a">Evet. Dijital Davetiye paketini <strong>1.000 TL</strong> karşılığında fiziksel davetiyeden bağımsız satın alabilirsiniz.</p>
-                    </div>
+                    <!-- Soru 7 -->
+                    <details class="faq-item">
+                        <summary class="faq-summary">
+                            <span class="faq-summary-content">
+                                <i class='bx bx-help-circle'></i>
+                                <span>Sadece dijital davetiye satın alabilir miyim?</span>
+                            </span>
+                            <i class='bx bx-chevron-down faq-icon-chevron'></i>
+                        </summary>
+                        <div class="faq-body">
+                            Evet. Dijital Davetiye paketini <strong>1.000 TL</strong> karşılığında fiziksel davetiyeden bağımsız satın alabilirsiniz.
+                        </div>
+                    </details>
                 </div>
             </div>
         </section>
