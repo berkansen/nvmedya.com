@@ -24,7 +24,7 @@
     },
     {
       "source": "/blog/:slug",
-      "destination": "/blog-detay"
+      "destination": "/api/blog"
     }
   ],
   "headers": [
