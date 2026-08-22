@@ -18,36 +18,75 @@ document.addEventListener('DOMContentLoaded', () => {
     const detailContainer = document.getElementById('blogDetayContent');
     if (!detailContainer) return;
 
-    // Get ID from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const postId = urlParams.get('id');
+    function showNotFound() {
+        let robotsMeta = document.querySelector('meta[name="robots"]');
+        if (!robotsMeta) {
+            robotsMeta = document.createElement('meta');
+            robotsMeta.name = 'robots';
+            document.head.appendChild(robotsMeta);
+        }
+        robotsMeta.content = 'noindex, nofollow';
+        detailContainer.innerHTML = '<div class="loader" style="color:var(--text-muted); padding: 4rem 1rem;">Yazı bulunamadı veya henüz yayında değil.</div>';
+    }
 
-    if (!postId) {
-        detailContainer.innerHTML = '<div class="loader" style="color:#ff4d4d">Makale bulunamadı.</div>';
+    // Determine route: Pathname Slug Mode vs. Query ID Mode
+    const pathSegments = window.location.pathname.split('/').filter(Boolean);
+    let slugParam = null;
+    if (pathSegments.length >= 2 && pathSegments[0].toLowerCase() === 'blog') {
+        try {
+            const rawSlug = decodeURIComponent(pathSegments[1]).trim().toLowerCase();
+            const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+            if (slugRegex.test(rawSlug) && rawSlug.length <= 120) {
+                slugParam = rawSlug;
+            }
+        } catch (decodeErr) {
+            // Malformed percent-encoding in URL - safely ignore and fail closed
+            slugParam = null;
+        }
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const legacyId = urlParams.get('id');
+
+    if (!slugParam && !legacyId) {
+        showNotFound();
         return;
     }
 
-    db.collection('blog_posts').doc(postId).get()
-        .then(doc => {
-            if (!doc.exists) {
-                detailContainer.innerHTML = '<div class="loader" style="color:#ff4d4d">Makale bulunamadı veya silinmiş.</div>';
-                return;
-            }
-
-            const post = doc.data();
-
-            // Draft Guard (Public view check)
-            if (post.status !== 'published') {
-                // Inject noindex for drafts
-                let robotsMeta = document.querySelector('meta[name="robots"]');
-                if (!robotsMeta) {
-                    robotsMeta = document.createElement('meta');
-                    robotsMeta.name = 'robots';
-                    document.head.appendChild(robotsMeta);
+    // Fetch document promise
+    let fetchPromise;
+    if (slugParam) {
+        fetchPromise = db.collection('blog_posts')
+            .where('slug', '==', slugParam)
+            .where('status', '==', 'published')
+            .limit(2)
+            .get()
+            .then(snapshot => {
+                if (snapshot.empty) return null;
+                // Duplicate slug detection: Fail-closed to avoid arbitrary document selection
+                if (snapshot.docs.length > 1) {
+                    console.warn("Duplicate published blog slug detected");
+                    return null;
                 }
-                robotsMeta.content = 'noindex, nofollow';
+                const doc = snapshot.docs[0];
+                return { id: doc.id, ...doc.data() };
+            });
+    } else {
+        fetchPromise = db.collection('blog_posts')
+            .doc(legacyId)
+            .get()
+            .then(doc => {
+                if (!doc.exists) return null;
+                const data = doc.data();
+                if (data.status !== 'published') return null;
+                return { id: doc.id, ...data };
+            });
+    }
 
-                detailContainer.innerHTML = '<div class="loader" style="color:#ffab00; padding: 4rem 1rem;">Bu yazı henüz taslak aşamasındadır ve yayında değildir.</div>';
+    fetchPromise
+        .then(post => {
+            if (!post) {
+                showNotFound();
                 return;
             }
 
@@ -63,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.title = `${resolvedTitle} - Nisan Vitrini Media`;
 
             // Dynamic Canonical URL
-            const canonicalUrl = `https://www.nvmedya.com/blog-detay.html?id=${postId}`;
+            const canonicalUrl = post.slug ? `https://www.nvmedya.com/blog/${encodeURIComponent(post.slug)}` : `https://www.nvmedya.com/blog-detay?id=${encodeURIComponent(post.id)}`;
             let canonicalTag = document.querySelector('link[rel="canonical"]');
             if (!canonicalTag) {
                 canonicalTag = document.createElement('link');

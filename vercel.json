@@ -21,6 +21,10 @@
     {
       "source": "/projeler/ufuk-sengun-sigorta",
       "destination": "/projeler/ufuk-sengun-sigorta.html"
+    },
+    {
+      "source": "/blog/:slug",
+      "destination": "/blog-detay.html"
     }
   ],
   "headers": [

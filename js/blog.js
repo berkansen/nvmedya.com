@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const imgAlt = post.imageAlt && post.imageAlt.trim() !== '' ? post.imageAlt : (post.title || '');
 
                 const cardLink = document.createElement('a');
-                cardLink.href = `/blog-detay.html?id=${encodeURIComponent(post.id)}`;
+                const postSlug = (post.slug && typeof post.slug === 'string') ? post.slug.trim() : '';
+                cardLink.href = postSlug ? `/blog/${encodeURIComponent(postSlug)}` : `/blog-detay?id=${encodeURIComponent(post.id)}`;
                 cardLink.className = 'blog-card fade-in';
 
                 const cardImg = document.createElement('img');
