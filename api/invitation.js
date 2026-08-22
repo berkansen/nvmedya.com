@@ -126,16 +126,20 @@ function respond404(res) {
 
 // ─── Template Rendering ────────────────────────────────────────────
 function generateTimelineHtml(timeline) {
-  return timeline.map(item => `
+  return timeline.map(item => {
+    const iconHtml = item.icon ? `<div class="timeline-icon-wrap"><i class='${escapeHtml(item.icon)}'></i></div>` : '';
+    return `
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="timeline-card">
                         <div class="timeline-content-wrap">
+                            ${iconHtml}
                             <div class="timeline-event-name">${escapeHtml(item.title)}</div>
                         </div>
                         <div class="timeline-time">${escapeHtml(item.time)}</div>
                     </div>
-                </div>`).join('\n');
+                </div>`;
+  }).join('\n');
 }
 
 function generateGalleryHtml(gallery) {
