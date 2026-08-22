@@ -33,11 +33,11 @@
     "description": "Düğün organizasyonumuz La Win'de gerçekleşecektir. Ulaşım için aşağıdaki butonu kullanabilirsiniz."
   },
   "timeline": [
-    { "time": "18:30", "title": "Misafir Karşılama", "icon": "bx bx-wine" },
-    { "time": "19:00", "title": "Nikah Töreni", "icon": "bx bx-diamond" },
-    { "time": "19:15", "title": "İlk Dans", "icon": "bx bx-music" },
-    { "time": "19:30", "title": "Yemek Servisi", "icon": "bx bx-dish" },
-    { "time": "20:00", "title": "Eğlence ve Müzik", "icon": "bx bx-party" }
+    { "time": "18:30", "title": "Misafir Karşılama" },
+    { "time": "19:00", "title": "Nikah Töreni" },
+    { "time": "19:15", "title": "İlk Dans" },
+    { "time": "19:30", "title": "Yemek Servisi" },
+    { "time": "20:00", "title": "Eğlence ve Müzik" }
   ],
   "gallery": [
     "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80",
