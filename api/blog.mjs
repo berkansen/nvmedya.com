@@ -1,4 +1,5 @@
-import sanitizeHtml from 'sanitize-html';
+import sanitizeHtmlPkg from 'sanitize-html';
+const sanitizeHtml = typeof sanitizeHtmlPkg === 'function' ? sanitizeHtmlPkg : (sanitizeHtmlPkg && sanitizeHtmlPkg.default ? sanitizeHtmlPkg.default : sanitizeHtmlPkg);
 
 const FIRESTORE_ENDPOINT = 'https://firestore.googleapis.com/v1/projects/nisan-vitrini-panel/databases/(default)/documents:runQuery';
 
