@@ -1,6 +1,11 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/invitation.js": {
+      "includeFiles": "{data/invitations/**,templates/**}"
+    }
+  },
   "rewrites": [
     {
       "source": "/projeler/hepsert-spor-kulubu",
@@ -24,7 +29,21 @@
     },
     {
       "source": "/blog/:slug",
-      "destination": "/blog-detay"
+      "destination": "/api/blog"
+    },
+    {
+      "source": "/davetiye-demo",
+      "destination": "/api/invitation?demo=hatice-mustafa-13-11-2026"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "(?<slug>[a-z0-9][a-z0-9-]*[a-z0-9])\\.nvmedya\\.com"
+        }
+      ],
+      "destination": "/api/invitation?slug=:slug"
     }
   ],
   "headers": [
@@ -42,6 +61,15 @@
         {
           "key": "Content-Security-Policy",
           "value": "frame-ancestors 'none';"
+        }
+      ]
+    },
+    {
+      "source": "/davetiye-demo",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive, nosnippet"
         }
       ]
     },

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>Hatice & Mustafa | Düğün Davetiyesi</title>
+    <title>{{PAGE_TITLE}}</title>
     
     <!-- 1. GİZLİLİK VE NOINDEX (Müşteri özel sayfası - Arama motorlarına kapalı) -->
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
@@ -12,9 +12,9 @@
 
     <!-- Open Graph (WhatsApp / iMessage / Sosyal Medya Paylaşım Önizlemesi) -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Hatice & Mustafa — Düğün Davetiyesi">
-    <meta property="og:description" content="Hayatımızın en özel gününü birlikte kutlamaya davet ediyoruz. 13 Kasım 2026 • La Win, İzmir">
-    <meta property="og:image" content="https://ik.imagekit.io/nvmedya/davetiye/la-win.jpeg">
+    <meta property="og:title" content="{{OG_TITLE}}">
+    <meta property="og:description" content="{{OG_DESCRIPTION}}">
+    <meta property="og:image" content="{{OG_IMAGE}}">
 
     <link rel="icon" href="assets/favicon.png" type="image/png">
 
@@ -1277,18 +1277,18 @@
             <div class="hero-top-badge">Düğün Davetiyesi</div>
             
             <div class="hero-bg-container">
-                <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1080&q=85" 
-                     alt="Hatice & Mustafa" 
+                <img src="{{HERO_BG_IMAGE}}" 
+                     alt="{{COUPLE_DISPLAY}}" 
                      class="hero-bg-img"
                      onerror="this.style.display='none'">
                 <div class="hero-overlay"></div>
             </div>
 
             <div class="hero-content">
-                <h1 class="hero-names">Hatice <span>&</span> Mustafa</h1>
-                <div class="hero-date">13 Kasım 2026 • Cuma</div>
+                <h1 class="hero-names">{{BRIDE_NAME}} <span>&amp;</span> {{GROOM_NAME}}</h1>
+                <div class="hero-date">{{DATE_SHORT}} • {{DAY_OF_WEEK}}</div>
                 <p class="hero-quote">
-                    Sizi, hayatımızın en özel gününü birlikte kutlamaya davet ediyoruz.
+                    {{HERO_MESSAGE}}
                 </p>
             </div>
         </section>
@@ -1328,12 +1328,12 @@
             <div class="letter-container">
                 <div class="letter-quote-mark">“</div>
                 <p class="letter-text">
-                    Sevdiklerimizle aynı anda aynı duyguyu paylaşacağımız bu güzel günde, bizimle olmanız mutluluğumuzu daha da anlamlı kılacak. Bu özel anımızda sizi aramızda görmekten büyük mutluluk duyarız.
+                    {{LETTER_TEXT}}
                 </p>
                 <div class="ornament-divider">
                     <i class='bx bxs-heart'></i>
                 </div>
-                <div class="letter-signature">Hatice & Mustafa</div>
+                <div class="letter-signature">{{COUPLE_DISPLAY}}</div>
             </div>
         </section>
 
@@ -1352,8 +1352,8 @@
                         <i class='bx bx-calendar-event'></i>
                     </div>
                     <span class="detail-label">Tarih</span>
-                    <span class="detail-value">13 Kasım 2026</span>
-                    <span class="detail-subvalue">Cuma Günü</span>
+                    <span class="detail-value">{{DATE_SHORT}}</span>
+                    <span class="detail-subvalue">{{DAY_OF_WEEK}} Günü</span>
                 </div>
 
                 <!-- Saat -->
@@ -1362,7 +1362,7 @@
                         <i class='bx bx-time'></i>
                     </div>
                     <span class="detail-label">Saat</span>
-                    <span class="detail-value">19:00</span>
+                    <span class="detail-value">{{TIME_START}}</span>
                     <span class="detail-subvalue">Başlangıç</span>
                 </div>
 
@@ -1372,8 +1372,8 @@
                         <i class='bx bx-map-pin'></i>
                     </div>
                     <span class="detail-label">Mekan</span>
-                    <span class="detail-value">La Win</span>
-                    <span class="detail-subvalue">Balçova / İzmir</span>
+                    <span class="detail-value">{{VENUE_NAME}}</span>
+                    <span class="detail-subvalue">{{VENUE_ADDRESS_SHORT}}</span>
                 </div>
             </div>
         </section>
@@ -1389,60 +1389,7 @@
             </div>
 
             <div class="timeline-container">
-                <!-- 18:30 -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="timeline-content-wrap">
-                            <div class="timeline-event-name">Misafir Karşılama</div>
-                        </div>
-                        <div class="timeline-time">18:30</div>
-                    </div>
-                </div>
-
-                <!-- 19:00 -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="timeline-content-wrap">
-                            <div class="timeline-event-name">Nikah Töreni</div>
-                        </div>
-                        <div class="timeline-time">19:00</div>
-                    </div>
-                </div>
-
-                <!-- 19:30 -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="timeline-content-wrap">
-                            <div class="timeline-event-name">Yemek Servisi</div>
-                        </div>
-                        <div class="timeline-time">19:30</div>
-                    </div>
-                </div>
-
-                <!-- 20:30 -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="timeline-content-wrap">
-                            <div class="timeline-event-name">İlk Dans</div>
-                        </div>
-                        <div class="timeline-time">20:30</div>
-                    </div>
-                </div>
-
-                <!-- 21:00 -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="timeline-content-wrap">
-                            <div class="timeline-event-name">Eğlence ve Müzik</div>
-                        </div>
-                        <div class="timeline-time">21:00</div>
-                    </div>
-                </div>
+                {{TIMELINE_ITEMS_HTML}}
             </div>
 
             <p class="timeline-footnote">
@@ -1461,30 +1408,7 @@
             </div>
 
             <div class="gallery-grid">
-                <div class="gallery-item tall" onclick="openLightbox(0)">
-                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Bizden Kareler 1" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'500\' viewBox=\'0 0 400 500\'><rect width=\'400\' height=\'500\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 1</text></svg>'">
-                    <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(1)">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Bizden Kareler 2" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 2</text></svg>'">
-                    <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(2)">
-                    <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=80" alt="Bizden Kareler 3" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 3</text></svg>'">
-                    <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(3)">
-                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80" alt="Bizden Kareler 4" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 4</text></svg>'">
-                    <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
-                </div>
-                <div class="gallery-item tall" onclick="openLightbox(4)">
-                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80" alt="Bizden Kareler 5" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'500\' viewBox=\'0 0 400 500\'><rect width=\'400\' height=\'500\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 5</text></svg>'">
-                    <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(5)">
-                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" alt="Bizden Kareler 6" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 6</text></svg>'">
-                    <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
-                </div>
+                {{GALLERY_GRID_HTML}}
             </div>
         </section>
 
@@ -1510,26 +1434,26 @@
 
             <div class="venue-card">
                 <div class="venue-media-wrapper">
-                    <img src="https://ik.imagekit.io/nvmedya/davetiye/la-win.jpeg" 
-                         alt="La Win düğün mekanı - Balçova İzmir" 
+                    <img src="{{VENUE_IMAGE}}" 
+                         alt="{{VENUE_IMAGE_ALT}}" 
                          class="venue-media-img"
                          loading="lazy"
                          onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'300\' viewBox=\'0 0 600 300\'><rect width=\'600\' height=\'300\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'24\' fill=\'%23966F36\'>La Win İzmir</text></svg>'">
                     <div class="venue-badge-overlay">
-                        <i class='bx bxs-map-pin'></i> Balçova, İzmir
+                        <i class='bx bxs-map-pin'></i> {{VENUE_ADDRESS_SHORT}}
                     </div>
                 </div>
                 <div class="venue-body">
-                    <h3 class="venue-name">La Win</h3>
+                    <h3 class="venue-name">{{VENUE_NAME}}</h3>
                     <p class="venue-address">
-                        Bahçelerarası Mah. Yıldız Sk. No:16<br>
-                        35330 Balçova / İzmir
+                        {{VENUE_ADDRESS_LINE1}}<br>
+                        {{VENUE_ADDRESS_LINE2}}
                     </p>
                     <div class="venue-desc">
-                        Düğün organizasyonumuz La Win'de gerçekleşecektir. Ulaşım için aşağıdaki butonu kullanabilirsiniz.
+                        {{VENUE_DESC}}
                     </div>
                     <div class="venue-actions">
-                        <a href="https://www.google.com/maps/place/La+Win/@38.3973511,27.0483935,17z/data=!3m1!4b1!4m6!3m5!1s0x14bbdc6bdcc8931d:0x5b043483d551ed9c!8m2!3d38.3973511!4d27.0509684!16s%2Fg%2F11g8v4r7s8?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" 
+                        <a href="{{VENUE_MAPS_URL}}" 
                            target="_blank" 
                            rel="noopener noreferrer" 
                            class="btn btn-primary">
@@ -1557,12 +1481,14 @@
 
             <div class="rsvp-container">
                 <!-- FORM -->
-                <form id="rsvpForm" onsubmit="handleRsvpSubmit(event)">
+                <form id="rsvpForm" action="{{FORM_ACTION}}" method="POST" target="hidden_iframe" onsubmit="return handleRsvpSubmit(event)">
+                    <input type="hidden" name="fvv" value="1">
+                    <input type="hidden" name="pageHistory" value="0">
                     
                     <!-- 1. Ad Soyad (Zorunlu) -->
                     <div class="form-group">
                         <label for="guestName" class="form-label">Adınız ve Soyadınız *</label>
-                        <input type="text" id="guestName" name="guestName" class="form-input" placeholder="Örn: Ayşe Yılmaz" required autocomplete="name">
+                        <input type="text" id="guestName" name="{{ENTRY_NAME}}" class="form-input" placeholder="Örn: Ayşe Yılmaz" required autocomplete="name">
                     </div>
 
                     <!-- 2. Katılım Durumu (Zorunlu) -->
@@ -1570,14 +1496,14 @@
                         <label class="form-label">Katılım Durumunuz *</label>
                         <div class="rsvp-toggle-grid">
                             <label class="rsvp-toggle-card">
-                                <input type="radio" name="attendance" value="Katılacağım" checked onchange="handleAttendanceChange(true)">
+                                <input type="radio" name="{{ENTRY_ATTENDANCE}}" value="Katılacağım" checked onchange="handleAttendanceChange(true)">
                                 <div class="rsvp-toggle-content">
                                     <i class='bx bxs-check-circle'></i>
                                     <span class="toggle-title">Katılacağım</span>
                                 </div>
                             </label>
                             <label class="rsvp-toggle-card">
-                                <input type="radio" name="attendance" value="Katılamayacağım" onchange="handleAttendanceChange(false)">
+                                <input type="radio" name="{{ENTRY_ATTENDANCE}}" value="Katılamayacağım" onchange="handleAttendanceChange(false)">
                                 <div class="rsvp-toggle-content">
                                     <i class='bx bxs-x-circle'></i>
                                     <span class="toggle-title">Katılamayacağım</span>
@@ -1597,7 +1523,7 @@
                                 <span class="stepper-display" id="adultCountDisplay">1 Yetişkin</span>
                                 <button type="button" class="stepper-btn" onclick="updateAdultCount(1)" aria-label="Yetişkin Sayısını Artır">+</button>
                             </div>
-                            <input type="hidden" id="adultCount" name="adultCount" value="1">
+                            <input type="hidden" id="adultCount" name="{{ENTRY_ADULTS}}" value="1">
                         </div>
 
                         <!-- 3B. Çocuk Katılımı Sorusu (Evet / Hayır) -->
@@ -1605,14 +1531,14 @@
                             <label class="form-label">Çocuk misafiriniz olacak mı? *</label>
                             <div class="rsvp-toggle-grid">
                                 <label class="rsvp-toggle-card">
-                                    <input type="radio" name="hasChildren" value="Hayır" checked onchange="handleChildrenToggle(false)">
+                                    <input type="radio" name="{{ENTRY_HAS_CHILDREN}}" value="Hayır" checked onchange="handleChildrenToggle(false)">
                                     <div class="rsvp-toggle-content">
                                         <i class='bx bx-user'></i>
                                         <span class="toggle-title">Hayır</span>
                                     </div>
                                 </label>
                                 <label class="rsvp-toggle-card">
-                                    <input type="radio" name="hasChildren" value="Evet" onchange="handleChildrenToggle(true)">
+                                    <input type="radio" name="{{ENTRY_HAS_CHILDREN}}" value="Evet" onchange="handleChildrenToggle(true)">
                                     <div class="rsvp-toggle-content">
                                         <i class='bx bx-face'></i>
                                         <span class="toggle-title">Evet</span>
@@ -1629,15 +1555,15 @@
                                 <span class="stepper-display" id="childCountDisplay">1 Çocuk</span>
                                 <button type="button" class="stepper-btn" onclick="updateChildCount(1)" aria-label="Çocuk Sayısını Artır">+</button>
                             </div>
-                            <input type="hidden" id="childCount" name="childCount" value="0">
+                            <input type="hidden" id="childCount" name="{{ENTRY_CHILDREN}}" value="0">
                         </div>
 
                     </div>
 
                     <!-- 4. Notunuz (Opsiyonel) -->
                     <div class="form-group">
-                        <label for="guestNote" class="form-label">Notunuz <span class="optional">(Opsiyonel / Çiftimize mesajınız)</span></label>
-                        <textarea id="guestNote" name="guestNote" class="form-textarea" placeholder="Dilerseniz tebrik veya özel notunuzu iletebilirsiniz..."></textarea>
+                        <label for="guestNote" class="form-label">Çiftimize mesajınız <span class="optional">(Opsiyonel)</span></label>
+                        <textarea id="guestNote" name="{{ENTRY_MESSAGE}}" class="form-textarea" placeholder="Dilerseniz tebrik veya özel notunuzu iletebilirsiniz..."></textarea>
                     </div>
 
                     <!-- Gönder Butonu -->
@@ -1655,13 +1581,14 @@
                     </div>
                     <h3 class="rsvp-success-title">Katılım bilginiz için teşekkür ederiz.</h3>
                     <p class="rsvp-success-subtitle">
-                        Yanıtınız Hatice & Mustafa'nın misafir listesine eklendi.
+                        Yanıtınız {{COUPLE_DISPLAY}}'nın misafir listesine eklendi.
                     </p>
                     <div class="rsvp-summary-card" id="rsvpSummaryContent"></div>
                     <button type="button" class="btn btn-secondary" onclick="resetRsvpForm()" style="max-width: 240px; margin: 0 auto;">
                         <i class='bx bx-refresh'></i> Yanıtı Güncelle
                     </button>
                 </div>
+                <iframe name="hidden_iframe" id="hiddenIframe" style="display:none" aria-hidden="true"></iframe>
             </div>
         </section>
 
@@ -1676,14 +1603,14 @@
             <div class="calendar-card">
                 <i class='bx bx-calendar-check calendar-icon-hero'></i>
                 <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 0.4rem;">
-                    Hatice & Mustafa Düğün Töreni
+                    {{COUPLE_DISPLAY}} Düğün Töreni
                 </h3>
                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-                    13 Kasım 2026 Cuma • 19:00<br>La Win, Balçova / İzmir
+                    {{DATE_DISPLAY}} • {{TIME_START}}<br>{{VENUE_NAME}}, {{VENUE_ADDRESS_SHORT}}
                 </p>
 
                 <div class="calendar-buttons">
-                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Hatice+%26+Mustafa+D%C3%BC%C4%9F%C3%BCn+Daveti&dates=20261113T160000Z/20261113T210000Z&details=Hatice+%26+Mustafa+D%C3%BC%C4%9F%C3%BCn+Daveti.+Mekan%3A+La+Win+Bal%C3%A7ova+%C4%B0zmir&location=La+Win%2C+Bah%C3%A7eleraras%C4%B1+Mah.+Y%C4%B1ld%C4%B1z+Sk.+No%3A16%2C+35330+Bal%C3%A7ova%2F%C4%B0zmir" 
+                    <a href="{{GOOGLE_CAL_URL}}" 
                        target="_blank" 
                        rel="noopener noreferrer" 
                        class="btn btn-primary">
@@ -1707,9 +1634,9 @@
                 <h2 class="section-title" style="margin-bottom: 1rem;">Sevgiyle Bekliyoruz</h2>
                 <div class="ornament-divider"><i class='bx bxs-heart'></i></div>
                 <p class="final-text">
-                    “Bu güzel günümüzde bizimle olmanız, mutluluğumuzu tamamlayan en değerli parçalardan biri olacak. Şimdiden sevginiz, iyi dilekleriniz ve eşliğiniz için teşekkür ederiz.”
+                    {{FINAL_TEXT}}
                 </p>
-                <div class="final-signature">Hatice & Mustafa</div>
+                <div class="final-signature">{{COUPLE_DISPLAY}}</div>
             </div>
         </section>
 
@@ -1717,8 +1644,8 @@
              10. FOOTER (Minimal & Zarif İmza)
              =================================================================== -->
         <footer class="invitation-footer">
-            <div class="footer-names">Hatice & Mustafa</div>
-            <div class="footer-date">13 Kasım 2026 • İzmir</div>
+            <div class="footer-names">{{COUPLE_DISPLAY}}</div>
+            <div class="footer-date">{{DATE_SHORT}} • {{VENUE_CITY}}</div>
             <div class="footer-love-note">
                 <span>Sevgiyle hazırlanmıştır</span>
                 <i class='bx bxs-heart'></i>
@@ -1738,7 +1665,7 @@
          =================================================================== -->
     <div class="mobile-bottom-bar" id="mobileBottomBar">
         <div class="mobile-bar-inner">
-            <a href="https://www.google.com/maps/place/La+Win/@38.3973511,27.0483935,17z/data=!3m1!4b1!4m6!3m5!1s0x14bbdc6bdcc8931d:0x5b043483d551ed9c!8m2!3d38.3973511!4d27.0509684!16s%2Fg%2F11g8v4r7s8?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D" 
+            <a href="{{VENUE_MAPS_URL}}" 
                target="_blank" 
                rel="noopener noreferrer" 
                class="mobile-bar-btn secondary">
@@ -1763,27 +1690,12 @@
         /* ===================================================================
            GOOGLE FORMS / E-TABLOLAR LCV ENTEGRASYON KONFİGÜRASYONU
            =================================================================== */
-        const GOOGLE_FORM_CONFIG = {
-            // Google Form /formResponse endpoint URL'i:
-            // Gerçek form oluşturulduğunda bu URL güncellenir.
-            // Örnek: 'https://docs.google.com/forms/d/e/1FAIpQLSc.../formResponse'
-            formUrl: '',
-
-            // Google Form Entry ID eşleşmeleri:
-            entries: {
-                guestName: 'entry.1000001',    // 1. Ad Soyad
-                attendance: 'entry.1000002',   // 2. Katılım Durumu ("Katılacağım" / "Katılamayacağım")
-                adultCount: 'entry.1000003',   // 3. Yetişkin Kişi Sayısı
-                hasChildren: 'entry.1000004',  // 4. Çocuk Misafir ("Evet" / "Hayır")
-                childCount: 'entry.1000005',   // 5. Çocuk Kişi Sayısı
-                guestNote: 'entry.1000006'     // 6. Notunuz
-            }
-        };
+        const __INV__ = {{CLIENT_CONFIG_JSON}};
 
         /* --------------------------------------------------
            1. COUNTDOWN TIMER (13 Kasım 2026 19:00:00 GMT+3)
            -------------------------------------------------- */
-        const targetDate = new Date('2026-11-13T19:00:00+03:00').getTime();
+        const targetDate = new Date(__INV__.countdownTarget).getTime();
 
         function updateCountdown() {
             const now = new Date().getTime();
@@ -1814,14 +1726,7 @@
         /* --------------------------------------------------
            2. LIGHTBOX GALLERY
            -------------------------------------------------- */
-        const galleryImages = [
-            'https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85',
-            'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85',
-            'https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=1200&q=85',
-            'https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1200&q=85',
-            'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=85',
-            'https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=85'
-        ];
+        const galleryImages = __INV__.galleryFullRes;
 
         let currentImageIndex = 0;
         const lightboxModal = document.getElementById('lightboxModal');
@@ -1889,7 +1794,7 @@
                 document.getElementById('adultCount').value = '0';
                 document.getElementById('childCount').value = '0';
                 document.getElementById('childCountGroup').style.display = 'none';
-                const noRadio = document.querySelector('input[name="hasChildren"][value="Hayır"]');
+                const noRadio = document.querySelector('input[name="{{ENTRY_HAS_CHILDREN}}"][value="Hayır"]');
                 if (noRadio) noRadio.checked = true;
             }
         }
@@ -1926,75 +1831,83 @@
         }
 
         // Form Submit İşleyicisi
-        async function handleRsvpSubmit(e) {
-            e.preventDefault();
-            if (isSubmitting) return;
+        let formSubmitted = false;
+
+        function handleRsvpSubmit(e) {
+            if (isSubmitting) { e.preventDefault(); return false; }
 
             const name = document.getElementById('guestName').value.trim();
-            const attendance = document.querySelector('input[name="attendance"]:checked').value;
-            const hasChildrenRadio = document.querySelector('input[name="hasChildren"]:checked');
-            const hasChildren = hasChildrenRadio ? hasChildrenRadio.value : 'Hayır';
-            const note = document.getElementById('guestNote').value.trim();
-
-            const isAttending = (attendance === 'Katılacağım');
-            const adultCount = isAttending ? parseInt(document.getElementById('adultCount').value, 10) : 0;
-            const childCount = (isAttending && hasChildren === 'Evet') ? parseInt(document.getElementById('childCount').value, 10) : 0;
-
+            const attendanceEl = document.querySelector('input[name="' + __INV__.rsvp.entries.attendance + '"]:checked');
+            
             if (!name) {
+                e.preventDefault();
                 alert('Lütfen adınızı ve soyadınızı giriniz.');
-                return;
+                return false;
+            }
+            if (!attendanceEl) {
+                e.preventDefault();
+                alert('Lütfen katılım durumunuzu seçiniz.');
+                return false;
             }
 
-            // Buton Loading Durumu
+            const attendance = attendanceEl.value;
+            const isAttending = (attendance === 'Katılacağım');
+            const hasChildrenEl = document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"]:checked');
+            const hasChildren = hasChildrenEl ? hasChildrenEl.value : 'Hayır';
+
+            // Normalize values for non-attending
+            if (!isAttending) {
+                document.getElementById('adultCount').value = '0';
+                document.getElementById('childCount').value = '0';
+            }
+            if (!isAttending || hasChildren !== 'Evet') {
+                document.getElementById('childCount').value = '0';
+            }
+
+            // Show loading state
             isSubmitting = true;
+            formSubmitted = true;
             const submitBtn = document.getElementById('rsvpSubmitBtn');
-            const originalBtnHtml = submitBtn.innerHTML;
             submitBtn.disabled = true;
             submitBtn.innerHTML = "<i class='bx bx-loader-alt bx-spin'></i> <span>Gönderiliyor...</span>";
 
-            // Google Form'a Veri Gönderimi
-            if (GOOGLE_FORM_CONFIG.formUrl && GOOGLE_FORM_CONFIG.formUrl.trim() !== '') {
-                try {
-                    const formData = new FormData();
-                    formData.append(GOOGLE_FORM_CONFIG.entries.guestName, name);
-                    formData.append(GOOGLE_FORM_CONFIG.entries.attendance, attendance);
-                    formData.append(GOOGLE_FORM_CONFIG.entries.adultCount, adultCount.toString());
-                    formData.append(GOOGLE_FORM_CONFIG.entries.hasChildren, hasChildren);
-                    formData.append(GOOGLE_FORM_CONFIG.entries.childCount, childCount.toString());
-                    formData.append(GOOGLE_FORM_CONFIG.entries.guestNote, note);
-
-                    await fetch(GOOGLE_FORM_CONFIG.formUrl, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        body: formData
-                    });
-                } catch (err) {
-                    console.warn('Google Form submission network attempt:', err);
-                }
-            }
-
-            // Başarılı Onay Görünümü
-            setTimeout(() => {
-                isSubmitting = false;
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalBtnHtml;
-
-                const summaryEl = document.getElementById('rsvpSummaryContent');
-                summaryEl.innerHTML = `
-                    <strong>İletilen Katılım Bilgileriniz:</strong><br>
-                    • <strong>Ad Soyad:</strong> ${escapeHtml(name)}<br>
-                    • <strong>Durum:</strong> ${escapeHtml(attendance)}<br>
-                    ${isAttending ? `• <strong>Yetişkin Sayısı:</strong> ${adultCount} Kişi<br>` : ''}
-                    ${isAttending && hasChildren === 'Evet' ? `• <strong>Çocuk Sayısı:</strong> ${childCount} Kişi<br>` : ''}
-                    ${note ? `• <strong>Notunuz:</strong> ${escapeHtml(note)}` : ''}
-                `;
-
-                document.getElementById('rsvpForm').style.display = 'none';
-                document.getElementById('rsvpSuccessBox').style.display = 'block';
-
-                showToast('Katılım bilginiz iletildi! ✨');
-            }, 600);
+            // Let the form submit naturally to hidden iframe
+            return true;
         }
+
+        // Handle iframe load (Google Form response received)
+        document.getElementById('hiddenIframe').addEventListener('load', function() {
+            if (!formSubmitted) return;
+            formSubmitted = false;
+
+            const name = document.getElementById('guestName').value.trim();
+            const attendanceEl = document.querySelector('input[name="' + __INV__.rsvp.entries.attendance + '"]:checked');
+            const attendance = attendanceEl ? attendanceEl.value : '';
+            const isAttending = (attendance === 'Katılacağım');
+            const hasChildrenEl = document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"]:checked');
+            const hasChildren = hasChildrenEl ? hasChildrenEl.value : 'Hayır';
+            const adultCount = parseInt(document.getElementById('adultCount').value, 10);
+            const childCount = parseInt(document.getElementById('childCount').value, 10);
+            const note = document.getElementById('guestNote').value.trim();
+
+            isSubmitting = false;
+            const submitBtn = document.getElementById('rsvpSubmitBtn');
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = "<i class='bx bx-send'></i> <span>Katılım Bilgimi Gönder</span>";
+
+            const summaryEl = document.getElementById('rsvpSummaryContent');
+            summaryEl.innerHTML = 
+                '<strong>İletilen Katılım Bilgileriniz:</strong><br>' +
+                '• <strong>Ad Soyad:</strong> ' + escapeHtml(name) + '<br>' +
+                '• <strong>Durum:</strong> ' + escapeHtml(attendance) + '<br>' +
+                (isAttending ? '• <strong>Yetişkin Sayısı:</strong> ' + adultCount + ' Kişi<br>' : '') +
+                (isAttending && hasChildren === 'Evet' ? '• <strong>Çocuk Sayısı:</strong> ' + childCount + ' Kişi<br>' : '') +
+                (note ? '• <strong>Mesajınız:</strong> ' + escapeHtml(note) : '');
+
+            document.getElementById('rsvpForm').style.display = 'none';
+            document.getElementById('rsvpSuccessBox').style.display = 'block';
+            showToast('Katılım bilginiz iletildi! ✨');
+        });
 
         // Formu Yeniden Sıfırlama
         function resetRsvpForm() {
@@ -2007,6 +1920,11 @@
             document.getElementById('childCount').value = '0';
             document.getElementById('childCountGroup').style.display = 'none';
             document.getElementById('attendanceDetailsContainer').style.display = 'block';
+
+            const attendRadio = document.querySelector('input[name="' + __INV__.rsvp.entries.attendance + '"][value="Katılacağım"]');
+            if (attendRadio) attendRadio.checked = true;
+            const noChildRadio = document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"][value="Hayır"]');
+            if (noChildRadio) noChildRadio.checked = true;
 
             document.getElementById('rsvpForm').style.display = 'block';
             document.getElementById('rsvpSuccessBox').style.display = 'none';
@@ -2030,7 +1948,7 @@
         }
 
         function copyAddressText() {
-            const address = "La Win, Bahçelerarası Mah. Yıldız Sk. No:16, 35330 Balçova / İzmir";
+            const address = __INV__.venue.name + ', ' + __INV__.venue.address;
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(address).then(() => {
                     showToast('Adres panoya kopyalandı! 📋');
@@ -2056,6 +1974,7 @@
            5. DYNAMIC .ICS FILE GENERATOR (Apple / Outlook)
            -------------------------------------------------- */
         function downloadIcsFile() {
+            const ics = __INV__.calendar.ics;
             const icsData = [
                 'BEGIN:VCALENDAR',
                 'VERSION:2.0',
@@ -2063,13 +1982,13 @@
                 'CALSCALE:GREGORIAN',
                 'METHOD:PUBLISH',
                 'BEGIN:VEVENT',
-                'UID:hatice-mustafa-dugun-20261113@nvmedya.com',
+                'UID:' + ics.uid,
                 'DTSTAMP:20260101T000000Z',
-                'DTSTART:20261113T160000Z',
-                'DTEND:20261113T210000Z',
-                'SUMMARY:Hatice & Mustafa Düğün Daveti',
-                'DESCRIPTION:Hatice ve Mustafa çiftinin düğün kutlaması. Başlangıç: 19:00.',
-                'LOCATION:La Win, Bahçelerarası Mah. Yıldız Sk. No:16, 35330 Balçova / İzmir',
+                'DTSTART:' + ics.dtstart,
+                'DTEND:' + ics.dtend,
+                'SUMMARY:' + ics.summary,
+                'DESCRIPTION:' + ics.description,
+                'LOCATION:' + ics.location,
                 'STATUS:CONFIRMED',
                 'SEQUENCE:0',
                 'END:VEVENT',
@@ -2079,11 +1998,10 @@
             const blob = new Blob([icsData], { type: 'text/calendar;charset=utf-8' });
             const link = document.createElement('a');
             link.href = window.URL.createObjectURL(blob);
-            link.setAttribute('download', 'Hatice-Mustafa-Dugun-Davetiye.ics');
+            link.setAttribute('download', ics.filename);
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-
             showToast('Takvim dosyası (.ics) indirildi! 📅');
         }
 

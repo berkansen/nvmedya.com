@@ -1,0 +1,86 @@
+{
+  "slug": "hatice-mustafa-13-11-2026",
+  "couple": {
+    "bride": "Hatice",
+    "groom": "Mustafa",
+    "displayName": "Hatice & Mustafa"
+  },
+  "date": {
+    "display": "13 Kasım 2026 Cuma",
+    "short": "13 Kasım 2026",
+    "dayOfWeek": "Cuma",
+    "iso": "2026-11-13",
+    "time": "19:00",
+    "timezone": "Europe/Istanbul",
+    "isoStart": "2026-11-13T16:00:00Z",
+    "isoEnd": "2026-11-13T21:00:00Z",
+    "countdownTarget": "2026-11-13T19:00:00+03:00"
+  },
+  "hero": {
+    "message": "Sizi, hayatımızın en özel gününü birlikte kutlamaya davet ediyoruz.",
+    "backgroundImage": "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1080&q=85"
+  },
+  "venue": {
+    "name": "La Win",
+    "address": "Bahçelerarası Mah. Yıldız Sk. No:16, 35330 Balçova / İzmir",
+    "addressLine1": "Bahçelerarası Mah. Yıldız Sk. No:16",
+    "addressLine2": "35330 Balçova / İzmir",
+    "addressShort": "Balçova / İzmir",
+    "city": "İzmir",
+    "image": "https://ik.imagekit.io/nvmedya/davetiye/la-win.jpeg",
+    "imageAlt": "La Win düğün mekanı - Balçova İzmir",
+    "mapsUrl": "https://www.google.com/maps/place/La+Win/@38.3973511,27.0483935,17z/data=!3m1!4b1!4m6!3m5!1s0x14bbdc6bdcc8931d:0x5b043483d551ed9c!8m2!3d38.3973511!4d27.0509684!16s%2Fg%2F11g8v4r7s8?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D",
+    "description": "Düğün organizasyonumuz La Win'de gerçekleşecektir. Ulaşım için aşağıdaki butonu kullanabilirsiniz."
+  },
+  "timeline": [
+    { "time": "18:30", "title": "Misafir Karşılama" },
+    { "time": "19:00", "title": "Nikah Töreni" },
+    { "time": "19:30", "title": "Yemek Servisi" },
+    { "time": "20:30", "title": "İlk Dans" },
+    { "time": "21:00", "title": "Eğlence ve Müzik" }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80"
+  ],
+  "galleryFullRes": [
+    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=85"
+  ],
+  "rsvp": {
+    "formId": "1FAIpQLSd1EWt1w7w1FbGrPe3IQJYF5CyRrx-FDxHcUQieKs132xtiGQ",
+    "formAction": "https://docs.google.com/forms/d/e/1FAIpQLSd1EWt1w7w1FbGrPe3IQJYF5CyRrx-FDxHcUQieKs132xtiGQ/formResponse",
+    "entries": {
+      "name": "entry.1841629922",
+      "attendance": "entry.297615710",
+      "adults": "entry.2001603225",
+      "hasChildren": "entry.722621996",
+      "children": "entry.999029311",
+      "message": "entry.207267068"
+    }
+  },
+  "messages": {
+    "letterText": "Sevdiklerimizle aynı anda aynı duyguyu paylaşacağımız bu güzel günde, bizimle olmanız mutluluğumuzu daha da anlamlı kılacak. Bu özel anımızda sizi aramızda görmekten büyük mutluluk duyarız.",
+    "finalText": "Bu güzel günümüzde bizimle olmanız, mutluluğumuzu tamamlayan en değerli parçalardan biri olacak. Şimdiden sevginiz, iyi dilekleriniz ve eşliğiniz için teşekkür ederiz."
+  },
+  "calendar": {
+    "googleCalUrl": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Hatice+%26+Mustafa+D%C3%BC%C4%9F%C3%BCn+Daveti&dates=20261113T160000Z/20261113T210000Z&details=Hatice+%26+Mustafa+D%C3%BC%C4%9F%C3%BCn+Daveti.+Mekan%3A+La+Win+Bal%C3%A7ova+%C4%B0zmir&location=La+Win%2C+Bah%C3%A7eleraras%C4%B1+Mah.+Y%C4%B1ld%C4%B1z+Sk.+No%3A16%2C+35330+Bal%C3%A7ova%2F%C4%B0zmir",
+    "ics": {
+      "uid": "hatice-mustafa-dugun-20261113@nvmedya.com",
+      "dtstart": "20261113T160000Z",
+      "dtend": "20261113T210000Z",
+      "summary": "Hatice & Mustafa Düğün Daveti",
+      "description": "Hatice ve Mustafa çiftinin düğün kutlaması. Başlangıç: 19:00.",
+      "location": "La Win, Bahçelerarası Mah. Yıldız Sk. No:16, 35330 Balçova / İzmir",
+      "filename": "Hatice-Mustafa-Dugun-Davetiye.ics"
+    }
+  }
+}
