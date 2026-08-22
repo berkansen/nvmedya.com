@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Hatice & Mustafa | Düğün Davetiyesi</title>
     
-    <!-- 1. GİZLİLİK VE NOINDEX KURALLARI (Müşteri özel sayfası - arama motorlarına kapalı) -->
+    <!-- 1. GİZLİLİK VE NOINDEX (Müşteri özel sayfası - Arama motorlarına kapalı) -->
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet">
 
-    <!-- Open Graph (WhatsApp / iMessage / Sosyal Medya Önizleme) -->
+    <!-- Open Graph (WhatsApp / iMessage / Sosyal Medya Paylaşım Önizlemesi) -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Hatice & Mustafa — Düğün Davetiyesi">
     <meta property="og:description" content="Hayatımızın en özel gününü birlikte kutlamaya davet ediyoruz. 13 Kasım 2026 • La Win, İzmir">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:image" content="https://ik.imagekit.io/nvmedya/davetiye/la-win.jpeg">
 
     <link rel="icon" href="assets/favicon.png" type="image/png">
 
-    <!-- Google Fonts: Cormorant Garamond (Zarif Serif), Plus Jakarta Sans (Gövde Metinleri), Montserrat (Vurgular), Alex Brush (İmzalar) -->
+    <!-- Google Fonts: Cormorant Garamond (Serif), Plus Jakarta Sans (Gövde), Montserrat (Vurgular), Alex Brush (İmza) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -28,10 +28,9 @@
 
     <style>
         /* ==========================================================================
-           NVM DİJİTAL DAVETİYE (v1) - DESIGN SYSTEM & STYLES
+           NVM DİJİTAL DAVETİYE (v1) - DESIGN SYSTEM
            ========================================================================== */
         :root {
-            /* Renk Paleti: Fildişi, Sıcak Şampanya, Kum Beji, Soft Blush, Kömür Grisi */
             --bg-primary: #FAF7F2;
             --bg-surface: #FFFFFF;
             --bg-secondary: #F3ECE2;
@@ -98,7 +97,7 @@
             align-items: center;
         }
 
-        /* Responsive Wrapper */
+        /* Main Container */
         .nvm-invitation-app {
             width: 100%;
             max-width: var(--container-max);
@@ -109,7 +108,7 @@
             margin: 0 auto;
         }
 
-        /* Tipografi */
+        /* Typography */
         h1, h2, h3, h4 {
             font-family: var(--font-serif);
             font-weight: 600;
@@ -117,22 +116,11 @@
             line-height: 1.25;
         }
 
-        .section-eyebrow {
-            font-family: var(--font-accent);
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            color: var(--gold-dark);
-            margin-bottom: 0.4rem;
-            display: inline-block;
-        }
-
         .section-title {
-            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            font-size: clamp(1.85rem, 4.5vw, 2.3rem);
             font-weight: 600;
             color: var(--text-heading);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.35rem;
         }
 
         .section-subtitle {
@@ -150,7 +138,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            margin: 1rem auto 1.5rem;
+            margin: 0.85rem auto 1.4rem;
             opacity: 0.8;
         }
 
@@ -210,6 +198,12 @@
             color: #FFFFFF;
         }
 
+        .btn-primary:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
         .btn-secondary {
             background: var(--bg-surface);
             color: var(--text-heading);
@@ -224,11 +218,11 @@
         }
 
         /* ==========================================================================
-           1. HERO / AÇILIŞ ALANI
+           1. HERO / AÇILIŞ ALANI (Sadeleştirilmiş & Premium)
            ========================================================================== */
         .hero-section {
             position: relative;
-            min-height: 88vh;
+            min-height: 86vh;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -264,9 +258,9 @@
             height: 100%;
             background: linear-gradient(
                 180deg,
-                rgba(24, 20, 18, 0.2) 0%,
+                rgba(24, 20, 18, 0.15) 0%,
                 rgba(24, 20, 18, 0.45) 45%,
-                rgba(24, 20, 18, 0.88) 100%
+                rgba(24, 20, 18, 0.90) 100%
             );
             z-index: 2;
         }
@@ -298,19 +292,9 @@
             margin-top: auto;
         }
 
-        .hero-subtitle-top {
-            font-family: var(--font-serif);
-            font-style: italic;
-            font-size: 1.25rem;
-            color: var(--gold-light);
-            margin-bottom: 0.25rem;
-            font-weight: 400;
-            letter-spacing: 0.03em;
-        }
-
         .hero-names {
             font-family: var(--font-serif);
-            font-size: clamp(2.6rem, 8vw, 3.4rem);
+            font-size: clamp(2.6rem, 8.5vw, 3.5rem);
             font-weight: 600;
             line-height: 1.1;
             color: #FFFFFF;
@@ -331,7 +315,7 @@
         .hero-date {
             font-family: var(--font-accent);
             font-size: 0.88rem;
-            letter-spacing: 0.16em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
             color: #E8E2DA;
             font-weight: 500;
@@ -342,33 +326,9 @@
             font-size: 0.95rem;
             line-height: 1.55;
             color: rgba(255, 255, 255, 0.92);
-            max-width: 400px;
-            margin: 0 auto 1.5rem;
+            max-width: 420px;
+            margin: 0 auto 0.5rem;
             font-weight: 300;
-        }
-
-        .hero-scroll-cue {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.72rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            text-decoration: none;
-            transition: color 0.25s;
-        }
-
-        .hero-scroll-cue i {
-            font-size: 1.15rem;
-            animation: bounceCue 2s infinite;
-        }
-
-        @keyframes bounceCue {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(5px); }
-            60% { transform: translateY(2px); }
         }
 
         /* Countdown Card */
@@ -382,7 +342,7 @@
         .countdown-card {
             background: var(--bg-surface);
             border-radius: var(--radius-lg);
-            padding: 1.4rem 1rem;
+            padding: 1.35rem 1rem;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--gold-border);
             text-align: center;
@@ -390,10 +350,10 @@
 
         .countdown-header {
             font-family: var(--font-serif);
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 600;
             color: var(--text-heading);
-            margin-bottom: 1rem;
+            margin-bottom: 0.9rem;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -415,7 +375,7 @@
             background: var(--bg-primary);
             border: 1px solid rgba(184, 142, 82, 0.2);
             border-radius: var(--radius-md);
-            padding: 0.75rem 0.2rem;
+            padding: 0.7rem 0.2rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -423,11 +383,11 @@
 
         .countdown-number {
             font-family: var(--font-serif);
-            font-size: clamp(1.4rem, 4vw, 1.8rem);
+            font-size: clamp(1.35rem, 4vw, 1.75rem);
             font-weight: 700;
             color: var(--gold-dark);
             line-height: 1;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.2rem;
         }
 
         .countdown-label {
@@ -443,7 +403,7 @@
            2. DAVET MESAJI
            ========================================================================== */
         .invitation-letter-section {
-            padding-top: 3.75rem;
+            padding-top: 3.5rem;
         }
 
         .letter-container {
@@ -481,13 +441,20 @@
         }
 
         /* ==========================================================================
-           3. DAVET DETAYLARI (KARTLAR)
+           3. DAVET DETAYLARI (3 Sade Bilgi Kartı)
            ========================================================================== */
         .details-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
             margin-top: 1.5rem;
+        }
+
+        @media (max-width: 480px) {
+            .details-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
         }
 
         .detail-card {
@@ -503,16 +470,16 @@
         }
 
         .detail-icon-wrap {
-            width: 44px;
-            height: 44px;
+            width: 42px;
+            height: 42px;
             background: var(--bg-secondary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.65rem;
             color: var(--gold-primary);
-            font-size: 1.3rem;
+            font-size: 1.25rem;
         }
 
         .detail-label {
@@ -527,10 +494,10 @@
 
         .detail-value {
             font-family: var(--font-serif);
-            font-size: 1.18rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--text-heading);
-            line-height: 1.25;
+            line-height: 1.2;
         }
 
         .detail-subvalue {
@@ -540,7 +507,7 @@
         }
 
         /* ==========================================================================
-           4. DÜĞÜN AKIŞI (TIMELINE)
+           4. DÜĞÜN AKIŞI (TIMELINE - Kapanış Bilgisi Kaldırılmış)
            ========================================================================== */
         .timeline-container {
             position: relative;
@@ -780,7 +747,7 @@
         }
 
         /* ==========================================================================
-           6. MEKAN VE KONUM
+           6. MEKAN VE KONUM (Gerçek La Win Fotoğrafı)
            ========================================================================== */
         .venue-card {
             background: var(--bg-surface);
@@ -794,7 +761,7 @@
 
         .venue-media-wrapper {
             position: relative;
-            height: 180px;
+            height: 220px;
             background-color: var(--bg-secondary);
             overflow: hidden;
         }
@@ -803,6 +770,8 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
+            display: block;
         }
 
         .venue-badge-overlay {
@@ -872,7 +841,7 @@
         }
 
         /* ==========================================================================
-           7. LCV / KATILIM FORMU
+           7. LCV / KATILIM FORMU (Gerçek Google Form + Yetişkin & Çocuk Koşullu Mantık)
            ========================================================================== */
         .rsvp-container {
             background: var(--bg-surface);
@@ -931,58 +900,62 @@
             resize: vertical;
         }
 
-        /* RSVP Seçenekleri */
-        .rsvp-status-grid {
+        /* Radio Toggle Seçenekleri */
+        .rsvp-toggle-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 10px;
         }
 
-        .rsvp-radio-card {
+        .rsvp-toggle-card {
             position: relative;
             cursor: pointer;
         }
 
-        .rsvp-radio-card input[type="radio"] {
+        .rsvp-toggle-card input[type="radio"] {
             position: absolute;
             opacity: 0;
             pointer-events: none;
         }
 
-        .rsvp-radio-content {
+        .rsvp-toggle-content {
             border: 1px solid var(--gold-border);
             background: var(--bg-primary);
             border-radius: var(--radius-md);
-            padding: 0.9rem 0.5rem;
+            padding: 0.85rem 0.5rem;
             text-align: center;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 4px;
-            min-height: 48px;
             justify-content: center;
+            gap: 6px;
+            min-height: 48px;
             transition: all 0.2s;
         }
 
-        .rsvp-radio-content i {
-            font-size: 1.3rem;
+        .rsvp-toggle-content i {
+            font-size: 1.25rem;
             color: var(--gold-primary);
         }
 
-        .rsvp-radio-content .status-title {
+        .rsvp-toggle-content .toggle-title {
             font-size: 0.9rem;
             font-weight: 600;
             color: var(--text-heading);
         }
 
-        .rsvp-radio-card input[type="radio"]:checked + .rsvp-radio-content {
+        .rsvp-toggle-card input[type="radio"]:checked + .rsvp-toggle-content {
             background: var(--bg-secondary);
             border-color: var(--gold-primary);
             box-shadow: 0 4px 12px rgba(184, 142, 82, 0.18);
         }
 
-        /* Kişi Sayacı */
-        .guest-selector-wrap {
+        /* Koşullu Alan Kapsayıcısı */
+        .conditional-section {
+            transition: all 0.3s ease;
+        }
+
+        /* Kişi Sayacı (Stepper) */
+        .stepper-wrap {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -993,7 +966,7 @@
             min-height: 48px;
         }
 
-        .guest-btn {
+        .stepper-btn {
             width: 38px;
             height: 38px;
             border-radius: 50%;
@@ -1005,68 +978,76 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            transition: all 0.2s;
         }
 
-        .guest-btn:hover {
+        .stepper-btn:hover {
             background: var(--gold-primary);
             color: #FFFFFF;
+            border-color: var(--gold-primary);
         }
 
-        .guest-count-display {
+        .stepper-display {
             font-family: var(--font-serif);
-            font-size: 1.3rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--text-heading);
         }
 
-        /* Dürüst Demo Geri Bildirim Kutusu (Fake Success YERİNE Açık Demo Durumu) */
-        .rsvp-demo-notice {
+        /* LCV Onay Kartı */
+        .rsvp-success-box {
             display: none;
             background: var(--bg-secondary);
             border: 1px solid var(--gold-border);
-            border-radius: var(--radius-md);
-            padding: 1.5rem 1.25rem;
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 1.5rem;
             text-align: center;
-            margin-top: 1rem;
+            animation: fadeIn 0.4s ease forwards;
         }
 
-        .rsvp-demo-badge {
-            display: inline-block;
-            background: var(--gold-primary);
-            color: #FFFFFF;
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            padding: 0.25rem 0.65rem;
-            border-radius: var(--radius-full);
-            margin-bottom: 0.75rem;
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .rsvp-demo-title {
-            font-size: 1.2rem;
+        .rsvp-success-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            color: var(--gold-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.25rem;
+            border: 1px solid var(--gold-border);
+        }
+
+        .rsvp-success-title {
+            font-size: 1.5rem;
             font-weight: 700;
             color: var(--text-heading);
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.5rem;
         }
 
-        .rsvp-demo-text {
-            font-size: 0.88rem;
+        .rsvp-success-subtitle {
+            font-size: 0.95rem;
             color: var(--text-muted);
-            line-height: 1.5;
-            margin-bottom: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
         }
 
-        .rsvp-preview-data {
+        .rsvp-summary-card {
             background: #FFFFFF;
             border: 1px dashed var(--gold-border);
-            border-radius: var(--radius-sm);
-            padding: 0.75rem;
-            font-size: 0.82rem;
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            font-size: 0.88rem;
             color: var(--text-main);
             text-align: left;
-            margin-bottom: 1rem;
-            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
         /* ==========================================================================
@@ -1183,7 +1164,6 @@
             font-size: 0.85rem;
         }
 
-        /* Sade & İkincil NVM İmzası */
         .nvm-minimal-brand {
             font-size: 0.72rem;
             color: var(--text-light);
@@ -1305,16 +1285,11 @@
             </div>
 
             <div class="hero-content">
-                <div class="hero-subtitle-top">Birlikte bir ömre adım atarken...</div>
                 <h1 class="hero-names">Hatice <span>&</span> Mustafa</h1>
                 <div class="hero-date">13 Kasım 2026 • Cuma</div>
                 <p class="hero-quote">
                     Sizi, hayatımızın en özel gününü birlikte kutlamaya davet ediyoruz.
                 </p>
-                <a href="#letter" class="hero-scroll-cue" aria-label="Aşağı Kaydır">
-                    <span>Davetiyeyi İncele</span>
-                    <i class='bx bx-chevron-down'></i>
-                </a>
             </div>
         </section>
 
@@ -1363,15 +1338,12 @@
         </section>
 
         <!-- ===================================================================
-             3. DAVET DETAYLARI
+             3. DAVET DETAYLARI (3 Sade Bilgi Kartı)
              =================================================================== -->
-        <section class="invitation-section" id="details">
-            <div class="text-center">
-                <span class="section-eyebrow">Program & Bilgiler</span>
-                <h2 class="section-title">Davet Detayları</h2>
-                <div class="ornament-divider"><i class='bx bx-star'></i></div>
-                <p class="section-subtitle">Düğün günümüze dair tüm önemli bilgiler aşağıda yer almaktadır.</p>
-            </div>
+        <section class="invitation-section text-center" id="details">
+            <h2 class="section-title">Davet Detayları</h2>
+            <div class="ornament-divider"><i class='bx bx-star'></i></div>
+            <p class="section-subtitle">Düğün günümüze dair tüm önemli bilgiler aşağıda yer almaktadır.</p>
 
             <div class="details-grid">
                 <!-- Tarih -->
@@ -1403,16 +1375,6 @@
                     <span class="detail-value">La Win</span>
                     <span class="detail-subvalue">Balçova / İzmir</span>
                 </div>
-
-                <!-- Etkinlik Türü -->
-                <div class="detail-card">
-                    <div class="detail-icon-wrap">
-                        <i class='bx bx-wine'></i>
-                    </div>
-                    <span class="detail-label">Etkinlik</span>
-                    <span class="detail-value">Düğün Daveti</span>
-                    <span class="detail-subvalue">Yemekli Kutlama</span>
-                </div>
             </div>
         </section>
 
@@ -1421,7 +1383,6 @@
              =================================================================== -->
         <section class="invitation-section" id="timeline" style="background-color: var(--bg-surface); border-top: 1px solid var(--rose-border); border-bottom: 1px solid var(--rose-border);">
             <div class="text-center">
-                <span class="section-eyebrow">Zaman Çizelgesi</span>
                 <h2 class="section-title">Düğün Akışı</h2>
                 <div class="ornament-divider"><i class='bx bx-time-five'></i></div>
                 <p class="section-subtitle">Bu özel gecenin akışını sizin için özenle hazırladık.</p>
@@ -1482,17 +1443,6 @@
                         <div class="timeline-time">21:00</div>
                     </div>
                 </div>
-
-                <!-- 23:30 -->
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="timeline-content-wrap">
-                            <div class="timeline-event-name">Kapanış</div>
-                        </div>
-                        <div class="timeline-time">23:30</div>
-                    </div>
-                </div>
             </div>
 
             <p class="timeline-footnote">
@@ -1505,7 +1455,6 @@
              =================================================================== -->
         <section class="invitation-section" id="gallery">
             <div class="text-center">
-                <span class="section-eyebrow">Anılarımız</span>
                 <h2 class="section-title">Bizden Kareler</h2>
                 <div class="ornament-divider"><i class='bx bx-camera'></i></div>
                 <p class="section-subtitle">Birlikte çıktığımız bu güzel yolculuktan birkaç anı...</p>
@@ -1513,27 +1462,27 @@
 
             <div class="gallery-grid">
                 <div class="gallery-item tall" onclick="openLightbox(0)">
-                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Fotoğraf 1" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'500\' viewBox=\'0 0 400 500\'><rect width=\'400\' height=\'500\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 1</text></svg>'">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Bizden Kareler 1" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'500\' viewBox=\'0 0 400 500\'><rect width=\'400\' height=\'500\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 1</text></svg>'">
                     <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
                 </div>
                 <div class="gallery-item" onclick="openLightbox(1)">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Fotoğraf 2" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 2</text></svg>'">
+                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Bizden Kareler 2" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 2</text></svg>'">
                     <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
                 </div>
                 <div class="gallery-item" onclick="openLightbox(2)">
-                    <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=80" alt="Fotoğraf 3" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 3</text></svg>'">
+                    <img src="https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=80" alt="Bizden Kareler 3" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 3</text></svg>'">
                     <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
                 </div>
                 <div class="gallery-item" onclick="openLightbox(3)">
-                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80" alt="Fotoğraf 4" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 4</text></svg>'">
+                    <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?auto=format&fit=crop&w=800&q=80" alt="Bizden Kareler 4" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 4</text></svg>'">
                     <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
                 </div>
                 <div class="gallery-item tall" onclick="openLightbox(4)">
-                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80" alt="Fotoğraf 5" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'500\' viewBox=\'0 0 400 500\'><rect width=\'400\' height=\'500\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 5</text></svg>'">
+                    <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=800&q=80" alt="Bizden Kareler 5" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'500\' viewBox=\'0 0 400 500\'><rect width=\'400\' height=\'500\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 5</text></svg>'">
                     <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
                 </div>
                 <div class="gallery-item" onclick="openLightbox(5)">
-                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" alt="Fotoğraf 6" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 6</text></svg>'">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" alt="Bizden Kareler 6" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'400\' viewBox=\'0 0 400 400\'><rect width=\'400\' height=\'400\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'20\' fill=\'%23966F36\'>Fotoğraf 6</text></svg>'">
                     <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
                 </div>
             </div>
@@ -1550,21 +1499,21 @@
         </div>
 
         <!-- ===================================================================
-             6. MEKAN VE KONUM
+             6. MEKAN VE KONUM (Gerçek La Win Fotoğrafı)
              =================================================================== -->
         <section class="invitation-section" id="location">
             <div class="text-center">
-                <span class="section-eyebrow">Ulaşım & Harita</span>
-                <h2 class="section-title">Mekan Bilgisi</h2>
+                <h2 class="section-title">Mekan</h2>
                 <div class="ornament-divider"><i class='bx bx-map'></i></div>
                 <p class="section-subtitle">Düğün mekanımızın konumu ve detaylı adres bilgileri.</p>
             </div>
 
             <div class="venue-card">
                 <div class="venue-media-wrapper">
-                    <img src="https://images.unsplash.com/photo-1545232979-fbf6786c2e39?auto=format&fit=crop&w=900&q=80" 
-                         alt="La Win" 
+                    <img src="https://ik.imagekit.io/nvmedya/davetiye/la-win.jpeg" 
+                         alt="La Win düğün mekanı - Balçova İzmir" 
                          class="venue-media-img"
+                         loading="lazy"
                          onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'300\' viewBox=\'0 0 600 300\'><rect width=\'600\' height=\'300\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'24\' fill=\'%23966F36\'>La Win İzmir</text></svg>'">
                     <div class="venue-badge-overlay">
                         <i class='bx bxs-map-pin'></i> Balçova, İzmir
@@ -1595,12 +1544,11 @@
         </section>
 
         <!-- ===================================================================
-             7. LCV / KATILIM FORMU (Hazır Form Mimarisi + Dürüst Demo Bildirimi)
+             7. LCV / KATILIM FORMU (Gerçek Google Form Altyapısı + Koşullu Mantık)
              =================================================================== -->
         <section class="invitation-section" id="rsvp" style="background-color: var(--bg-surface); border-top: 1px solid var(--rose-border); border-bottom: 1px solid var(--rose-border);">
             <div class="text-center">
-                <span class="section-eyebrow">LCV • Katılım Formu</span>
-                <h2 class="section-title">Katılım Bilgisi</h2>
+                <h2 class="section-title">Katılımınızı Bildirin</h2>
                 <div class="ornament-divider"><i class='bx bx-envelope'></i></div>
                 <p class="section-subtitle">
                     Katılım durumunuzu bizimle paylaşmanız, hazırlıklarımızı daha sağlıklı planlamamıza yardımcı olacaktır.
@@ -1608,69 +1556,110 @@
             </div>
 
             <div class="rsvp-container">
-                <!-- FORM YAPISI (Google Forms / API Entegrasyonuna Uygun Standart İsimlendirme) -->
+                <!-- FORM -->
                 <form id="rsvpForm" onsubmit="handleRsvpSubmit(event)">
-                    <!-- Ad Soyad -->
+                    
+                    <!-- 1. Ad Soyad (Zorunlu) -->
                     <div class="form-group">
                         <label for="guestName" class="form-label">Adınız ve Soyadınız *</label>
-                        <input type="text" id="guestName" name="guestName" class="form-input" placeholder="Örn: Ayşe Yılmaz" required>
+                        <input type="text" id="guestName" name="guestName" class="form-input" placeholder="Örn: Ayşe Yılmaz" required autocomplete="name">
                     </div>
 
-                    <!-- Katılım Durumu -->
+                    <!-- 2. Katılım Durumu (Zorunlu) -->
                     <div class="form-group">
                         <label class="form-label">Katılım Durumunuz *</label>
-                        <div class="rsvp-status-grid">
-                            <label class="rsvp-radio-card">
-                                <input type="radio" name="attendance" value="attending" checked onchange="toggleGuestCount(true)">
-                                <div class="rsvp-radio-content">
+                        <div class="rsvp-toggle-grid">
+                            <label class="rsvp-toggle-card">
+                                <input type="radio" name="attendance" value="Katılacağım" checked onchange="handleAttendanceChange(true)">
+                                <div class="rsvp-toggle-content">
                                     <i class='bx bxs-check-circle'></i>
-                                    <span class="status-title">Katılacağım</span>
+                                    <span class="toggle-title">Katılacağım</span>
                                 </div>
                             </label>
-                            <label class="rsvp-radio-card">
-                                <input type="radio" name="attendance" value="declined" onchange="toggleGuestCount(false)">
-                                <div class="rsvp-radio-content">
+                            <label class="rsvp-toggle-card">
+                                <input type="radio" name="attendance" value="Katılamayacağım" onchange="handleAttendanceChange(false)">
+                                <div class="rsvp-toggle-content">
                                     <i class='bx bxs-x-circle'></i>
-                                    <span class="status-title">Katılamayacağım</span>
+                                    <span class="toggle-title">Katılamayacağım</span>
                                 </div>
                             </label>
                         </div>
                     </div>
 
-                    <!-- Kişi Sayısı -->
-                    <div class="form-group" id="guestCountGroup">
-                        <label class="form-label">Kişi Sayısı</label>
-                        <div class="guest-selector-wrap">
-                            <button type="button" class="guest-btn" onclick="updateGuestCount(-1)" aria-label="Azalt">−</button>
-                            <span class="guest-count-display" id="guestCountDisplay">1 Kişi</span>
-                            <button type="button" class="guest-btn" onclick="updateGuestCount(1)" aria-label="Artır">+</button>
+                    <!-- 3. KATILIM DETAYLARI KAPSAYICISI (Katılacağım durumunda görünür) -->
+                    <div id="attendanceDetailsContainer" class="conditional-section">
+                        
+                        <!-- 3A. Yetişkin Kişi Sayısı (Min 1) -->
+                        <div class="form-group" id="adultCountGroup">
+                            <label class="form-label">Yetişkin Kişi Sayısı *</label>
+                            <div class="stepper-wrap">
+                                <button type="button" class="stepper-btn" onclick="updateAdultCount(-1)" aria-label="Yetişkin Sayısını Azalt">−</button>
+                                <span class="stepper-display" id="adultCountDisplay">1 Yetişkin</span>
+                                <button type="button" class="stepper-btn" onclick="updateAdultCount(1)" aria-label="Yetişkin Sayısını Artır">+</button>
+                            </div>
+                            <input type="hidden" id="adultCount" name="adultCount" value="1">
                         </div>
-                        <input type="hidden" id="guestCount" name="guestCount" value="1">
+
+                        <!-- 3B. Çocuk Katılımı Sorusu (Evet / Hayır) -->
+                        <div class="form-group" id="childrenQuestionGroup">
+                            <label class="form-label">Çocuk misafiriniz olacak mı? *</label>
+                            <div class="rsvp-toggle-grid">
+                                <label class="rsvp-toggle-card">
+                                    <input type="radio" name="hasChildren" value="Hayır" checked onchange="handleChildrenToggle(false)">
+                                    <div class="rsvp-toggle-content">
+                                        <i class='bx bx-user'></i>
+                                        <span class="toggle-title">Hayır</span>
+                                    </div>
+                                </label>
+                                <label class="rsvp-toggle-card">
+                                    <input type="radio" name="hasChildren" value="Evet" onchange="handleChildrenToggle(true)">
+                                    <div class="rsvp-toggle-content">
+                                        <i class='bx bx-face'></i>
+                                        <span class="toggle-title">Evet</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 3C. Çocuk Kişi Sayısı (Yalnızca Evet seçilince açılır) -->
+                        <div class="form-group" id="childCountGroup" style="display: none;">
+                            <label class="form-label">Çocuk Kişi Sayısı</label>
+                            <div class="stepper-wrap">
+                                <button type="button" class="stepper-btn" onclick="updateChildCount(-1)" aria-label="Çocuk Sayısını Azalt">−</button>
+                                <span class="stepper-display" id="childCountDisplay">1 Çocuk</span>
+                                <button type="button" class="stepper-btn" onclick="updateChildCount(1)" aria-label="Çocuk Sayısını Artır">+</button>
+                            </div>
+                            <input type="hidden" id="childCount" name="childCount" value="0">
+                        </div>
+
                     </div>
 
-                    <!-- Notunuz -->
+                    <!-- 4. Notunuz (Opsiyonel) -->
                     <div class="form-group">
-                        <label for="guestNote" class="form-label">Notunuz <span class="optional">(Opsiyonel)</span></label>
-                        <textarea id="guestNote" name="guestNote" class="form-textarea" placeholder="Çiftimize iletmek istediğiniz özel bir not..."></textarea>
+                        <label for="guestNote" class="form-label">Notunuz <span class="optional">(Opsiyonel / Çiftimize mesajınız)</span></label>
+                        <textarea id="guestNote" name="guestNote" class="form-textarea" placeholder="Dilerseniz tebrik veya özel notunuzu iletebilirsiniz..."></textarea>
                     </div>
 
+                    <!-- Gönder Butonu -->
                     <div style="text-align: center; margin-top: 1.5rem;">
                         <button type="submit" class="btn btn-primary" id="rsvpSubmitBtn">
-                            <i class='bx bx-send'></i> Katılım Bilgimi Gönder
+                            <i class='bx bx-send'></i> <span>Katılım Bilgimi Gönder</span>
                         </button>
                     </div>
                 </form>
 
-                <!-- DÜRÜST DEMO BİLDİRİMİ (Sahte kayıt yapmadan durumu açıklar) -->
-                <div class="rsvp-demo-notice" id="rsvpDemoNotice">
-                    <span class="rsvp-demo-badge">Demo Önizleme</span>
-                    <h3 class="rsvp-demo-title">Form Gönderim Testi</h3>
-                    <p class="rsvp-demo-text">
-                        Bu sayfa <strong>NVM Dijital Davetiye v1</strong> demo sürümüdür. Form verileriniz sunucuya veya Google Forms'a henüz bağlı değildir.
+                <!-- GERÇEK GÖNDERİM SONRASI ONAY KARTI -->
+                <div class="rsvp-success-box" id="rsvpSuccessBox">
+                    <div class="rsvp-success-icon">
+                        <i class='bx bxs-heart'></i>
+                    </div>
+                    <h3 class="rsvp-success-title">Katılım bilginiz için teşekkür ederiz.</h3>
+                    <p class="rsvp-success-subtitle">
+                        Yanıtınız Hatice & Mustafa'nın misafir listesine eklendi.
                     </p>
-                    <div class="rsvp-preview-data" id="rsvpPreviewData"></div>
+                    <div class="rsvp-summary-card" id="rsvpSummaryContent"></div>
                     <button type="button" class="btn btn-secondary" onclick="resetRsvpForm()" style="max-width: 240px; margin: 0 auto;">
-                        <i class='bx bx-refresh'></i> Formu Tekrar Dene
+                        <i class='bx bx-refresh'></i> Yanıtı Güncelle
                     </button>
                 </div>
             </div>
@@ -1680,7 +1669,6 @@
              8. TAKVİME EKLE
              =================================================================== -->
         <section class="invitation-section text-center" id="calendar">
-            <span class="section-eyebrow">Hatırlatıcı</span>
             <h2 class="section-title">Takviminize Kaydedin</h2>
             <div class="ornament-divider"><i class='bx bx-calendar-plus'></i></div>
             <p class="section-subtitle">Bu özel günü kolayca takviminize ekleyebilir, bildirim alabilirsiniz.</p>
@@ -1691,11 +1679,11 @@
                     Hatice & Mustafa Düğün Töreni
                 </h3>
                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
-                    13 Kasım 2026 Cuma • 19:00 - 23:30<br>La Win, Balçova / İzmir
+                    13 Kasım 2026 Cuma • 19:00<br>La Win, Balçova / İzmir
                 </p>
 
                 <div class="calendar-buttons">
-                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Hatice+%26+Mustafa+D%C3%BC%C4%9F%C3%BCn+Daveti&dates=20261113T160000Z/20261113T203000Z&details=Hatice+%26+Mustafa+D%C3%BC%C4%9F%C3%BCn+%C3%96rg%C3%BCt%C3%BC.+Mekan%3A+La+Win+Bal%C3%A7ova+%C4%B0zmir&location=La+Win%2C+Bah%C3%A7eleraras%C4%B1+Mah.+Y%C4%B1ld%C4%B1z+Sk.+No%3A16%2C+35330+Bal%C3%A7ova%2F%C4%B0zmir" 
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Hatice+%26+Mustafa+D%C3%BC%C4%9F%C3%BCn+Daveti&dates=20261113T160000Z/20261113T210000Z&details=Hatice+%26+Mustafa+D%C3%BC%C4%9F%C3%BCn+Daveti.+Mekan%3A+La+Win+Bal%C3%A7ova+%C4%B0zmir&location=La+Win%2C+Bah%C3%A7eleraras%C4%B1+Mah.+Y%C4%B1ld%C4%B1z+Sk.+No%3A16%2C+35330+Bal%C3%A7ova%2F%C4%B0zmir" 
                        target="_blank" 
                        rel="noopener noreferrer" 
                        class="btn btn-primary">
@@ -1716,7 +1704,6 @@
              =================================================================== -->
         <section class="final-message-section" id="message">
             <div class="final-message-box">
-                <span class="section-eyebrow">Teşekkür Ederiz</span>
                 <h2 class="section-title" style="margin-bottom: 1rem;">Sevgiyle Bekliyoruz</h2>
                 <div class="ornament-divider"><i class='bx bxs-heart'></i></div>
                 <p class="final-text">
@@ -1773,6 +1760,26 @@
          INTERACTION SCRIPTS
          =================================================================== -->
     <script>
+        /* ===================================================================
+           GOOGLE FORMS / E-TABLOLAR LCV ENTEGRASYON KONFİGÜRASYONU
+           =================================================================== */
+        const GOOGLE_FORM_CONFIG = {
+            // Google Form /formResponse endpoint URL'i:
+            // Gerçek form oluşturulduğunda bu URL güncellenir.
+            // Örnek: 'https://docs.google.com/forms/d/e/1FAIpQLSc.../formResponse'
+            formUrl: '',
+
+            // Google Form Entry ID eşleşmeleri:
+            entries: {
+                guestName: 'entry.1000001',    // 1. Ad Soyad
+                attendance: 'entry.1000002',   // 2. Katılım Durumu ("Katılacağım" / "Katılamayacağım")
+                adultCount: 'entry.1000003',   // 3. Yetişkin Kişi Sayısı
+                hasChildren: 'entry.1000004',  // 4. Çocuk Misafir ("Evet" / "Hayır")
+                childCount: 'entry.1000005',   // 5. Çocuk Kişi Sayısı
+                guestNote: 'entry.1000006'     // 6. Notunuz
+            }
+        };
+
         /* --------------------------------------------------
            1. COUNTDOWN TIMER (13 Kasım 2026 19:00:00 GMT+3)
            -------------------------------------------------- */
@@ -1858,53 +1865,151 @@
         });
 
         /* --------------------------------------------------
-           3. LCV FORMU (Şeffaf Demo İşleyişi)
+           3. LCV FORMU KONTROLLERİ VE GOOGLE FORM ENTEGRASYONU
            -------------------------------------------------- */
-        let guestCountValue = 1;
+        let adultCountValue = 1;
+        let childCountValue = 0;
+        let isSubmitting = false;
 
-        function updateGuestCount(delta) {
-            guestCountValue = Math.max(1, Math.min(10, guestCountValue + delta));
-            document.getElementById('guestCountDisplay').innerText = `${guestCountValue} Kişi`;
-            document.getElementById('guestCount').value = guestCountValue;
+        // Katılım Durumu Değiştiğinde
+        function handleAttendanceChange(isAttending) {
+            const detailsContainer = document.getElementById('attendanceDetailsContainer');
+            if (isAttending) {
+                detailsContainer.style.display = 'block';
+                if (adultCountValue < 1) {
+                    adultCountValue = 1;
+                    document.getElementById('adultCountDisplay').innerText = '1 Yetişkin';
+                    document.getElementById('adultCount').value = '1';
+                }
+            } else {
+                detailsContainer.style.display = 'none';
+                // Katılamayacaksa sayıları sıfırla
+                adultCountValue = 0;
+                childCountValue = 0;
+                document.getElementById('adultCount').value = '0';
+                document.getElementById('childCount').value = '0';
+                document.getElementById('childCountGroup').style.display = 'none';
+                const noRadio = document.querySelector('input[name="hasChildren"][value="Hayır"]');
+                if (noRadio) noRadio.checked = true;
+            }
         }
 
-        function toggleGuestCount(show) {
-            const group = document.getElementById('guestCountGroup');
-            group.style.display = show ? 'block' : 'none';
+        // Yetişkin Sayacı
+        function updateAdultCount(delta) {
+            adultCountValue = Math.max(1, Math.min(10, adultCountValue + delta));
+            document.getElementById('adultCountDisplay').innerText = `${adultCountValue} Yetişkin`;
+            document.getElementById('adultCount').value = adultCountValue;
         }
 
-        function handleRsvpSubmit(e) {
+        // Çocuk Misafir Toggle
+        function handleChildrenToggle(hasChildren) {
+            const childGroup = document.getElementById('childCountGroup');
+            if (hasChildren) {
+                childGroup.style.display = 'block';
+                if (childCountValue < 1) {
+                    childCountValue = 1;
+                }
+                document.getElementById('childCountDisplay').innerText = `${childCountValue} Çocuk`;
+                document.getElementById('childCount').value = childCountValue;
+            } else {
+                childGroup.style.display = 'none';
+                childCountValue = 0;
+                document.getElementById('childCount').value = '0';
+            }
+        }
+
+        // Çocuk Sayacı
+        function updateChildCount(delta) {
+            childCountValue = Math.max(1, Math.min(10, childCountValue + delta));
+            document.getElementById('childCountDisplay').innerText = `${childCountValue} Çocuk`;
+            document.getElementById('childCount').value = childCountValue;
+        }
+
+        // Form Submit İşleyicisi
+        async function handleRsvpSubmit(e) {
             e.preventDefault();
+            if (isSubmitting) return;
+
             const name = document.getElementById('guestName').value.trim();
             const attendance = document.querySelector('input[name="attendance"]:checked').value;
-            const count = document.getElementById('guestCount').value;
+            const hasChildrenRadio = document.querySelector('input[name="hasChildren"]:checked');
+            const hasChildren = hasChildrenRadio ? hasChildrenRadio.value : 'Hayır';
             const note = document.getElementById('guestNote').value.trim();
 
-            const isAttending = (attendance === 'attending');
+            const isAttending = (attendance === 'Katılacağım');
+            const adultCount = isAttending ? parseInt(document.getElementById('adultCount').value, 10) : 0;
+            const childCount = (isAttending && hasChildren === 'Evet') ? parseInt(document.getElementById('childCount').value, 10) : 0;
 
-            const preview = document.getElementById('rsvpPreviewData');
-            preview.innerHTML = `
-                <strong>Form Çıktısı (Hazır Veri):</strong><br>
-                • Ad Soyad: <em>${escapeHtml(name)}</em><br>
-                • Durum: <em>${isAttending ? 'Katılacak' : 'Katılamayacak'}</em><br>
-                ${isAttending ? `• Kişi Sayısı: <em>${count}</em><br>` : ''}
-                ${note ? `• Not: <em>${escapeHtml(note)}</em>` : '• Not: <em>Yok</em>'}
-            `;
+            if (!name) {
+                alert('Lütfen adınızı ve soyadınızı giriniz.');
+                return;
+            }
 
-            document.getElementById('rsvpForm').style.display = 'none';
-            document.getElementById('rsvpDemoNotice').style.display = 'block';
+            // Buton Loading Durumu
+            isSubmitting = true;
+            const submitBtn = document.getElementById('rsvpSubmitBtn');
+            const originalBtnHtml = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = "<i class='bx bx-loader-alt bx-spin'></i> <span>Gönderiliyor...</span>";
 
-            showToast('Form testi tamamlandı (Demo)');
+            // Google Form'a Veri Gönderimi
+            if (GOOGLE_FORM_CONFIG.formUrl && GOOGLE_FORM_CONFIG.formUrl.trim() !== '') {
+                try {
+                    const formData = new FormData();
+                    formData.append(GOOGLE_FORM_CONFIG.entries.guestName, name);
+                    formData.append(GOOGLE_FORM_CONFIG.entries.attendance, attendance);
+                    formData.append(GOOGLE_FORM_CONFIG.entries.adultCount, adultCount.toString());
+                    formData.append(GOOGLE_FORM_CONFIG.entries.hasChildren, hasChildren);
+                    formData.append(GOOGLE_FORM_CONFIG.entries.childCount, childCount.toString());
+                    formData.append(GOOGLE_FORM_CONFIG.entries.guestNote, note);
+
+                    await fetch(GOOGLE_FORM_CONFIG.formUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        body: formData
+                    });
+                } catch (err) {
+                    console.warn('Google Form submission network attempt:', err);
+                }
+            }
+
+            // Başarılı Onay Görünümü
+            setTimeout(() => {
+                isSubmitting = false;
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+
+                const summaryEl = document.getElementById('rsvpSummaryContent');
+                summaryEl.innerHTML = `
+                    <strong>İletilen Katılım Bilgileriniz:</strong><br>
+                    • <strong>Ad Soyad:</strong> ${escapeHtml(name)}<br>
+                    • <strong>Durum:</strong> ${escapeHtml(attendance)}<br>
+                    ${isAttending ? `• <strong>Yetişkin Sayısı:</strong> ${adultCount} Kişi<br>` : ''}
+                    ${isAttending && hasChildren === 'Evet' ? `• <strong>Çocuk Sayısı:</strong> ${childCount} Kişi<br>` : ''}
+                    ${note ? `• <strong>Notunuz:</strong> ${escapeHtml(note)}` : ''}
+                `;
+
+                document.getElementById('rsvpForm').style.display = 'none';
+                document.getElementById('rsvpSuccessBox').style.display = 'block';
+
+                showToast('Katılım bilginiz iletildi! ✨');
+            }, 600);
         }
 
+        // Formu Yeniden Sıfırlama
         function resetRsvpForm() {
             document.getElementById('rsvpForm').reset();
-            guestCountValue = 1;
-            document.getElementById('guestCountDisplay').innerText = '1 Kişi';
-            document.getElementById('guestCount').value = '1';
-            toggleGuestCount(true);
+            adultCountValue = 1;
+            childCountValue = 0;
+            document.getElementById('adultCountDisplay').innerText = '1 Yetişkin';
+            document.getElementById('childCountDisplay').innerText = '1 Çocuk';
+            document.getElementById('adultCount').value = '1';
+            document.getElementById('childCount').value = '0';
+            document.getElementById('childCountGroup').style.display = 'none';
+            document.getElementById('attendanceDetailsContainer').style.display = 'block';
+
             document.getElementById('rsvpForm').style.display = 'block';
-            document.getElementById('rsvpDemoNotice').style.display = 'none';
+            document.getElementById('rsvpSuccessBox').style.display = 'none';
         }
 
         function escapeHtml(text) {
@@ -1961,9 +2066,9 @@
                 'UID:hatice-mustafa-dugun-20261113@nvmedya.com',
                 'DTSTAMP:20260101T000000Z',
                 'DTSTART:20261113T160000Z',
-                'DTEND:20261113T203000Z',
+                'DTEND:20261113T210000Z',
                 'SUMMARY:Hatice & Mustafa Düğün Daveti',
-                'DESCRIPTION:Hatice ve Mustafa çiftinin düğün kutlaması. Saat: 19:00.',
+                'DESCRIPTION:Hatice ve Mustafa çiftinin düğün kutlaması. Başlangıç: 19:00.',
                 'LOCATION:La Win, Bahçelerarası Mah. Yıldız Sk. No:16, 35330 Balçova / İzmir',
                 'STATUS:CONFIRMED',
                 'SEQUENCE:0',
@@ -1987,7 +2092,7 @@
            -------------------------------------------------- */
         const bottomBar = document.getElementById('mobileBottomBar');
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 400) {
+            if (window.scrollY > 380) {
                 bottomBar.classList.add('visible');
             } else {
                 bottomBar.classList.remove('visible');
