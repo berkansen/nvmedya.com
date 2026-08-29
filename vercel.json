@@ -29,7 +29,7 @@
     },
     {
       "source": "/blog/:slug",
-      "destination": "/api/blog"
+      "destination": "/blog-detay"
     },
     {
       "source": "/davetiye-demo",
