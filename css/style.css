@@ -204,8 +204,31 @@ header {
 
 .nav-toggle {
     display: none;
-    font-size: 1.8rem;
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-size: 2rem;
     cursor: pointer;
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: background-color var(--transition), color var(--transition);
+    z-index: 1001;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-toggle:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.nav-toggle:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
 }
 
 /* Hero Section */
@@ -332,7 +355,7 @@ header {
 
 /* Marquee / Clients */
 .clients {
-    padding: 3rem 0;
+    padding: 3.5rem 0;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.02);
 }
@@ -341,6 +364,9 @@ header {
     display: flex;
     overflow: hidden;
     user-select: none;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
 }
 
 .marquee-content {
@@ -348,7 +374,6 @@ header {
     overflow: hidden;
     user-select: none;
     width: 100%;
-    /* No animation on the container itself */
 }
 
 .marquee-group {
@@ -359,7 +384,6 @@ header {
     gap: 4rem;
     min-width: 100%;
     padding-right: 4rem;
-    /* Match gap for seamless loop */
     animation: scroll 30s linear infinite;
 }
 
@@ -367,7 +391,11 @@ header {
     animation-play-state: paused;
 }
 
-/* Remove old padding note */
+@media (prefers-reduced-motion: reduce) {
+    .marquee-group {
+        animation-play-state: paused !important;
+    }
+}
 
 .client-logo {
     font-weight: 700;
@@ -383,7 +411,6 @@ header {
 
     to {
         transform: translateX(-100%);
-        /* Move the entire group width */
     }
 }
 
@@ -519,23 +546,106 @@ header {
 /* Responsive */
 @media (max-width: 768px) {
     .nav-toggle {
-        display: block;
+        display: flex;
     }
 
     .nav-list {
         position: fixed;
         top: var(--header-height);
-        right: -100%;
+        left: 0;
+        right: 0;
         width: 100%;
         height: calc(100vh - var(--header-height));
-        background: var(--bg-color);
+        background: rgba(5, 5, 5, 0.98);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         flex-direction: column;
-        justify-content: center;
-        transition: 0.4s;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 3rem 1.5rem;
+        gap: 1.75rem;
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, visibility 0.3s;
+        overflow-y: auto;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        z-index: 1000;
     }
 
     .nav-list.show {
-        right: 0;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-link {
+        font-size: 1.25rem;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        display: inline-block;
+        color: rgba(255, 255, 255, 0.85);
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+        color: var(--accent-color);
+    }
+
+    /* Mobile References / Client Logos */
+    .clients {
+        padding: 2.5rem 0 2rem;
+    }
+
+    .clients .section-header.center {
+        margin-bottom: 1.5rem;
+    }
+
+    .marquee-wrapper {
+        mask-image: none;
+        -webkit-mask-image: none;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .marquee-content {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-x;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+        width: 100%;
+        cursor: grab;
+    }
+
+    .marquee-content::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+    .marquee-group {
+        animation: none !important;
+        min-width: max-content;
+        gap: 2rem;
+        padding: 0.5rem 1rem;
+        scroll-snap-type: x proximity;
+    }
+
+    .marquee-group[aria-hidden="true"],
+    .marquee-clone {
+        display: none !important;
+    }
+
+    .client-logo-img {
+        flex: 0 0 auto;
+        width: auto;
+        max-width: 140px;
+        height: 60px;
+        max-height: 60px;
+        object-fit: contain;
+        scroll-snap-align: center;
+        opacity: 0.9;
+        filter: none;
     }
 
     .hero-title {
