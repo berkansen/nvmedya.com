@@ -617,6 +617,7 @@ header {
         -ms-overflow-style: none; /* IE/Edge */
         width: 100%;
         cursor: grab;
+        scroll-behavior: auto;
     }
 
     .marquee-content::-webkit-scrollbar {
@@ -628,7 +629,6 @@ header {
         min-width: max-content;
         gap: 2rem;
         padding: 0.5rem 1rem;
-        scroll-snap-type: x proximity;
     }
 
     .marquee-group[aria-hidden="true"],
@@ -643,7 +643,6 @@ header {
         height: 60px;
         max-height: 60px;
         object-fit: contain;
-        scroll-snap-align: center;
         opacity: 0.9;
         filter: none;
     }

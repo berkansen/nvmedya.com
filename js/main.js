@@ -100,7 +100,103 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
-    /* --- Marquee Duplication --- */
+    /* --- Marquee Duplication & Mobile Interactive Auto-Scroll --- */
+    function initMobileAutoScroll() {
+        const marquee = document.getElementById('marquee');
+        if (!marquee) return;
+
+        let autoScrollRaf = null;
+        let isInteracting = false;
+        let isPaused = false;
+        let resumeTimeout = null;
+        const scrollSpeed = 0.5; // ~30px per second for calm, readable auto-scroll
+
+        function pauseAutoScroll() {
+            isPaused = true;
+            if (resumeTimeout) {
+                clearTimeout(resumeTimeout);
+                resumeTimeout = null;
+            }
+        }
+
+        function scheduleResume(delay = 3000) {
+            if (resumeTimeout) {
+                clearTimeout(resumeTimeout);
+            }
+            resumeTimeout = setTimeout(() => {
+                if (!isInteracting && !document.hidden && window.innerWidth <= 768) {
+                    isPaused = false;
+                }
+            }, delay);
+        }
+
+        function startInteraction() {
+            isInteracting = true;
+            pauseAutoScroll();
+        }
+
+        function endInteraction() {
+            isInteracting = false;
+            scheduleResume(3000);
+        }
+
+        // Touch interactions
+        marquee.addEventListener('touchstart', startInteraction, { passive: true });
+        marquee.addEventListener('touchend', endInteraction, { passive: true });
+        marquee.addEventListener('touchcancel', endInteraction, { passive: true });
+
+        // Pointer interactions (covers mouse drag/touch on modern devices)
+        marquee.addEventListener('pointerdown', startInteraction, { passive: true });
+        marquee.addEventListener('pointerup', endInteraction, { passive: true });
+        marquee.addEventListener('pointercancel', endInteraction, { passive: true });
+
+        // Manual scroll event
+        marquee.addEventListener('scroll', () => {
+            if (isInteracting) {
+                pauseAutoScroll();
+            }
+        }, { passive: true });
+
+        // Page visibility change
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                pauseAutoScroll();
+            } else if (window.innerWidth <= 768) {
+                scheduleResume(1000);
+            }
+        });
+
+        // Frame loop
+        function tick() {
+            if (window.innerWidth <= 768 && !isPaused && !isInteracting) {
+                const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                if (!prefersReducedMotion && !document.hidden) {
+                    const maxScroll = marquee.scrollWidth - marquee.clientWidth;
+                    if (maxScroll > 2) {
+                        if (marquee.scrollLeft >= maxScroll - 1) {
+                            marquee.scrollLeft = 0;
+                        } else {
+                            marquee.scrollLeft += scrollSpeed;
+                        }
+                    }
+                }
+            }
+            autoScrollRaf = requestAnimationFrame(tick);
+        }
+
+        autoScrollRaf = requestAnimationFrame(tick);
+
+        // Window resize handler
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                pauseAutoScroll();
+                marquee.scrollLeft = 0;
+            } else if (window.innerWidth <= 768 && !isInteracting) {
+                scheduleResume(1000);
+            }
+        });
+    }
+
     function initMarquee() {
         const marquee = document.getElementById('marquee');
         if (marquee && !marquee.querySelector('.marquee-group')) {
@@ -124,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 marquee.appendChild(scrollGroupClone);
             }
         }
+        initMobileAutoScroll();
     }
 
     if (document.readyState === 'complete') {
