@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', () => {
             navToggleIcon.className = 'bx bx-x';
         }
         document.body.classList.add('nav-open');
-        document.body.style.overflow = 'hidden';
     }
 
     function closeMenu() {
@@ -26,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
             navToggleIcon.className = 'bx bx-menu';
         }
         document.body.classList.remove('nav-open');
-        document.body.style.overflow = '';
     }
 
     function toggleMenu() {
