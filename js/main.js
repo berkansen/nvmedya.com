@@ -102,12 +102,15 @@ document.addEventListener('DOMContentLoaded', () => {
     function initMobileAutoScroll() {
         const marquee = document.getElementById('marquee');
         if (!marquee) return;
+        if (marquee.dataset.autoscrollInit === 'true') return;
+        marquee.dataset.autoscrollInit = 'true';
 
         let autoScrollRaf = null;
         let isInteracting = false;
         let isPaused = false;
         let resumeTimeout = null;
-        const scrollSpeed = 0.5; // ~30px per second for calm, readable auto-scroll
+        let currentScrollPos = marquee.scrollLeft || 0;
+        const scrollSpeed = 0.6; // ~36px per second for smooth, readable auto-scroll
 
         function pauseAutoScroll() {
             isPaused = true;
@@ -123,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             resumeTimeout = setTimeout(() => {
                 if (!isInteracting && !document.hidden && window.innerWidth <= 768) {
+                    currentScrollPos = marquee.scrollLeft;
                     isPaused = false;
                 }
             }, delay);
@@ -135,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function endInteraction() {
             isInteracting = false;
+            currentScrollPos = marquee.scrollLeft;
             scheduleResume(3000);
         }
 
@@ -148,10 +153,10 @@ document.addEventListener('DOMContentLoaded', () => {
         marquee.addEventListener('pointerup', endInteraction, { passive: true });
         marquee.addEventListener('pointercancel', endInteraction, { passive: true });
 
-        // Manual scroll event
+        // Manual scroll event (syncs position during user swipe/scroll & inertia)
         marquee.addEventListener('scroll', () => {
-            if (isInteracting) {
-                pauseAutoScroll();
+            if (isInteracting || isPaused) {
+                currentScrollPos = marquee.scrollLeft;
             }
         }, { passive: true });
 
@@ -160,6 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (document.hidden) {
                 pauseAutoScroll();
             } else if (window.innerWidth <= 768) {
+                currentScrollPos = marquee.scrollLeft;
                 scheduleResume(1000);
             }
         });
@@ -171,10 +177,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!prefersReducedMotion && !document.hidden) {
                     const maxScroll = marquee.scrollWidth - marquee.clientWidth;
                     if (maxScroll > 2) {
-                        if (marquee.scrollLeft >= maxScroll - 1) {
+                        currentScrollPos += scrollSpeed;
+                        if (currentScrollPos >= maxScroll - 1) {
+                            currentScrollPos = 0;
                             marquee.scrollLeft = 0;
                         } else {
-                            marquee.scrollLeft += scrollSpeed;
+                            marquee.scrollLeft = currentScrollPos;
                         }
                     }
                 }
@@ -189,7 +197,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.innerWidth > 768) {
                 pauseAutoScroll();
                 marquee.scrollLeft = 0;
+                currentScrollPos = 0;
             } else if (window.innerWidth <= 768 && !isInteracting) {
+                currentScrollPos = marquee.scrollLeft;
                 scheduleResume(1000);
             }
         });
@@ -221,9 +231,6 @@ document.addEventListener('DOMContentLoaded', () => {
         initMobileAutoScroll();
     }
 
-    if (document.readyState === 'complete') {
-        initMarquee();
-    } else {
-        window.addEventListener('load', initMarquee);
-    }
+    initMarquee();
 });
+
