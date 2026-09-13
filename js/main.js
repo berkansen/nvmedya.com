@@ -112,6 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentScrollPos = marquee.scrollLeft || 0;
         const scrollSpeed = 0.6; // ~36px per second for smooth, readable auto-scroll
 
+        function getFirstGroupWidth() {
+            const firstGroup = marquee.querySelector('.marquee-group:not(.marquee-clone)') || marquee.querySelector('.marquee-group');
+            if (!firstGroup) return 0;
+            return firstGroup.offsetWidth || firstGroup.getBoundingClientRect().width || 0;
+        }
+
         function pauseAutoScroll() {
             isPaused = true;
             if (resumeTimeout) {
@@ -139,6 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function endInteraction() {
             isInteracting = false;
+            const firstGroupWidth = getFirstGroupWidth();
+            if (firstGroupWidth > 0 && marquee.scrollLeft >= firstGroupWidth) {
+                marquee.scrollLeft -= firstGroupWidth;
+            }
             currentScrollPos = marquee.scrollLeft;
             scheduleResume(3000);
         }
@@ -170,17 +180,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Frame loop
+        // Frame loop for seamless infinite scroll
         function tick() {
             if (window.innerWidth <= 768 && !isPaused && !isInteracting) {
                 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                 if (!prefersReducedMotion && !document.hidden) {
-                    const maxScroll = marquee.scrollWidth - marquee.clientWidth;
-                    if (maxScroll > 2) {
+                    const firstGroupWidth = getFirstGroupWidth();
+                    if (firstGroupWidth > 0) {
                         currentScrollPos += scrollSpeed;
-                        if (currentScrollPos >= maxScroll - 1) {
-                            currentScrollPos = 0;
-                            marquee.scrollLeft = 0;
+                        if (currentScrollPos >= firstGroupWidth) {
+                            currentScrollPos -= firstGroupWidth;
+                            marquee.scrollLeft = currentScrollPos;
                         } else {
                             marquee.scrollLeft = currentScrollPos;
                         }

@@ -642,12 +642,11 @@ header {
         min-width: max-content;
         gap: 2rem;
         padding: 0.5rem 1rem;
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
     }
 
-    .marquee-group[aria-hidden="true"],
-    .marquee-clone {
-        display: none !important;
-    }
 
     .client-logo-img {
         flex: 0 0 auto;
