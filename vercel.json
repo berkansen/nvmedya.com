@@ -28,6 +28,34 @@
       "destination": "/projeler/ufuk-sengun-sigorta.html"
     },
     {
+      "source": "/projeler/kpnp-turkiye",
+      "destination": "/projeler/kpnp-turkiye.html"
+    },
+    {
+      "source": "/projeler/serhat-spor",
+      "destination": "/projeler/serhat-spor.html"
+    },
+    {
+      "source": "/projeler/iklim-davetiye",
+      "destination": "/projeler/iklim-davetiye.html"
+    },
+    {
+      "source": "/projeler/panpan-boya-deposu",
+      "destination": "/projeler/panpan-boya-deposu.html"
+    },
+    {
+      "source": "/projeler/db-beauty-headspa",
+      "destination": "/projeler/db-beauty-headspa.html"
+    },
+    {
+      "source": "/projeler/ege-otomobil-spor-kulubu",
+      "destination": "/projeler/ege-otomobil-spor-kulubu.html"
+    },
+    {
+      "source": "/projeler/ufuk-sengun-tarim",
+      "destination": "/projeler/ufuk-sengun-tarim.html"
+    },
+    {
       "source": "/blog/:slug",
       "destination": "/blog-detay"
     },

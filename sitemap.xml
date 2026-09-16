@@ -17,11 +17,13 @@
   </url>
   <url>
     <loc>https://www.nvmedya.com/projeler</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.nvmedya.com/projeler/hepsert-spor-kulubu</loc>
+    <loc>https://www.nvmedya.com/projeler/kpnp-turkiye</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -31,7 +33,30 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.nvmedya.com/projeler/serhat-spor</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nvmedya.com/projeler/hepsert-spor-kulubu</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nvmedya.com/projeler/iklim-davetiye</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.nvmedya.com/projeler/ufuk-sengun-yapi</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nvmedya.com/projeler/panpan-boya-deposu</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -41,7 +66,25 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.nvmedya.com/projeler/db-beauty-headspa</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.nvmedya.com/projeler/ufuk-sengun-sigorta</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nvmedya.com/projeler/ege-otomobil-spor-kulubu</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.nvmedya.com/projeler/ufuk-sengun-tarim</loc>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

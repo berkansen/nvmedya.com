@@ -4,18 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ufuk Şengün Yapı Projesi | Nisan Vitrini Media</title>
-    <meta name="description" content="Ufuk Şengün Yapı için Nisan Vitrini Media tarafından yürütülen sosyal medya, dikey video, Meta reklamları, logo, Panpan Usta sanal marka elçisi ve jingle çalışmalarını inceleyin.">
+    <title>Panpan Boya Deposu Projesi | Nisan Vitrini Media</title>
+    <meta name="description" content="Panpan Boya Deposu için Nisan Vitrini Media tarafından yürütülen sosyal medya, Panpan Usta sanal marka elçisi, jingle ve marka dönüşüm sürecini inceleyin.">
 
-    <link rel="canonical" href="https://www.nvmedya.com/projeler/ufuk-sengun-yapi">
+    <link rel="canonical" href="https://www.nvmedya.com/projeler/panpan-boya-deposu">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Ufuk Şengün Yapı Projesi | Nisan Vitrini Media">
-    <meta property="og:description" content="Ufuk Şengün Yapı için yürütülen sosyal medya, dikey video, Meta reklamları, Panpan Usta sanal marka elçisi ve jingle projesinin detayları.">
-    <meta property="og:url" content="https://www.nvmedya.com/projeler/ufuk-sengun-yapi">
+    <meta property="og:title" content="Panpan Boya Deposu Projesi | Nisan Vitrini Media">
+    <meta property="og:description" content="Panpan Boya Deposu için geliştirilen sosyal medya, Panpan Usta sanal marka elçisi, jingle ve Ufuk Şengün Yapı marka dönüşüm hikayesi.">
+    <meta property="og:url" content="https://www.nvmedya.com/projeler/panpan-boya-deposu">
     <meta property="og:type" content="article">
-    <meta property="og:image" content="https://ik.imagekit.io/nvmedya/NVM-Proje/panpanusta-kapak-01.png">
+    <meta property="og:image" content="https://ik.imagekit.io/nvmedya/referanslar/panpan-logo.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -160,52 +160,29 @@
             background: rgba(239, 120, 26, 0.08);
         }
 
-        /* Panpan Editorial Two-Layer Hero Frame */
-        .panpan-hero-frame {
-            position: relative;
+        .case-study-hero-img-wrapper {
             width: 100%;
             max-width: 900px;
-            height: 480px;
             margin: 0 auto;
             border-radius: var(--border-radius);
             overflow: hidden;
-            border: 1px solid rgba(239, 120, 26, 0.25);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-            background: #0b0b0b;
-        }
-
-        .panpan-bg-layer {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            overflow: hidden;
-        }
-
-        .panpan-bg-layer img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 60%;
-            filter: blur(16px) brightness(0.35);
-            transform: scale(1.1);
-        }
-
-        .panpan-fg-layer {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            background: radial-gradient(circle at center, rgba(239, 120, 26, 0.08) 0%, #0d0d0d 100%);
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.25rem 0;
+            min-height: 360px;
+            padding: 3.5rem 2rem;
         }
 
-        .panpan-fg-layer img {
-            max-width: 100%;
-            height: 100%;
+        .case-study-hero-img-wrapper img {
+            max-width: 320px;
+            max-height: 140px;
+            width: auto;
+            height: auto;
             object-fit: contain;
-            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.7));
+            filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.6));
             display: block;
         }
 
@@ -250,16 +227,15 @@
             margin-bottom: 1.25rem;
         }
 
-        /* 7-Card Approach Grid Layout (4 + 3 Balanced Row Distribution) */
-        .approach-grid-7 {
+        /* Approach Grid (6 Cards Layout) */
+        .approach-grid-6 {
             display: grid;
-            grid-template-columns: repeat(12, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
             margin-top: 2rem;
         }
 
-        .approach-card-7 {
-            grid-column: span 3;
+        .approach-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
             border: 1px solid rgba(255, 255, 255, 0.06);
@@ -267,13 +243,7 @@
             transition: var(--transition);
         }
 
-        .approach-card-7:nth-child(5),
-        .approach-card-7:nth-child(6),
-        .approach-card-7:nth-child(7) {
-            grid-column: span 4;
-        }
-
-        .approach-card-7:hover {
+        .approach-card:hover {
             border-color: rgba(239, 120, 26, 0.3);
             transform: translateY(-3px);
         }
@@ -297,16 +267,16 @@
             line-height: 1.6;
         }
 
-        /* Panpan Spotlight Box (Compact) */
-        .panpan-spotlight {
-            background: linear-gradient(135deg, rgba(239, 120, 26, 0.08) 0%, rgba(18, 18, 18, 0.9) 100%);
-            border: 1px solid rgba(239, 120, 26, 0.25);
+        /* Transformation Spotlight Box */
+        .transformation-spotlight {
+            background: linear-gradient(135deg, rgba(239, 120, 26, 0.1) 0%, rgba(18, 18, 18, 0.95) 100%);
+            border: 1px solid rgba(239, 120, 26, 0.3);
             border-radius: var(--border-radius);
-            padding: 2.25rem 2rem;
+            padding: 2.5rem 2rem;
             margin-top: 1rem;
         }
 
-        .panpan-badge {
+        .transformation-badge {
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
@@ -319,32 +289,32 @@
             margin-bottom: 1rem;
         }
 
-        .panpan-title {
+        .transformation-title {
             font-size: 1.6rem;
             font-weight: 700;
             color: var(--text-main);
             margin-bottom: 0.85rem;
         }
 
-        .panpan-text {
+        .transformation-text {
             color: var(--text-muted);
             font-size: 1.05rem;
             line-height: 1.7;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.5rem;
         }
 
-        .panpan-link {
+        .transformation-link {
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
+            gap: 0.5rem;
             color: var(--primary-color);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             text-decoration: none;
             transition: var(--transition);
         }
 
-        .panpan-link:hover {
+        .transformation-link:hover {
             color: #fff;
             transform: translateX(4px);
         }
@@ -366,7 +336,7 @@
         }
 
         .case-result-value {
-            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 700;
             color: var(--primary-color);
             line-height: 1.1;
@@ -379,96 +349,14 @@
             font-weight: 500;
         }
 
-        /* Compact Video Facade Card */
-        .panpan-facade-card {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            background: linear-gradient(135deg, rgba(239, 120, 26, 0.08) 0%, rgba(18, 18, 18, 0.95) 100%);
-            border: 1px solid rgba(239, 120, 26, 0.25);
-            border-radius: var(--border-radius);
-            padding: 1.5rem 2rem;
-            max-width: 860px;
-            margin: 2rem auto 0;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-        }
-
-        .panpan-facade-thumb {
-            flex: 0 0 160px;
-            height: 213px;
-            border-radius: calc(var(--border-radius) - 4px);
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            background: rgba(0, 0, 0, 0.5);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .panpan-facade-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 65%;
-            display: block;
-        }
-
-        .panpan-facade-content {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .panpan-facade-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid rgba(255, 0, 0, 0.25);
-            color: #fff;
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-
-        .panpan-facade-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-main);
-            margin-bottom: 0.5rem;
-        }
-
-        .panpan-facade-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 1.25rem;
-        }
-
-        .panpan-facade-btn {
-            padding: 0.65rem 1.5rem;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
         @media screen and (max-width: 992px) {
-            .approach-grid-7 {
+            .approach-grid-6 {
                 grid-template-columns: repeat(2, 1fr);
-            }
-
-            .approach-card-7,
-            .approach-card-7:nth-child(5),
-            .approach-card-7:nth-child(6),
-            .approach-card-7:nth-child(7) {
-                grid-column: span 1;
             }
         }
 
         @media screen and (max-width: 768px) {
-            .approach-grid-7 {
+            .approach-grid-6 {
                 grid-template-columns: 1fr;
             }
 
@@ -481,30 +369,13 @@
                 padding: 3rem 0;
             }
 
-            .panpan-spotlight {
-                padding: 1.5rem;
+            .transformation-spotlight {
+                padding: 1.75rem 1.25rem;
             }
 
-            .panpan-hero-frame {
-                height: 380px;
-            }
-        }
-
-        @media screen and (max-width: 640px) {
-            .panpan-facade-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 1.5rem;
-            }
-
-            .panpan-facade-thumb {
-                flex: 0 0 auto;
-                width: 150px;
-                height: 200px;
-            }
-
-            .panpan-facade-content {
-                align-items: center;
+            .case-study-hero-img-wrapper {
+                min-height: 240px;
+                padding: 2.5rem 1.5rem;
             }
         }
     </style>
@@ -516,20 +387,21 @@
       "@graph": [
         {
           "@type": "WebPage",
-          "@id": "https://www.nvmedya.com/projeler/ufuk-sengun-yapi#webpage",
-          "url": "https://www.nvmedya.com/projeler/ufuk-sengun-yapi",
-          "name": "Ufuk Şengün Yapı Projesi | Nisan Vitrini Media",
-          "description": "Ufuk Şengün Yapı için Nisan Vitrini Media tarafından yürütülen sosyal medya, dikey video, Meta reklamları, logo, Panpan Usta sanal marka elçisi ve jingle çalışmalarının detayları.",
-          "publisher": {
+          "@id": "https://www.nvmedya.com/projeler/panpan-boya-deposu#webpage",
+          "url": "https://www.nvmedya.com/projeler/panpan-boya-deposu",
+          "name": "Panpan Boya Deposu Projesi | Nisan Vitrini Media",
+          "description": "Panpan Boya Deposu için yürütülen sosyal medya, Panpan Usta sanal marka elçisi, jingle ve Ufuk Şengün Yapı marka dönüşüm süreci.",
+          "provider": {
             "@type": "Organization",
             "@id": "https://www.nvmedya.com/#organization",
             "name": "Nisan Vitrini Media",
+            "alternateName": "NVM",
             "url": "https://www.nvmedya.com/"
           }
         },
         {
           "@type": "BreadcrumbList",
-          "@id": "https://www.nvmedya.com/projeler/ufuk-sengun-yapi#breadcrumb",
+          "@id": "https://www.nvmedya.com/projeler/panpan-boya-deposu#breadcrumb",
           "itemListElement": [
             {
               "@type": "ListItem",
@@ -546,7 +418,7 @@
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "Ufuk Şengün Yapı"
+              "name": "Panpan Boya Deposu"
             }
           ]
         }
@@ -581,200 +453,137 @@
         <!-- Hero Section -->
         <section class="case-study-hero">
             <div class="container">
-                <!-- Breadcrumb -->
                 <nav aria-label="Breadcrumb" class="breadcrumb-nav">
                     <ul class="breadcrumb-list">
                         <li><a href="/">Ana Sayfa</a></li>
                         <li><a href="/projeler">Projeler</a></li>
-                        <li class="active" aria-current="page">Ufuk Şengün Yapı</li>
+                        <li class="active" aria-current="page">Panpan Boya Deposu</li>
                     </ul>
                 </nav>
 
                 <div class="case-study-meta-bar">
-                    <span class="case-study-eyebrow">PROJE DETAYI</span>
-                    <span class="case-study-sector"><i class='bx bx-building-house'></i> Yapı Sektörü</span>
+                    <span class="case-study-eyebrow">MARKA DÖNÜŞÜMÜ & YAPI</span>
+                    <span class="case-study-sector"><i class='bx bx-building-house' aria-hidden="true"></i> Yapı Malzemeleri & Marka Dönüşümü</span>
                 </div>
 
-                <h1 class="case-study-title">Ufuk Şengün Yapı</h1>
-
+                <h1 class="case-study-title">Panpan Boya Deposu</h1>
                 <p class="case-study-lead">
-                    Ufuk Şengün Yapı için sosyal medya yönetimi, dikey video, Meta reklamları, dijital iletişim ve logo tasarımını; Panpan Usta sanal marka elçisi ve projeye özel jingle üretimiyle aynı marka sistemi içinde bir araya getirdik.
+                    Ufuk Şengün Yapı'nın eski marka adı olan Panpan Boya Deposu için dijital iletişimle başlayıp, sanal marka elçisi Panpan Usta ve jingle ile Ufuk Şengün Yapı markasının doğuşuna uzanan dönüşüm sürecini yönettik.
                 </p>
 
                 <div class="case-study-tags">
-                    <a href="/hizmetler/sosyal-medya-yonetimi" class="case-study-tag-link">Sosyal Medya</a>
-                    <a href="/hizmetler/reels-dikey-video-produksiyonu" class="case-study-tag-link">Dikey Video</a>
-                    <a href="/hizmetler/dijital-reklam-yonetimi" class="case-study-tag-link">Meta Reklamları</a>
+                    <a href="/hizmetler/sosyal-medya-yonetimi" class="case-study-tag-link">Sosyal Medya Yönetimi</a>
                     <a href="/hizmetler/dijital-iletisim-marka-stratejisi" class="case-study-tag-link">Dijital İletişim</a>
-                    <a href="/hizmetler/marka-kimligi-grafik-tasarim" class="case-study-tag-link">Logo Tasarımı</a>
+                    <a href="/hizmetler/dijital-reklam-yonetimi" class="case-study-tag-link">Meta Reklamları</a>
+                    <a href="/hizmetler/reels-dikey-video-produksiyonu" class="case-study-tag-link">Dikey Video</a>
                     <a href="/hizmetler/sanal-marka-elcisi-ai-kreatif-cozumler" class="case-study-tag-link">Sanal Marka Elçisi</a>
                     <a href="/hizmetler/jingle-muzik-tasarimi" class="case-study-tag-link">Jingle</a>
                 </div>
 
-                <div class="panpan-hero-frame">
-                    <div class="panpan-bg-layer" aria-hidden="true">
-                        <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/panpanusta-kapak-01.png" alt="" loading="eager">
-                    </div>
-                    <div class="panpan-fg-layer">
-                        <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/panpanusta-kapak-01.png" 
-                             alt="Ufuk Şengün Yapı için geliştirilen Panpan Usta sanal marka elçisi" 
-                             width="600" height="800" loading="eager">
-                    </div>
+                <div class="case-study-hero-img-wrapper">
+                    <img src="https://ik.imagekit.io/nvmedya/referanslar/panpan-logo.png" 
+                         alt="Panpan Boya Deposu resmi marka logosu" 
+                         width="320" height="140" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- Başlangıç Noktası Section -->
+        <!-- Proje Özeti & Marka Dönüşümü Section -->
         <section class="case-section alt-bg">
             <div class="container" style="max-width: 860px;">
-                <h2 class="case-section-title">Başlangıç Noktası</h2>
+                <h2 class="case-section-title">Eski Markadan Yeni Marka Dünyasına</h2>
                 <div class="case-text-block">
                     <p>
-                        Ufuk Şengün Yapı için sosyal medya, video, reklam ve görsel kimlik çalışmalarını birbirinden bağımsız işler olarak değil, aynı marka iletişim sisteminin parçaları olarak ele alan bir yapı kurgulandı.
+                        Panpan Boya Deposu, yapı malzemeleri ve boya sektöründe bölgesel ölçekte hizmet veren bir işletmeydi. NVM ile başlayan ilk dijital iletişim çalışmalarında hedef; sektörel içeriklerin klasik ve monoton yapısını kırarak ilgi çekici, samimi ve akılda kalıcı bir görsel dünya kurmaktı.
                     </p>
                     <p>
-                        Bu sistem, klasik dijital iletişim çalışmalarının yanında Panpan Usta sanal marka elçisi ve markaya özel jingle gibi ayırt edici kreatif bileşenlerle desteklendi.
+                        Bu süreçte geliştirilen yapay zeka destekli sanal marka elçisi <strong>Panpan Usta</strong> ve markaya özel bestelenen <strong>Panpan Usta Tema Müziği</strong> jingle çalışması, markanın dijitaldeki görünürlüğünü hızla artırdı. Elde edilen güçlü kitle ve marka bilinirliği, daha geniş kapsamlı bir kurumsal yapıya geçiş için zemin hazırladı ve marka <strong>Ufuk Şengün Yapı</strong> adıyla yeniden konumlandırıldı.
                     </p>
                 </div>
             </div>
         </section>
 
-        <!-- NVM Ne Yaptı Section (7 Cards Grid: 4 + 3 Balanced Row Distribution) -->
+        <!-- NVM Ne Yaptı Section -->
         <section class="case-section">
             <div class="container">
                 <div style="max-width: 860px; margin-bottom: 2rem;">
                     <h2 class="case-section-title">NVM Ne Yaptı?</h2>
                     <p class="case-text-block">
-                        Proje kapsamında içerik üretimi, sosyal medya yönetimi, reklam, görsel kimlik ve kreatif marka çalışmaları bütünleşik bir iletişim sistemi içinde yönetildi.
+                        Dijital iletişimden karakter ve ses kimliğine uzanan çok katmanlı kreatif üretim gerçekleştirdik.
                     </p>
                 </div>
 
-                <div class="approach-grid-7">
-                    <div class="approach-card-7">
+                <div class="approach-grid-6">
+                    <div class="approach-card">
                         <i class='bx bx-calendar-event approach-icon' aria-hidden="true"></i>
                         <h3 class="approach-title">Sosyal Medya Yönetimi</h3>
-                        <p class="approach-desc">İçerik planlaması, yayın düzeni ve marka iletişimi sürdürülebilir bir sosyal medya sistemi içinde yönetildi.</p>
+                        <p class="approach-desc">Boya ve yapı sektörüne özel bilgilendirici, pratik ve eğlenceli yayın planlaması ve hesap yönetimi.</p>
                     </div>
-                    <div class="approach-card-7">
-                        <i class='bx bx-video-plus approach-icon' aria-hidden="true"></i>
-                        <h3 class="approach-title">Dikey Video Prodüksiyon</h3>
-                        <p class="approach-desc">Markanın iletişim konuları kısa, ritmik ve sosyal medya kullanımına uygun dikey video formatlarına dönüştürüldü.</p>
+                    <div class="approach-card">
+                        <i class='bx bx-conversation approach-icon' aria-hidden="true"></i>
+                        <h3 class="approach-title">Dijital İletişim</h3>
+                        <p class="approach-desc">Yapı ustaları ve ev sahipleriyle bağ kuran samimi, güven veren ve çözüm odaklı iletişim dili.</p>
                     </div>
-                    <div class="approach-card-7">
+                    <div class="approach-card">
                         <i class='bx bx-target-lock approach-icon' aria-hidden="true"></i>
                         <h3 class="approach-title">Meta Reklamları</h3>
-                        <p class="approach-desc">Markanın dijital iletişimini destekleyen hedef odaklı Meta reklam çalışmaları yürütüldü.</p>
+                        <p class="approach-desc">Bölgesel hedefleme ve sektörel kitle segmentasyonuyla desteklenen Meta reklam stratejisi.</p>
                     </div>
-                    <div class="approach-card-7">
-                        <i class='bx bx-chat approach-icon' aria-hidden="true"></i>
-                        <h3 class="approach-title">Dijital İletişim</h3>
-                        <p class="approach-desc">İçerik, video, reklam ve kreatif marka dili aynı iletişim sistemi içinde bütünleştirildi.</p>
+                    <div class="approach-card">
+                        <i class='bx bx-video-plus approach-icon' aria-hidden="true"></i>
+                        <h3 class="approach-title">Dikey Video</h3>
+                        <p class="approach-desc">Ürün uygulamaları ve usta tavsiyelerini ritmik video diliyle anlatan dinamik Reels prodüksiyonları.</p>
                     </div>
-                    <div class="approach-card-7">
-                        <i class='bx bx-palette approach-icon' aria-hidden="true"></i>
-                        <h3 class="approach-title">Logo Tasarımı</h3>
-                        <p class="approach-desc">Markanın görsel kimliğinin temelini oluşturan logo çalışması geliştirildi.</p>
-                    </div>
-                    <div class="approach-card-7">
+                    <div class="approach-card">
                         <i class='bx bx-bot approach-icon' aria-hidden="true"></i>
-                        <h3 class="approach-title">Sanal Marka Elçisi</h3>
-                        <p class="approach-desc">Panpan Usta, Ufuk Şengün Yapı için geliştirilen sanal marka elçisi olarak markanın kreatif içerik sistemine dahil edildi.</p>
+                        <h3 class="approach-title">Sanal Marka Elçisi: Panpan Usta</h3>
+                        <p class="approach-desc">Markanın dijital yüzü haline gelen yapay zeka destekli karakter tasarımı ve içerik entegrasyonu.</p>
                     </div>
-                    <div class="approach-card-7">
+                    <div class="approach-card">
                         <i class='bx bx-music approach-icon' aria-hidden="true"></i>
-                        <h3 class="approach-title">Jingle</h3>
-                        <p class="approach-desc">Panpan Usta ve marka iletişimini destekleyen projeye özel jingle çalışması üretildi.</p>
+                        <h3 class="approach-title">Panpan Usta Tema Müziği</h3>
+                        <p class="approach-desc">Karakterin ve videoların akılda kalıcılığını pekiştiren markaya özel jingle ve ses tasarımı.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- İçerikten Marka Karakterine Section -->
+        <!-- Marka Dönüşümü Bağlantısı Section -->
         <section class="case-section alt-bg">
             <div class="container" style="max-width: 860px;">
-                <h2 class="case-section-title">İçerikten Marka Karakterine</h2>
-                <div class="case-text-block">
-                    <p>
-                        Ufuk Şengün Yapı projesinde sosyal medya içerikleri yalnızca düzenli yayın üretimi olarak ele alınmadı. Görsel kimlik, dikey video, reklam, sanal karakter ve ses kimliği aynı marka dünyasının parçaları olarak planlandı.
+                <div class="transformation-spotlight">
+                    <div class="transformation-badge"><i class='bx bx-transfer-alt' aria-hidden="true"></i> MARKA DÖNÜŞÜMÜ</div>
+                    <h2 class="transformation-title">Ufuk Şengün Yapı Markasının Doğuşu</h2>
+                    <p class="transformation-text">
+                        Panpan Boya Deposu döneminde inşa edilen dijital başarı, takipçi kitlesi ve Panpan Usta karakteri, markanın kurumsal ölçeğini genişleterek Ufuk Şengün Yapı kimliği altında yeni bir döneme adım atmasını sağladı.
                     </p>
-                    <p>
-                        Panpan Usta ve projeye özel jingle, markanın dijital iletişimine klasik içerik formatlarının dışında ayırt edici bir kreatif katman ekledi.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Panpan Usta Spotlight Section (Compact) -->
-        <section class="case-section">
-            <div class="container" style="max-width: 860px;">
-                <div class="panpan-spotlight">
-                    <div class="panpan-badge"><i class='bx bx-bot' aria-hidden="true"></i> SANAL MARKA ELÇİSİ</div>
-                    <h2 class="panpan-title">
-                        Panpan Usta: Yapay Zeka Destekli Sanal Marka Elçisi
-                    </h2>
-                    <p class="panpan-text">
-                        Panpan Usta, Ufuk Şengün Yapı için geliştirilen yapay zeka destekli sanal marka elçisidir. Karakter tasarımı, görsel içerik dili ve kısa video üretimi aynı karakter kimliği etrafında sürdürülebilir bir kreatif iletişim sistemine dönüştürüldü. Markanın Panpan Boya Deposu döneminden başlayan dönüşüm sürecini incelemek için <a href="/projeler/panpan-boya-deposu" style="color: var(--primary-color); text-decoration: underline;">Panpan Boya Deposu proje sayfasını</a> ziyaret edebilirsiniz.
-                    </p>
-                    <a href="/hizmetler/sanal-marka-elcisi-ai-kreatif-cozumler" class="panpan-link">
-                        Sanal Marka Elçisi çalışmalarımızı inceleyin <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
+                    <a href="/projeler/ufuk-sengun-yapi" class="transformation-link">
+                        Ufuk Şengün Yapı detaylı case study sayfasını inceleyin <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Sonuçlar Section (2 Verified Metrics Display) -->
-        <section class="case-section alt-bg">
+        <!-- Sonuçlar Section (Same Verified Metrics as Ufuk Şengün Yapı) -->
+        <section class="case-section">
             <div class="container">
                 <div style="max-width: 860px; margin: 0 auto; text-align: center;">
                     <h2 class="case-section-title" style="margin-bottom: 0.5rem;">Sonuçlar</h2>
-                    <p style="color: var(--text-muted); font-size: 1.05rem;">Proje kapsamında öne çıkan performans göstergeleri:</p>
+                    <p style="color: var(--text-muted); font-size: 1.05rem;">Proje ve devam eden marka sürecindeki doğrulanmış performans verileri:</p>
                 </div>
 
                 <div class="case-results-grid" style="max-width: 800px; margin-left: auto; margin-right: auto;">
                     <div class="case-result-card">
                         <div class="case-result-value">7.000+</div>
-                        <div class="case-result-label">Takipçi</div>
+                        <div class="case-result-label">Organik Takipçi</div>
                     </div>
                     <div class="case-result-card">
                         <div class="case-result-value">2.000.000+</div>
                         <div class="case-result-label">Video Görüntülenmesi</div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- Projeden Seçili İçerikler Section -->
-        <section class="case-section">
-            <div class="container">
-                <div style="max-width: 860px; margin: 0 auto 1.5rem; text-align: center;">
-                    <h2 class="case-section-title">Projeden Seçili İçerikler</h2>
-                    <p style="color: var(--text-muted); font-size: 1.05rem;">
-                        Ufuk Şengün Yapı ve Panpan Usta için üretilen dijital video içeriklerinden bir örnek.
-                    </p>
-                </div>
-
-                <div class="panpan-facade-card">
-                    <div class="panpan-facade-thumb">
-                        <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/panpanusta-kapak-01.png" 
-                             alt="Panpan Usta sanal marka elçisi video görseli" 
-                             width="300" height="400" loading="lazy">
-                    </div>
-                    <div class="panpan-facade-content">
-                        <div class="panpan-facade-badge">
-                            <i class='bx bxl-youtube' style="color: #ff0000; font-size: 1.2rem;" aria-hidden="true"></i>
-                            <span>YOUTUBE SHORTS</span>
-                        </div>
-                        <h3 class="panpan-facade-title">Panpan Usta Video İçeriği</h3>
-                        <p class="panpan-facade-desc">
-                            Ufuk Şengün Yapı için hazırlanan yapay zeka destekli Panpan Usta dikey video içeriğini izleyin.
-                        </p>
-                        <a href="https://www.youtube.com/shorts/iv-6yN7GzEs" target="_blank" rel="noopener noreferrer" class="btn btn-primary panpan-facade-btn" aria-label="Panpan Usta YouTube Shorts videosunu izle">
-                            <span>VİDEOYU İZLE</span> <i class='bx bx-export' aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div style="text-align: center; margin-top: 2.5rem;">
+                <div style="text-align: center; margin-top: 3rem;">
                     <a href="/projeler" class="btn btn-outline"><i class='bx bx-left-arrow-alt'></i> Tüm Projelere Dön</a>
                 </div>
             </div>
@@ -785,10 +594,10 @@
             <div class="container">
                 <div class="cta-box" style="margin-top: 0;">
                     <h2 id="case-cta-title" style="font-size: 2rem; font-weight: 700; color: var(--text-main); text-align: center; max-width: 760px; margin: 0 auto 1rem;">
-                        Markanız İçin Benzer Bir Sistem Kuralım
+                        Markanız İçin Benzer Bir Dönüşüm Kuralım
                     </h2>
                     <p class="cta-box-text" style="max-width: 680px; margin: 0 auto 2rem;">
-                        İçerik, reklam ve kreatif marka çalışmalarını markanız için tek bir sistem içinde planlayalım.
+                        Karakter, müzik, video ve dijital iletişimi markanızın dönüşüm yolculuğunda bir araya getirelim.
                     </p>
                     <div class="hero-buttons" style="justify-content: center; margin-bottom: 0;">
                         <a href="/contact" class="btn btn-primary">Projenizi Birlikte Planlayalım</a>

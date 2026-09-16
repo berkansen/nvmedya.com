@@ -158,6 +158,25 @@
             transform: scale(1.03);
         }
 
+        .project-brand-media {
+            background: radial-gradient(circle at center, rgba(239, 120, 26, 0.08) 0%, rgba(15, 15, 15, 0.95) 100%);
+            padding: 2.5rem 2rem;
+        }
+
+        .project-brand-logo {
+            max-width: 240px;
+            max-height: 120px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+            transition: transform 0.4s ease;
+        }
+
+        .project-block:hover .project-brand-logo {
+            transform: scale(1.05);
+        }
+
         .project-video-facade-btn {
             position: absolute;
             bottom: 1.25rem;
@@ -477,45 +496,30 @@
                 </div>
 
                 <div class="projects-wrapper">
-                    <!-- Proje 1: Hepsert Spor Kulübü -->
-                    <article class="project-block" data-video-ref="https://www.instagram.com/reel/DbqfRs4I5nm/">
-                        <div class="project-media-container hepsert-project-media">
-                            <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/hepsert-01.png" 
-                                 alt="Hepsert Spor Kulübü taekwondo antrenman ve dijital iletişim görseli" 
-                                 width="600" height="800" loading="lazy" class="project-main-img">
-                            <a href="https://www.instagram.com/reel/DbqfRs4I5nm/" target="_blank" rel="noopener noreferrer" class="project-video-facade-btn" aria-label="Hepsert Spor Kulübü video içeriğini izle">
-                                <span style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <i class='bx bxl-instagram' aria-hidden="true"></i>
-                                    <span class="facade-label">Video İçeriği</span>
-                                </span>
-                                <span class="facade-cta">Videoyu İzle <i class='bx bx-export' aria-hidden="true"></i></span>
-                            </a>
+                    <!-- Proje 1: KPNP Türkiye -->
+                    <article class="project-block">
+                        <div class="project-media-container project-brand-media kpnp-project-media">
+                            <img src="https://ik.imagekit.io/nvmedya/referanslar/kpnp-ref-logo.png" 
+                                 alt="KPNP Türkiye spor teknolojisi ve elektronik puanlama sistemi logosu" 
+                                 width="240" height="120" loading="lazy" class="project-brand-logo">
                         </div>
                         <div class="project-info">
-                            <span class="project-eyebrow">SPOR & DİJİTAL İLETİŞİM</span>
-                            <h3 class="project-title">Hepsert Spor Kulübü</h3>
+                            <span class="project-eyebrow">SPOR TEKNOLOJİSİ & DİJİTAL İLETİŞİM</span>
+                            <h3 class="project-title">KPNP Türkiye</h3>
                             <p class="project-desc">
-                                Hepsert Spor Kulübü için sosyal medya yönetiminden dikey video prodüksiyonuna, Meta reklamlarından dijital iletişime ve sanal marka elçisi Hepsera'ya uzanan bütünleşik bir iletişim sistemi oluşturduk.
+                                KPNP Türkiye için K2 elektronik puanlama sisteminin tanıtımı, match-tempo test etkinlikleri ve taekwondo camiasına yönelik teknoloji odaklı dijital iletişim altyapısını kurguladık.
                             </p>
                             <div class="project-tags">
                                 <span class="project-tag">Sosyal Medya</span>
-                                <span class="project-tag">Dikey Video</span>
-                                <span class="project-tag">Meta Reklamları</span>
                                 <span class="project-tag">Dijital İletişim</span>
-                                <span class="project-tag">Sanal Marka Elçisi</span>
+                                <span class="project-tag">Meta Reklamları</span>
+                                <span class="project-tag">Dikey Video</span>
                             </div>
                             <div class="project-metrics">
-                                <div class="metric-item">
-                                    <span class="metric-value">200.000+</span>
-                                    <span class="metric-label">Görüntülenme</span>
-                                </div>
-                                <div class="metric-item">
-                                    <span class="metric-value">600+</span>
-                                    <span class="metric-label">Yeni Takipçi</span>
-                                </div>
+                                <span class="project-highlight-badge"><i class='bx bx-check-circle'></i> Teknoloji & Saha İletişimi</span>
                             </div>
                             <div class="project-action" style="margin-top: 1.5rem;">
-                                <a href="/projeler/hepsert-spor-kulubu" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">
+                                <a href="/projeler/kpnp-turkiye" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">
                                     Projeyi İncele <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
                                 </a>
                             </div>
@@ -569,8 +573,122 @@
                         </div>
                     </article>
 
-                    <!-- Proje 3: Ufuk Şengün Yapı -->
-                    <article class="project-block" data-video-ref="https://www.youtube.com/shorts/iv-6yN7GzEs">
+                    <!-- Proje 3: Serhat Spor -->
+                    <article class="project-block">
+                        <div class="project-media-container project-brand-media serhat-spor-project-media">
+                            <img src="https://ik.imagekit.io/nvmedya/referanslar/serhat-spor-ref-logo.png" 
+                                 alt="Serhat Spor profesyonel spor perakendeciliği logosu" 
+                                 width="240" height="120" loading="lazy" class="project-brand-logo">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-eyebrow">SPOR PERAKENDE & İLETİŞİM</span>
+                            <h3 class="project-title">Serhat Spor</h3>
+                            <p class="project-desc">
+                                İzmir merkezli spor perakendecisi Serhat Spor için taekwondo ekipmanları, ürün odaklı içerik dili ve Meta reklamlarıyla desteklenen sürdürülebilir bir sosyal medya sistemi kurduk.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Sosyal Medya</span>
+                                <span class="project-tag">Dijital İletişim</span>
+                                <span class="project-tag">Meta Reklamları</span>
+                                <span class="project-tag">Dikey Video</span>
+                            </div>
+                            <div class="project-metrics">
+                                <span class="project-highlight-badge"><i class='bx bx-check-circle'></i> Sürdürülebilir Ürün İletişimi</span>
+                            </div>
+                            <div class="project-action" style="margin-top: 1.5rem;">
+                                <a href="/projeler/serhat-spor" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">
+                                    Projeyi İncele <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proje 4: Hepsert Spor Kulübü (Reverse layout) -->
+                    <article class="project-block reverse" data-video-ref="https://www.instagram.com/reel/DbqfRs4I5nm/">
+                        <div class="project-media-container hepsert-project-media">
+                            <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/hepsert-01.png" 
+                                 alt="Hepsert Spor Kulübü taekwondo antrenman ve dijital iletişim görseli" 
+                                 width="600" height="800" loading="lazy" class="project-main-img">
+                            <a href="https://www.instagram.com/reel/DbqfRs4I5nm/" target="_blank" rel="noopener noreferrer" class="project-video-facade-btn" aria-label="Hepsert Spor Kulübü video içeriğini izle">
+                                <span style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class='bx bxl-instagram' aria-hidden="true"></i>
+                                    <span class="facade-label">Video İçeriği</span>
+                                </span>
+                                <span class="facade-cta">Videoyu İzle <i class='bx bx-export' aria-hidden="true"></i></span>
+                            </a>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-eyebrow">SPOR & DİJİTAL İLETİŞİM</span>
+                            <h3 class="project-title">Hepsert Spor Kulübü</h3>
+                            <p class="project-desc">
+                                Hepsert Spor Kulübü için sosyal medya yönetiminden dikey video prodüksiyonuna, Meta reklamlarından dijital iletişime ve sanal marka elçisi Hepsera'ya uzanan bütünleşik bir iletişim sistemi oluşturduk.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Sosyal Medya</span>
+                                <span class="project-tag">Dikey Video</span>
+                                <span class="project-tag">Meta Reklamları</span>
+                                <span class="project-tag">Dijital İletişim</span>
+                                <span class="project-tag">Sanal Marka Elçisi</span>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">200.000+</span>
+                                    <span class="metric-label">Görüntülenme</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">600+</span>
+                                    <span class="metric-label">Yeni Takipçi</span>
+                                </div>
+                            </div>
+                            <div class="project-action" style="margin-top: 1.5rem;">
+                                <a href="/projeler/hepsert-spor-kulubu" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">
+                                    Projeyi İncele <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proje 5: İklim Davetiye -->
+                    <article class="project-block">
+                        <div class="project-media-container project-brand-media iklim-davetiye-project-media">
+                            <img src="https://ik.imagekit.io/nvmedya/referanslar/iklim-davetiye-logo.png" 
+                                 alt="İklim Davetiye e-ticaret ve özel tasarım davetiye logosu" 
+                                 width="240" height="120" loading="lazy" class="project-brand-logo">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-eyebrow">E-TİCARET & DİJİTAL BÜYÜME</span>
+                            <h3 class="project-title">İklim Davetiye</h3>
+                            <p class="project-desc">
+                                İklim Davetiye için sosyal medya yönetimi, dikey video, Meta reklamları, modern e-ticaret web sitesi ve SEO/GEO çalışmalarını bütüncül bir dijital büyüme modeli olarak yönettik.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Sosyal Medya</span>
+                                <span class="project-tag">Dikey Video</span>
+                                <span class="project-tag">Meta Reklamları</span>
+                                <span class="project-tag">Dijital İletişim</span>
+                                <span class="project-tag">E-Ticaret Web Sitesi</span>
+                                <span class="project-tag">SEO / GEO</span>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">0 → 4.200+</span>
+                                    <span class="metric-label">Takipçi</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">1 Milyon+</span>
+                                    <span class="metric-label">Aylık Görüntülenme</span>
+                                </div>
+                            </div>
+                            <div class="project-action" style="margin-top: 1.5rem;">
+                                <a href="/projeler/iklim-davetiye" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">
+                                    Projeyi İncele <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proje 6: Ufuk Şengün Yapı (Reverse layout) -->
+                    <article class="project-block reverse" data-video-ref="https://www.youtube.com/shorts/iv-6yN7GzEs">
                         <div class="project-media-container ufuk-sengun-yapi-project-media">
                             <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/panpanusta-kapak-01.png" 
                                  alt="Ufuk Şengün Yapı için geliştirilen Panpan Usta sanal marka elçisi görseli" 
@@ -616,7 +734,46 @@
                         </div>
                     </article>
 
-                    <!-- Proje 4: Müge Mutlu (Reverse layout) -->
+                    <!-- Proje 7: Panpan Boya Deposu -->
+                    <article class="project-block">
+                        <div class="project-media-container project-brand-media panpan-project-media">
+                            <img src="https://ik.imagekit.io/nvmedya/referanslar/panpan-logo.png" 
+                                 alt="Panpan Boya Deposu resmi marka logosu" 
+                                 width="240" height="120" loading="lazy" class="project-brand-logo">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-eyebrow">MARKA DÖNÜŞÜMÜ & YAPI</span>
+                            <h3 class="project-title">Panpan Boya Deposu</h3>
+                            <p class="project-desc">
+                                Ufuk Şengün Yapı'nın eski marka adı olan Panpan Boya Deposu için dijital iletişim, sanal marka elçisi Panpan Usta ve jingle üretimiyle Ufuk Şengün Yapı'nın doğuşuna uzanan dönüşüm sürecini yönettik.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Sosyal Medya</span>
+                                <span class="project-tag">Dijital İletişim</span>
+                                <span class="project-tag">Meta Reklamları</span>
+                                <span class="project-tag">Dikey Video</span>
+                                <span class="project-tag">Sanal Marka Elçisi</span>
+                                <span class="project-tag">Jingle</span>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">7.000+</span>
+                                    <span class="metric-label">Takipçi</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-value">2.000.000+</span>
+                                    <span class="metric-label">Video Görüntülenmesi</span>
+                                </div>
+                            </div>
+                            <div class="project-action" style="margin-top: 1.5rem;">
+                                <a href="/projeler/panpan-boya-deposu" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">
+                                    Projeyi İncele <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proje 8: Müge Mutlu (Reverse layout) -->
                     <article class="project-block reverse" data-video-ref="https://www.instagram.com/reel/DZ5UmX_snP4/">
                         <div class="project-media-container muge-mutlu-project-media">
                             <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/mm-kapak-01.png" 
@@ -654,8 +811,42 @@
                         </div>
                     </article>
 
-                    <!-- Proje 5: Ufuk Şengün Sigorta -->
-                    <article class="project-block" data-video-ref="https://www.instagram.com/reel/DVBGEjnjLu4/">
+                    <!-- Proje 9: DB Beauty & Headspa -->
+                    <article class="project-block">
+                        <div class="project-media-container project-brand-media db-beauty-project-media">
+                            <img src="https://ik.imagekit.io/nvmedya/referanslar/db-beauty-logo.png" 
+                                 alt="DB Beauty & Headspa güzellik ve bakım logosu" 
+                                 width="240" height="120" loading="lazy" class="project-brand-logo">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-eyebrow">GÜZELLİK & DİJİTAL İLETİŞİM</span>
+                            <h3 class="project-title">DB Beauty & Headspa</h3>
+                            <p class="project-desc">
+                                DB Beauty & Headspa için sıfırdan kurulan sosyal medya büyümesi, düzenli içerik akışı, dikey video prodüksiyonu, Meta reklamları ve sanal marka elçisi kullanımını kapsayan bir dijital iletişim kurguladık.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Sosyal Medya</span>
+                                <span class="project-tag">Dijital İletişim</span>
+                                <span class="project-tag">Meta Reklamları</span>
+                                <span class="project-tag">Dikey Video</span>
+                                <span class="project-tag">Sanal Marka Elçisi</span>
+                            </div>
+                            <div class="project-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-value">0 → 3.200</span>
+                                    <span class="metric-label">Yeni Takipçi</span>
+                                </div>
+                            </div>
+                            <div class="project-action" style="margin-top: 1.5rem;">
+                                <a href="/projeler/db-beauty-headspa" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">
+                                    Projeyi İncele <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proje 10: Ufuk Şengün Sigorta (Reverse layout) -->
+                    <article class="project-block reverse" data-video-ref="https://www.instagram.com/reel/DVBGEjnjLu4/">
                         <div class="project-media-container ufuk-sengun-sigorta-project-media">
                             <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/sigorta-kapak-01.png" 
                                  alt="Ufuk Şengün Sigorta için hazırlanan kurumsal marka ve iletişim projesi görseli" 
@@ -687,6 +878,65 @@
                             </div>
                             <div class="project-action" style="margin-top: 1.5rem;">
                                 <a href="/projeler/ufuk-sengun-sigorta" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">
+                                    Projeyi İncele <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proje 11: Ege Otomobil Spor Kulübü -->
+                    <article class="project-block">
+                        <div class="project-media-container project-brand-media eosk-project-media">
+                            <img src="https://ik.imagekit.io/nvmedya/referanslar/eosk-logo.png" 
+                                 alt="Ege Otomobil Spor Kulübü resmi kulüp logosu" 
+                                 width="240" height="120" loading="lazy" class="project-brand-logo">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-eyebrow">OTOMOBİL SPORLARI & KULÜP İLETİŞİMİ</span>
+                            <h3 class="project-title">Ege Otomobil Spor Kulübü</h3>
+                            <p class="project-desc">
+                                Ege Otomobil Spor Kulübü (EOSK) için yarış organizasyonları, kulüp duyuruları, dikey video prodüksiyonu, reklam desteği ve sanal marka elçisi kullanımını kapsayan bir iletişim sistemi kurduk.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Sosyal Medya</span>
+                                <span class="project-tag">Dijital İletişim</span>
+                                <span class="project-tag">Meta Reklamları</span>
+                                <span class="project-tag">Dikey Video</span>
+                                <span class="project-tag">Sanal Marka Elçisi</span>
+                            </div>
+                            <div class="project-metrics">
+                                <span class="project-highlight-badge"><i class='bx bx-check-circle'></i> Organizasyon ve Kulüp İletişimi</span>
+                            </div>
+                            <div class="project-action" style="margin-top: 1.5rem;">
+                                <a href="/projeler/ege-otomobil-spor-kulubu" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">
+                                    Projeyi İncele <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Proje 12: Ufuk Şengün Tarım (Reverse layout) -->
+                    <article class="project-block reverse">
+                        <div class="project-media-container project-brand-media ufuk-sengun-tarim-project-media">
+                            <img src="https://ik.imagekit.io/nvmedya/referanslar/ufuk-sengun-tarim-logo.png" 
+                                 alt="Ufuk Şengün Tarım resmi marka logosu" 
+                                 width="240" height="120" loading="lazy" class="project-brand-logo">
+                        </div>
+                        <div class="project-info">
+                            <span class="project-eyebrow">TARIM & KURUMSAL İLETİŞİM</span>
+                            <h3 class="project-title">Ufuk Şengün Tarım</h3>
+                            <p class="project-desc">
+                                Ufuk Şengün Tarım için tarım sektörünün gereksinimlerine uygun, sade, güvenilir ve kurumsal bir sosyal medya iletişim altyapısı oluşturduk.
+                            </p>
+                            <div class="project-tags">
+                                <span class="project-tag">Sosyal Medya</span>
+                                <span class="project-tag">Dijital İletişim</span>
+                            </div>
+                            <div class="project-metrics">
+                                <span class="project-highlight-badge"><i class='bx bx-check-circle'></i> Kurumsal Dijital Varlık</span>
+                            </div>
+                            <div class="project-action" style="margin-top: 1.5rem;">
+                                <a href="/projeler/ufuk-sengun-tarim" class="btn btn-outline" style="padding: 0.5rem 1.25rem; font-size: 0.9rem;">
                                     Projeyi İncele <i class='bx bx-right-arrow-alt' aria-hidden="true"></i>
                                 </a>
                             </div>
