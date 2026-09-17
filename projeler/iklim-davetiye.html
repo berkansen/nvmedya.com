@@ -168,21 +168,15 @@
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.08);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            background: radial-gradient(circle at center, rgba(239, 120, 26, 0.08) 0%, #0d0d0d 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 360px;
-            padding: 3.5rem 2rem;
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .case-study-hero-img-wrapper img {
-            max-width: 320px;
-            max-height: 140px;
-            width: auto;
+            width: 100%;
             height: auto;
-            object-fit: contain;
-            filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.6));
+            max-height: 520px;
+            object-fit: cover;
+            object-position: center top;
             display: block;
         }
 
@@ -316,11 +310,6 @@
             .case-section {
                 padding: 3rem 0;
             }
-
-            .case-study-hero-img-wrapper {
-                min-height: 240px;
-                padding: 2.5rem 1.5rem;
-            }
         }
     </style>
 
@@ -425,9 +414,9 @@
                 </div>
 
                 <div class="case-study-hero-img-wrapper">
-                    <img src="https://ik.imagekit.io/nvmedya/referanslar/iklim-davetiye-logo.png" 
-                         alt="İklim Davetiye İzmir resmi marka logosu" 
-                         width="320" height="140" loading="lazy">
+                    <img src="https://ik.imagekit.io/nvmedya/NVM-Proje/iklim-davetiye-izmir-cover.png" 
+                         alt="İklim Davetiye İzmir proje kapak görseli" 
+                         width="1600" height="1000" loading="eager">
                 </div>
             </div>
         </section>
