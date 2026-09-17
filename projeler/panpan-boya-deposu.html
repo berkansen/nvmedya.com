@@ -343,62 +343,69 @@
             font-weight: 500;
         }
 
-        /* Instagram Link Cards */
-        .insta-cards-grid {
+        /* Instagram Embed Grid */
+        .insta-embed-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.25rem;
             margin-top: 2rem;
         }
 
-        .insta-card {
-            display: flex;
-            align-items: center;
-            gap: 0.9rem;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.07);
+        .insta-embed-grid.two-cols {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 720px;
+            margin: 2rem auto 0;
+        }
+
+        .insta-embed-item {
             border-radius: var(--border-radius);
-            padding: 1.1rem 1.25rem;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .insta-card:hover {
-            border-color: rgba(239, 120, 26, 0.35);
-            transform: translateY(-2px);
-        }
-
-        .insta-card-icon {
-            flex-shrink: 0;
-            width: 2.4rem;
-            height: 2.4rem;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f9ce34, #ee2a7b, #6228d7);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.15rem;
-        }
-
-        .insta-card-meta {
+            overflow: hidden;
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.07);
             display: flex;
             flex-direction: column;
         }
 
-        .insta-card-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
+        .insta-embed-item iframe {
+            width: 100%;
+            height: 480px;
+            border: 0;
+            display: block;
         }
 
-        .insta-card-title {
-            font-size: 0.95rem;
-            color: var(--text-main);
-            font-weight: 600;
-            line-height: 1.3;
+        .insta-embed-single {
+            max-width: 400px;
+            margin: 2rem auto 0;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: #111;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .insta-embed-single iframe {
+            width: 100%;
+            height: 480px;
+            border: 0;
+            display: block;
+        }
+
+        .insta-embed-cta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.65rem 1rem;
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            text-decoration: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            transition: var(--transition);
+        }
+
+        .insta-embed-cta:hover {
+            color: var(--primary-color);
         }
 
         /* External link pill */
@@ -428,7 +435,8 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .insta-cards-grid {
+            .insta-embed-grid,
+            .insta-embed-grid.two-cols {
                 grid-template-columns: 1fr;
             }
         }
@@ -628,21 +636,19 @@
                 <div class="case-text-block">
                     <p>Panpan Usta, Panpan Boya Deposu için NVM tarafından tasarlanan yapay zeka destekli sanal marka elçisidir. Boya ve yapı sektörünün teknik içeriklerini samimi ve akılda kalıcı bir dille aktararak markanın dijital kişiliğini oluşturdu.</p>
                 </div>
-                <div class="insta-cards-grid">
-                    <a href="https://www.instagram.com/p/DaPov-_oL5-/" class="insta-card" target="_blank" rel="noopener noreferrer">
-                        <span class="insta-card-icon"><i class='bx bxl-instagram' aria-hidden="true"></i></span>
-                        <span class="insta-card-meta">
-                            <span class="insta-card-label">Panpan Usta</span>
-                            <span class="insta-card-title">Sanal Elçi İçeriği #1</span>
-                        </span>
-                    </a>
-                    <a href="https://www.instagram.com/p/DangBtYoUbW/" class="insta-card" target="_blank" rel="noopener noreferrer">
-                        <span class="insta-card-icon"><i class='bx bxl-instagram' aria-hidden="true"></i></span>
-                        <span class="insta-card-meta">
-                            <span class="insta-card-label">Panpan Usta</span>
-                            <span class="insta-card-title">Sanal Elçi İçeriği #2</span>
-                        </span>
-                    </a>
+                <div class="insta-embed-grid two-cols">
+                    <div class="insta-embed-item">
+                        <iframe src="https://www.instagram.com/p/DaPov-_oL5-/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+                        <a href="https://www.instagram.com/p/DaPov-_oL5-/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
+                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
+                        </a>
+                    </div>
+                    <div class="insta-embed-item">
+                        <iframe src="https://www.instagram.com/p/DangBtYoUbW/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+                        <a href="https://www.instagram.com/p/DangBtYoUbW/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
+                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -650,27 +656,23 @@
         <!-- Panpan Usta Tema Müziği Section -->
         <section class="case-section alt-bg">
             <div class="container" style="max-width: 860px;">
-                <h2 class="case-section-title">Panpan Usta Tema Müziği</h2>
+                <h2 class="case-section-title">Panpan Usta Tema Müziği & Marka Dönüşümü</h2>
                 <div class="case-text-block">
-                    <p>Panpan Usta karakterini pekiştiren markaya özel jingle çalışması, video içeriklere eşlik ederek akılda kalıcılığı artırdı.</p>
+                    <p>Panpan Usta karakterini pekiştiren markaya özel jingle çalışması ve markanın Ufuk Şengün Yapı dönüşüm sürecini anlatan içerik örnekleri.</p>
                 </div>
-                <div>
-                    <a href="https://www.instagram.com/p/Da5p4bpIplv/" class="insta-card" style="max-width: 340px;" target="_blank" rel="noopener noreferrer">
-                        <span class="insta-card-icon"><i class='bx bxl-instagram' aria-hidden="true"></i></span>
-                        <span class="insta-card-meta">
-                            <span class="insta-card-label">Jingle</span>
-                            <span class="insta-card-title">Panpan Usta Tema Müziği</span>
-                        </span>
-                    </a>
-                </div>
-                <div>
-                    <a href="https://www.instagram.com/reel/DYwgtWpAq9z/" class="insta-card" style="max-width: 340px; margin-top: 1rem;" target="_blank" rel="noopener noreferrer">
-                        <span class="insta-card-icon"><i class='bx bxl-instagram' aria-hidden="true"></i></span>
-                        <span class="insta-card-meta">
-                            <span class="insta-card-label">Marka Dönüşümü</span>
-                            <span class="insta-card-title">Panpan'dan Ufuk Şengün Yapı'ya</span>
-                        </span>
-                    </a>
+                <div class="insta-embed-grid two-cols">
+                    <div class="insta-embed-item">
+                        <iframe src="https://www.instagram.com/p/Da5p4bpIplv/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+                        <a href="https://www.instagram.com/p/Da5p4bpIplv/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
+                            <i class='bx bxl-instagram' aria-hidden="true"></i> Jingle — Instagram'da Gör
+                        </a>
+                    </div>
+                    <div class="insta-embed-item">
+                        <iframe src="https://www.instagram.com/reel/DYwgtWpAq9z/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+                        <a href="https://www.instagram.com/reel/DYwgtWpAq9z/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
+                            <i class='bx bxl-instagram' aria-hidden="true"></i> Dönüşüm — Instagram'da Gör
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
