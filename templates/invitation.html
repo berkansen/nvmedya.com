@@ -994,6 +994,70 @@
             color: var(--text-heading);
         }
 
+        /* Çocuk Yaşları Dinamik Alanları */
+        .child-ages-wrap {
+            margin-top: 1rem;
+            padding: 1.1rem;
+            background: var(--bg-primary);
+            border: 1px solid var(--gold-border);
+            border-radius: var(--radius-md);
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        .child-ages-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .child-ages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .child-age-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .child-age-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .child-age-input {
+            width: 100%;
+            height: 44px;
+            padding: 0 0.75rem;
+            border: 1px solid var(--gold-border);
+            border-radius: var(--radius-sm);
+            font-size: 1rem;
+            color: var(--text-heading);
+            background: #FFFFFF;
+            text-align: center;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            -moz-appearance: textfield;
+        }
+
+        .child-age-input::-webkit-outer-spin-button,
+        .child-age-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .child-age-input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 0 2px rgba(184, 142, 82, 0.2);
+        }
+
         /* LCV Onay Kartı */
         .rsvp-success-box {
             display: none;
@@ -1558,6 +1622,56 @@
                             <input type="hidden" id="childCount" name="{{ENTRY_CHILDREN}}" value="0">
                         </div>
 
+                        <!-- 3D. Çocuk Yaşları Dinamik Alanları -->
+                        <div class="child-ages-wrap" id="childAgesWrap" style="display: none;">
+                            <div class="child-ages-title">
+                                <i class='bx bx-cake'></i>
+                                <span>Çocuk Yaşları *</span>
+                            </div>
+                            <div class="child-ages-grid" id="childAgesGrid">
+                                <div class="child-age-item" id="childAgeItem_1" style="display: none;">
+                                    <label for="childAgeInput_1" class="child-age-label">1. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_1" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                                <div class="child-age-item" id="childAgeItem_2" style="display: none;">
+                                    <label for="childAgeInput_2" class="child-age-label">2. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_2" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                                <div class="child-age-item" id="childAgeItem_3" style="display: none;">
+                                    <label for="childAgeInput_3" class="child-age-label">3. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_3" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                                <div class="child-age-item" id="childAgeItem_4" style="display: none;">
+                                    <label for="childAgeInput_4" class="child-age-label">4. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_4" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                                <div class="child-age-item" id="childAgeItem_5" style="display: none;">
+                                    <label for="childAgeInput_5" class="child-age-label">5. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_5" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                                <div class="child-age-item" id="childAgeItem_6" style="display: none;">
+                                    <label for="childAgeInput_6" class="child-age-label">6. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_6" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                                <div class="child-age-item" id="childAgeItem_7" style="display: none;">
+                                    <label for="childAgeInput_7" class="child-age-label">7. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_7" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                                <div class="child-age-item" id="childAgeItem_8" style="display: none;">
+                                    <label for="childAgeInput_8" class="child-age-label">8. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_8" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                                <div class="child-age-item" id="childAgeItem_9" style="display: none;">
+                                    <label for="childAgeInput_9" class="child-age-label">9. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_9" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                                <div class="child-age-item" id="childAgeItem_10" style="display: none;">
+                                    <label for="childAgeInput_10" class="child-age-label">10. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_10" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <!-- 4. Notunuz (Opsiyonel) -->
@@ -1776,6 +1890,53 @@
         let childCountValue = 0;
         let isSubmitting = false;
 
+        // Çocuk Yaşları Dinamik Alan Yönetimi
+        function renderChildAgeFields(count) {
+            const wrap = document.getElementById('childAgesWrap');
+            if (!wrap) return;
+
+            const childAges = (__INV__.rsvp && __INV__.rsvp.entries && __INV__.rsvp.entries.childAges) || [];
+
+            if (count <= 0) {
+                wrap.style.display = 'none';
+                for (let i = 1; i <= 10; i++) {
+                    const item = document.getElementById('childAgeItem_' + i);
+                    const inp = document.getElementById('childAgeInput_' + i);
+                    if (item) item.style.display = 'none';
+                    if (inp) {
+                        inp.value = '';
+                        inp.disabled = true;
+                        inp.removeAttribute('name');
+                        inp.required = false;
+                    }
+                }
+                return;
+            }
+
+            wrap.style.display = 'block';
+            for (let i = 1; i <= 10; i++) {
+                const item = document.getElementById('childAgeItem_' + i);
+                const inp = document.getElementById('childAgeInput_' + i);
+                if (i <= count) {
+                    if (item) item.style.display = 'block';
+                    if (inp) {
+                        inp.disabled = false;
+                        const entryName = childAges[i - 1] || ('entry.childAge' + i);
+                        inp.setAttribute('name', entryName);
+                        inp.required = true;
+                    }
+                } else {
+                    if (item) item.style.display = 'none';
+                    if (inp) {
+                        inp.value = ''; // Sayı azaltılırsa state temizlenir
+                        inp.disabled = true; // Submit edilmesini engelle
+                        inp.removeAttribute('name');
+                        inp.required = false;
+                    }
+                }
+            }
+        }
+
         // Katılım Durumu Değiştiğinde
         function handleAttendanceChange(isAttending) {
             const detailsContainer = document.getElementById('attendanceDetailsContainer');
@@ -1788,12 +1949,13 @@
                 }
             } else {
                 detailsContainer.style.display = 'none';
-                // Katılamayacaksa sayıları sıfırla
+                // Katılamayacaksa tüm yetişkin, çocuk ve çocuk yaşlarını sıfırla
                 adultCountValue = 0;
                 childCountValue = 0;
                 document.getElementById('adultCount').value = '0';
                 document.getElementById('childCount').value = '0';
                 document.getElementById('childCountGroup').style.display = 'none';
+                renderChildAgeFields(0);
                 const noRadio = document.querySelector('input[name="{{ENTRY_HAS_CHILDREN}}"][value="Hayır"]');
                 if (noRadio) noRadio.checked = true;
             }
@@ -1816,18 +1978,21 @@
                 }
                 document.getElementById('childCountDisplay').innerText = `${childCountValue} Çocuk`;
                 document.getElementById('childCount').value = childCountValue;
+                renderChildAgeFields(childCountValue);
             } else {
                 childGroup.style.display = 'none';
                 childCountValue = 0;
                 document.getElementById('childCount').value = '0';
+                renderChildAgeFields(0);
             }
         }
 
-        // Çocuk Sayacı
+        // Çocuk Sayacı (Maks 10 Çocuk)
         function updateChildCount(delta) {
             childCountValue = Math.max(1, Math.min(10, childCountValue + delta));
             document.getElementById('childCountDisplay').innerText = `${childCountValue} Çocuk`;
             document.getElementById('childCount').value = childCountValue;
+            renderChildAgeFields(childCountValue);
         }
 
         // Form Submit İşleyicisi
@@ -1859,9 +2024,38 @@
             if (!isAttending) {
                 document.getElementById('adultCount').value = '0';
                 document.getElementById('childCount').value = '0';
+                renderChildAgeFields(0);
             }
             if (!isAttending || hasChildren !== 'Evet') {
                 document.getElementById('childCount').value = '0';
+                renderChildAgeFields(0);
+            }
+
+            // Çocuk Yaşları Doğrulaması (0–17 arası tam sayı, boş alan engeli)
+            if (isAttending && hasChildren === 'Evet') {
+                if (childCountValue < 1 || childCountValue > 10) {
+                    e.preventDefault();
+                    alert('Lütfen geçerli bir çocuk sayısı seçiniz.');
+                    return false;
+                }
+                for (let i = 1; i <= childCountValue; i++) {
+                    const ageInput = document.getElementById('childAgeInput_' + i);
+                    if (!ageInput) continue;
+                    const val = ageInput.value.trim();
+                    if (val === '') {
+                        e.preventDefault();
+                        alert('Lütfen ' + i + '. çocuğun yaşını giriniz.');
+                        ageInput.focus();
+                        return false;
+                    }
+                    const num = parseInt(val, 10);
+                    if (isNaN(num) || !/^\d+$/.test(val) || num < 0 || num > 17) {
+                        e.preventDefault();
+                        alert(i + '. çocuğun yaşı 0 ile 17 arasında bir tam sayı olmalıdır.');
+                        ageInput.focus();
+                        return false;
+                    }
+                }
             }
 
             // Show loading state
@@ -1890,6 +2084,20 @@
             const childCount = parseInt(document.getElementById('childCount').value, 10);
             const note = document.getElementById('guestNote').value.trim();
 
+            let childAgesSummary = '';
+            if (isAttending && hasChildren === 'Evet' && childCount > 0) {
+                const ages = [];
+                for (let i = 1; i <= childCount; i++) {
+                    const el = document.getElementById('childAgeInput_' + i);
+                    if (el && el.value.trim() !== '') {
+                        ages.push(escapeHtml(el.value.trim()));
+                    }
+                }
+                if (ages.length > 0) {
+                    childAgesSummary = '• <strong>Çocuk Yaşları:</strong> ' + ages.join(', ') + '<br>';
+                }
+            }
+
             isSubmitting = false;
             const submitBtn = document.getElementById('rsvpSubmitBtn');
             submitBtn.disabled = false;
@@ -1902,6 +2110,7 @@
                 '• <strong>Durum:</strong> ' + escapeHtml(attendance) + '<br>' +
                 (isAttending ? '• <strong>Yetişkin Sayısı:</strong> ' + adultCount + ' Kişi<br>' : '') +
                 (isAttending && hasChildren === 'Evet' ? '• <strong>Çocuk Sayısı:</strong> ' + childCount + ' Kişi<br>' : '') +
+                childAgesSummary +
                 (note ? '• <strong>Mesajınız:</strong> ' + escapeHtml(note) : '');
 
             document.getElementById('rsvpForm').style.display = 'none';
@@ -1919,6 +2128,7 @@
             document.getElementById('adultCount').value = '1';
             document.getElementById('childCount').value = '0';
             document.getElementById('childCountGroup').style.display = 'none';
+            renderChildAgeFields(0);
             document.getElementById('attendanceDetailsContainer').style.display = 'block';
 
             const attendRadio = document.querySelector('input[name="' + __INV__.rsvp.entries.attendance + '"][value="Katılacağım"]');

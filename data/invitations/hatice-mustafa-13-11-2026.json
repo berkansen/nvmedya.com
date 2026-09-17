@@ -65,6 +65,28 @@
       "adults": "entry.2001603225",
       "hasChildren": "entry.722621996",
       "children": "entry.999029311",
+      "childAge1": "entry.1575738684",
+      "childAge2": "entry.1433435466",
+      "childAge3": "entry.1244818238",
+      "childAge4": "entry.1988510402",
+      "childAge5": "entry.975264611",
+      "childAge6": "entry.950757851",
+      "childAge7": "entry.840858307",
+      "childAge8": "entry.1834883975",
+      "childAge9": "entry.1015956028",
+      "childAge10": "entry.930863317",
+      "childAges": [
+        "entry.1575738684",
+        "entry.1433435466",
+        "entry.1244818238",
+        "entry.1988510402",
+        "entry.975264611",
+        "entry.950757851",
+        "entry.840858307",
+        "entry.1834883975",
+        "entry.1015956028",
+        "entry.930863317"
+      ],
       "message": "entry.207267068"
     }
   },
