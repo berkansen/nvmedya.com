@@ -514,6 +514,71 @@
             margin-top: 0.2rem;
         }
 
+        /* Yatay Bilgi Kartları (Çocuklar & Patili Dostlar) */
+        .details-notices-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .detail-notice-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--gold-border);
+            border-radius: var(--radius-md);
+            padding: 1rem 0.85rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            text-align: left;
+        }
+
+        .detail-notice-icon-wrap {
+            width: 42px;
+            height: 42px;
+            min-width: 42px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold-primary);
+            font-size: 1.25rem;
+        }
+
+        .notice-svg-icon {
+            display: block;
+        }
+
+        .detail-notice-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .detail-notice-title {
+            font-family: var(--font-serif);
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin: 0 0 0.2rem 0;
+            line-height: 1.25;
+        }
+
+        .detail-notice-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        @media (max-width: 480px) {
+            .details-notices-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+        }
+
         /* ==========================================================================
            4. DÜĞÜN AKIŞI (TIMELINE - Kapanış Bilgisi Kaldırılmış)
            ========================================================================== */
@@ -1454,6 +1519,8 @@
                     <span class="detail-subvalue">{{VENUE_ADDRESS_SHORT}}</span>
                 </div>
             </div>
+
+            {{DETAIL_NOTICES_HTML}}
         </section>
 
         <!-- ===================================================================

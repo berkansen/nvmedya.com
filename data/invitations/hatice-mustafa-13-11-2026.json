@@ -32,6 +32,18 @@
     "mapsUrl": "https://www.google.com/maps/place/La+Win/@38.3973511,27.0483935,17z/data=!3m1!4b1!4m6!3m5!1s0x14bbdc6bdcc8931d:0x5b043483d551ed9c!8m2!3d38.3973511!4d27.0509684!16s%2Fg%2F11g8v4r7s8?entry=ttu&g_ep=EgoyMDI2MDgxOS4wIKXMDSoASAFQAw%3D%3D",
     "description": "Düğün organizasyonumuz <strong>La Win Wedding</strong>'de gerçekleşecektir. Yol tarifi için aşağıdaki butonu kullanabilirsiniz."
   },
+  "detailNotices": [
+    {
+      "icon": "bx-face",
+      "title": "Çocuklar da Aramızda",
+      "description": "Minik misafirlerimizin neşesiyle bu özel günümüz daha da güzel olacak."
+    },
+    {
+      "icon": "paw",
+      "title": "Patili Dostlarımız da Aramızda",
+      "description": "Patili dostlarınızla birlikte bu güzel güne katılabilirsiniz."
+    }
+  ],
   "timeline": [
     { "time": "18:30", "title": "Misafir Karşılama" },
     { "time": "19:00", "title": "Nikah Töreni" },

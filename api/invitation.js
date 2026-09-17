@@ -157,6 +157,31 @@ function generateGalleryHtml(gallery) {
   }).join('\n');
 }
 
+function generateDetailNoticesHtml(notices) {
+  if (!notices || !Array.isArray(notices) || notices.length === 0) return '';
+  const cardsHtml = notices.map(item => {
+    let iconHtml = '';
+    if (item.icon === 'paw') {
+      iconHtml = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="notice-svg-icon" aria-hidden="true"><path d="M14.5 9.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm-5 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm10 4a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm-15 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm7.5 1.5c-3.5 0-6.5 2.2-6.5 5 0 2.2 2 3 4 3 1.2 0 2.5-.5 2.5-.5s1.3.5 2.5.5c2 0 4-.8 4-3 0-2.8-3-5-6.5-5z"/></svg>`;
+    } else {
+      iconHtml = `<i class='bx ${escapeHtml(item.icon)}'></i>`;
+    }
+    return `                <div class="detail-notice-card">
+                    <div class="detail-notice-icon-wrap">
+                        ${iconHtml}
+                    </div>
+                    <div class="detail-notice-content">
+                        <h4 class="detail-notice-title">${escapeHtml(item.title)}</h4>
+                        <p class="detail-notice-desc">${escapeHtml(item.description)}</p>
+                    </div>
+                </div>`;
+  }).join('\n');
+
+  return `            <div class="details-notices-grid">
+${cardsHtml}
+            </div>`;
+}
+
 function renderTemplate(templateHtml, config) {
   const c = config;
   const coupleDisplay = escapeHtml(c.couple.displayName);
@@ -217,6 +242,7 @@ function renderTemplate(templateHtml, config) {
     '{{FINAL_TEXT}}': escapeHtml(c.messages.finalText),
     '{{TIMELINE_ITEMS_HTML}}': generateTimelineHtml(c.timeline),
     '{{GALLERY_GRID_HTML}}': generateGalleryHtml(c.gallery),
+    '{{DETAIL_NOTICES_HTML}}': generateDetailNoticesHtml(c.detailNotices),
     '{{CLIENT_CONFIG_JSON}}': safeJsonForScript(clientConfig)
   };
 
