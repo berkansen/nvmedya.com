@@ -291,63 +291,99 @@
             font-weight: 500;
         }
 
-        /* Instagram Embed Grid */
-        .insta-embed-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            margin-top: 2rem;
-        }
-
-        .insta-embed-item {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            background: #111;
-            border: 1px solid rgba(255, 255, 255, 0.07);
+        /* Reel / Post Showcase Card */
+        .reel-showcase-grid {
             display: flex;
             flex-direction: column;
-        }
-
-        .insta-embed-item iframe {
-            width: 100%;
-            height: 480px;
-            border: 0;
-            display: block;
-        }
-
-        .insta-embed-single {
-            max-width: 400px;
+            gap: 1.5rem;
+            max-width: 860px;
             margin: 2rem auto 0;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            background: #111;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            display: flex;
-            flex-direction: column;
         }
 
-        .insta-embed-single iframe {
-            width: 100%;
-            height: 480px;
-            border: 0;
-            display: block;
+        .reel-showcase-grid.two-cols {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
         }
 
-        .insta-embed-cta {
+        .reel-showcase-card {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            padding: 0.65rem 1rem;
-            color: var(--text-muted);
-            font-size: 0.82rem;
-            text-decoration: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            gap: 2rem;
+            background: linear-gradient(135deg, rgba(239, 120, 26, 0.08) 0%, rgba(18, 18, 18, 0.95) 100%);
+            border: 1px solid rgba(239, 120, 26, 0.25);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
             transition: var(--transition);
         }
 
-        .insta-embed-cta:hover {
-            color: var(--primary-color);
+        .reel-showcase-card:hover {
+            border-color: rgba(239, 120, 26, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .reel-showcase-thumb {
+            flex: 0 0 160px;
+            height: 213px;
+            border-radius: calc(var(--border-radius) - 4px);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .reel-showcase-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .reel-showcase-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .reel-showcase-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(225, 48, 108, 0.12);
+            border: 1px solid rgba(225, 48, 108, 0.3);
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .reel-showcase-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .reel-showcase-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .reel-showcase-btn {
+            padding: 0.65rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         /* External link pill */
@@ -376,10 +412,6 @@
             .approach-grid-6 {
                 grid-template-columns: repeat(2, 1fr);
             }
-
-            .insta-embed-grid {
-                grid-template-columns: 1fr;
-            }
         }
 
         @media screen and (max-width: 768px) {
@@ -394,6 +426,26 @@
 
             .case-section {
                 padding: 3rem 0;
+            }
+
+            .reel-showcase-grid.two-cols {
+                grid-template-columns: 1fr;
+            }
+
+            .reel-showcase-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .reel-showcase-thumb {
+                flex: 0 0 auto;
+                width: 150px;
+                height: 200px;
+            }
+
+            .reel-showcase-content {
+                align-items: center;
             }
         }
     </style>
@@ -605,30 +657,74 @@
 
         <!-- İçerik ve Dikey Video Çalışmaları Section -->
         <section class="case-section alt-bg">
-            <div class="container" style="max-width: 860px;">
-                <h2 class="case-section-title">İçerik ve Dikey Video Çalışmaları</h2>
-                <p class="case-text-block" style="margin-bottom: 0;">İklim Davetiye İzmir için hazırlanan Reels ve dikey video içeriklerinden örnekleri aşağıdan inceleyebilirsiniz.</p>
-                <div class="insta-embed-grid">
-                    <div class="insta-embed-item">
-                        <iframe src="https://www.instagram.com/reel/DcJS73lKPZ1/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-                        <a href="https://www.instagram.com/reel/DcJS73lKPZ1/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
-                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
-                        </a>
+            <div class="container">
+                <div style="max-width: 860px; margin: 0 auto 1.5rem; text-align: center;">
+                    <h2 class="case-section-title">İçerik ve Dikey Video Çalışmaları</h2>
+                    <p style="color: var(--text-muted); font-size: 1.05rem;">
+                        İklim Davetiye İzmir için üretilen dikey video ve Reels içeriklerinden örnekler.
+                    </p>
+                </div>
+
+                <div class="reel-showcase-grid">
+                    <div class="reel-showcase-card">
+                        <div class="reel-showcase-thumb">
+                            <img src="/assets/img/reels/iklim-reel-1.jpg" alt="Davetiye Koleksiyon Tanıtımı" width="300" height="400" loading="lazy">
+                        </div>
+                        <div class="reel-showcase-content">
+                            <div class="reel-showcase-badge">
+                                <i class='bx bxl-instagram' style="color: #e1306c; font-size: 1.1rem;" aria-hidden="true"></i>
+                                <span>INSTAGRAM REEL</span>
+                            </div>
+                            <h3 class="reel-showcase-title">Davetiye Koleksiyon Tanıtımı</h3>
+                            <p class="reel-showcase-desc">
+                                İklim Davetiye İzmir koleksiyonuna ait modellerin detaylı dikey video sunumu.
+                            </p>
+                            <a href="https://www.instagram.com/reel/DcJS73lKPZ1/" target="_blank" rel="noopener noreferrer" class="btn btn-primary reel-showcase-btn" aria-label="İklim Davetiye Instagram Reel videosunu izle">
+                                <span>VİDEOYU İZLE</span> <i class='bx bx-export' aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="insta-embed-item">
-                        <iframe src="https://www.instagram.com/reel/DcTlY9doSYI/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-                        <a href="https://www.instagram.com/reel/DcTlY9doSYI/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
-                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
-                        </a>
+
+                    <div class="reel-showcase-card">
+                        <div class="reel-showcase-thumb">
+                            <img src="/assets/img/reels/iklim-reel-2.jpg" alt="Düğün & Davetiye Kurgusu" width="300" height="400" loading="lazy">
+                        </div>
+                        <div class="reel-showcase-content">
+                            <div class="reel-showcase-badge">
+                                <i class='bx bxl-instagram' style="color: #e1306c; font-size: 1.1rem;" aria-hidden="true"></i>
+                                <span>INSTAGRAM REEL</span>
+                            </div>
+                            <h3 class="reel-showcase-title">Düğün & Davetiye Kurgusu</h3>
+                            <p class="reel-showcase-desc">
+                                Evlilik hazırlığındaki çiftlere yönelik estetik ve dinamik video kurgusu.
+                            </p>
+                            <a href="https://www.instagram.com/reel/DcTlY9doSYI/" target="_blank" rel="noopener noreferrer" class="btn btn-primary reel-showcase-btn" aria-label="İklim Davetiye Instagram Reel videosunu izle">
+                                <span>VİDEOYU İZLE</span> <i class='bx bx-export' aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="insta-embed-item">
-                        <iframe src="https://www.instagram.com/reel/Db3RySpK8Hp/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-                        <a href="https://www.instagram.com/reel/Db3RySpK8Hp/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
-                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
-                        </a>
+
+                    <div class="reel-showcase-card">
+                        <div class="reel-showcase-thumb">
+                            <img src="/assets/img/reels/iklim-reel-3.jpg" alt="Özel Tasarım Davetiye" width="300" height="400" loading="lazy">
+                        </div>
+                        <div class="reel-showcase-content">
+                            <div class="reel-showcase-badge">
+                                <i class='bx bxl-instagram' style="color: #e1306c; font-size: 1.1rem;" aria-hidden="true"></i>
+                                <span>INSTAGRAM REEL</span>
+                            </div>
+                            <h3 class="reel-showcase-title">Özel Tasarım Davetiye</h3>
+                            <p class="reel-showcase-desc">
+                                Doku, baskı kalitesi ve zarf detaylarını ön plana çıkaran dikey video çalışması.
+                            </p>
+                            <a href="https://www.instagram.com/reel/Db3RySpK8Hp/" target="_blank" rel="noopener noreferrer" class="btn btn-primary reel-showcase-btn" aria-label="İklim Davetiye Instagram Reel videosunu izle">
+                                <span>VİDEOYU İZLE</span> <i class='bx bx-export' aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 1.5rem;">
+
+                <div style="text-align: center; margin-top: 2rem;">
                     <a href="https://www.instagram.com/iklimdavetiyeizmir" class="external-link-pill" target="_blank" rel="noopener noreferrer">
                         <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram Profilini İncele
                     </a>

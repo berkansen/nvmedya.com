@@ -288,67 +288,104 @@
             line-height: 1.6;
         }
 
-        /* Instagram Embed Grid */
-        .insta-embed-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            margin-top: 2rem;
-        }
-
-        .insta-embed-item {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            background: #111;
-            border: 1px solid rgba(255, 255, 255, 0.07);
+        /* Reel / Post Showcase Card */
+        .reel-showcase-grid {
             display: flex;
             flex-direction: column;
-        }
-
-        .insta-embed-item iframe {
-            width: 100%;
-            height: 480px;
-            border: 0;
-            display: block;
-        }
-
-        .insta-embed-single {
-            max-width: 400px;
+            gap: 1.5rem;
+            max-width: 860px;
             margin: 2rem auto 0;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            background: #111;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            display: flex;
-            flex-direction: column;
         }
 
-        .insta-embed-single iframe {
-            width: 100%;
-            height: 480px;
-            border: 0;
-            display: block;
+        .reel-showcase-grid.two-cols {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 960px;
         }
 
-        .insta-embed-cta {
+        .reel-showcase-card {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            padding: 0.65rem 1rem;
-            color: var(--text-muted);
-            font-size: 0.82rem;
-            text-decoration: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            gap: 1.5rem;
+            background: linear-gradient(135deg, rgba(239, 120, 26, 0.08) 0%, rgba(18, 18, 18, 0.95) 100%);
+            border: 1px solid rgba(239, 120, 26, 0.25);
+            border-radius: var(--border-radius);
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
             transition: var(--transition);
         }
 
-        .insta-embed-cta:hover {
-            color: var(--primary-color);
+        .reel-showcase-card:hover {
+            border-color: rgba(239, 120, 26, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .reel-showcase-thumb {
+            flex: 0 0 120px;
+            height: 160px;
+            border-radius: calc(var(--border-radius) - 4px);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .reel-showcase-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .reel-showcase-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .reel-showcase-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(225, 48, 108, 0.12);
+            border: 1px solid rgba(225, 48, 108, 0.3);
+            color: #fff;
+            padding: 0.2rem 0.65rem;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .reel-showcase-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.4rem;
+            line-height: 1.3;
+        }
+
+        .reel-showcase-desc {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+
+        .reel-showcase-btn {
+            padding: 0.55rem 1.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         @media screen and (max-width: 992px) {
-            .insta-embed-grid {
+            .reel-showcase-grid.two-cols {
                 grid-template-columns: 1fr;
             }
         }
@@ -364,6 +401,22 @@
 
             .qualitative-output-card {
                 padding: 2rem 1.5rem;
+            }
+
+            .reel-showcase-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .reel-showcase-thumb {
+                flex: 0 0 auto;
+                width: 150px;
+                height: 200px;
+            }
+
+            .reel-showcase-content {
+                align-items: center;
             }
         }
     </style>
@@ -545,45 +598,127 @@
 
         <!-- Sosyal Medya Çalışmalarından Örnekler Section -->
         <section class="case-section alt-bg">
-            <div class="container" style="max-width: 860px;">
-                <h2 class="case-section-title">Sosyal Medya Çalışmalarından Örnekler</h2>
-                <p class="case-text-block" style="margin-bottom: 0;">Ufuk Şengün Tarım için üretilen sosyal medya içerik örneklerini aşağıdan inceleyebilirsiniz.</p>
-                <div class="insta-embed-grid">
-                    <div class="insta-embed-item">
-                        <iframe src="https://www.instagram.com/p/DYz1iFTMGh8/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-                        <a href="https://www.instagram.com/p/DYz1iFTMGh8/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
-                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
-                        </a>
+            <div class="container">
+                <div style="max-width: 860px; margin: 0 auto 1.5rem; text-align: center;">
+                    <h2 class="case-section-title">Sosyal Medya Çalışmalarından Örnekler</h2>
+                    <p style="color: var(--text-muted); font-size: 1.05rem;">
+                        Ufuk Şengün Tarım için üretilen kurumsal sosyal medya içeriklerinden örnekler.
+                    </p>
+                </div>
+
+                <div class="reel-showcase-grid two-cols">
+                    <div class="reel-showcase-card">
+                        <div class="reel-showcase-thumb">
+                            <img src="/assets/img/reels/tarim-post-1.jpg" alt="Kurumsal Tarım İletişimi #1" width="300" height="400" loading="lazy">
+                        </div>
+                        <div class="reel-showcase-content">
+                            <div class="reel-showcase-badge">
+                                <i class='bx bxl-instagram' style="color: #e1306c; font-size: 1.1rem;" aria-hidden="true"></i>
+                                <span>INSTAGRAM İÇERİĞİ</span>
+                            </div>
+                            <h3 class="reel-showcase-title">Kurumsal İletişim #1</h3>
+                            <p class="reel-showcase-desc">
+                                Tarımsal üretim ve kurumsal kimliği yansıtan görsel içerik.
+                            </p>
+                            <a href="https://www.instagram.com/p/DYz1iFTMGh8/" target="_blank" rel="noopener noreferrer" class="btn btn-primary reel-showcase-btn" aria-label="Tarım Instagram içeriğini gör">
+                                <span>İÇERİĞİ GÖR</span> <i class='bx bx-export' aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="insta-embed-item">
-                        <iframe src="https://www.instagram.com/p/DYIFuN4sQ1q/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-                        <a href="https://www.instagram.com/p/DYIFuN4sQ1q/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
-                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
-                        </a>
+
+                    <div class="reel-showcase-card">
+                        <div class="reel-showcase-thumb">
+                            <img src="/assets/img/reels/tarim-post-2.jpg" alt="Kurumsal Tarım İletişimi #2" width="300" height="400" loading="lazy">
+                        </div>
+                        <div class="reel-showcase-content">
+                            <div class="reel-showcase-badge">
+                                <i class='bx bxl-instagram' style="color: #e1306c; font-size: 1.1rem;" aria-hidden="true"></i>
+                                <span>INSTAGRAM İÇERİĞİ</span>
+                            </div>
+                            <h3 class="reel-showcase-title">Kurumsal İletişim #2</h3>
+                            <p class="reel-showcase-desc">
+                                Sezon dinamikleri ve çiftçi odaklı bilgilendirici post kurgusu.
+                            </p>
+                            <a href="https://www.instagram.com/p/DYIFuN4sQ1q/" target="_blank" rel="noopener noreferrer" class="btn btn-primary reel-showcase-btn" aria-label="Tarım Instagram içeriğini gör">
+                                <span>İÇERİĞİ GÖR</span> <i class='bx bx-export' aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="insta-embed-item">
-                        <iframe src="https://www.instagram.com/p/DXcetC4DKXa/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-                        <a href="https://www.instagram.com/p/DXcetC4DKXa/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
-                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
-                        </a>
+
+                    <div class="reel-showcase-card">
+                        <div class="reel-showcase-thumb">
+                            <img src="/assets/img/reels/tarim-post-3.jpg" alt="Kurumsal Tarım İletişimi #3" width="300" height="400" loading="lazy">
+                        </div>
+                        <div class="reel-showcase-content">
+                            <div class="reel-showcase-badge">
+                                <i class='bx bxl-instagram' style="color: #e1306c; font-size: 1.1rem;" aria-hidden="true"></i>
+                                <span>INSTAGRAM İÇERİĞİ</span>
+                            </div>
+                            <h3 class="reel-showcase-title">Kurumsal İletişim #3</h3>
+                            <p class="reel-showcase-desc">
+                                Tarım sektörü paydaşlarına yönelik kurumsal bilgilendirme.
+                            </p>
+                            <a href="https://www.instagram.com/p/DXcetC4DKXa/" target="_blank" rel="noopener noreferrer" class="btn btn-primary reel-showcase-btn" aria-label="Tarım Instagram içeriğini gör">
+                                <span>İÇERİĞİ GÖR</span> <i class='bx bx-export' aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="insta-embed-item">
-                        <iframe src="https://www.instagram.com/p/DWEZDQhjC78/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-                        <a href="https://www.instagram.com/p/DWEZDQhjC78/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
-                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
-                        </a>
+
+                    <div class="reel-showcase-card">
+                        <div class="reel-showcase-thumb">
+                            <img src="/assets/img/reels/tarim-post-4.jpg" alt="Kurumsal Tarım İletişimi #4" width="300" height="400" loading="lazy">
+                        </div>
+                        <div class="reel-showcase-content">
+                            <div class="reel-showcase-badge">
+                                <i class='bx bxl-instagram' style="color: #e1306c; font-size: 1.1rem;" aria-hidden="true"></i>
+                                <span>INSTAGRAM İÇERİĞİ</span>
+                            </div>
+                            <h3 class="reel-showcase-title">Kurumsal İletişim #4</h3>
+                            <p class="reel-showcase-desc">
+                                Bölgesel tarım takvimi ve ürün standartlarını anlatan içerik.
+                            </p>
+                            <a href="https://www.instagram.com/p/DWEZDQhjC78/" target="_blank" rel="noopener noreferrer" class="btn btn-primary reel-showcase-btn" aria-label="Tarım Instagram içeriğini gör">
+                                <span>İÇERİĞİ GÖR</span> <i class='bx bx-export' aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="insta-embed-item">
-                        <iframe src="https://www.instagram.com/p/DUsPyGODILH/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-                        <a href="https://www.instagram.com/p/DUsPyGODILH/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
-                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
-                        </a>
+
+                    <div class="reel-showcase-card">
+                        <div class="reel-showcase-thumb">
+                            <img src="/assets/img/reels/tarim-post-5.jpg" alt="Kurumsal Tarım İletişimi #5" width="300" height="400" loading="lazy">
+                        </div>
+                        <div class="reel-showcase-content">
+                            <div class="reel-showcase-badge">
+                                <i class='bx bxl-instagram' style="color: #e1306c; font-size: 1.1rem;" aria-hidden="true"></i>
+                                <span>INSTAGRAM İÇERİĞİ</span>
+                            </div>
+                            <h3 class="reel-showcase-title">Kurumsal İletişim #5</h3>
+                            <p class="reel-showcase-desc">
+                                Çiftçi ve bayilere yönelik güven verici marka anlatımı.
+                            </p>
+                            <a href="https://www.instagram.com/p/DUsPyGODILH/" target="_blank" rel="noopener noreferrer" class="btn btn-primary reel-showcase-btn" aria-label="Tarım Instagram içeriğini gör">
+                                <span>İÇERİĞİ GÖR</span> <i class='bx bx-export' aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="insta-embed-item">
-                        <iframe src="https://www.instagram.com/p/DUITEa4DDnc/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-                        <a href="https://www.instagram.com/p/DUITEa4DDnc/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
-                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
-                        </a>
+
+                    <div class="reel-showcase-card">
+                        <div class="reel-showcase-thumb">
+                            <img src="/assets/img/reels/tarim-post-6.jpg" alt="Kurumsal Tarım İletişimi #6" width="300" height="400" loading="lazy">
+                        </div>
+                        <div class="reel-showcase-content">
+                            <div class="reel-showcase-badge">
+                                <i class='bx bxl-instagram' style="color: #e1306c; font-size: 1.1rem;" aria-hidden="true"></i>
+                                <span>INSTAGRAM İÇERİĞİ</span>
+                            </div>
+                            <h3 class="reel-showcase-title">Kurumsal İletişim #6</h3>
+                            <p class="reel-showcase-desc">
+                                Tarımsal sürdürülebilirlik ve ürün kalitesini vurgulayan görsel.
+                            </p>
+                            <a href="https://www.instagram.com/p/DUITEa4DDnc/" target="_blank" rel="noopener noreferrer" class="btn btn-primary reel-showcase-btn" aria-label="Tarım Instagram içeriğini gör">
+                                <span>İÇERİĞİ GÖR</span> <i class='bx bx-export' aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

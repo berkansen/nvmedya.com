@@ -288,63 +288,99 @@
             line-height: 1.6;
         }
 
-        /* Instagram Embed Grid */
-        .insta-embed-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.25rem;
-            margin-top: 2rem;
-        }
-
-        .insta-embed-item {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            background: #111;
-            border: 1px solid rgba(255, 255, 255, 0.07);
+        /* Reel / Post Showcase Card */
+        .reel-showcase-grid {
             display: flex;
             flex-direction: column;
-        }
-
-        .insta-embed-item iframe {
-            width: 100%;
-            height: 480px;
-            border: 0;
-            display: block;
-        }
-
-        .insta-embed-single {
-            max-width: 400px;
+            gap: 1.5rem;
+            max-width: 860px;
             margin: 2rem auto 0;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            background: #111;
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            display: flex;
-            flex-direction: column;
         }
 
-        .insta-embed-single iframe {
-            width: 100%;
-            height: 480px;
-            border: 0;
-            display: block;
+        .reel-showcase-grid.two-cols {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
         }
 
-        .insta-embed-cta {
+        .reel-showcase-card {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 0.4rem;
-            padding: 0.65rem 1rem;
-            color: var(--text-muted);
-            font-size: 0.82rem;
-            text-decoration: none;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            gap: 2rem;
+            background: linear-gradient(135deg, rgba(239, 120, 26, 0.08) 0%, rgba(18, 18, 18, 0.95) 100%);
+            border: 1px solid rgba(239, 120, 26, 0.25);
+            border-radius: var(--border-radius);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
             transition: var(--transition);
         }
 
-        .insta-embed-cta:hover {
-            color: var(--primary-color);
+        .reel-showcase-card:hover {
+            border-color: rgba(239, 120, 26, 0.45);
+            transform: translateY(-2px);
+        }
+
+        .reel-showcase-thumb {
+            flex: 0 0 160px;
+            height: 213px;
+            border-radius: calc(var(--border-radius) - 4px);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .reel-showcase-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .reel-showcase-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .reel-showcase-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(225, 48, 108, 0.12);
+            border: 1px solid rgba(225, 48, 108, 0.3);
+            color: #fff;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: 0.5px;
+        }
+
+        .reel-showcase-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .reel-showcase-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+        }
+
+        .reel-showcase-btn {
+            padding: 0.65rem 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         /* YouTube Shorts Embed */
@@ -410,10 +446,6 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .insta-embed-grid {
-                grid-template-columns: 1fr;
-            }
-
             .ik-gallery {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -435,6 +467,26 @@
             .ik-gallery {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 0.75rem;
+            }
+
+            .reel-showcase-grid.two-cols {
+                grid-template-columns: 1fr;
+            }
+
+            .reel-showcase-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .reel-showcase-thumb {
+                flex: 0 0 auto;
+                width: 150px;
+                height: 200px;
+            }
+
+            .reel-showcase-content {
+                align-items: center;
             }
         }
 
@@ -637,27 +689,70 @@
 
         <!-- Öne Çıkan Çalışmalar Section -->
         <section class="case-section alt-bg">
-            <div class="container" style="max-width: 860px;">
-                <h2 class="case-section-title">Öne Çıkan Çalışmalar</h2>
-                <p class="case-text-block" style="margin-bottom: 0;">Serhat Spor için üretilen içerik örneklerini aşağıdan inceleyebilirsiniz.</p>
-                <div class="insta-embed-grid">
-                    <div class="insta-embed-item">
-                        <iframe src="https://www.instagram.com/p/Dcd5HbEoUht/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-                        <a href="https://www.instagram.com/p/Dcd5HbEoUht/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
-                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
-                        </a>
+            <div class="container">
+                <div style="max-width: 860px; margin: 0 auto 1.5rem; text-align: center;">
+                    <h2 class="case-section-title">Öne Çıkan Çalışmalar</h2>
+                    <p style="color: var(--text-muted); font-size: 1.05rem;">
+                        Serhat Spor için üretilen içerik ve ürün tanıtım çalışmalarından örnekler.
+                    </p>
+                </div>
+
+                <div class="reel-showcase-grid">
+                    <div class="reel-showcase-card">
+                        <div class="reel-showcase-thumb">
+                            <img src="/assets/img/reels/kpnp-post-1.jpg" alt="Serhat Spor Ekipman İletişimi" width="300" height="400" loading="lazy">
+                        </div>
+                        <div class="reel-showcase-content">
+                            <div class="reel-showcase-badge">
+                                <i class='bx bxl-instagram' style="color: #e1306c; font-size: 1.1rem;" aria-hidden="true"></i>
+                                <span>INSTAGRAM İÇERİĞİ</span>
+                            </div>
+                            <h3 class="reel-showcase-title">Serhat Spor Ekipman İletişimi</h3>
+                            <p class="reel-showcase-desc">
+                                Taekwondo sporcularına yönelik profesyonel ekipman tanıtım içeriği.
+                            </p>
+                            <a href="https://www.instagram.com/p/Dcd5HbEoUht/" target="_blank" rel="noopener noreferrer" class="btn btn-primary reel-showcase-btn" aria-label="Serhat Spor Instagram içeriğini gör">
+                                <span>İÇERİĞİ GÖR</span> <i class='bx bx-export' aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="insta-embed-item">
-                        <iframe src="https://www.instagram.com/p/DcoLY2EoE-z/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-                        <a href="https://www.instagram.com/p/DcoLY2EoE-z/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
-                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
-                        </a>
+
+                    <div class="reel-showcase-card">
+                        <div class="reel-showcase-thumb">
+                            <img src="/assets/img/reels/kpnp-post-2.jpg" alt="Serhat Spor Saha & Etkinlik" width="300" height="400" loading="lazy">
+                        </div>
+                        <div class="reel-showcase-content">
+                            <div class="reel-showcase-badge">
+                                <i class='bx bxl-instagram' style="color: #e1306c; font-size: 1.1rem;" aria-hidden="true"></i>
+                                <span>INSTAGRAM İÇERİĞİ</span>
+                            </div>
+                            <h3 class="reel-showcase-title">Serhat Spor Saha & Etkinlik</h3>
+                            <p class="reel-showcase-desc">
+                                Turnuva ve saha etkinliklerini camia ile buluşturan görsel kurgu.
+                            </p>
+                            <a href="https://www.instagram.com/p/DcoLY2EoE-z/" target="_blank" rel="noopener noreferrer" class="btn btn-primary reel-showcase-btn" aria-label="Serhat Spor Instagram içeriğini gör">
+                                <span>İÇERİĞİ GÖR</span> <i class='bx bx-export' aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
-                    <div class="insta-embed-item">
-                        <iframe src="https://www.instagram.com/p/DdBhHrsuUBO/embed/" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
-                        <a href="https://www.instagram.com/p/DdBhHrsuUBO/" class="insta-embed-cta" target="_blank" rel="noopener noreferrer">
-                            <i class='bx bxl-instagram' aria-hidden="true"></i> Instagram'da Gör
-                        </a>
+
+                    <div class="reel-showcase-card">
+                        <div class="reel-showcase-thumb">
+                            <img src="/assets/img/reels/kpnp-post-3.jpg" alt="Serhat Spor Ürün Tanıtımı" width="300" height="400" loading="lazy">
+                        </div>
+                        <div class="reel-showcase-content">
+                            <div class="reel-showcase-badge">
+                                <i class='bx bxl-instagram' style="color: #e1306c; font-size: 1.1rem;" aria-hidden="true"></i>
+                                <span>INSTAGRAM İÇERİĞİ</span>
+                            </div>
+                            <h3 class="reel-showcase-title">Serhat Spor Ürün Tanıtımı</h3>
+                            <p class="reel-showcase-desc">
+                                Yeni nesil koruyucu ekipman ve spor malzemelerine odaklanan ürün içeriği.
+                            </p>
+                            <a href="https://www.instagram.com/p/DdBhHrsuUBO/" target="_blank" rel="noopener noreferrer" class="btn btn-primary reel-showcase-btn" aria-label="Serhat Spor Instagram içeriğini gör">
+                                <span>İÇERİĞİ GÖR</span> <i class='bx bx-export' aria-hidden="true"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
