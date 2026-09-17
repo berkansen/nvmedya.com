@@ -206,11 +206,15 @@ function renderTemplate(templateHtml, config) {
     }
   };
 
+  const ogImage = c.socialPreviewImage || (c.social && c.social.previewImage) || (c.gallery && c.gallery[0]) || c.hero.backgroundImage;
+  const ogUrl = `https://${c.slug}.nvmedya.com`;
+
   const replacements = {
     '{{PAGE_TITLE}}': escapeHtml(`${c.couple.displayName} | Düğün Davetiyesi`),
     '{{OG_TITLE}}': escapeHtml(`${c.couple.displayName} — Düğün Davetiyesi`),
     '{{OG_DESCRIPTION}}': escapeHtml(`Hayatımızın en özel gününü birlikte kutlamaya davet ediyoruz. ${c.date.short} • ${c.venue.name}, ${c.venue.city}`),
-    '{{OG_IMAGE}}': escapeHtml(c.venue.image),
+    '{{OG_URL}}': escapeHtml(ogUrl),
+    '{{OG_IMAGE}}': escapeHtml(ogImage),
     '{{HERO_BG_IMAGE}}': escapeHtml(c.hero.backgroundImage),
     '{{BRIDE_NAME}}': escapeHtml(c.couple.bride),
     '{{GROOM_NAME}}': escapeHtml(c.couple.groom),
