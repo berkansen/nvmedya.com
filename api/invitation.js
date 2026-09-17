@@ -50,6 +50,15 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
+function escapeHtmlWithFormatting(str) {
+  if (!str) return '';
+  return escapeHtml(str)
+    .replace(/&lt;strong&gt;(.*?)&lt;\/strong&gt;/gi, '<strong>$1</strong>')
+    .replace(/&lt;b&gt;(.*?)&lt;\/b&gt;/gi, '<b>$1</b>')
+    .replace(/&lt;br\s*\/?&gt;/gi, '<br>')
+    .replace(/&#039;/g, "'");
+}
+
 // ─── Escape for safe JSON injection inside <script> ────────────────
 function safeJsonForScript(obj) {
   return JSON.stringify(obj)
@@ -196,7 +205,7 @@ function renderTemplate(templateHtml, config) {
     '{{VENUE_IMAGE}}': escapeHtml(c.venue.image),
     '{{VENUE_IMAGE_ALT}}': escapeHtml(c.venue.imageAlt),
     '{{VENUE_MAPS_URL}}': escapeHtml(c.venue.mapsUrl),
-    '{{VENUE_DESC}}': escapeHtml(c.venue.description),
+    '{{VENUE_DESC}}': escapeHtmlWithFormatting(c.venue.description),
     '{{FORM_ACTION}}': escapeHtml(c.rsvp.formAction),
     '{{ENTRY_NAME}}': escapeHtml(c.rsvp.entries.name),
     '{{ENTRY_ATTENDANCE}}': escapeHtml(c.rsvp.entries.attendance),
