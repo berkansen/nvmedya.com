@@ -86,15 +86,19 @@
             line-height: 1.6;
             text-rendering: optimizeLegibility;
             -webkit-font-smoothing: antialiased;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         body {
             background-color: #F0ECE4;
             min-height: 100vh;
+            max-width: 100%;
             overflow-x: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
+            position: relative;
         }
 
         /* Main Container */
@@ -106,6 +110,7 @@
             position: relative;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
             margin: 0 auto;
+            overflow-x: hidden;
         }
 
         /* Typography */
@@ -327,6 +332,13 @@
             .hero-date {
                 font-size: 0.8rem;
                 letter-spacing: 0.11em;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .hero-date {
+                font-size: 0.75rem;
+                letter-spacing: 0.08em;
             }
         }
 
@@ -586,7 +598,7 @@
             position: relative;
             max-width: 480px;
             margin: 2rem auto 0;
-            padding-left: 1.8rem;
+            padding-left: 2.25rem;
         }
 
         .timeline-container::before {
@@ -594,7 +606,7 @@
             position: absolute;
             top: 15px;
             bottom: 25px;
-            left: 9px;
+            left: 15px;
             width: 2px;
             background: linear-gradient(180deg, var(--gold-light) 0%, var(--gold-primary) 50%, var(--gold-light) 100%);
             border-radius: 2px;
@@ -612,7 +624,7 @@
 
         .timeline-dot {
             position: absolute;
-            left: -1.8rem;
+            left: -1.875rem;
             top: 6px;
             width: 20px;
             height: 20px;
@@ -756,6 +768,7 @@
             padding: 1rem;
             opacity: 0;
             transition: opacity 0.25s ease;
+            overflow: hidden;
         }
 
         .lightbox-modal.active {
@@ -1327,6 +1340,9 @@
             bottom: 0;
             left: 0;
             right: 0;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
             z-index: 99;
             background: rgba(255, 255, 255, 0.94);
             backdrop-filter: blur(12px);
@@ -1399,6 +1415,9 @@
             transition: transform 0.3s ease, opacity 0.3s;
             opacity: 0;
             pointer-events: none;
+            max-width: calc(100vw - 32px);
+            box-sizing: border-box;
+            text-align: center;
         }
 
         .toast-notification.active {
