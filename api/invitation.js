@@ -139,12 +139,10 @@ function generateTimelineHtml(timeline) {
 }
 
 function generateGalleryHtml(gallery) {
-  const tallIndices = [0, 4]; // 1st and 5th images are tall
   return gallery.map((url, i) => {
-    const isTall = tallIndices.includes(i);
     const num = i + 1;
-    return `                <div class="gallery-item${isTall ? ' tall' : ''}" onclick="openLightbox(${i})">
-                    <img src="${escapeHtml(url)}" alt="Bizden Kareler ${num}" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'${isTall ? 500 : 400}\\' viewBox=\\'0 0 400 ${isTall ? 500 : 400}\\'><rect width=\\'400\\' height=\\'${isTall ? 500 : 400}\\' fill=\\'%23F3ECE2\\'/><text x=\\'50%25\\' y=\\'50%25\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' font-family=\\'serif\\' font-size=\\'20\\' fill=\\'%23966F36\\'>Fotoğraf ${num}</text></svg>'">
+    return `                <div class="gallery-item" onclick="openLightbox(${i})">
+                    <img src="${escapeHtml(url)}" alt="Bizden Kareler ${num}" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'400\\' viewBox=\\'0 0 400 400\\'><rect width=\\'400\\' height=\\'400\\' fill=\\'%23F3ECE2\\'/><text x=\\'50%25\\' y=\\'50%25\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' font-family=\\'serif\\' font-size=\\'20\\' fill=\\'%23966F36\\'>Fotoğraf ${num}</text></svg>'">
                     <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
                 </div>`;
   }).join('\n');

@@ -604,12 +604,11 @@
         }
 
         /* ==========================================================================
-           5. FOTOĞRAF GALERİSİ
+           5. FOTOĞRAF GALERİSİ (Masonry / Pinterest Akışı)
            ========================================================================== */
         .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
+            columns: 2;
+            column-gap: 12px;
             margin-top: 1.5rem;
         }
 
@@ -617,44 +616,51 @@
             position: relative;
             border-radius: var(--radius-md);
             overflow: hidden;
-            aspect-ratio: 4/5;
             cursor: pointer;
             box-shadow: var(--shadow-sm);
             background-color: var(--bg-secondary);
-        }
-
-        .gallery-item.tall {
-            grid-row: span 2;
-            aspect-ratio: 4/7;
+            break-inside: avoid;
+            -webkit-column-break-inside: avoid;
+            page-break-inside: avoid;
+            margin-bottom: 12px;
+            transform: translateZ(0);
+            -webkit-mask-image: -webkit-radial-gradient(white, black);
         }
 
         .gallery-img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
+            height: auto;
             display: block;
+            border-radius: var(--radius-md);
+            transition: transform 0.5s ease;
         }
 
         .gallery-item:hover .gallery-img,
         .gallery-item:active .gallery-img {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
 
         .gallery-overlay-hover {
             position: absolute;
             inset: 0;
-            background: linear-gradient(180deg, transparent 50%, rgba(28, 24, 22, 0.5) 100%);
+            background: linear-gradient(180deg, transparent 55%, rgba(28, 24, 22, 0.45) 100%);
             display: flex;
             align-items: flex-end;
             padding: 0.75rem;
+            opacity: 0.85;
+            transition: opacity 0.25s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay-hover {
+            opacity: 1;
         }
 
         .gallery-overlay-hover i {
             color: #FFFFFF;
             font-size: 1.15rem;
-            background: rgba(255, 255, 255, 0.25);
+            background: rgba(28, 24, 22, 0.35);
             backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             width: 32px;
             height: 32px;
             border-radius: 50%;
