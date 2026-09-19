@@ -1248,6 +1248,80 @@
             line-height: 1.7;
         }
 
+        /* LCV Deadline Notice (Açıkken görünür) */
+        .rsvp-deadline-notice {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: rgba(184, 142, 82, 0.08);
+            border: 1px solid rgba(184, 142, 82, 0.25);
+            border-radius: var(--radius-full);
+            padding: 0.4rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--gold-dark);
+            letter-spacing: 0.02em;
+        }
+
+        .rsvp-deadline-notice i {
+            font-size: 0.95rem;
+            color: var(--gold-primary);
+        }
+
+        /* LCV Closed State Kartı (Süre bitince görünür) */
+        .rsvp-closed-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--gold-border);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem 1.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            max-width: 440px;
+            margin: 0 auto;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .rsvp-closed-icon {
+            width: 52px;
+            height: 52px;
+            background: rgba(184, 142, 82, 0.1);
+            color: var(--gold-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 1.25rem auto;
+            border: 1px solid rgba(184, 142, 82, 0.25);
+        }
+
+        .rsvp-closed-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-heading);
+            margin: 0 0 0.75rem 0;
+            line-height: 1.3;
+        }
+
+        .rsvp-closed-text {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* Disabled Mobile Bar Button */
+        .mobile-bar-btn.disabled {
+            background: #EAE6DF !important;
+            color: #8C847B !important;
+            border: 1px solid #D8D2C6 !important;
+            cursor: not-allowed !important;
+            pointer-events: none !important;
+            box-shadow: none !important;
+        }
+
         /* ==========================================================================
            8. TAKVİME EKLE
            ========================================================================== */
@@ -1682,11 +1756,28 @@
                 <p class="section-subtitle">
                     Katılım durumunuzu bizimle paylaşmanız, hazırlıklarımızı daha sağlıklı planlamamıza yardımcı olacaktır.
                 </p>
+                <div style="margin-top: 1.1rem;">
+                    <div class="rsvp-deadline-notice" id="rsvpDeadlineNotice" {{RSVP_NOTICE_DISPLAY}}>
+                        <i class='bx bx-time-five'></i>
+                        <span>Son katılım bildirimi: {{RSVP_DEADLINE_DISPLAY}}</span>
+                    </div>
+                </div>
             </div>
 
             <div class="rsvp-container">
+                <!-- LCV KAPALI STATE KARTI (Deadline sonrası görünür) -->
+                <div class="rsvp-closed-card" id="rsvpClosedCard" {{RSVP_CLOSED_CARD_DISPLAY}}>
+                    <div class="rsvp-closed-icon">
+                        <i class='bx bx-time-five'></i>
+                    </div>
+                    <h3 class="rsvp-closed-title">LCV süresi sona erdi</h3>
+                    <p class="rsvp-closed-text">
+                        {{RSVP_CLOSED_TEXT}}
+                    </p>
+                </div>
+
                 <!-- FORM -->
-                <form id="rsvpForm" action="{{FORM_ACTION}}" method="POST" target="hidden_iframe" onsubmit="return handleRsvpSubmit(event)">
+                <form id="rsvpForm" action="{{FORM_ACTION}}" method="POST" target="hidden_iframe" onsubmit="return handleRsvpSubmit(event)" {{RSVP_FORM_DISPLAY}}>
                     <input type="hidden" name="fvv" value="1">
                     <input type="hidden" name="pageHistory" value="0">
                     
@@ -1923,8 +2014,8 @@
                class="mobile-bar-btn secondary">
                 <i class='bx bx-navigation'></i> Yol Tarifi
             </a>
-            <a href="#rsvp" class="mobile-bar-btn primary">
-                <i class='bx bx-envelope'></i> LCV / Katılım
+            <a id="mobileRsvpBtn" {{RSVP_MOBILE_BTN_ATTRS}}>
+                <i class='{{RSVP_MOBILE_BTN_ICON}}'></i> <span>{{RSVP_MOBILE_BTN_TEXT}}</span>
             </a>
         </div>
     </div>
@@ -2143,11 +2234,87 @@
             renderChildAgeFields(childCountValue);
         }
 
+        // LCV Deadline / Closed State Yönetimi
+        function getRsvpDeadlineMs() {
+            if (__INV__.rsvp && __INV__.rsvp.closesAt) {
+                return new Date(__INV__.rsvp.closesAt).getTime();
+            }
+            return null;
+        }
+
+        function isRsvpClosed() {
+            if (__INV__.rsvp && __INV__.rsvp.isClosed) return true;
+            const deadlineMs = getRsvpDeadlineMs();
+            if (deadlineMs && Date.now() >= deadlineMs) {
+                return true;
+            }
+            return false;
+        }
+
+        function setRsvpClosedState() {
+            if (__INV__.rsvp) {
+                __INV__.rsvp.isClosed = true;
+            }
+            const form = document.getElementById('rsvpForm');
+            const notice = document.getElementById('rsvpDeadlineNotice');
+            const closedCard = document.getElementById('rsvpClosedCard');
+            const successBox = document.getElementById('rsvpSuccessBox');
+            const mobileBtn = document.getElementById('mobileRsvpBtn');
+
+            if (form) form.style.display = 'none';
+            if (notice) notice.style.display = 'none';
+            if (successBox) successBox.style.display = 'none';
+            if (closedCard) closedCard.style.display = 'block';
+
+            if (mobileBtn) {
+                mobileBtn.className = 'mobile-bar-btn primary disabled';
+                mobileBtn.removeAttribute('href');
+                mobileBtn.innerHTML = "<i class='bx bx-time-five'></i> <span>LCV Süresi Sona Erdi</span>";
+            }
+        }
+
+        function initRsvpDeadline() {
+            if (isRsvpClosed()) {
+                setRsvpClosedState();
+                return;
+            }
+
+            const deadlineMs = getRsvpDeadlineMs();
+            if (!deadlineMs) return;
+
+            const msUntilDeadline = deadlineMs - Date.now();
+            if (msUntilDeadline > 0 && msUntilDeadline < 2147483647) {
+                setTimeout(setRsvpClosedState, msUntilDeadline);
+            }
+
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible' && isRsvpClosed()) {
+                    setRsvpClosedState();
+                }
+            });
+            window.addEventListener('focus', () => {
+                if (isRsvpClosed()) {
+                    setRsvpClosedState();
+                }
+            });
+        }
+
+        initRsvpDeadline();
+
         // Form Submit İşleyicisi
         let formSubmitted = false;
 
         function handleRsvpSubmit(e) {
             if (isSubmitting) { e.preventDefault(); return false; }
+
+            // Submit anında kesin deadline kontrolü
+            if (isRsvpClosed()) {
+                e.preventDefault();
+                setRsvpClosedState();
+                const deadlineText = (__INV__.rsvp && __INV__.rsvp.deadlineDisplay) || '8 Kasım 2026 • 23:59';
+                alert('Katılım bildirimleri ' + deadlineText.replace(' • ', ' saat ') + ' itibarıyla kapanmıştır. İlginiz için teşekkür ederiz.');
+                return false;
+            }
 
             const name = document.getElementById('guestName').value.trim();
             const attendanceEl = document.querySelector('input[name="' + __INV__.rsvp.entries.attendance + '"]:checked');

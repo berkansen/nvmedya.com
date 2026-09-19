@@ -188,6 +188,11 @@ function renderTemplate(templateHtml, config) {
   const c = config;
   const coupleDisplay = escapeHtml(c.couple.displayName);
 
+  const closesAtIso = (c.rsvp && c.rsvp.closesAt) || null;
+  const isClosedServer = closesAtIso ? (Date.now() >= new Date(closesAtIso).getTime()) : false;
+  const deadlineDisplay = (c.rsvp && c.rsvp.deadlineDisplay) || '8 Kasım 2026 • 23:59';
+  const closedText = (c.rsvp && c.rsvp.closedText) || `Katılım bildirimleri ${deadlineDisplay.replace(' • ', ' saat ')} itibarıyla kapanmıştır. İlginiz için teşekkür ederiz.`;
+
   // Build client-side config (safe for <script> injection)
   const clientConfig = {
     countdownTarget: c.date.countdownTarget,
@@ -204,7 +209,12 @@ function renderTemplate(templateHtml, config) {
       groom: c.couple.groom
     },
     rsvp: {
-      entries: c.rsvp.entries
+      entries: c.rsvp.entries,
+      closesAt: closesAtIso,
+      timezone: (c.rsvp && c.rsvp.timezone) || 'Europe/Istanbul',
+      deadlineDisplay: deadlineDisplay,
+      closedText: closedText,
+      isClosed: isClosedServer
     }
   };
 
@@ -245,6 +255,14 @@ function renderTemplate(templateHtml, config) {
     '{{ENTRY_HAS_CHILDREN}}': escapeHtml(c.rsvp.entries.hasChildren),
     '{{ENTRY_CHILDREN}}': escapeHtml(c.rsvp.entries.children),
     '{{ENTRY_MESSAGE}}': escapeHtml(c.rsvp.entries.message),
+    '{{RSVP_DEADLINE_DISPLAY}}': escapeHtml(deadlineDisplay),
+    '{{RSVP_CLOSED_TEXT}}': escapeHtml(closedText),
+    '{{RSVP_FORM_DISPLAY}}': isClosedServer ? 'style="display: none;"' : '',
+    '{{RSVP_NOTICE_DISPLAY}}': isClosedServer ? 'style="display: none;"' : '',
+    '{{RSVP_CLOSED_CARD_DISPLAY}}': isClosedServer ? 'style="display: block;"' : 'style="display: none;"',
+    '{{RSVP_MOBILE_BTN_ATTRS}}': isClosedServer ? 'class="mobile-bar-btn primary disabled"' : 'href="#rsvp" class="mobile-bar-btn primary"',
+    '{{RSVP_MOBILE_BTN_ICON}}': isClosedServer ? 'bx bx-time-five' : 'bx bx-envelope',
+    '{{RSVP_MOBILE_BTN_TEXT}}': isClosedServer ? 'LCV Süresi Sona Erdi' : 'LCV / Katılım',
     '{{GOOGLE_CAL_URL}}': escapeHtml(c.calendar.googleCalUrl),
     '{{FINAL_TEXT}}': escapeHtml(c.messages.finalText),
     '{{TIMELINE_ITEMS_HTML}}': generateTimelineHtml(c.timeline),
