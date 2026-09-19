@@ -240,6 +240,7 @@ function renderTemplate(templateHtml, config) {
     '{{FORM_ACTION}}': escapeHtml(c.rsvp.formAction),
     '{{ENTRY_NAME}}': escapeHtml(c.rsvp.entries.name),
     '{{ENTRY_ATTENDANCE}}': escapeHtml(c.rsvp.entries.attendance),
+    '{{ENTRY_VEGETARIAN}}': escapeHtml(c.rsvp.entries.vegetarian || ''),
     '{{ENTRY_ADULTS}}': escapeHtml(c.rsvp.entries.adults),
     '{{ENTRY_HAS_CHILDREN}}': escapeHtml(c.rsvp.entries.hasChildren),
     '{{ENTRY_CHILDREN}}': escapeHtml(c.rsvp.entries.children),

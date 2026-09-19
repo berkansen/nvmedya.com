@@ -1720,7 +1720,28 @@
                     <!-- 3. KATILIM DETAYLARI KAPSAYICISI (Katılacağım durumunda görünür) -->
                     <div id="attendanceDetailsContainer" class="conditional-section">
                         
-                        <!-- 3A. Yetişkin Kişi Sayısı (Min 1) -->
+                        <!-- 3A. Vejetaryen misiniz? (Hayır / Evet) -->
+                        <div class="form-group" id="vegetarianGroup">
+                            <label class="form-label">Vejetaryen misiniz? *</label>
+                            <div class="rsvp-toggle-grid">
+                                <label class="rsvp-toggle-card">
+                                    <input type="radio" name="{{ENTRY_VEGETARIAN}}" id="vegNo" value="Hayır">
+                                    <div class="rsvp-toggle-content">
+                                        <i class='bx bx-dish'></i>
+                                        <span class="toggle-title">Hayır</span>
+                                    </div>
+                                </label>
+                                <label class="rsvp-toggle-card">
+                                    <input type="radio" name="{{ENTRY_VEGETARIAN}}" id="vegYes" value="Evet">
+                                    <div class="rsvp-toggle-content">
+                                        <i class='bx bx-leaf'></i>
+                                        <span class="toggle-title">Evet</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 3B. Yetişkin Kişi Sayısı (Min 1) -->
                         <div class="form-group" id="adultCountGroup">
                             <label class="form-label">Yetişkin Kişi Sayısı *</label>
                             <div class="stepper-wrap">
@@ -2081,8 +2102,12 @@
         // Katılım Durumu Değiştiğinde
         function handleAttendanceChange(isAttending) {
             const detailsContainer = document.getElementById('attendanceDetailsContainer');
+            const vegEntry = (__INV__.rsvp && __INV__.rsvp.entries && __INV__.rsvp.entries.vegetarian) || 'entry.vegetarian';
+            const vegRadios = document.querySelectorAll('input[name="' + vegEntry + '"]');
+
             if (isAttending) {
                 detailsContainer.style.display = 'block';
+                vegRadios.forEach(r => { r.disabled = false; });
                 if (adultCountValue < 1) {
                     adultCountValue = 1;
                     document.getElementById('adultCountDisplay').innerText = '1 Yetişkin';
@@ -2090,7 +2115,11 @@
                 }
             } else {
                 detailsContainer.style.display = 'none';
-                // Katılamayacaksa tüm yetişkin, çocuk ve çocuk yaşlarını sıfırla
+                // Katılamayacaksa vejetaryen state'ini temizle ve submit payload'a gitmesini engelle
+                vegRadios.forEach(r => {
+                    r.checked = false;
+                    r.disabled = true;
+                });
                 adultCountValue = 0;
                 childCountValue = 0;
                 document.getElementById('adultCount').value = '0';
@@ -2158,6 +2187,25 @@
 
             const attendance = attendanceEl.value;
             const isAttending = (attendance === 'Katılacağım');
+            const vegEntry = (__INV__.rsvp && __INV__.rsvp.entries && __INV__.rsvp.entries.vegetarian) || 'entry.vegetarian';
+            const vegEl = document.querySelector('input[name="' + vegEntry + '"]:checked');
+
+            if (isAttending) {
+                if (!vegEl) {
+                    e.preventDefault();
+                    alert('Lütfen vejetaryen misiniz sorusunu yanıtlayınız.');
+                    const vegGroup = document.getElementById('vegetarianGroup');
+                    if (vegGroup) vegGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    return false;
+                }
+            } else {
+                // Katılamayacaksa vejetaryen seçimlerini sıfırla ve disable et
+                document.querySelectorAll('input[name="' + vegEntry + '"]').forEach(r => {
+                    r.checked = false;
+                    r.disabled = true;
+                });
+            }
+
             const hasChildrenEl = document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"]:checked');
             const hasChildren = hasChildrenEl ? hasChildrenEl.value : 'Hayır';
 
@@ -2219,6 +2267,9 @@
             const attendanceEl = document.querySelector('input[name="' + __INV__.rsvp.entries.attendance + '"]:checked');
             const attendance = attendanceEl ? attendanceEl.value : '';
             const isAttending = (attendance === 'Katılacağım');
+            const vegEntry = (__INV__.rsvp && __INV__.rsvp.entries && __INV__.rsvp.entries.vegetarian) || 'entry.vegetarian';
+            const vegEl = document.querySelector('input[name="' + vegEntry + '"]:checked');
+            const vegValue = vegEl ? vegEl.value : '';
             const hasChildrenEl = document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"]:checked');
             const hasChildren = hasChildrenEl ? hasChildrenEl.value : 'Hayır';
             const adultCount = parseInt(document.getElementById('adultCount').value, 10);
@@ -2249,6 +2300,7 @@
                 '<strong>İletilen Katılım Bilgileriniz:</strong><br>' +
                 '• <strong>Ad Soyad:</strong> ' + escapeHtml(name) + '<br>' +
                 '• <strong>Durum:</strong> ' + escapeHtml(attendance) + '<br>' +
+                (isAttending && vegValue ? '• <strong>Vejetaryen:</strong> ' + escapeHtml(vegValue) + '<br>' : '') +
                 (isAttending ? '• <strong>Yetişkin Sayısı:</strong> ' + adultCount + ' Kişi<br>' : '') +
                 (isAttending && hasChildren === 'Evet' ? '• <strong>Çocuk Sayısı:</strong> ' + childCount + ' Kişi<br>' : '') +
                 childAgesSummary +
@@ -2271,6 +2323,12 @@
             document.getElementById('childCountGroup').style.display = 'none';
             renderChildAgeFields(0);
             document.getElementById('attendanceDetailsContainer').style.display = 'block';
+
+            const vegEntry = (__INV__.rsvp && __INV__.rsvp.entries && __INV__.rsvp.entries.vegetarian) || 'entry.vegetarian';
+            document.querySelectorAll('input[name="' + vegEntry + '"]').forEach(r => {
+                r.checked = false;
+                r.disabled = false;
+            });
 
             const attendRadio = document.querySelector('input[name="' + __INV__.rsvp.entries.attendance + '"][value="Katılacağım"]');
             if (attendRadio) attendRadio.checked = true;
