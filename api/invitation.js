@@ -159,6 +159,7 @@ function generateGalleryHtml(gallery) {
 
 function generateDetailNoticesHtml(notices) {
   if (!notices || !Array.isArray(notices) || notices.length === 0) return '';
+  const isSingle = notices.length === 1;
   const cardsHtml = notices.map(item => {
     let iconHtml = '';
     if (item.icon === 'paw') {
@@ -177,7 +178,8 @@ function generateDetailNoticesHtml(notices) {
                 </div>`;
   }).join('\n');
 
-  return `            <div class="details-notices-grid">
+  const gridClass = isSingle ? 'details-notices-grid is-single' : 'details-notices-grid';
+  return `            <div class="${gridClass}">
 ${cardsHtml}
             </div>`;
 }

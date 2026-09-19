@@ -35,14 +35,9 @@
   },
   "detailNotices": [
     {
-      "icon": "bx-face",
-      "title": "Çocuklar da Aramızda",
-      "description": "Minik misafirlerimizin neşesiyle bu özel günümüz daha da güzel olacak."
-    },
-    {
-      "icon": "paw",
-      "title": "Patili Dostlarımız da Aramızda",
-      "description": "Patili dostlarınızla birlikte bu güzel güne katılabilirsiniz."
+      "icon": "bx-moon",
+      "title": "Çocuklara iyi uykular dileriz",
+      "description": "Bu özel gecemizi yetişkin misafirlerimizle paylaşmayı planlıyoruz. Minik misafirlerimize şimdiden tatlı rüyalar dileriz."
     }
   ],
   "timeline": [
