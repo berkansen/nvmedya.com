@@ -151,7 +151,7 @@ function generateGalleryHtml(gallery) {
   return gallery.map((url, i) => {
     const num = i + 1;
     return `                <div class="gallery-item" onclick="openLightbox(${i})">
-                    <img src="${escapeHtml(url)}" alt="Bizden Kareler ${num}" class="gallery-img" loading="lazy" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'400\\' viewBox=\\'0 0 400 400\\'><rect width=\\'400\\' height=\\'400\\' fill=\\'%23F3ECE2\\'/><text x=\\'50%25\\' y=\\'50%25\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' font-family=\\'serif\\' font-size=\\'20\\' fill=\\'%23966F36\\'>Fotoğraf ${num}</text></svg>'">
+                    <img src="${escapeHtml(url)}" alt="Bizden Kareler ${num}" class="gallery-img" loading="eager" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'400\\' height=\\'400\\' viewBox=\\'0 0 400 400\\'><rect width=\\'400\\' height=\\'400\\' fill=\\'%23F3ECE2\\'/><text x=\\'50%25\\' y=\\'50%25\\' dominant-baseline=\\'middle\\' text-anchor=\\'middle\\' font-family=\\'serif\\' font-size=\\'20\\' fill=\\'%23966F36\\'>Fotoğraf ${num}</text></svg>'">
                     <div class="gallery-overlay-hover"><i class='bx bx-fullscreen'></i></div>
                 </div>`;
   }).join('\n');
