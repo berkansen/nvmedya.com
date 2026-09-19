@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dijital Davetiye Paketleri | NVM</title>
-    <meta name="description" content="Düğününüz için kişiye özel dijital davetiye. Online LCV, fotoğraf galerisi, düğün programı, Google Maps ve daha fazlası. Dijital davetiye 1.000 TL, 2.500 TL ve üzeri fiziksel davetiye siparişlerinde hediye.">
+    <meta name="description" content="Düğününüz için kişiye özel dijital davetiye. Online LCV, fotoğraf galerisi, düğün programı, Google Maps ve daha fazlası. Dijital davetiye 1.000 TL, 3.500 TL ve üzeri fiziksel davetiye siparişlerinde hediye.">
     <link rel="canonical" href="https://www.nvmedya.com/dijital-davetiye-paketleri">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Dijital Davetiye Paketleri | NVM">
-    <meta property="og:description" content="Düğününüz için kişiye özel dijital davetiye. Online LCV, fotoğraf galerisi, düğün programı, Google Maps ve daha fazlası. Dijital davetiye 1.000 TL, 2.500 TL ve üzeri fiziksel davetiye siparişlerinde hediye.">
+    <meta property="og:description" content="Düğününüz için kişiye özel dijital davetiye. Online LCV, fotoğraf galerisi, düğün programı, Google Maps ve daha fazlası. Dijital davetiye 1.000 TL, 3.500 TL ve üzeri fiziksel davetiye siparişlerinde hediye.">
     <meta property="og:url" content="https://www.nvmedya.com/dijital-davetiye-paketleri">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.nvmedya.com/assets/nisanvitrini-logo.png">
@@ -536,9 +536,9 @@
         /* 5. PACKAGES SECTION */
         .packages-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 980px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1280px;
             margin: 0 auto 4rem;
             align-items: stretch;
         }
@@ -546,8 +546,8 @@
         .package-card {
             background: var(--wedding-bg-card);
             border: 1px solid var(--wedding-border);
-            border-radius: 24px;
-            padding: clamp(1.8rem, 3.5vw, 2.5rem);
+            border-radius: 20px;
+            padding: 1.8rem 1.35rem;
             display: flex;
             flex-direction: column;
             position: relative;
@@ -563,27 +563,27 @@
         .package-ribbon {
             position: absolute;
             top: -12px;
-            right: 1.8rem;
+            right: 1.2rem;
             background: linear-gradient(135deg, #D4AF37 0%, #AA841E 100%);
             color: #0F0D0C;
-            font-size: 0.75rem;
+            font-size: 0.68rem;
             font-weight: 700;
-            padding: 0.3rem 0.9rem;
+            padding: 0.25rem 0.75rem;
             border-radius: 50px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .package-name {
-            font-size: 1.45rem;
+            font-size: 1.22rem;
             font-weight: 700;
             color: #FFFFFF;
             margin-bottom: 0.4rem;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         .package-price {
-            font-size: clamp(2rem, 3.5vw, 2.6rem);
+            font-size: 2rem;
             font-weight: 700;
             color: var(--wedding-gold);
             margin-bottom: 0.85rem;
@@ -593,54 +593,56 @@
         }
 
         .package-price-gift {
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            font-size: 1.22rem;
             font-weight: 700;
             color: var(--wedding-gold);
             margin-bottom: 0.85rem;
+            line-height: 1.3;
         }
 
         .package-lead {
-            font-size: 0.95rem;
+            font-size: 0.88rem;
             color: var(--text-muted);
-            line-height: 1.55;
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.25rem;
+            line-height: 1.5;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            min-height: 48px;
+            min-height: 52px;
         }
 
         .package-gift-highlight {
             background: rgba(212, 175, 55, 0.1);
             border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 12px;
-            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            padding: 0.6rem 0.8rem;
             margin-bottom: 1.25rem;
             color: var(--wedding-gold-light);
-            font-size: 0.92rem;
+            font-size: 0.84rem;
             font-weight: 600;
+            line-height: 1.4;
         }
 
         .package-features {
             list-style: none;
             padding: 0;
-            margin: 0 0 2rem;
+            margin: 0 0 1.75rem;
             flex: 1;
         }
 
         .package-features li {
             display: flex;
             align-items: flex-start;
-            gap: 0.7rem;
-            font-size: 0.92rem;
+            gap: 0.6rem;
+            font-size: 0.86rem;
             color: var(--text-main);
-            margin-bottom: 0.75rem;
-            line-height: 1.45;
+            margin-bottom: 0.65rem;
+            line-height: 1.4;
         }
 
         .package-features li i {
             color: var(--wedding-gold);
-            font-size: 1.15rem;
-            margin-top: 0.15rem;
+            font-size: 1.1rem;
+            margin-top: 0.1rem;
             flex-shrink: 0;
         }
 
@@ -650,10 +652,10 @@
         }
 
         .package-bottom-price-note {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             font-weight: 700;
             color: var(--wedding-gold);
-            margin-bottom: 1rem;
+            margin-bottom: 0.85rem;
         }
 
         /* 6. STEPS SECTION */
@@ -918,6 +920,10 @@
             .hero-mockup-container {
                 order: 2;
             }
+            .packages-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
             .demos-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -1079,10 +1085,10 @@
                 <div class="campaign-card">
                     <span class="campaign-badge">Özel Kampanya</span>
                     <h2 class="campaign-title">
-                        Fiziksel Davetiyenizi Bizden Alın,<br>Dijital Davetiyeniz Hediye
+                        Fiziksel Davetiyenizi Bizden Alın,<br>Standart Dijital Davetiyeniz Hediye
                     </h2>
                     <p class="campaign-text">
-                        Nişan Vitrini'nden 2.500 TL ve üzeri fiziksel davetiye siparişi veren çiftlere kişiye özel dijital davetiye HEDİYE.
+                        Nişan Vitrini'nden 3.500 TL ve üzeri fiziksel davetiye siparişi veren çiftlere 1.000 TL değerindeki Standart Dijital Davetiye HEDİYE.
                     </p>
                     <p class="campaign-support">
                         Kağıt davetiyenizi sevdiklerinize verin, dijital davetiyenizi tek bağlantıyla paylaşın.
@@ -1090,11 +1096,11 @@
 
                     <div class="campaign-value-tag">
                         <i class='bx bxs-gift' style="color: var(--wedding-gold); font-size: 1.35rem;"></i>
-                        <div><span>1.000 TL DEĞERİNDE</span> DİJİTAL DAVETİYE HEDİYE</div>
+                        <div><span>1.000 TL DEĞERİNDE</span> STANDART DİJİTAL DAVETİYE HEDİYE</div>
                     </div>
 
                     <p class="campaign-footnote">
-                        * Kampanya 2.500 TL ve üzeri fiziksel davetiye siparişlerinde geçerlidir.
+                        * Kampanya 3.500 TL ve üzeri fiziksel davetiye siparişlerinde geçerlidir.
                     </p>
                 </div>
             </div>
@@ -1272,9 +1278,9 @@
                 </div>
 
                 <div class="packages-grid">
-                    <!-- PAKET 1: DİJİTAL DAVETİYE -->
+                    <!-- PAKET 1: DİJİTAL DAVETİYE STANDART -->
                     <div class="package-card">
-                        <div class="package-name">DİJİTAL DAVETİYE</div>
+                        <div class="package-name">Dijital Davetiye Standart</div>
                         <div class="package-price">1.000 TL</div>
                         <p class="package-lead">
                             Fiziksel davetiye almadan dijital davetiyenizi tek başına satın alabilirsiniz.
@@ -1283,55 +1289,111 @@
                             <li><i class='bx bx-check-circle'></i> Çiftinize özel dijital davetiye</li>
                             <li><i class='bx bx-check-circle'></i> Size özel davetiye bağlantısı</li>
                             <li><i class='bx bx-check-circle'></i> Kişiselleştirilmiş isim ve düğün bilgileri</li>
-                            <li><i class='bx bx-check-circle'></i> Çift fotoğrafları</li>
-                            <li><i class='bx bx-check-circle'></i> Fotoğraf galerisi</li>
-                            <li><i class='bx bx-check-circle'></i> Düğüne geri sayım</li>
-                            <li><i class='bx bx-check-circle'></i> Düğün programı</li>
-                            <li><i class='bx bx-check-circle'></i> Mekan ve adres bilgileri</li>
-                            <li><i class='bx bx-check-circle'></i> Google Maps yol tarifi</li>
+                            <li><i class='bx bx-check-circle'></i> Çift fotoğrafları &amp; galeri</li>
+                            <li><i class='bx bx-check-circle'></i> Düğüne geri sayım sayacı</li>
+                            <li><i class='bx bx-check-circle'></i> Düğün program akışı</li>
+                            <li><i class='bx bx-check-circle'></i> Mekan &amp; Google Maps yol tarifi</li>
                             <li><i class='bx bx-check-circle'></i> Online LCV katılım bildirimi</li>
                             <li><i class='bx bx-check-circle'></i> Yetişkin ve çocuk misafir takibi</li>
-                            <li><i class='bx bx-check-circle'></i> Takvime ekleme &amp; Mobil uyumlu tasarım</li>
+                            <li><i class='bx bx-check-circle'></i> Takvime ekleme &amp; Mobil uyumlu</li>
                         </ul>
                         <div class="package-bottom-action">
                             <div class="package-bottom-price-note">
                                 1.000 TL
                             </div>
-                            <a href="https://wa.me/905526288131?text=Merhaba%2C%20Dijital%20Davetiye%20paketi%20(1.000%20TL)%20hakk%C4%B1nda%20bilgi%20almak%20ve%20sipari%C5%9F%20vermek%20istiyorum." 
+                            <a href="https://wa.me/905526288131?text=Merhaba%2C%20Dijital%20Davetiye%20Standart%20paketi%20(1.000%20TL)%20hakk%C4%B1nda%20bilgi%20almak%20ve%20sipari%C5%9F%20vermek%20istiyorum." 
                                target="_blank" 
                                rel="noopener noreferrer" 
                                class="btn-gold" 
                                style="width: 100%; justify-content: center;">
-                                <i class='bx bxl-whatsapp'></i> Dijital Davetiye Satın Al
+                                <i class='bx bxl-whatsapp'></i> Standart Paketi Seç
                             </a>
                         </div>
                     </div>
 
-                    <!-- PAKET 2: FİZİKSEL + DİJİTAL -->
+                    <!-- PAKET 2: DİJİTAL DAVETİYE PLUS -->
                     <div class="package-card featured">
-                        <div class="package-ribbon">AVANTAJLI PAKET</div>
-                        <div class="package-name">FİZİKSEL + DİJİTAL</div>
-                        <div class="package-price-gift">DİJİTAL DAVETİYE HEDİYE</div>
+                        <div class="package-ribbon">ÖNE ÇIKAN PAKET</div>
+                        <div class="package-name">Dijital Davetiye Plus</div>
+                        <div class="package-price">1.500 TL</div>
                         <p class="package-lead">
-                            Nişan Vitrini'nden 2.500 TL ve üzeri fiziksel davetiye siparişi verdiğinizde dijital davetiyenizi ayrıca satın almanıza gerek yok.
+                            Standart özelliklerin tamamı ve çiftinize özel video, müzik ve hikaye anlatımı.
+                        </p>
+                        <ul class="package-features">
+                            <li><i class='bx bx-check-circle'></i> <strong>Tüm Standart özellikler dahil</strong></li>
+                            <li><i class='bx bx-check-circle'></i> Özel arka plan müziği &amp; şarkı entegrasyonu</li>
+                            <li><i class='bx bx-check-circle'></i> Çift tanışma hikayesi &amp; video alanı</li>
+                            <li><i class='bx bx-check-circle'></i> Genişletilmiş yüksek çözünürlüklü galeri</li>
+                            <li><i class='bx bx-check-circle'></i> Özel misafir tebrik ve mesaj notları</li>
+                            <li><i class='bx bx-check-circle'></i> Öncelikli tasarım &amp; hızlı teslimat</li>
+                        </ul>
+                        <div class="package-bottom-action">
+                            <div class="package-bottom-price-note">
+                                1.500 TL
+                            </div>
+                            <a href="https://wa.me/905526288131?text=Merhaba%2C%20Dijital%20Davetiye%20Plus%20paketi%20(1.500%20TL)%20hakk%C4%B1nda%20bilgi%20almak%20ve%20sipari%C5%9F%20vermek%20istiyorum." 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               class="btn-gold" 
+                               style="width: 100%; justify-content: center;">
+                                <i class='bx bxl-whatsapp'></i> Plus Paketi Seç
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PAKET 3: İMZA DİJİTAL DAVETİYE -->
+                    <div class="package-card">
+                        <div class="package-name">İmza Dijital Davetiye</div>
+                        <div class="package-price">2.500 TL</div>
+                        <p class="package-lead">
+                            Çiftinize özel konsept, sınırsız medya ve tamamen özelleştirilmiş tasarım.
+                        </p>
+                        <ul class="package-features">
+                            <li><i class='bx bx-check-circle'></i> <strong>Tüm Plus özellikler dahil</strong></li>
+                            <li><i class='bx bx-check-circle'></i> Çifte ve düğün temasına özel imza tasarım</li>
+                            <li><i class='bx bx-check-circle'></i> Sınırsız fotoğraf ve video alanı</li>
+                            <li><i class='bx bx-check-circle'></i> Özel domain / alt alan adı entegrasyonu</li>
+                            <li><i class='bx bx-check-circle'></i> Premium tipografi &amp; mikro animasyonlar</li>
+                            <li><i class='bx bx-check-circle'></i> VIP öncelikli destek &amp; sınırsız revizyon</li>
+                        </ul>
+                        <div class="package-bottom-action">
+                            <div class="package-bottom-price-note">
+                                2.500 TL
+                            </div>
+                            <a href="https://wa.me/905526288131?text=Merhaba%2C%20%C4%B0mza%20Dijital%20Davetiye%20paketi%20(2.500%20TL)%20hakk%C4%B1nda%20bilgi%20almak%20ve%20sipari%C5%9F%20vermek%20istiyorum." 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               class="btn-gold" 
+                               style="width: 100%; justify-content: center;">
+                                <i class='bx bxl-whatsapp'></i> İmza Paketi Seç
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- PAKET 4: FİZİKSEL + DİJİTAL AVANTAJ -->
+                    <div class="package-card">
+                        <div class="package-name">Fiziksel + Dijital Avantaj</div>
+                        <div class="package-price-gift">Standart Dijital Davetiye Hediye</div>
+                        <p class="package-lead">
+                            Nişan Vitrini'nden 3.500 TL ve üzeri fiziksel davetiye siparişi verdiğinizde dijital davetiyenizi ayrıca satın almanıza gerek yok.
                         </p>
                         <div class="package-gift-highlight">
-                            ✨ 1.000 TL değerindeki dijital davetiye paketiniz bizden hediye.
+                            ✨ 1.000 TL değerindeki Dijital Davetiye Standart paketiniz hediye.
                         </div>
                         <ul class="package-features">
-                            <li><i class='bx bx-check-circle'></i> <strong>Tüm Dijital Davetiye özellikleri dahil</strong></li>
-                            <li><i class='bx bx-check-circle'></i> 2.500 TL ve üzeri fiziksel davetiye siparişinde HEDİYE</li>
+                            <li><i class='bx bx-check-circle'></i> <strong>Tüm Standart Dijital Davetiye özellikleri dahil</strong></li>
+                            <li><i class='bx bx-check-circle'></i> 3.500 TL+ fiziksel davetiye siparişinde HEDİYE</li>
                             <li><i class='bx bx-check-circle'></i> Kağıt davetiye + Paylaşılabilir web bağlantısı</li>
-                            <li><i class='bx bx-check-circle'></i> Çiftinize özel subdomain bağlantısı</li>
-                            <li><i class='bx bx-check-circle'></i> Online LCV ve Misafir listesi takibi</li>
+                            <li><i class='bx bx-check-circle'></i> Çiftinize özel bağlantı adresi</li>
+                            <li><i class='bx bx-check-circle'></i> Online LCV ve misafir listesi takibi</li>
                             <li><i class='bx bx-check-circle'></i> Fotoğraf galerisi ve mekan yol tarifi</li>
                         </ul>
                         <div class="package-bottom-action">
-                            <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.2rem;">2.500 TL ve üzeri fiziksel davetiye siparişlerinde</div>
+                            <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.2rem;">3.500 TL+ fiziksel davetiye siparişinde</div>
                             <div class="package-bottom-price-note">
-                                DİJİTAL DAVETİYE HEDİYE
+                                Standart Dijital Davetiye Hediye
                             </div>
-                            <a href="https://www.nisanvitrini.com" 
+                            <a href="https://www.nisanvitrini.com/davetiye/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
                                class="btn-gold" 
@@ -1566,7 +1628,7 @@
                             <i class='bx bx-chevron-down faq-icon-chevron'></i>
                         </summary>
                         <div class="faq-body">
-                            Nişan Vitrini'nden <strong>2.500 TL ve üzeri fiziksel davetiye siparişinizde dijital davetiye paketiniz hediye edilir.</strong>
+                            Nişan Vitrini'nden <strong>3.500 TL ve üzeri fiziksel davetiye siparişinizde 1.000 TL değerindeki Standart Dijital Davetiye paketiniz hediye edilir.</strong>
                         </div>
                     </details>
 
@@ -1580,7 +1642,7 @@
                             <i class='bx bx-chevron-down faq-icon-chevron'></i>
                         </summary>
                         <div class="faq-body">
-                            Evet. Dijital Davetiye paketini <strong>1.000 TL</strong> karşılığında fiziksel davetiyeden bağımsız satın alabilirsiniz.
+                            Evet. Dijital Davetiye Standart paketini <strong>1.000 TL</strong> karşılığında fiziksel davetiyeden bağımsız satın alabilirsiniz.
                         </div>
                     </details>
                 </div>
@@ -1600,22 +1662,22 @@
 
                     <div class="final-cta-pricing">
                         <div class="final-price-pill">
-                            Dijital Davetiye — <span>1.000 TL</span>
+                            Dijital Davetiye Standart — <span>1.000 TL</span>
                         </div>
                         <div style="color: var(--text-muted); font-size: 0.9rem;">veya</div>
                         <div class="final-price-pill highlight">
-                            2.500 TL+ Fiziksel Siparişte <span>HEDİYE</span>
+                            3.500 TL+ Fiziksel Siparişte <span>HEDİYE</span>
                         </div>
                     </div>
 
                     <div class="hero-btn-group" style="justify-content: center;">
-                        <a href="https://wa.me/905526288131?text=Merhaba%2C%20Dijital%20Davetiye%20istiyorum%2C%20detaylar%C4%B1%20g%C3%B6r%C3%BC%C5%9Febilir%20miyiz%3F" 
+                        <a href="https://wa.me/905526288131?text=Merhaba%2C%20Dijital%20Davetiye%20hakk%C4%B1nda%20bilgi%20almak%20ve%20sipari%C5%9F%20vermek%20istiyorum." 
                            target="_blank" 
                            rel="noopener noreferrer" 
                            class="btn-gold">
                             <i class='bx bxl-whatsapp'></i> Dijital Davetiye İstiyorum
                         </a>
-                        <a href="https://www.nisanvitrini.com" 
+                        <a href="https://www.nisanvitrini.com/davetiye/" 
                            target="_blank" 
                            rel="noopener noreferrer" 
                            class="btn-gold-outline">
