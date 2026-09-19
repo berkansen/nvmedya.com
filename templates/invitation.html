@@ -1252,27 +1252,6 @@
             line-height: 1.7;
         }
 
-        /* LCV Deadline Notice (Açıkken görünür) */
-        .rsvp-deadline-notice {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            background: rgba(184, 142, 82, 0.08);
-            border: 1px solid rgba(184, 142, 82, 0.25);
-            border-radius: var(--radius-full);
-            padding: 0.4rem 1rem;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: var(--gold-dark);
-            letter-spacing: 0.02em;
-        }
-
-        .rsvp-deadline-notice i {
-            font-size: 0.95rem;
-            color: var(--gold-primary);
-        }
-
         /* LCV Closed State Kartı (Süre bitince görünür) */
         .rsvp-closed-card {
             background: var(--bg-surface);
@@ -1760,12 +1739,6 @@
                 <p class="section-subtitle">
                     Katılım durumunuzu bizimle paylaşmanız, hazırlıklarımızı daha sağlıklı planlamamıza yardımcı olacaktır.
                 </p>
-                <div style="margin-top: 1.1rem;">
-                    <div class="rsvp-deadline-notice" id="rsvpDeadlineNotice" {{RSVP_NOTICE_DISPLAY}}>
-                        <i class='bx bx-time-five'></i>
-                        <span>Son katılım bildirimi: {{RSVP_DEADLINE_DISPLAY}}</span>
-                    </div>
-                </div>
             </div>
 
             <div class="rsvp-container">
@@ -2260,13 +2233,11 @@
                 __INV__.rsvp.isClosed = true;
             }
             const form = document.getElementById('rsvpForm');
-            const notice = document.getElementById('rsvpDeadlineNotice');
             const closedCard = document.getElementById('rsvpClosedCard');
             const successBox = document.getElementById('rsvpSuccessBox');
             const mobileBtn = document.getElementById('mobileRsvpBtn');
 
             if (form) form.style.display = 'none';
-            if (notice) notice.style.display = 'none';
             if (successBox) successBox.style.display = 'none';
             if (closedCard) closedCard.style.display = 'block';
 
