@@ -1,0 +1,52 @@
+{
+  "slug": "duru-alp-21-08-2027",
+  "isDemo": true,
+  "packageTier": "standard",
+  "theme": "modern-minimal",
+  "couple": {
+    "displayName": "Duru & Alp",
+    "bride": "Duru",
+    "groom": "Alp"
+  },
+  "date": {
+    "short": "21 Ağustos 2027",
+    "dayOfWeek": "Cumartesi",
+    "display": "21 Ağustos 2027, Cumartesi",
+    "countdownTarget": "2027-08-21T19:00:00+03:00",
+    "time": "19:00"
+  },
+  "hero": {
+    "backgroundImage": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80",
+    "message": "Ege'nin maviliğinde ve gün batımının sıcaklığında, hayatlarımızı birleştireceğimiz bu özel günde siz değerli dostlarımızı aramızda görmekten mutluluk duyarız."
+  },
+  "venue": {
+    "name": "Izmir Marriott Hotel",
+    "area": "Rooftop",
+    "address": "Akdeniz Mahallesi Gazi Bulvarı No 1 Alsancak, Konak, İzmir, Türkiye, 35210",
+    "addressLine1": "Akdeniz Mah. Gazi Bulvarı No: 1, Rooftop",
+    "addressLine2": "Alsancak, Konak / İzmir",
+    "addressShort": "Alsancak / İzmir",
+    "city": "İzmir",
+    "image": "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80",
+    "imageAlt": "Izmir Marriott Hotel Rooftop düğün mekanı - Alsancak İzmir",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Izmir+Marriott+Hotel,+Akdeniz+Mahallesi+Gazi+Bulvarı+No+1+Alsancak+Konak+İzmir",
+    "description": "Düğün törenimiz ve kutlamamız <strong>Izmir Marriott Hotel Rooftop</strong> alanında gerçekleşecektir. Yol tarifi için aşağıdaki butonu kullanabilirsiniz."
+  },
+  "messages": {
+    "letterText": "Birlikte çıktığımız bu güzel yolculuğun en anlamlı adımını atarken, İzmir'in eşsiz akşamında mutluluğumuzu sizinle paylaşmak en büyük dileğimiz.",
+    "finalText": "Bu güzel günümüzde yanımızda olmanız bizim için çok kıymetli. Sevgiyle bekliyoruz."
+  },
+  "calendar": {
+    "googleCalUrl": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Duru+%26+Alp+D%C3%BC%C4%9F%C3%BCn+T%C3%B6reni&dates=20270821T160000Z/20270821T210000Z&details=Duru+%26+Alp+D%C3%BC%C4%9F%C3%BCn+T%C3%B6reni+-+Izmir+Marriott+Hotel+Rooftop&location=Izmir+Marriott+Hotel,+Gazi+Bulvar%C4%B1+No:1+Alsancak,+Izmir",
+    "ics": {
+      "uid": "duru-alp-dugun-20270821@nvmedya.com",
+      "dtstart": "20270821T160000Z",
+      "dtend": "20270821T210000Z",
+      "summary": "Duru & Alp Düğün Töreni",
+      "description": "Duru & Alp çiftinin düğün kutlaması. Başlangıç: 19:00.",
+      "location": "Izmir Marriott Hotel Rooftop, Alsancak / İzmir",
+      "filename": "Duru-Alp-Dugun-Davetiye.ics"
+    }
+  },
+  "socialPreviewImage": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80"
+}

@@ -1,0 +1,52 @@
+{
+  "slug": "defne-kerem-12-06-2027",
+  "isDemo": true,
+  "packageTier": "standard",
+  "theme": "gece-sikligi",
+  "couple": {
+    "displayName": "Defne & Kerem",
+    "bride": "Defne",
+    "groom": "Kerem"
+  },
+  "date": {
+    "short": "12 Haziran 2027",
+    "dayOfWeek": "Cumartesi",
+    "display": "12 Haziran 2027, Cumartesi",
+    "countdownTarget": "2027-06-12T19:30:00+03:00",
+    "time": "19:30"
+  },
+  "hero": {
+    "backgroundImage": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
+    "message": "İstanbul Boğazı'nın ışıltılı gecesinde, hayatımızın en özel 'evet'ine sizleri de tanık olmaya davet ediyoruz."
+  },
+  "venue": {
+    "name": "Four Seasons Hotel Istanbul at the Bosphorus",
+    "area": "Atik Pasha Terrace",
+    "address": "Çırağan Cad. No. 28, Beşiktaş, İstanbul, Türkiye, 34349",
+    "addressLine1": "Çırağan Cad. No: 28, Atik Pasha Terrace",
+    "addressLine2": "Beşiktaş / İstanbul",
+    "addressShort": "Beşiktaş / İstanbul",
+    "city": "İstanbul",
+    "image": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80",
+    "imageAlt": "Four Seasons Hotel Istanbul at the Bosphorus düğün mekanı - Beşiktaş İstanbul",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Four+Seasons+Hotel+Istanbul+at+the+Bosphorus,+Çırağan+Cad.+No.+28+Beşiktaş+İstanbul",
+    "description": "Boğaz'ın büyüleyici atmosferinde, <strong>Four Seasons Hotel Istanbul at the Bosphorus Atik Pasha Terrace</strong>'ta bir araya geliyoruz. Yol tarifi için aşağıdaki butonu kullanabilirsiniz."
+  },
+  "messages": {
+    "letterText": "Boğaz'ın serin esintisi ve yıldızların altında, yeni başlangıcımızı en sevdiklerimizle kutlamanın heyecanını yaşıyoruz.",
+    "finalText": "Bu ışıltılı gecede yanımızda olmanız bize sonsuz mutluluk verecektir. Sevgiyle bekliyoruz."
+  },
+  "calendar": {
+    "googleCalUrl": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Defne+%26+Kerem+D%C3%BC%C4%9F%C3%BCn+T%C3%B6reni&dates=20270612T163000Z/20270612T210000Z&details=Defne+%26+Kerem+D%C3%BC%C4%9F%C3%BCn+T%C3%B6reni+-+Four+Seasons+Bosphorus&location=Four+Seasons+Hotel+Istanbul+at+the+Bosphorus,+Besiktas,+Istanbul",
+    "ics": {
+      "uid": "defne-kerem-dugun-20270612@nvmedya.com",
+      "dtstart": "20270612T163000Z",
+      "dtend": "20270612T210000Z",
+      "summary": "Defne & Kerem Düğün Töreni",
+      "description": "Defne & Kerem çiftinin düğün kutlaması. Başlangıç: 19:30.",
+      "location": "Four Seasons Hotel Istanbul at the Bosphorus, Beşiktaş / İstanbul",
+      "filename": "Defne-Kerem-Dugun-Davetiye.ics"
+    }
+  },
+  "socialPreviewImage": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80"
+}

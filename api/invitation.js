@@ -135,6 +135,7 @@ function respond404(res) {
 
 // ─── Template Rendering ────────────────────────────────────────────
 function generateTimelineHtml(timeline) {
+  if (!Array.isArray(timeline) || timeline.length === 0) return '';
   return timeline.map(item => `
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
@@ -147,7 +148,30 @@ function generateTimelineHtml(timeline) {
                 </div>`).join('\n');
 }
 
+function generateTimelineSectionHtml(timeline, packageTier) {
+  if (packageTier === 'standard' || !Array.isArray(timeline) || timeline.length === 0) return '';
+  return `        <!-- ===================================================================
+             4. DÜĞÜN AKIŞI (TIMELINE)
+             =================================================================== -->
+        <section class="invitation-section" id="timeline" style="background-color: var(--bg-surface); border-top: 1px solid var(--rose-border); border-bottom: 1px solid var(--rose-border);">
+            <div class="text-center">
+                <h2 class="section-title">Düğün Akışı</h2>
+                <div class="ornament-divider"><i class='bx bx-time-five'></i></div>
+                <p class="section-subtitle">Bu özel gecenin akışını sizin için özenle hazırladık.</p>
+            </div>
+
+            <div class="timeline-container">
+${generateTimelineHtml(timeline)}
+            </div>
+
+            <p class="timeline-footnote">
+                * Program saatlerinde küçük değişiklikler olabilir.
+            </p>
+        </section>`;
+}
+
 function generateGalleryHtml(gallery) {
+  if (!Array.isArray(gallery) || gallery.length === 0) return '';
   return gallery.map((url, i) => {
     const num = i + 1;
     return `                <div class="gallery-item" onclick="openLightbox(${i})">
@@ -157,8 +181,35 @@ function generateGalleryHtml(gallery) {
   }).join('\n');
 }
 
-function generateDetailNoticesHtml(notices) {
-  if (!notices || !Array.isArray(notices) || notices.length === 0) return '';
+function generateGallerySectionHtml(gallery, packageTier) {
+  if (packageTier === 'standard' || !Array.isArray(gallery) || gallery.length === 0) return '';
+  return `        <!-- ===================================================================
+             5. FOTOĞRAF GALERİSİ
+             =================================================================== -->
+        <section class="invitation-section" id="gallery">
+            <div class="text-center">
+                <h2 class="section-title">Bizden Kareler</h2>
+                <div class="ornament-divider"><i class='bx bx-camera'></i></div>
+            </div>
+
+            <div class="gallery-grid">
+${generateGalleryHtml(gallery)}
+            </div>
+        </section>
+
+        <!-- Lightbox Modal -->
+        <div class="lightbox-modal" id="lightboxModal">
+            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Kapat">&times;</button>
+            <div class="lightbox-content">
+                <button class="lightbox-nav lightbox-prev" onclick="prevLightbox(event)" aria-label="Önceki"><i class='bx bx-chevron-left'></i></button>
+                <img src="" alt="Önizleme" id="lightboxImg" class="lightbox-img">
+                <button class="lightbox-nav lightbox-next" onclick="nextLightbox(event)" aria-label="Sonraki"><i class='bx bx-chevron-right'></i></button>
+            </div>
+        </div>`;
+}
+
+function generateDetailNoticesHtml(notices, packageTier) {
+  if (packageTier === 'standard' || !notices || !Array.isArray(notices) || notices.length === 0) return '';
   const isSingle = notices.length === 1;
   const cardsHtml = notices.map(item => {
     let iconHtml = '';
@@ -184,19 +235,217 @@ ${cardsHtml}
             </div>`;
 }
 
+function generateRsvpSectionHtml(c, isClosedServer, deadlineDisplay, closedText, packageTier) {
+  if (packageTier === 'standard' || !c.rsvp || c.rsvp.enabled === false) return '';
+  const entries = c.rsvp.entries || {};
+  const coupleDisplay = escapeHtml(c.couple.displayName);
+  const formDisplay = isClosedServer ? 'style="display: none;"' : '';
+  const closedCardDisplay = isClosedServer ? 'style="display: block;"' : 'style="display: none;"';
+
+  return `        <!-- ===================================================================
+             7. LCV / KATILIM FORMU (Gerçek Google Form Altyapısı + Koşullu Mantık)
+             =================================================================== -->
+        <section class="invitation-section" id="rsvp" style="background-color: var(--bg-surface); border-top: 1px solid var(--rose-border); border-bottom: 1px solid var(--rose-border);">
+            <div class="text-center">
+                <h2 class="section-title">Katılımınızı Bildirin</h2>
+                <div class="ornament-divider"><i class='bx bx-envelope'></i></div>
+                <p class="section-subtitle">
+                    Katılım durumunuzu bizimle paylaşmanız, hazırlıklarımızı daha sağlıklı planlamamıza yardımcı olacaktır.
+                </p>
+            </div>
+
+            <div class="rsvp-container">
+                <!-- LCV KAPALI STATE KARTI (Deadline sonrası görünür) -->
+                <div class="rsvp-closed-card" id="rsvpClosedCard" ${closedCardDisplay}>
+                    <div class="rsvp-closed-icon">
+                        <i class='bx bx-time-five'></i>
+                    </div>
+                    <h3 class="rsvp-closed-title">LCV süresi sona erdi</h3>
+                    <p class="rsvp-closed-text">
+                        ${escapeHtml(closedText)}
+                    </p>
+                </div>
+
+                <!-- FORM -->
+                <form id="rsvpForm" action="${escapeHtml(c.rsvp.formAction || '#')}" method="POST" target="hidden_iframe" onsubmit="return handleRsvpSubmit(event)" ${formDisplay}>
+                    <input type="hidden" name="fvv" value="1">
+                    <input type="hidden" name="pageHistory" value="0">
+                    
+                    <!-- 1. Ad Soyad (Zorunlu) -->
+                    <div class="form-group">
+                        <label for="guestName" class="form-label">Adınız ve Soyadınız *</label>
+                        <input type="text" id="guestName" name="${escapeHtml(entries.name || 'entry.name')}" class="form-input" placeholder="Örn: Ayşe Yılmaz" required autocomplete="name">
+                    </div>
+
+                    <!-- 2. Katılım Durumu (Zorunlu) -->
+                    <div class="form-group">
+                        <label class="form-label">Katılım Durumunuz *</label>
+                        <div class="rsvp-toggle-grid">
+                            <label class="rsvp-toggle-card">
+                                <input type="radio" name="${escapeHtml(entries.attendance || 'entry.attendance')}" value="Katılacağım" checked onchange="handleAttendanceChange(true)">
+                                <div class="rsvp-toggle-content">
+                                    <i class='bx bxs-check-circle'></i>
+                                    <span class="toggle-title">Katılacağım</span>
+                                </div>
+                            </label>
+                            <label class="rsvp-toggle-card">
+                                <input type="radio" name="${escapeHtml(entries.attendance || 'entry.attendance')}" value="Katılamayacağım" onchange="handleAttendanceChange(false)">
+                                <div class="rsvp-toggle-content">
+                                    <i class='bx bxs-x-circle'></i>
+                                    <span class="toggle-title">Katılamayacağım</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- 3. KATILIM DETAYLARI KAPSAYICISI (Katılacağım durumunda görünür) -->
+                    <div id="attendanceDetailsContainer" class="conditional-section">
+                        
+                        <!-- 3A. Vejetaryen misiniz? (Hayır / Evet) -->
+                        <div class="form-group" id="vegetarianGroup">
+                            <label class="form-label">Vejetaryen misiniz? *</label>
+                            <div class="rsvp-toggle-grid">
+                                <label class="rsvp-toggle-card">
+                                    <input type="radio" name="${escapeHtml(entries.vegetarian || 'entry.vegetarian')}" id="vegNo" value="Hayır">
+                                    <div class="rsvp-toggle-content">
+                                        <i class='bx bx-dish'></i>
+                                        <span class="toggle-title">Hayır</span>
+                                    </div>
+                                </label>
+                                <label class="rsvp-toggle-card">
+                                    <input type="radio" name="${escapeHtml(entries.vegetarian || 'entry.vegetarian')}" id="vegYes" value="Evet">
+                                    <div class="rsvp-toggle-content">
+                                        <i class='bx bx-leaf'></i>
+                                        <span class="toggle-title">Evet</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 3B. Yetişkin Kişi Sayısı (Min 1) -->
+                        <div class="form-group" id="adultCountGroup">
+                            <label class="form-label">Yetişkin Kişi Sayısı *</label>
+                            <div class="stepper-wrap">
+                                <button type="button" class="stepper-btn" onclick="updateAdultCount(-1)" aria-label="Yetişkin Sayısını Azalt">−</button>
+                                <span class="stepper-display" id="adultCountDisplay">1 Yetişkin</span>
+                                <button type="button" class="stepper-btn" onclick="updateAdultCount(1)" aria-label="Yetişkin Sayısını Artır">+</button>
+                            </div>
+                            <input type="hidden" id="adultCount" name="${escapeHtml(entries.adults || 'entry.adults')}" value="1">
+                        </div>
+
+                        <!-- 3B. Çocuk Katılımı Sorusu (Evet / Hayır) -->
+                        <div class="form-group" id="childrenQuestionGroup">
+                            <label class="form-label">Çocuk misafiriniz olacak mı? *</label>
+                            <div class="rsvp-toggle-grid">
+                                <label class="rsvp-toggle-card">
+                                    <input type="radio" name="${escapeHtml(entries.hasChildren || 'entry.hasChildren')}" value="Hayır" checked onchange="handleChildrenToggle(false)">
+                                    <div class="rsvp-toggle-content">
+                                        <i class='bx bx-user'></i>
+                                        <span class="toggle-title">Hayır</span>
+                                    </div>
+                                </label>
+                                <label class="rsvp-toggle-card">
+                                    <input type="radio" name="${escapeHtml(entries.hasChildren || 'entry.hasChildren')}" value="Evet" onchange="handleChildrenToggle(true)">
+                                    <div class="rsvp-toggle-content">
+                                        <i class='bx bx-face'></i>
+                                        <span class="toggle-title">Evet</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 3C. Çocuk Kişi Sayısı (Yalnızca Evet seçilince açılır) -->
+                        <div class="form-group" id="childCountGroup" style="display: none;">
+                            <label class="form-label">Çocuk Kişi Sayısı</label>
+                            <div class="stepper-wrap">
+                                <button type="button" class="stepper-btn" onclick="updateChildCount(-1)" aria-label="Çocuk Sayısını Azalt">−</button>
+                                <span class="stepper-display" id="childCountDisplay">1 Çocuk</span>
+                                <button type="button" class="stepper-btn" onclick="updateChildCount(1)" aria-label="Çocuk Sayısını Artır">+</button>
+                            </div>
+                            <input type="hidden" id="childCount" name="${escapeHtml(entries.children || 'entry.children')}" value="0">
+                        </div>
+
+                        <!-- 3D. Çocuk Yaşları Dinamik Alanları -->
+                        <div class="child-ages-wrap" id="childAgesWrap" style="display: none;">
+                            <div class="child-ages-title">
+                                <i class='bx bx-cake'></i>
+                                <span>Çocuk Yaşları *</span>
+                            </div>
+                            <div class="child-ages-grid" id="childAgesGrid">
+                                <div class="child-age-item" id="childAgeItem_1" style="display: none;">
+                                    <label for="childAgeInput_1" class="child-age-label">1. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_1" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                                <div class="child-age-item" id="childAgeItem_2" style="display: none;">
+                                    <label for="childAgeInput_2" class="child-age-label">2. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_2" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                                <div class="child-age-item" id="childAgeItem_3" style="display: none;">
+                                    <label for="childAgeInput_3" class="child-age-label">3. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_3" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                                <div class="child-age-item" id="childAgeItem_4" style="display: none;">
+                                    <label for="childAgeInput_4" class="child-age-label">4. Çocuğun Yaşı *</label>
+                                    <input type="number" inputmode="numeric" min="0" max="17" id="childAgeInput_4" placeholder="0–17" class="child-age-input" disabled>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 4. Notunuz (Opsiyonel) -->
+                    <div class="form-group">
+                        <label for="guestNote" class="form-label">Çiftimize mesajınız <span class="optional">(Opsiyonel)</span></label>
+                        <textarea id="guestNote" name="${escapeHtml(entries.message || 'entry.message')}" class="form-textarea" placeholder="Dilerseniz tebrik veya özel notunuzu iletebilirsiniz..."></textarea>
+                    </div>
+
+                    <!-- Gönder Butonu -->
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <button type="submit" class="btn btn-primary" id="rsvpSubmitBtn">
+                            <i class='bx bx-send'></i> <span>Katılım Bilgimi Gönder</span>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- GERÇEK GÖNDERİM SONRASI ONAY KARTI -->
+                <div class="rsvp-success-box" id="rsvpSuccessBox">
+                    <div class="rsvp-success-icon">
+                        <i class='bx bxs-heart'></i>
+                    </div>
+                    <h3 class="rsvp-success-title">Katılım bilginiz için teşekkür ederiz.</h3>
+                    <p class="rsvp-success-subtitle">
+                        Yanıtınız ${coupleDisplay}'nın misafir listesine eklendi.
+                    </p>
+                    <div class="rsvp-summary-card" id="rsvpSummaryContent"></div>
+                    <button type="button" class="btn btn-secondary" onclick="resetRsvpForm()" style="max-width: 240px; margin: 0 auto;">
+                        <i class='bx bx-refresh'></i> Yanıtı Güncelle
+                    </button>
+                </div>
+                <iframe name="hidden_iframe" id="hiddenIframe" style="display:none" aria-hidden="true"></iframe>
+            </div>
+        </section>`;
+}
+
 function renderTemplate(templateHtml, config) {
   const c = config;
   const coupleDisplay = escapeHtml(c.couple.displayName);
+  const packageTier = c.packageTier || (c.rsvp ? 'plus' : 'standard');
+  const isDemo = Boolean(c.isDemo);
+  const themeClass = c.theme ? `theme-${c.theme}` : '';
 
+  const rsvpEntries = (c.rsvp && c.rsvp.entries) || {};
   const closesAtIso = (c.rsvp && c.rsvp.closesAt) || null;
   const isClosedServer = closesAtIso ? (Date.now() >= new Date(closesAtIso).getTime()) : false;
   const deadlineDisplay = (c.rsvp && c.rsvp.deadlineDisplay) || '8 Kasım 2026 • 23:59';
   const closedText = (c.rsvp && c.rsvp.closedText) || `Katılım bildirimleri ${deadlineDisplay.replace(' • ', ' saat ')} itibarıyla kapanmıştır. İlginiz için teşekkür ederiz.`;
+  const isDemoRsvp = Boolean(c.rsvp && c.rsvp.demoMode);
 
   // Build client-side config (safe for <script> injection)
   const clientConfig = {
+    packageTier: packageTier,
+    isDemo: isDemo,
     countdownTarget: c.date.countdownTarget,
-    galleryFullRes: c.galleryFullRes,
+    galleryFullRes: c.galleryFullRes || [],
     venue: {
       name: c.venue.name,
       address: c.venue.address,
@@ -208,20 +457,41 @@ function renderTemplate(templateHtml, config) {
       bride: c.couple.bride,
       groom: c.couple.groom
     },
-    rsvp: {
-      entries: c.rsvp.entries,
+    rsvp: (packageTier !== 'standard' && c.rsvp && c.rsvp.enabled !== false) ? {
+      demoMode: isDemoRsvp,
+      entries: rsvpEntries,
       closesAt: closesAtIso,
       timezone: (c.rsvp && c.rsvp.timezone) || 'Europe/Istanbul',
       deadlineDisplay: deadlineDisplay,
       closedText: closedText,
       isClosed: isClosedServer
-    }
+    } : null
   };
 
   const ogImage = c.socialPreviewImage || (c.social && c.social.previewImage) || (c.gallery && c.gallery[0]) || c.hero.backgroundImage;
   const ogUrl = `https://${c.slug}.nvmedya.com`;
 
+  const mobileBarButtonsHtml = (packageTier === 'standard')
+    ? `            <a href="${escapeHtml(c.venue.mapsUrl)}" target="_blank" rel="noopener noreferrer" class="mobile-bar-btn secondary">
+                <i class='bx bx-navigation'></i> Yol Tarifi
+            </a>
+            <a href="#calendar" class="mobile-bar-btn primary">
+                <i class='bx bx-calendar-plus'></i> <span>Takvime Ekle</span>
+            </a>`
+    : `            <a href="${escapeHtml(c.venue.mapsUrl)}" target="_blank" rel="noopener noreferrer" class="mobile-bar-btn secondary">
+                <i class='bx bx-navigation'></i> Yol Tarifi
+            </a>
+            <a id="mobileRsvpBtn" ${isClosedServer ? 'class="mobile-bar-btn primary disabled"' : 'href="#rsvp" class="mobile-bar-btn primary"'}>
+                <i class='${isClosedServer ? 'bx bx-time-five' : 'bx bx-envelope'}'></i> <span>${isClosedServer ? 'LCV Süresi Sona Erdi' : 'LCV / Katılım'}</span>
+            </a>`;
+
+  const heroTopBadge = isDemo ? 'NVM Demo Davetiye' : 'Düğün Davetiyesi';
+  const demoFooterNote = isDemo ? '<div class="nvm-demo-notice"><i class=\'bx bx-info-circle\'></i> NVM Demo Davetiye — Bu sayfa örnek amaçlı hazırlanmıştır.</div>' : '';
+
   const replacements = {
+    '{{THEME_CLASS}}': themeClass,
+    '{{HERO_TOP_BADGE}}': heroTopBadge,
+    '{{DEMO_FOOTER_NOTE_HTML}}': demoFooterNote,
     '{{PAGE_TITLE}}': escapeHtml(`${c.couple.displayName} | Düğün Davetiyesi`),
     '{{OG_TITLE}}': escapeHtml(`${c.couple.displayName} — Düğün Davetiyesi`),
     '{{OG_DESCRIPTION}}': escapeHtml(`Hayatımızın en özel gününü birlikte kutlamaya davet ediyoruz. ${c.date.short} • ${c.venue.name}, ${c.venue.city}`),
@@ -236,7 +506,7 @@ function renderTemplate(templateHtml, config) {
     '{{DAY_OF_WEEK}}': escapeHtml(c.date.dayOfWeek),
     '{{TIME_START}}': escapeHtml(c.date.time),
     '{{HERO_MESSAGE}}': escapeHtml(c.hero.message),
-    '{{LETTER_TEXT}}': escapeHtml(c.messages.letterText),
+    '{{LETTER_TEXT}}': escapeHtml(c.messages ? c.messages.letterText : (c.letter ? c.letter.text : '')),
     '{{VENUE_NAME}}': escapeHtml(c.venue.name),
     '{{VENUE_ADDRESS_FULL}}': escapeHtml(c.venue.address),
     '{{VENUE_ADDRESS_LINE1}}': escapeHtml(c.venue.addressLine1),
@@ -247,14 +517,14 @@ function renderTemplate(templateHtml, config) {
     '{{VENUE_IMAGE_ALT}}': escapeHtml(c.venue.imageAlt),
     '{{VENUE_MAPS_URL}}': escapeHtml(c.venue.mapsUrl),
     '{{VENUE_DESC}}': escapeHtmlWithFormatting(c.venue.description),
-    '{{FORM_ACTION}}': escapeHtml(c.rsvp.formAction),
-    '{{ENTRY_NAME}}': escapeHtml(c.rsvp.entries.name),
-    '{{ENTRY_ATTENDANCE}}': escapeHtml(c.rsvp.entries.attendance),
-    '{{ENTRY_VEGETARIAN}}': escapeHtml(c.rsvp.entries.vegetarian || ''),
-    '{{ENTRY_ADULTS}}': escapeHtml(c.rsvp.entries.adults),
-    '{{ENTRY_HAS_CHILDREN}}': escapeHtml(c.rsvp.entries.hasChildren),
-    '{{ENTRY_CHILDREN}}': escapeHtml(c.rsvp.entries.children),
-    '{{ENTRY_MESSAGE}}': escapeHtml(c.rsvp.entries.message),
+    '{{FORM_ACTION}}': escapeHtml((c.rsvp && c.rsvp.formAction) || '#'),
+    '{{ENTRY_NAME}}': escapeHtml(rsvpEntries.name || ''),
+    '{{ENTRY_ATTENDANCE}}': escapeHtml(rsvpEntries.attendance || ''),
+    '{{ENTRY_VEGETARIAN}}': escapeHtml(rsvpEntries.vegetarian || ''),
+    '{{ENTRY_ADULTS}}': escapeHtml(rsvpEntries.adults || ''),
+    '{{ENTRY_HAS_CHILDREN}}': escapeHtml(rsvpEntries.hasChildren || ''),
+    '{{ENTRY_CHILDREN}}': escapeHtml(rsvpEntries.children || ''),
+    '{{ENTRY_MESSAGE}}': escapeHtml(rsvpEntries.message || ''),
     '{{RSVP_DEADLINE_DISPLAY}}': escapeHtml(deadlineDisplay),
     '{{RSVP_CLOSED_TEXT}}': escapeHtml(closedText),
     '{{RSVP_FORM_DISPLAY}}': isClosedServer ? 'style="display: none;"' : '',
@@ -264,10 +534,14 @@ function renderTemplate(templateHtml, config) {
     '{{RSVP_MOBILE_BTN_ICON}}': isClosedServer ? 'bx bx-time-five' : 'bx bx-envelope',
     '{{RSVP_MOBILE_BTN_TEXT}}': isClosedServer ? 'LCV Süresi Sona Erdi' : 'LCV / Katılım',
     '{{GOOGLE_CAL_URL}}': escapeHtml(c.calendar.googleCalUrl),
-    '{{FINAL_TEXT}}': escapeHtml(c.messages.finalText),
+    '{{FINAL_TEXT}}': escapeHtml(c.messages ? c.messages.finalText : ''),
     '{{TIMELINE_ITEMS_HTML}}': generateTimelineHtml(c.timeline),
+    '{{TIMELINE_SECTION_HTML}}': generateTimelineSectionHtml(c.timeline, packageTier),
     '{{GALLERY_GRID_HTML}}': generateGalleryHtml(c.gallery),
-    '{{DETAIL_NOTICES_HTML}}': generateDetailNoticesHtml(c.detailNotices),
+    '{{GALLERY_SECTION_HTML}}': generateGallerySectionHtml(c.gallery, packageTier),
+    '{{RSVP_SECTION_HTML}}': generateRsvpSectionHtml(c, isClosedServer, deadlineDisplay, closedText, packageTier),
+    '{{DETAIL_NOTICES_HTML}}': generateDetailNoticesHtml(c.detailNotices, packageTier),
+    '{{MOBILE_BAR_BUTTONS_HTML}}': mobileBarButtonsHtml,
     '{{CLIENT_CONFIG_JSON}}': safeJsonForScript(clientConfig)
   };
 
@@ -278,6 +552,7 @@ function renderTemplate(templateHtml, config) {
 
   return html;
 }
+
 
 // ─── Main Handler ──────────────────────────────────────────────────
 export default function handler(req, res) {

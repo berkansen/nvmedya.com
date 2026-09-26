@@ -465,6 +465,46 @@
             white-space: nowrap;
         }
 
+        .demo-badge-demo {
+            background: rgba(255, 255, 255, 0.15);
+            color: #FFFFFF;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 0.25rem 0.65rem;
+            border-radius: 50px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            white-space: nowrap;
+        }
+
+        .demo-badge-tier {
+            font-size: 0.65rem;
+            font-weight: 700;
+            padding: 0.2rem 0.55rem;
+            border-radius: 4px;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            width: fit-content;
+        }
+        .demo-badge-tier.tier-standard {
+            background: rgba(61, 107, 140, 0.18);
+            color: #8BAEC7;
+            border: 1px solid rgba(61, 107, 140, 0.35);
+        }
+        .demo-badge-tier.tier-plus {
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--wedding-gold);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+        }
+
         .demo-preview-overlay {
             position: absolute;
             bottom: 0;
@@ -1218,7 +1258,7 @@
                 </div>
 
                 <div class="demos-grid">
-                    <!-- Kart 1: Hatice & Mustafa (Gerçek Davetiye) -->
+                    <!-- Kart 1: Hatice & Mustafa (Gerçek Davetiye - Plus) -->
                     <article class="demo-card">
                         <div class="demo-preview-wrap">
                             <img src="https://ik.imagekit.io/nvmedya/davetiye/hatice-mustafa/e95f60b2-26eb-4b85-a232-64d21f51e64c.JPG" alt="Hatice &amp; Mustafa Dijital Davetiye — İzmir" class="demo-preview-img" loading="lazy">
@@ -1232,65 +1272,119 @@
                             </div>
                         </div>
                         <div class="demo-body">
+                            <div class="demo-badge-tier tier-plus">Plus Paket</div>
                             <div class="demo-header-row">
                                 <h4 class="demo-title" style="margin-bottom: 0;">Hatice &amp; Mustafa</h4>
                                 <span class="demo-city"><i class='bx bx-map-pin'></i> İzmir</span>
                             </div>
-                            <p class="demo-desc">İzmir'de gerçekleşecek düğün için hazırlanan; fildişi, altın detaylar ve zarif tipografiye sahip canlı dijital davetiye.</p>
+                            <p class="demo-desc">İzmir La Win Wedding düğünü için hazırlanan; fildişi, altın detaylar, fotoğraf galerisi ve interaktif LCV sistemine sahip canlı dijital davetiye.</p>
                             <a href="https://hatice-mustafa-13-11-2026.nvmedya.com" 
                                target="_blank" 
                                rel="noopener noreferrer" 
                                class="btn-gold demo-cta-btn">
-                                <span>Davetiye Örneğini İncele</span>
+                                <span>Örneği İncele</span>
                                 <i class='bx bx-right-arrow-alt'></i>
                             </a>
                         </div>
                     </article>
 
-                    <!-- Kart 2: Modern Minimal -->
+                    <!-- Kart 2: Duru & Alp (Standart - Demo) -->
                     <article class="demo-card">
                         <div class="demo-preview-wrap">
-                            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Modern Minimal Dijital Davetiye Teması" class="demo-preview-img" loading="lazy">
-                            <span class="demo-tag">Sade &amp; Güçlü</span>
+                            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=600&q=80" alt="Duru &amp; Alp Dijital Davetiye — İzmir" class="demo-preview-img" loading="lazy">
+                            <div class="demo-tag-row">
+                                <span class="demo-tag">Modern Minimal</span>
+                                <span class="demo-badge-demo"><i class='bx bx-sparkles'></i> DEMO</span>
+                            </div>
+                            <div class="demo-preview-overlay">
+                                <span class="demo-preview-couple">Duru &amp; Alp</span>
+                                <span class="demo-preview-date">21 Ağustos 2027 • İzmir</span>
+                            </div>
                         </div>
                         <div class="demo-body">
-                            <h4 class="demo-title">Modern Minimal</h4>
-                            <p class="demo-desc">Güçlü fotoğraflar, temiz tipografi ve sade detaylarla modern bir görünüm.</p>
-                            <div class="demo-badge-subtle">
-                                <i class='bx bx-time-five'></i> Örnek yakında
+                            <div class="demo-badge-tier tier-standard">Standart Paket</div>
+                            <div class="demo-header-row">
+                                <h4 class="demo-title" style="margin-bottom: 0;">Duru &amp; Alp</h4>
+                                <span class="demo-city"><i class='bx bx-map-pin'></i> İzmir</span>
                             </div>
+                            <p class="demo-desc">İzmir Marriott Hotel Rooftop düğünü için hazırlanan; kırık beyaz, sıcak kum ve Ege mavisi tonlarında sade standart dijital davetiye.</p>
+                            <a href="https://duru-alp-21-08-2027.nvmedya.com" 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               class="btn-gold demo-cta-btn">
+                                <span>Örneği İncele</span>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
                         </div>
                     </article>
 
-                    <!-- Kart 3: Romantik -->
+                    <!-- Kart 3: Selin & Can (Plus - Demo) -->
                     <article class="demo-card">
                         <div class="demo-preview-wrap">
-                            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Romantik Dijital Davetiye Teması" class="demo-preview-img" loading="lazy">
-                            <span class="demo-tag">Floral &amp; Zarif</span>
+                            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=600&q=80" alt="Selin &amp; Can Dijital Davetiye — Ankara" class="demo-preview-img" loading="lazy">
+                            <div class="demo-tag-row">
+                                <span class="demo-tag">Romantik</span>
+                                <span class="demo-badge-demo"><i class='bx bx-sparkles'></i> DEMO</span>
+                            </div>
+                            <div class="demo-preview-overlay">
+                                <span class="demo-preview-couple">Selin &amp; Can</span>
+                                <span class="demo-preview-date">16 Ekim 2027 • Ankara</span>
+                            </div>
                         </div>
                         <div class="demo-body">
-                            <h4 class="demo-title">Romantik</h4>
-                            <p class="demo-desc">Yumuşak tonlar, zarif floral detaylar ve duygusal bir atmosfer.</p>
-                            <div class="demo-badge-subtle">
-                                <i class='bx bx-time-five'></i> Örnek yakında
+                            <div class="demo-badge-tier tier-plus">Plus Paket</div>
+                            <div class="demo-header-row">
+                                <h4 class="demo-title" style="margin-bottom: 0;">Selin &amp; Can</h4>
+                                <span class="demo-city"><i class='bx bx-map-pin'></i> Ankara</span>
                             </div>
+                            <p class="demo-desc">JW Marriott Hotel Ankara düğünü için hazırlanan; fildişi ve soft blush tonlarında, fotoğraf galerisi, akış ve demo LCV sistemine sahip plus davetiye.</p>
+                            <a href="https://selin-can-16-10-2027.nvmedya.com" 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               class="btn-gold demo-cta-btn">
+                                <span>Örneği İncele</span>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
                         </div>
                     </article>
 
-                    <!-- Kart 4: Gece Şıklığı -->
+                    <!-- Kart 4: Defne & Kerem (Standart - Demo) -->
                     <article class="demo-card">
                         <div class="demo-preview-wrap">
-                            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80" alt="Gece Şıklığı Dijital Davetiye Teması" class="demo-preview-img" loading="lazy">
-                            <span class="demo-tag">Koyu &amp; Altın Vurgu</span>
-                        </div>
-                        <div class="demo-body">
-                            <h4 class="demo-title">Gece Şıklığı</h4>
-                            <p class="demo-desc">Koyu tonlar, zarif altın detaylar ve daha iddialı premium bir görünüm.</p>
-                            <div class="demo-badge-subtle">
-                                <i class='bx bx-time-five'></i> Örnek yakında
+                            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=600&q=80" alt="Defne &amp; Kerem Dijital Davetiye — İstanbul" class="demo-preview-img" loading="lazy">
+                            <div class="demo-tag-row">
+                                <span class="demo-tag">Gece Şıklığı</span>
+                                <span class="demo-badge-demo"><i class='bx bx-sparkles'></i> DEMO</span>
+                            </div>
+                            <div class="demo-preview-overlay">
+                                <span class="demo-preview-couple">Defne &amp; Kerem</span>
+                                <span class="demo-preview-date">12 Haziran 2027 • İstanbul</span>
                             </div>
                         </div>
+                        <div class="demo-body">
+                            <div class="demo-badge-tier tier-standard">Standart Paket</div>
+                            <div class="demo-header-row">
+                                <h4 class="demo-title" style="margin-bottom: 0;">Defne &amp; Kerem</h4>
+                                <span class="demo-city"><i class='bx bx-map-pin'></i> İstanbul</span>
+                            </div>
+                            <p class="demo-desc">Four Seasons Hotel Istanbul Bosphorus düğünü için hazırlanan; gece mavisi ve şampanya altın detaylarla tasarlanan standart dijital davetiye.</p>
+                            <a href="https://defne-kerem-12-06-2027.nvmedya.com" 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               class="btn-gold demo-cta-btn">
+                                <span>Örneği İncele</span>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
+                        </div>
                     </article>
+                </div>
+
+                <!-- İmza Paketi Açıklama Notu -->
+                <div class="signature-clarification-note" style="margin-top: 2.5rem; padding: 1.25rem 1.5rem; background: rgba(184, 142, 82, 0.08); border: 1px solid rgba(184, 142, 82, 0.25); border-radius: 12px; text-align: center; max-width: 820px; margin-left: auto; margin-right: auto;">
+                    <p style="margin: 0; font-size: 0.95rem; color: var(--text-muted); line-height: 1.6;">
+                        <i class='bx bx-info-circle' style="color: var(--wedding-gold); font-size: 1.15rem; vertical-align: middle; margin-right: 4px;"></i>
+                        Bu örnekler Dijital Davetiye Standart ve Plus paketlerinin farklı tasarım yaklaşımlarını gösterir. İmza Dijital Davetiye ise çiftin hikayesine, düğün konseptine ve görsel tercihine göre tamamen özel tasarlanır.
+                    </p>
                 </div>
             </div>
         </section>

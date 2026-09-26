@@ -1,0 +1,102 @@
+{
+  "slug": "selin-can-16-10-2027",
+  "isDemo": true,
+  "packageTier": "plus",
+  "theme": "romantik",
+  "couple": {
+    "displayName": "Selin & Can",
+    "bride": "Selin",
+    "groom": "Can"
+  },
+  "date": {
+    "short": "16 Ekim 2027",
+    "dayOfWeek": "Cumartesi",
+    "display": "16 Ekim 2027, Cumartesi",
+    "countdownTarget": "2027-10-16T18:30:00+03:00",
+    "time": "18:30"
+  },
+  "hero": {
+    "backgroundImage": "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80",
+    "message": "Birlikte yazdığımız hikayemizin en güzel sayfasını açarken, sevginin ve mutluluğun paylaşıldığı bu özel gecede sizleri aramızda görmekten onur duyarız."
+  },
+  "venue": {
+    "name": "JW Marriott Hotel Ankara",
+    "area": "Angora Ballroom",
+    "address": "Kızılırmak Mah. Muhsin Yazıcıoğlu Cad. No: 1 Söğütözü, Ankara, Türkiye, 06520",
+    "addressLine1": "Kızılırmak Mah. Muhsin Yazıcıoğlu Cad. No: 1",
+    "addressLine2": "Angora Ballroom, Söğütözü / Ankara",
+    "addressShort": "Söğütözü / Ankara",
+    "city": "Ankara",
+    "image": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=800&q=80",
+    "imageAlt": "JW Marriott Hotel Ankara Angora Ballroom düğün mekanı",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=JW+Marriott+Hotel+Ankara,+Kızılırmak+Mah.+Muhsin+Yazıcıoğlu+Cad.+No+1+Söğütözü+Ankara",
+    "description": "Düğün kutlamamız ve nikah törenimiz <strong>JW Marriott Hotel Ankara Angora Ballroom</strong>'da gerçekleşecektir. Yol tarifi için aşağıdaki butonu kullanabilirsiniz."
+  },
+  "detailNotices": [
+    {
+      "icon": "bx-heart",
+      "title": "Özel Günümüzde Birlikteyiz",
+      "description": "Siz değerli dostlarımızla paylaşacağımız bu gecenin her anı bizim için çok kıymetli."
+    }
+  ],
+  "timeline": [
+    { "time": "18:30", "title": "Misafir Karşılama" },
+    { "time": "19:00", "title": "Nikah Töreni" },
+    { "time": "19:20", "title": "İlk Dans" },
+    { "time": "19:45", "title": "Akşam Yemeği" },
+    { "time": "21:00", "title": "Müzik ve Eğlence" }
+  ],
+  "gallery": [
+    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80",
+    "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=80"
+  ],
+  "galleryFullRes": [
+    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1400&q=90",
+    "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=1400&q=90"
+  ],
+  "rsvp": {
+    "demoMode": true,
+    "enabled": true,
+    "closesAt": "2027-10-10T23:59:00+03:00",
+    "timezone": "Europe/Istanbul",
+    "deadlineDisplay": "10 Ekim 2027 • 23:59",
+    "closedText": "Katılım bildirimleri 10 Ekim 2027 saat 23:59 itibarıyla kapanmıştır. İlginiz için teşekkür ederiz.",
+    "formAction": "#",
+    "entries": {
+      "name": "demo_name",
+      "attendance": "demo_attendance",
+      "vegetarian": "demo_vegetarian",
+      "adults": "demo_adults",
+      "hasChildren": "demo_hasChildren",
+      "children": "demo_children",
+      "childAge1": "demo_childAge1",
+      "childAge2": "demo_childAge2",
+      "childAge3": "demo_childAge3",
+      "childAge4": "demo_childAge4",
+      "childAges": [
+        "demo_childAge1",
+        "demo_childAge2",
+        "demo_childAge3",
+        "demo_childAge4"
+      ],
+      "message": "demo_message"
+    }
+  },
+  "messages": {
+    "letterText": "Kalplerimizin birleştiği, hayatlarımızın bir ömür boyu el ele yürüyeceği bu anlamlı günde yanımızda olmanız bize güç ve mutluluk verecektir.",
+    "finalText": "Hayatımızın en mutlu gününü sizinle paylaşmak için sabırsızlanıyoruz. Sevgiyle bekliyoruz."
+  },
+  "calendar": {
+    "googleCalUrl": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Selin+%26+Can+D%C3%BC%C4%9F%C3%BCn+T%C3%B6reni&dates=20271016T153000Z/20271016T210000Z&details=Selin+%26+Can+D%C3%BC%C4%9F%C3%BCn+T%C3%B6reni+-+JW+Marriott+Hotel+Ankara&location=JW+Marriott+Hotel+Ankara,+Sogutozu,+Ankara",
+    "ics": {
+      "uid": "selin-can-dugun-20271016@nvmedya.com",
+      "dtstart": "20271016T153000Z",
+      "dtend": "20271016T210000Z",
+      "summary": "Selin & Can Düğün Töreni",
+      "description": "Selin & Can çiftinin düğün kutlaması. Başlangıç: 18:30.",
+      "location": "JW Marriott Hotel Ankara, Söğütözü / Ankara",
+      "filename": "Selin-Can-Dugun-Davetiye.ics"
+    }
+  },
+  "socialPreviewImage": "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80"
+}
