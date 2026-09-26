@@ -432,6 +432,104 @@
             letter-spacing: 0.5px;
         }
 
+        .demo-tag-row {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            right: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .demo-tag-row .demo-tag {
+            position: static;
+        }
+
+        .demo-badge-real {
+            background: linear-gradient(135deg, #D4AF37 0%, #AA841E 100%);
+            color: #0F0D0C;
+            font-size: 0.68rem;
+            font-weight: 700;
+            padding: 0.25rem 0.65rem;
+            border-radius: 50px;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            white-space: nowrap;
+        }
+
+        .demo-preview-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.2rem 1rem 0.85rem;
+            background: linear-gradient(to top, rgba(15, 13, 12, 0.9) 0%, rgba(15, 13, 12, 0.45) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            pointer-events: none;
+        }
+
+        .demo-preview-couple {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            color: #FAF7F2;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .demo-preview-date {
+            font-size: 0.75rem;
+            color: var(--wedding-gold-light);
+            letter-spacing: 0.8px;
+            margin-top: 2px;
+        }
+
+        .demo-header-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .demo-city {
+            font-size: 0.8rem;
+            color: var(--wedding-gold-light);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-weight: 500;
+            background: rgba(212, 175, 55, 0.08);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 0.2rem 0.55rem;
+            border-radius: 6px;
+        }
+
+        .demo-cta-btn {
+            width: 100%;
+            justify-content: center;
+            padding: 0.75rem 1rem;
+            font-size: 0.88rem;
+            margin-top: auto;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+        }
+
+        .demo-cta-btn:hover {
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            transform: translateY(-2px);
+        }
+
         .demo-body {
             padding: 1.4rem;
             display: flex;
@@ -1112,29 +1210,40 @@
                 <div class="section-header-centered">
                     <span class="section-subtitle">TEMA SEÇENEKLERİ</span>
                     <h2 class="section-title" style="font-size: clamp(2rem, 4vw, 3rem); margin-top: 0.5rem;">
-                        Dijital Davetiyeleri İnceleyin
+                        Dijital Davetiye Örneklerini İnceleyin
                     </h2>
-                    <h3 style="font-size: 1.25rem; color: var(--wedding-gold-light); font-weight: 500; margin: 0.5rem 0 1rem; font-family: var(--font-serif);">
-                        Tarzınızı seçin.
-                    </h3>
-                    <p class="hero-description" style="margin: 0 auto;">
-                        Her çiftin hikayesi farklı. Dijital davetiyenizin görünümü de size özel olsun.
+                    <p class="hero-description" style="margin: 0.75rem auto 0; font-size: 1.05rem;">
+                        Farklı tasarım stillerini ve davetiye deneyimlerini keşfedin.
                     </p>
                 </div>
 
                 <div class="demos-grid">
-                    <!-- Kart 1: Zamansız Zarafet -->
+                    <!-- Kart 1: Hatice & Mustafa (Gerçek Davetiye) -->
                     <article class="demo-card">
                         <div class="demo-preview-wrap">
-                            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=600&q=80" alt="Zamansız Zarafet Dijital Davetiye Teması" class="demo-preview-img" loading="lazy">
-                            <span class="demo-tag">Klasik &amp; Modern</span>
+                            <img src="https://ik.imagekit.io/nvmedya/davetiye/hatice-mustafa/e95f60b2-26eb-4b85-a232-64d21f51e64c.JPG" alt="Hatice &amp; Mustafa Dijital Davetiye — İzmir" class="demo-preview-img" loading="lazy">
+                            <div class="demo-tag-row">
+                                <span class="demo-tag">Zamansız Zarafet</span>
+                                <span class="demo-badge-real"><i class='bx bx-check-shield'></i> GERÇEK DAVETİYE</span>
+                            </div>
+                            <div class="demo-preview-overlay">
+                                <span class="demo-preview-couple">Hatice &amp; Mustafa</span>
+                                <span class="demo-preview-date">13 Kasım 2026 • İzmir</span>
+                            </div>
                         </div>
                         <div class="demo-body">
-                            <h4 class="demo-title">Zamansız Zarafet</h4>
-                            <p class="demo-desc">Krem, champagne ve zarif tipografiyle klasik ama modern bir düğün davetiyesi.</p>
-                            <div class="demo-badge-subtle">
-                                <i class='bx bx-time-five'></i> Örnek yakında
+                            <div class="demo-header-row">
+                                <h4 class="demo-title" style="margin-bottom: 0;">Hatice &amp; Mustafa</h4>
+                                <span class="demo-city"><i class='bx bx-map-pin'></i> İzmir</span>
                             </div>
+                            <p class="demo-desc">İzmir'de gerçekleşecek düğün için hazırlanan; fildişi, altın detaylar ve zarif tipografiye sahip canlı dijital davetiye.</p>
+                            <a href="https://hatice-mustafa-13-11-2026.nvmedya.com" 
+                               target="_blank" 
+                               rel="noopener noreferrer" 
+                               class="btn-gold demo-cta-btn">
+                                <span>Davetiye Örneğini İncele</span>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </a>
                         </div>
                     </article>
 
@@ -1317,12 +1426,12 @@
                         <div class="package-name">Dijital Davetiye Plus</div>
                         <div class="package-price">1.500 TL</div>
                         <p class="package-lead">
-                            Standart özelliklerin tamamı ve çiftinize özel video, müzik ve hikaye anlatımı.
+                            Standart özelliklerin tamamı ve çiftinize özel müzik, hikaye anlatımı ve genişletilmiş galeri.
                         </p>
                         <ul class="package-features">
                             <li><i class='bx bx-check-circle'></i> <strong>Tüm Standart özellikler dahil</strong></li>
                             <li><i class='bx bx-check-circle'></i> Özel arka plan müziği &amp; şarkı entegrasyonu</li>
-                            <li><i class='bx bx-check-circle'></i> Çift tanışma hikayesi &amp; video alanı</li>
+                            <li><i class='bx bx-check-circle'></i> Çift tanışma ve aşk hikayesi bölümü</li>
                             <li><i class='bx bx-check-circle'></i> Genişletilmiş yüksek çözünürlüklü galeri</li>
                             <li><i class='bx bx-check-circle'></i> Özel misafir tebrik ve mesaj notları</li>
                             <li><i class='bx bx-check-circle'></i> Öncelikli tasarım &amp; hızlı teslimat</li>
@@ -1346,15 +1455,18 @@
                         <div class="package-name">İmza Dijital Davetiye</div>
                         <div class="package-price">2.500 TL</div>
                         <p class="package-lead">
-                            Çiftinize özel konsept, sınırsız medya ve tamamen özelleştirilmiş tasarım.
+                            Plus paketteki tüm özelliklere ek olarak, düğününüzün stiline ve hikayenize özel tasarlanan özgün dijital davetiye deneyimi.
                         </p>
                         <ul class="package-features">
-                            <li><i class='bx bx-check-circle'></i> <strong>Tüm Plus özellikler dahil</strong></li>
-                            <li><i class='bx bx-check-circle'></i> Çifte ve düğün temasına özel imza tasarım</li>
-                            <li><i class='bx bx-check-circle'></i> Sınırsız fotoğraf ve video alanı</li>
-                            <li><i class='bx bx-check-circle'></i> Özel domain / alt alan adı entegrasyonu</li>
-                            <li><i class='bx bx-check-circle'></i> Premium tipografi &amp; mikro animasyonlar</li>
-                            <li><i class='bx bx-check-circle'></i> VIP öncelikli destek &amp; sınırsız revizyon</li>
+                            <li><i class='bx bx-check-circle'></i> <strong>Dijital Davetiye Plus'taki tüm özellikler</strong></li>
+                            <li><i class='bx bx-check-circle'></i> Çifte özel tasarım konsepti</li>
+                            <li><i class='bx bx-check-circle'></i> Özel renk paleti</li>
+                            <li><i class='bx bx-check-circle'></i> Özel tipografi seçimi</li>
+                            <li><i class='bx bx-check-circle'></i> Düğün konseptine göre özel görsel dil</li>
+                            <li><i class='bx bx-check-circle'></i> Standart temalardan bağımsız sayfa kompozisyonu</li>
+                            <li><i class='bx bx-check-circle'></i> Çifte özel bölüm ve içerik kurguları</li>
+                            <li><i class='bx bx-check-circle'></i> Fotoğraflara göre şekillendirilen galeri ve görsel sunum</li>
+                            <li><i class='bx bx-check-circle'></i> Özel mikro animasyonlar ve arayüz detayları</li>
                         </ul>
                         <div class="package-bottom-action">
                             <div class="package-bottom-price-note">
