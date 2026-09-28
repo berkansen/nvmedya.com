@@ -483,26 +483,29 @@
         }
 
         .demo-badge-tier {
-            font-size: 0.65rem;
+            font-size: 0.68rem;
             font-weight: 700;
-            padding: 0.2rem 0.55rem;
-            border-radius: 4px;
+            padding: 0.25rem 0.65rem;
+            border-radius: 6px;
             letter-spacing: 0.6px;
             text-transform: uppercase;
             display: inline-flex;
             align-items: center;
-            margin-bottom: 0.5rem;
+            height: 24px;
+            box-sizing: border-box;
+            margin-bottom: 0.65rem;
             width: fit-content;
+            line-height: 1;
         }
         .demo-badge-tier.tier-standard {
-            background: rgba(61, 107, 140, 0.18);
-            color: #8BAEC7;
-            border: 1px solid rgba(61, 107, 140, 0.35);
+            background: rgba(140, 160, 180, 0.12);
+            color: #A0B5C6;
+            border: 1px solid rgba(140, 160, 180, 0.25);
         }
         .demo-badge-tier.tier-plus {
-            background: rgba(212, 175, 55, 0.15);
+            background: rgba(212, 175, 55, 0.12);
             color: var(--wedding-gold);
-            border: 1px solid rgba(212, 175, 55, 0.35);
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .demo-preview-overlay {
@@ -510,8 +513,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 2.2rem 1rem 0.85rem;
-            background: linear-gradient(to top, rgba(15, 13, 12, 0.9) 0%, rgba(15, 13, 12, 0.45) 60%, transparent 100%);
+            padding: 2.5rem 1rem 0.9rem;
+            background: linear-gradient(to top, rgba(15, 13, 12, 0.9) 0%, rgba(15, 13, 12, 0.45) 55%, transparent 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -557,17 +560,41 @@
 
         .demo-cta-btn {
             width: 100%;
+            height: 54px;
+            min-height: 52px;
+            max-height: 56px;
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-            padding: 0.75rem 1rem;
-            font-size: 0.88rem;
+            padding: 0 1.25rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            border-radius: 16px;
             margin-top: auto;
             text-decoration: none;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+            white-space: nowrap;
+            background: linear-gradient(135deg, #D4AF37 0%, #B88E28 100%);
+            color: #0F0D0C;
+            box-shadow: 0 4px 14px rgba(212, 175, 55, 0.2);
+            transition: all 0.25s ease;
+            box-sizing: border-box;
+            gap: 0.5rem;
         }
 
         .demo-cta-btn:hover {
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 6px 18px rgba(212, 175, 55, 0.32);
             transform: translateY(-2px);
+            filter: brightness(1.05);
+            color: #0F0D0C;
+        }
+
+        .demo-cta-btn i {
+            font-size: 1.15rem;
+            transition: transform 0.25s ease;
+        }
+
+        .demo-cta-btn:hover i {
+            transform: translateX(3px);
         }
 
         .demo-body {
@@ -786,14 +813,77 @@
 
         .package-bottom-action {
             margin-top: auto;
-            padding-top: 1rem;
+            padding-top: 1.25rem;
+            display: flex;
+            flex-direction: column;
         }
 
-        .package-bottom-price-note {
-            font-size: 1.15rem;
+        .package-bottom-price-wrap {
+            min-height: 48px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .package-bottom-price {
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--wedding-gold);
-            margin-bottom: 0.85rem;
+            line-height: 1.2;
+            letter-spacing: 0.3px;
+        }
+
+        .package-bottom-sub {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.3;
+            margin-bottom: 2px;
+        }
+
+        .package-bottom-highlight {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--wedding-gold);
+            line-height: 1.25;
+        }
+
+        .package-cta-btn {
+            width: 100%;
+            height: 56px;
+            min-height: 56px;
+            max-height: 60px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1.25rem;
+            border-radius: 16px;
+            background: linear-gradient(135deg, #D4AF37 0%, #B88E28 100%);
+            color: #0F0D0C;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            white-space: nowrap;
+            gap: 0.6rem;
+            box-shadow: 0 4px 14px rgba(212, 175, 55, 0.2);
+            transition: all 0.25s ease;
+            box-sizing: border-box;
+        }
+
+        .package-cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(212, 175, 55, 0.32);
+            filter: brightness(1.05);
+            color: #0F0D0C;
+        }
+
+        .package-cta-btn i {
+            font-size: 1.15rem;
+            transition: transform 0.25s ease;
+        }
+
+        .package-cta-btn:hover i {
+            transform: translateX(3px);
         }
 
         /* 6. STEPS SECTION */
@@ -1119,8 +1209,26 @@
         }
 
         @media (max-width: 480px) {
+            .packages-grid {
+                gap: 1.25rem;
+            }
+            .package-card {
+                padding: 1.6rem 1.15rem 1.35rem;
+            }
+            .package-cta-btn,
+            .demo-cta-btn {
+                height: 52px;
+                min-height: 52px;
+                font-size: 0.9rem;
+                padding: 0 0.85rem;
+                border-radius: 14px;
+            }
             .demos-grid {
                 grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+            .demo-body {
+                padding: 1.15rem;
             }
             .final-cta-pricing {
                 flex-direction: column;
@@ -1277,11 +1385,11 @@
                                 <h4 class="demo-title" style="margin-bottom: 0;">Hatice &amp; Mustafa</h4>
                                 <span class="demo-city"><i class='bx bx-map-pin'></i> İzmir</span>
                             </div>
-                            <p class="demo-desc">İzmir La Win Wedding düğünü için hazırlanan; fildişi, altın detaylar, fotoğraf galerisi ve interaktif LCV sistemine sahip canlı dijital davetiye.</p>
+                            <p class="demo-desc">İzmir La Win Wedding için hazırlanan; galeri, düğün akışı ve interaktif LCV sistemine sahip gerçek Plus davetiye.</p>
                             <a href="https://hatice-mustafa-13-11-2026.nvmedya.com/?showcase=1" 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               class="btn-gold demo-cta-btn">
+                               class="demo-cta-btn">
                                 <span>Örneği İncele</span>
                                 <i class='bx bx-right-arrow-alt'></i>
                             </a>
@@ -1307,11 +1415,11 @@
                                 <h4 class="demo-title" style="margin-bottom: 0;">Duru &amp; Alp</h4>
                                 <span class="demo-city"><i class='bx bx-map-pin'></i> İzmir</span>
                             </div>
-                            <p class="demo-desc">İzmir Marriott Hotel Rooftop düğünü için hazırlanan; kırık beyaz, sıcak kum ve Ege mavisi tonlarında sade standart dijital davetiye.</p>
+                            <p class="demo-desc">İzmir Marriott Hotel için hazırlanan, modern ve sade bir Standart dijital davetiye örneği.</p>
                             <a href="https://duru-alp-21-08-2027.nvmedya.com" 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               class="btn-gold demo-cta-btn">
+                               class="demo-cta-btn">
                                 <span>Örneği İncele</span>
                                 <i class='bx bx-right-arrow-alt'></i>
                             </a>
@@ -1337,11 +1445,11 @@
                                 <h4 class="demo-title" style="margin-bottom: 0;">Selin &amp; Can</h4>
                                 <span class="demo-city"><i class='bx bx-map-pin'></i> Ankara</span>
                             </div>
-                            <p class="demo-desc">JW Marriott Hotel Ankara düğünü için hazırlanan; fildişi ve soft blush tonlarında, fotoğraf galerisi, akış ve demo LCV sistemine sahip plus davetiye.</p>
+                            <p class="demo-desc">JW Marriott Ankara için hazırlanan; galeri, düğün akışı ve demo LCV sistemine sahip romantik Plus davetiye.</p>
                             <a href="https://selin-can-16-10-2027.nvmedya.com" 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               class="btn-gold demo-cta-btn">
+                               class="demo-cta-btn">
                                 <span>Örneği İncele</span>
                                 <i class='bx bx-right-arrow-alt'></i>
                             </a>
@@ -1367,11 +1475,11 @@
                                 <h4 class="demo-title" style="margin-bottom: 0;">Defne &amp; Kerem</h4>
                                 <span class="demo-city"><i class='bx bx-map-pin'></i> İstanbul</span>
                             </div>
-                            <p class="demo-desc">Four Seasons Hotel Istanbul Bosphorus düğünü için hazırlanan; gece mavisi ve şampanya altın detaylarla tasarlanan standart dijital davetiye.</p>
+                            <p class="demo-desc">Four Seasons Bosphorus için hazırlanan, gece mavisi ve champagne detaylara sahip Standart dijital davetiye örneği.</p>
                             <a href="https://defne-kerem-12-06-2027.nvmedya.com" 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               class="btn-gold demo-cta-btn">
+                               class="demo-cta-btn">
                                 <span>Örneği İncele</span>
                                 <i class='bx bx-right-arrow-alt'></i>
                             </a>
@@ -1501,15 +1609,15 @@
                             <li><i class='bx bx-check-circle'></i> Takvime ekleme &amp; Mobil uyumlu</li>
                         </ul>
                         <div class="package-bottom-action">
-                            <div class="package-bottom-price-note">
-                                1.000 TL
+                            <div class="package-bottom-price-wrap">
+                                <div class="package-bottom-price">1.000 TL</div>
                             </div>
                             <a href="https://wa.me/905526288131?text=Merhaba%2C%20Dijital%20Davetiye%20Standart%20paketi%20(1.000%20TL)%20hakk%C4%B1nda%20bilgi%20almak%20ve%20sipari%C5%9F%20vermek%20istiyorum." 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               class="btn-gold" 
-                               style="width: 100%; justify-content: center;">
-                                <i class='bx bxl-whatsapp'></i> Standart Paketi Seç
+                               class="package-cta-btn">
+                                <span>Standart Paketi Seç</span>
+                                <i class='bx bx-right-arrow-alt'></i>
                             </a>
                         </div>
                     </div>
@@ -1532,15 +1640,15 @@
                             <li><i class='bx bx-check-circle'></i> Öncelikli tasarım &amp; hızlı teslimat</li>
                         </ul>
                         <div class="package-bottom-action">
-                            <div class="package-bottom-price-note">
-                                1.500 TL
+                            <div class="package-bottom-price-wrap">
+                                <div class="package-bottom-price">1.500 TL</div>
                             </div>
                             <a href="https://wa.me/905526288131?text=Merhaba%2C%20Dijital%20Davetiye%20Plus%20paketi%20(1.500%20TL)%20hakk%C4%B1nda%20bilgi%20almak%20ve%20sipari%C5%9F%20vermek%20istiyorum." 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               class="btn-gold" 
-                               style="width: 100%; justify-content: center;">
-                                <i class='bx bxl-whatsapp'></i> Plus Paketi Seç
+                               class="package-cta-btn">
+                                <span>Plus Paketi Seç</span>
+                                <i class='bx bx-right-arrow-alt'></i>
                             </a>
                         </div>
                     </div>
@@ -1564,15 +1672,15 @@
                             <li><i class='bx bx-check-circle'></i> Özel mikro animasyonlar ve arayüz detayları</li>
                         </ul>
                         <div class="package-bottom-action">
-                            <div class="package-bottom-price-note">
-                                2.500 TL
+                            <div class="package-bottom-price-wrap">
+                                <div class="package-bottom-price">2.500 TL</div>
                             </div>
                             <a href="https://wa.me/905526288131?text=Merhaba%2C%20%C4%B0mza%20Dijital%20Davetiye%20paketi%20(2.500%20TL)%20hakk%C4%B1nda%20bilgi%20almak%20ve%20sipari%C5%9F%20vermek%20istiyorum." 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               class="btn-gold" 
-                               style="width: 100%; justify-content: center;">
-                                <i class='bx bxl-whatsapp'></i> İmza Paketi Seç
+                               class="package-cta-btn">
+                                <span>İmza Paketi Seç</span>
+                                <i class='bx bx-right-arrow-alt'></i>
                             </a>
                         </div>
                     </div>
@@ -1596,16 +1704,16 @@
                             <li><i class='bx bx-check-circle'></i> Fotoğraf galerisi ve mekan yol tarifi</li>
                         </ul>
                         <div class="package-bottom-action">
-                            <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.2rem;">3.500 TL+ fiziksel davetiye siparişinde</div>
-                            <div class="package-bottom-price-note">
-                                Standart Dijital Davetiye Hediye
+                            <div class="package-bottom-price-wrap">
+                                <div class="package-bottom-sub">3.500 TL+ fiziksel davetiye siparişinde</div>
+                                <div class="package-bottom-highlight">Standart Dijital Davetiye Hediye</div>
                             </div>
                             <a href="https://www.nisanvitrini.com/davetiye/" 
                                target="_blank" 
                                rel="noopener noreferrer" 
-                               class="btn-gold" 
-                               style="width: 100%; justify-content: center;">
-                                <i class='bx bx-store-alt'></i> Fiziksel Davetiyeleri İncele
+                               class="package-cta-btn">
+                                <span>Davetiyeleri İncele</span>
+                                <i class='bx bx-right-arrow-alt'></i>
                             </a>
                         </div>
                     </div>
