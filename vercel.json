@@ -71,7 +71,7 @@
           "value": "(?<slug>(?!www$)[a-z0-9-]+)\\.nvmedya\\.com"
         }
       ],
-      "destination": "/api/invitation?slug=:slug"
+      "destination": "/api/invitation"
     }
   ],
   "headers": [

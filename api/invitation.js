@@ -637,11 +637,6 @@ export default function handler(req, res) {
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
   res.setHeader('X-Robots-Tag', 'noindex, nofollow, noarchive, nosnippet');
   res.setHeader('Cache-Control', 'public, max-age=0, must-revalidate');
-  res.setHeader('X-Debug-Req-Url', req.url || '');
-  res.setHeader('X-Debug-Query', JSON.stringify(req.query || {}));
-  res.setHeader('X-Debug-Invoke-Query', req.headers['x-invoke-query'] || '');
-  res.setHeader('X-Debug-Matched-Path', req.headers['x-matched-path'] || '');
-  res.setHeader('X-Debug-Forwarded-Url', req.headers['x-forwarded-url'] || '');
 
   return res.status(200).send(html);
 }
