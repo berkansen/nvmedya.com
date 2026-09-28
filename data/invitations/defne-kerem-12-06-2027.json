@@ -16,7 +16,7 @@
     "time": "19:30"
   },
   "hero": {
-    "backgroundImage": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
+    "backgroundImage": "https://www.nvmedya.com/assets/demo/defne-kerem-hero.jpg",
     "message": "İstanbul Boğazı'nın ışıltılı gecesinde, hayatımızın en özel 'evet'ine sizleri de tanık olmaya davet ediyoruz."
   },
   "venue": {
@@ -27,7 +27,7 @@
     "addressLine2": "Beşiktaş / İstanbul",
     "addressShort": "Beşiktaş / İstanbul",
     "city": "İstanbul",
-    "image": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=800&q=80",
+    "image": "https://www.nvmedya.com/assets/demo/defne-kerem-venue.jpg",
     "imageAlt": "Four Seasons Hotel Istanbul at the Bosphorus düğün mekanı - Beşiktaş İstanbul",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Four+Seasons+Hotel+Istanbul+at+the+Bosphorus,+Çırağan+Cad.+No.+28+Beşiktaş+İstanbul",
     "description": "Boğaz'ın büyüleyici atmosferinde, <strong>Four Seasons Hotel Istanbul at the Bosphorus Atik Pasha Terrace</strong>'ta bir araya geliyoruz. Yol tarifi için aşağıdaki butonu kullanabilirsiniz."
@@ -48,5 +48,5 @@
       "filename": "Defne-Kerem-Dugun-Davetiye.ics"
     }
   },
-  "socialPreviewImage": "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80"
+  "socialPreviewImage": "https://www.nvmedya.com/assets/demo/defne-kerem-hero.jpg"
 }

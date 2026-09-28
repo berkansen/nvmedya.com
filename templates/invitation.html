@@ -1908,6 +1908,13 @@
            GOOGLE FORMS / E-TABLOLAR LCV ENTEGRASYON KONFİGÜRASYONU
            =================================================================== */
         const __INV__ = {{CLIENT_CONFIG_JSON}};
+        const urlParams = new URLSearchParams(window.location.search);
+        const isShowcase = Boolean(__INV__.isShowcase || urlParams.get('showcase') === '1');
+        if (isShowcase && __INV__.rsvp) {
+            __INV__.rsvp.demoMode = true;
+            __INV__.rsvp.isShowcase = true;
+            __INV__.rsvp.isClosed = false;
+        }
 
         /* --------------------------------------------------
            1. COUNTDOWN TIMER (13 Kasım 2026 19:00:00 GMT+3)
@@ -2119,6 +2126,7 @@
         }
 
         function isRsvpClosed() {
+            if (isShowcase) return false;
             if (__INV__.rsvp && __INV__.rsvp.isClosed) return true;
             const deadlineMs = getRsvpDeadlineMs();
             if (deadlineMs && Date.now() >= deadlineMs) {
@@ -2128,6 +2136,7 @@
         }
 
         function setRsvpClosedState() {
+            if (isShowcase) return;
             if (__INV__.rsvp) {
                 __INV__.rsvp.isClosed = true;
             }
@@ -2148,6 +2157,7 @@
         }
 
         function initRsvpDeadline() {
+            if (isShowcase) return;
             if (!document.getElementById('rsvpForm')) return;
             if (isRsvpClosed()) {
                 setRsvpClosedState();
@@ -2267,8 +2277,8 @@
                 }
             }
 
-            // Demo Davetiye Guard: Google Form POST / Harici istek YAPILMAZ
-            if (__INV__.rsvp && __INV__.rsvp.demoMode) {
+            // Demo / Showcase Davetiye Guard: Google Form POST / Harici istek YAPILMAZ
+            if (isShowcase || (__INV__.rsvp && __INV__.rsvp.demoMode)) {
                 e.preventDefault();
                 isSubmitting = true;
                 const submitBtn = document.getElementById('rsvpSubmitBtn');
@@ -2277,7 +2287,7 @@
                     submitBtn.innerHTML = "<i class='bx bx-loader-alt bx-spin'></i> <span>Gönderiliyor...</span>";
                 }
                 setTimeout(() => {
-                    handleRsvpDemoSuccess();
+                    handleRsvpDemoSuccess(isShowcase);
                 }, 400);
                 return false;
             }
@@ -2349,8 +2359,8 @@
             });
         }
 
-        // Demo LCV Başarı Fonksiyonu (Dışarıya POST atılmaz, sadece kullanıcıya demo bildirim gösterilir)
-        function handleRsvpDemoSuccess() {
+        // Demo / Showcase LCV Başarı Fonksiyonu (Dışarıya POST atılmaz, sadece kullanıcıya bildirim gösterilir)
+        function handleRsvpDemoSuccess(isCurrentShowcase) {
             isSubmitting = false;
             const submitBtn = document.getElementById('rsvpSubmitBtn');
             if (submitBtn) {
@@ -2387,9 +2397,12 @@
 
             const summaryEl = document.getElementById('rsvpSummaryContent');
             if (summaryEl) {
+                const noticeText = isCurrentShowcase
+                    ? 'Bu bir örnek davetiye görünümüdür. Girdiğiniz bilgiler kaydedilmedi.'
+                    : 'Bu bir demo davetiyedir. Girdiğiniz bilgiler kaydedilmedi.';
                 summaryEl.innerHTML = 
-                    '<div style="background: rgba(183, 110, 121, 0.12); padding: 0.6rem 0.9rem; border-radius: 8px; margin-bottom: 0.8rem; font-size: 0.85rem; color: var(--gold-dark); font-weight: 600; text-align: center;"><i class=\'bx bx-info-circle\'></i> Bu bir demo davetiyedir. Girdiğiniz bilgiler kaydedilmedi.</div>' +
-                    '<strong>İletilen Katılım Bilgileriniz:</strong><br>' +
+                    '<div style="background: rgba(183, 110, 121, 0.12); padding: 0.6rem 0.9rem; border-radius: 8px; margin-bottom: 0.8rem; font-size: 0.85rem; color: var(--gold-dark); font-weight: 600; text-align: center;"><i class=\'bx bx-info-circle\'></i> ' + noticeText + '</div>' +
+                    '<strong>Girilen Bilgiler:</strong><br>' +
                     '• <strong>Ad Soyad:</strong> ' + escapeHtml(name) + '<br>' +
                     '• <strong>Durum:</strong> ' + escapeHtml(attendance) + '<br>' +
                     (isAttending && vegValue ? '• <strong>Vejetaryen:</strong> ' + escapeHtml(vegValue) + '<br>' : '') +
@@ -2400,13 +2413,19 @@
             }
 
             const successTitle = document.querySelector('.rsvp-success-title');
-            if (successTitle) successTitle.innerText = "Katılım Bildiriminiz Alındı (Demo)";
             const successSub = document.querySelector('.rsvp-success-subtitle');
-            if (successSub) successSub.innerText = "Bu bir demo davetiyedir. Girdiğiniz bilgiler kaydedilmedi.";
+            if (isCurrentShowcase) {
+                if (successTitle) successTitle.innerText = "Bu bir örnek davetiye görünümüdür.";
+                if (successSub) successSub.innerText = "Girdiğiniz bilgiler kaydedilmedi.";
+                showToast('Bu bir örnek davetiye görünümüdür. Girdiğiniz bilgiler kaydedilmedi.');
+            } else {
+                if (successTitle) successTitle.innerText = "Demo Gönderim Başarılı";
+                if (successSub) successSub.innerText = "Bu bir demo davetiyedir. Girdiğiniz bilgiler kaydedilmedi.";
+                showToast('Bu bir demo davetiyedir. Girdiğiniz bilgiler kaydedilmedi.');
+            }
 
             document.getElementById('rsvpForm').style.display = 'none';
             document.getElementById('rsvpSuccessBox').style.display = 'block';
-            showToast('Bu bir demo davetiyedir. Girdiğiniz bilgiler kaydedilmedi.');
         }
 
         // Formu Yeniden Sıfırlama

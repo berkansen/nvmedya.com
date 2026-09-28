@@ -16,7 +16,7 @@
     "time": "18:30"
   },
   "hero": {
-    "backgroundImage": "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80",
+    "backgroundImage": "https://www.nvmedya.com/assets/demo/selin-can-hero.jpg",
     "message": "Birlikte yazdığımız hikayemizin en güzel sayfasını açarken, sevginin ve mutluluğun paylaşıldığı bu özel gecede sizleri aramızda görmekten onur duyarız."
   },
   "venue": {
@@ -27,7 +27,7 @@
     "addressLine2": "Angora Ballroom, Söğütözü / Ankara",
     "addressShort": "Söğütözü / Ankara",
     "city": "Ankara",
-    "image": "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=800&q=80",
+    "image": "https://www.nvmedya.com/assets/demo/selin-can-venue.jpg",
     "imageAlt": "JW Marriott Hotel Ankara Angora Ballroom düğün mekanı",
     "mapsUrl": "https://www.google.com/maps/search/?api=1&query=JW+Marriott+Hotel+Ankara,+Kızılırmak+Mah.+Muhsin+Yazıcıoğlu+Cad.+No+1+Söğütözü+Ankara",
     "description": "Düğün kutlamamız ve nikah törenimiz <strong>JW Marriott Hotel Ankara Angora Ballroom</strong>'da gerçekleşecektir. Yol tarifi için aşağıdaki butonu kullanabilirsiniz."
@@ -47,12 +47,12 @@
     { "time": "21:00", "title": "Müzik ve Eğlence" }
   ],
   "gallery": [
-    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80",
-    "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=800&q=80"
+    "https://www.nvmedya.com/assets/demo/selin-can-gallery-1.jpg",
+    "https://www.nvmedya.com/assets/demo/selin-can-gallery-2.jpg"
   ],
   "galleryFullRes": [
-    "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1400&q=90",
-    "https://images.unsplash.com/photo-1532712938310-34cb3982ef74?auto=format&fit=crop&w=1400&q=90"
+    "https://www.nvmedya.com/assets/demo/selin-can-gallery-1.jpg",
+    "https://www.nvmedya.com/assets/demo/selin-can-gallery-2.jpg"
   ],
   "rsvp": {
     "demoMode": true,
@@ -98,5 +98,5 @@
       "filename": "Selin-Can-Dugun-Davetiye.ics"
     }
   },
-  "socialPreviewImage": "https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80"
+  "socialPreviewImage": "https://www.nvmedya.com/assets/demo/selin-can-hero.jpg"
 }

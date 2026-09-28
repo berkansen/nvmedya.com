@@ -426,8 +426,9 @@ function generateRsvpSectionHtml(c, isClosedServer, deadlineDisplay, closedText,
         </section>`;
 }
 
-function renderTemplate(templateHtml, config) {
+function renderTemplate(templateHtml, config, options = {}) {
   const c = config;
+  const isShowcase = Boolean(options && options.isShowcase);
   const coupleDisplay = escapeHtml(c.couple.displayName);
   const packageTier = c.packageTier || (c.rsvp ? 'plus' : 'standard');
   const isDemo = Boolean(c.isDemo);
@@ -435,15 +436,17 @@ function renderTemplate(templateHtml, config) {
 
   const rsvpEntries = (c.rsvp && c.rsvp.entries) || {};
   const closesAtIso = (c.rsvp && c.rsvp.closesAt) || null;
-  const isClosedServer = closesAtIso ? (Date.now() >= new Date(closesAtIso).getTime()) : false;
+  // In showcase mode, the deadline override prevents closing the form on the server
+  const isClosedServer = isShowcase ? false : (closesAtIso ? (Date.now() >= new Date(closesAtIso).getTime()) : false);
   const deadlineDisplay = (c.rsvp && c.rsvp.deadlineDisplay) || '8 Kasım 2026 • 23:59';
   const closedText = (c.rsvp && c.rsvp.closedText) || `Katılım bildirimleri ${deadlineDisplay.replace(' • ', ' saat ')} itibarıyla kapanmıştır. İlginiz için teşekkür ederiz.`;
-  const isDemoRsvp = Boolean(c.rsvp && c.rsvp.demoMode);
+  const isDemoRsvp = Boolean(c.rsvp && c.rsvp.demoMode) || isShowcase;
 
   // Build client-side config (safe for <script> injection)
   const clientConfig = {
     packageTier: packageTier,
     isDemo: isDemo,
+    isShowcase: isShowcase,
     countdownTarget: c.date.countdownTarget,
     galleryFullRes: c.galleryFullRes || [],
     venue: {
@@ -459,6 +462,7 @@ function renderTemplate(templateHtml, config) {
     },
     rsvp: (packageTier !== 'standard' && c.rsvp && c.rsvp.enabled !== false) ? {
       demoMode: isDemoRsvp,
+      isShowcase: isShowcase,
       entries: rsvpEntries,
       closesAt: closesAtIso,
       timezone: (c.rsvp && c.rsvp.timezone) || 'Europe/Istanbul',
@@ -563,13 +567,17 @@ export default function handler(req, res) {
   // Parse query params from req.query or fallback to req.url
   let queryDemo = req.query?.demo;
   let querySlug = req.query?.slug;
-  if (!queryDemo && !querySlug && req.url) {
+  let queryShowcase = req.query?.showcase;
+  if (req.url) {
     try {
       const parsedUrl = new URL(req.url, 'http://localhost');
-      queryDemo = parsedUrl.searchParams.get('demo');
-      querySlug = parsedUrl.searchParams.get('slug');
+      if (!queryDemo) queryDemo = parsedUrl.searchParams.get('demo');
+      if (!querySlug) querySlug = parsedUrl.searchParams.get('slug');
+      if (!queryShowcase) queryShowcase = parsedUrl.searchParams.get('showcase');
     } catch {}
   }
+
+  const isShowcase = (queryShowcase === '1') || (Boolean(req.url) && req.url.includes('showcase=1'));
 
   // 1. Check query parameters first (from vercel.json rewrites)
   if (queryDemo) {
@@ -623,7 +631,7 @@ export default function handler(req, res) {
   }
 
   // Render
-  const html = renderTemplate(templateHtml, config);
+  const html = renderTemplate(templateHtml, config, { isShowcase });
 
   // Response headers
   res.setHeader('Content-Type', 'text/html; charset=utf-8');
