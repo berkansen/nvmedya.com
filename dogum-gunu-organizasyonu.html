@@ -887,9 +887,16 @@
             box-shadow: 0 2px 8px rgba(45, 30, 26, 0.03);
         }
 
-        .extra-item-pill i {
+        .extra-item-pill i,
+        .extra-item-pill svg {
             color: var(--dg-rose-deep);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            width: 1.25rem;
+            height: 1.25rem;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .extra-pricing-col {
@@ -1563,103 +1570,161 @@
                     <!-- Sağ: Bespoke Abstract Art Panel -->
                     <div class="hero-art-container">
                         <div class="hero-art-panel">
-                            <svg class="hero-art-svg" viewBox="0 0 380 440" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Boutique Event Art Installation">
+                            <svg class="hero-art-svg" viewBox="0 0 380 440" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Boutique Event Set Design Installation">
                                 <defs>
-                                    <linearGradient id="archGrad" x1="190" y1="20" x2="190" y2="420" gradientUnits="userSpaceOnUse">
-                                        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.9" />
-                                        <stop offset="100%" stop-color="#F7ECE8" stop-opacity="0.8" />
-                                    </linearGradient>
-                                    <radialGradient id="balloonRose" cx="30%" cy="30%" r="70%">
-                                        <stop offset="0%" stop-color="#E8B0A8" />
-                                        <stop offset="50%" stop-color="#C98A80" />
-                                        <stop offset="100%" stop-color="#A25D52" />
-                                    </radialGradient>
-                                    <radialGradient id="balloonIvory" cx="30%" cy="30%" r="70%">
+                                    <!-- Gradients for Architectural Panels -->
+                                    <linearGradient id="archPortalGrad" x1="190" y1="20" x2="190" y2="430" gradientUnits="userSpaceOnUse">
                                         <stop offset="0%" stop-color="#FFFFFF" />
-                                        <stop offset="60%" stop-color="#F8F3EC" />
-                                        <stop offset="100%" stop-color="#E6DC CE" />
+                                        <stop offset="45%" stop-color="#FBF6F1" />
+                                        <stop offset="100%" stop-color="#F2E6DF" />
+                                    </linearGradient>
+
+                                    <linearGradient id="archTierLeftGrad" x1="130" y1="90" x2="130" y2="430" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#FCF6F4" />
+                                        <stop offset="60%" stop-color="#F4E6E1" />
+                                        <stop offset="100%" stop-color="#E8D2CB" />
+                                    </linearGradient>
+
+                                    <linearGradient id="archTierRightGrad" x1="250" y1="160" x2="250" y2="430" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#FFFFFF" />
+                                        <stop offset="50%" stop-color="#F8F2EC" />
+                                        <stop offset="100%" stop-color="#EADDCF" />
+                                    </linearGradient>
+
+                                    <!-- Sculptural Discs & Spheres Gradients -->
+                                    <radialGradient id="sculptureIvoryDisc" cx="35%" cy="30%" r="70%">
+                                        <stop offset="0%" stop-color="#FFFFFF" />
+                                        <stop offset="60%" stop-color="#F7F1E9" />
+                                        <stop offset="100%" stop-color="#E2D4C5" />
                                     </radialGradient>
-                                    <radialGradient id="balloonGold" cx="30%" cy="30%" r="70%">
-                                        <stop offset="0%" stop-color="#F2E4CF" />
+
+                                    <radialGradient id="sculptureBlushDisc" cx="35%" cy="30%" r="70%">
+                                        <stop offset="0%" stop-color="#FAF1EE" />
+                                        <stop offset="50%" stop-color="#E8C9C1" />
+                                        <stop offset="100%" stop-color="#C98A80" />
+                                    </radialGradient>
+
+                                    <radialGradient id="sculptureGoldOrb" cx="30%" cy="30%" r="70%">
+                                        <stop offset="0%" stop-color="#F5EBDA" />
                                         <stop offset="50%" stop-color="#C2A478" />
-                                        <stop offset="100%" stop-color="#937648" />
+                                        <stop offset="100%" stop-color="#947748" />
                                     </radialGradient>
-                                    <radialGradient id="balloonBlush" cx="30%" cy="30%" r="70%">
-                                        <stop offset="0%" stop-color="#FAF0ED" />
-                                        <stop offset="60%" stop-color="#EACD C6" />
-                                        <stop offset="100%" stop-color="#D4A79F" />
-                                    </radialGradient>
-                                    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-                                        <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#452520" flood-opacity="0.08" />
+
+                                    <!-- Ribbon and Accent Gradients -->
+                                    <linearGradient id="flowingRibbonGrad" x1="40" y1="300" x2="340" y2="280" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#D99E94" />
+                                        <stop offset="35%" stop-color="#C98A80" />
+                                        <stop offset="70%" stop-color="#A86256" />
+                                        <stop offset="100%" stop-color="#C98A80" />
+                                    </linearGradient>
+
+                                    <linearGradient id="goldCurveGrad" x1="70" y1="200" x2="310" y2="180" gradientUnits="userSpaceOnUse">
+                                        <stop offset="0%" stop-color="#DFC49E" />
+                                        <stop offset="50%" stop-color="#C2A478" />
+                                        <stop offset="100%" stop-color="#A2834E" />
+                                    </linearGradient>
+
+                                    <!-- Shadows -->
+                                    <filter id="panelShadow" x="-15%" y="-10%" width="130%" height="130%">
+                                        <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#452520" flood-opacity="0.06" />
+                                    </filter>
+                                    <filter id="sculptureShadow" x="-20%" y="-15%" width="140%" height="140%">
+                                        <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#452520" flood-opacity="0.08" />
+                                    </filter>
+                                    <filter id="ribbonShadow" x="-10%" y="-10%" width="120%" height="120%">
+                                        <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#452520" flood-opacity="0.1" />
                                     </filter>
                                 </defs>
 
-                                <!-- Architectural Backdrop Arches -->
-                                <path d="M70 420 V150 C70 83.7 123.7 30 190 30 C256.3 30 310 83.7 310 150 V420 Z" 
-                                      fill="url(#archGrad)" 
-                                      stroke="#E8C8C2" 
+                                <!-- 1. Background Grand Arch Portal -->
+                                <path d="M100 430 V125 C100 75.3 140.3 35 190 35 C239.7 35 280 75.3 280 125 V430 Z" 
+                                      fill="url(#archPortalGrad)" 
+                                      stroke="#E5D9D0" 
                                       stroke-width="1.2" 
-                                      filter="url(#softShadow)" />
+                                      filter="url(#panelShadow)" />
 
-                                <path d="M100 420 V160 C100 110.3 140.3 70 190 70 C239.7 70 280 110.3 280 160 V420" 
+                                <!-- Delicate Inner Gold Dashed Portal Line -->
+                                <path d="M118 430 V135 C118 95.2 150.2 63 190 63 C229.8 63 262 95.2 262 135 V430" 
                                       fill="none" 
-                                      stroke="#C2A478" 
+                                      stroke="url(#goldCurveGrad)" 
                                       stroke-width="1" 
                                       stroke-dasharray="3 4" 
-                                      opacity="0.7" />
+                                      opacity="0.65" />
 
-                                <!-- Flowing Fine Ribbon Back -->
-                                <path d="M60 280 C110 240 160 330 220 270 C270 220 320 250 340 310" 
+                                <!-- 2. Midground Left Sculptural Blush Arch Panel -->
+                                <path d="M55 430 V185 C55 132.5 97.5 90 150 90 C202.5 90 245 132.5 245 185 V430 Z" 
+                                      fill="url(#archTierLeftGrad)" 
+                                      stroke="rgba(201, 138, 128, 0.28)" 
+                                      stroke-width="1.2" 
+                                      filter="url(#panelShadow)" />
+
+                                <!-- Minimalist vertical seam line on blush panel -->
+                                <line x1="150" y1="90" x2="150" y2="430" stroke="rgba(201, 138, 128, 0.18)" stroke-width="1" />
+
+                                <!-- 3. Foreground Right Ivory Arch Panel -->
+                                <path d="M175 430 V225 C175 180.8 210.8 145 255 145 C299.2 145 335 180.8 335 225 V430 Z" 
+                                      fill="url(#archTierRightGrad)" 
+                                      stroke="#E2D4C7" 
+                                      stroke-width="1.2" 
+                                      filter="url(#panelShadow)" />
+
+                                <!-- Architectural Fluted Accents in foreground panel -->
+                                <path d="M255 145 V430" stroke="rgba(194, 164, 120, 0.22)" stroke-width="1" stroke-dasharray="2 3" />
+
+                                <!-- 4. Subtle Champagne Gold Architectural Contour Arc -->
+                                <path d="M80 230 C125 175 215 210 295 160" 
                                       fill="none" 
-                                      stroke="#C2A478" 
-                                      stroke-width="1.5" 
+                                      stroke="url(#goldCurveGrad)" 
+                                      stroke-width="1.4" 
                                       stroke-linecap="round" 
                                       opacity="0.8" />
 
-                                <!-- Balloon Cluster (Abstract Boutique Composition) -->
-                                <!-- Balloon 1 - Large Dusty Rose Back -->
-                                <ellipse cx="140" cy="200" rx="55" ry="68" fill="url(#balloonRose)" filter="url(#softShadow)" />
+                                <!-- 5. Sculptural Abstract Objects (Pure Ceramics / Solids - No Balloon Details) -->
+                                <!-- Large Sculptural Blush Disc -->
+                                <circle cx="265" cy="285" r="46" fill="url(#sculptureBlushDisc)" filter="url(#sculptureShadow)" />
+                                <!-- Fine inner concentric ring on blush disc -->
+                                <circle cx="265" cy="285" r="38" fill="none" stroke="rgba(255, 255, 255, 0.45)" stroke-width="1" />
+
+                                <!-- Warm Ivory Sculptural Sphere -->
+                                <circle cx="130" cy="305" r="40" fill="url(#sculptureIvoryDisc)" filter="url(#sculptureShadow)" />
+
+                                <!-- Petite Champagne-Gold Orb -->
+                                <circle cx="205" cy="200" r="20" fill="url(#sculptureGoldOrb)" filter="url(#sculptureShadow)" />
+
+                                <!-- Petite Ivory Accent Disc Top Left -->
+                                <circle cx="105" cy="180" r="14" fill="url(#sculptureIvoryDisc)" stroke="rgba(194, 164, 120, 0.3)" stroke-width="1" />
+
+                                <!-- 6. One Flowing Dusty-Rose Satin Ribbon Weaving Across the Composition -->
+                                <path d="M45 355 C85 295 125 385 180 320 C230 260 270 345 325 280 C345 255 358 268 365 295" 
+                                      fill="none" 
+                                      stroke="url(#flowingRibbonGrad)" 
+                                      stroke-width="2.6" 
+                                      stroke-linecap="round" 
+                                      filter="url(#ribbonShadow)" />
+
+                                <!-- Delicate ribbon trailing loop -->
+                                <path d="M180 320 C192 365 218 395 208 430" 
+                                      fill="none" 
+                                      stroke="url(#flowingRibbonGrad)" 
+                                      stroke-width="1.6" 
+                                      stroke-linecap="round" 
+                                      opacity="0.85" />
+
+                                <!-- 7. Restrained Sparkle Details (Delicate 4-Point Stars) -->
+                                <!-- Star 1 (Top Right) -->
+                                <path d="M292 105 Q292 113 300 113 Q292 113 292 121 Q292 113 284 113 Q292 113 292 105 Z" fill="#C2A478" opacity="0.9" />
                                 
-                                <!-- Balloon 2 - Large Warm Ivory Front -->
-                                <ellipse cx="235" cy="185" rx="60" ry="74" fill="url(#balloonIvory)" filter="url(#softShadow)" />
+                                <!-- Star 2 (Left Arch Accent) -->
+                                <path d="M78 135 Q78 141 84 141 Q78 141 78 147 Q78 141 72 141 Q78 141 78 135 Z" fill="#C98A80" opacity="0.8" />
 
-                                <!-- Balloon 3 - Champagne Gold Accent -->
-                                <ellipse cx="190" cy="130" rx="42" ry="52" fill="url(#balloonGold)" filter="url(#softShadow)" />
+                                <!-- Star 3 (Mid Accent) -->
+                                <path d="M210 145 Q210 149 214 149 Q210 149 210 153 Q210 149 206 149 Q210 149 210 145 Z" fill="#C2A478" opacity="0.75" />
 
-                                <!-- Balloon 4 - Soft Blush Low Front -->
-                                <ellipse cx="160" cy="280" rx="52" ry="62" fill="url(#balloonBlush)" filter="url(#softShadow)" />
-
-                                <!-- Balloon 5 - Petite Ivory Accent -->
-                                <ellipse cx="240" cy="275" rx="44" ry="54" fill="url(#balloonIvory)" filter="url(#softShadow)" />
-
-                                <!-- Balloon 6 - Petite Rose Accent Top -->
-                                <ellipse cx="130" cy="120" rx="32" ry="40" fill="url(#balloonRose)" opacity="0.9" />
-
-                                <!-- Flowing Ribbon Front Loop -->
-                                <path d="M120 360 C150 310 180 340 210 290 C250 230 300 350 330 330" 
-                                      fill="none" 
-                                      stroke="#C98A80" 
-                                      stroke-width="2" 
-                                      stroke-linecap="round" />
-
-                                <!-- Delicate Ribbon Tail -->
-                                <path d="M190 320 C185 360 210 380 200 415" 
-                                      fill="none" 
-                                      stroke="#C2A478" 
-                                      stroke-width="1.2" 
-                                      stroke-linecap="round" />
-
-                                <!-- Subtle Confetti & Star Accents -->
-                                <circle cx="85" cy="100" r="3" fill="#C2A478" opacity="0.75" />
-                                <circle cx="310" cy="95" r="2.5" fill="#C98A80" opacity="0.65" />
-                                <circle cx="325" cy="220" r="3.5" fill="#C2A478" opacity="0.6" />
-                                <circle cx="65" cy="220" r="2" fill="#C98A80" opacity="0.7" />
-                                <circle cx="105" cy="380" r="3" fill="#C2A478" opacity="0.5" />
-                                <circle cx="280" cy="390" r="2.5" fill="#C98A80" opacity="0.6" />
-
-                                <!-- Minimalist 4-point Sparkle Stars -->
-                                <path d="M295 130 Q295 138 303 138 Q295 138 295 146 Q295 138 287 138 Q295 138 295 130 Z" fill="#C2A478" opacity="0.85" />
-                                <path d="M90 160 Q90 166 96 166 Q90 166 90 172 Q90 166 84 166 Q90 166 90 160 Z" fill="#C98A80" opacity="0.75" />
+                                <!-- Small Minimalist Micro Dots -->
+                                <circle cx="88" cy="95" r="2" fill="#C2A478" opacity="0.6" />
+                                <circle cx="318" cy="195" r="2.5" fill="#C98A80" opacity="0.55" />
+                                <circle cx="68" cy="275" r="2" fill="#C2A478" opacity="0.5" />
+                                <circle cx="305" cy="385" r="2" fill="#C98A80" opacity="0.5" />
                             </svg>
                         </div>
                     </div>
@@ -1860,7 +1925,7 @@
                 <!-- Gold Emphasis Statement -->
                 <div class="gold-emphasis-box">
                     <p class="lead">“Hazır bir paket değil. Size özel tasarlanan bir doğum günü.”</p>
-                    <p class="sub">Gold paket, çocuğunuzun hayalindeki temayı özel grafik, brando ve dekor objeleriyle gerçeğe dönüştürür.</p>
+                    <p class="sub">Gold paket, çocuğunuzun hayalindeki temayı özel grafik, branda ve dekor objeleriyle gerçeğe dönüştürür.</p>
                 </div>
             </div>
         </section>
@@ -1883,7 +1948,11 @@
                                     <span>Yüz Boyama</span>
                                 </div>
                                 <div class="extra-item-pill">
-                                    <i class='bx bx-sparkles'></i>
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                        <path d="M12 2 C12 6.5 15.5 10 20 10 C15.5 10 12 13.5 12 18 C12 13.5 8.5 10 4 10 C8.5 10 12 6.5 12 2 Z" />
+                                        <path d="M19 14 C19 16 20.5 17.5 22 17.5 C20.5 17.5 19 19 19 21 C19 19 17.5 17.5 16 17.5 C17.5 17.5 19 16 19 14 Z" stroke-width="1.5" />
+                                        <path d="M6 16 C6 17.2 7 18 8 18 C7 18 6 18.8 6 20 C6 18.8 5 18 4 18 C5 18 6 17.2 6 16 Z" stroke-width="1.3" />
+                                    </svg>
                                     <span>Glitter Süsleme</span>
                                 </div>
                                 <div class="extra-item-pill">
