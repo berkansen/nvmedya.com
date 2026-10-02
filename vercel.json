@@ -60,6 +60,10 @@
       "destination": "/blog-detay"
     },
     {
+      "source": "/dogum-gunu-organizasyonu",
+      "destination": "/dogum-gunu-organizasyonu.html"
+    },
+    {
       "source": "/davetiye-demo",
       "destination": "/api/invitation?demo=hatice-mustafa-13-11-2026"
     },
