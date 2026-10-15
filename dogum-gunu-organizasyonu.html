@@ -1181,7 +1181,43 @@
             justify-content: center;
             gap: 1.2rem;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .final-cta-address {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--dg-charcoal);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid var(--dg-border);
+            padding: 0.65rem 1.25rem;
+            border-radius: 50px;
+            margin: 0 auto 1.5rem;
+            max-width: 620px;
+            line-height: 1.45;
+            text-align: center;
+        }
+
+        .final-cta-address i {
+            color: var(--dg-rose-deep);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 640px) {
+            .final-cta-address {
+                border-radius: 16px;
+                padding: 0.75rem 1rem;
+                font-size: 0.88rem;
+                text-align: left;
+                align-items: flex-start;
+            }
+            .final-cta-address i {
+                margin-top: 0.15rem;
+            }
         }
 
         .final-cta-social {
@@ -1218,7 +1254,7 @@
 
         .dg-footer-container {
             display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
+            grid-template-columns: 1.4fr 1fr;
             gap: 3rem;
             margin-bottom: 3rem;
         }
@@ -2109,7 +2145,7 @@
 
                 <div class="faq-accordion">
                     <!-- Soru 1 -->
-                    <details class="faq-item" open>
+                    <details class="faq-item" name="faq-group" open>
                         <summary class="faq-summary">
                             <span class="faq-summary-content">
                                 <i class='bx bx-help-circle'></i>
@@ -2123,7 +2159,7 @@
                     </details>
 
                     <!-- Soru 2 -->
-                    <details class="faq-item">
+                    <details class="faq-item" name="faq-group">
                         <summary class="faq-summary">
                             <span class="faq-summary-content">
                                 <i class='bx bx-help-circle'></i>
@@ -2137,7 +2173,7 @@
                     </details>
 
                     <!-- Soru 3 -->
-                    <details class="faq-item">
+                    <details class="faq-item" name="faq-group">
                         <summary class="faq-summary">
                             <span class="faq-summary-content">
                                 <i class='bx bx-help-circle'></i>
@@ -2151,7 +2187,7 @@
                     </details>
 
                     <!-- Soru 4 -->
-                    <details class="faq-item">
+                    <details class="faq-item" name="faq-group">
                         <summary class="faq-summary">
                             <span class="faq-summary-content">
                                 <i class='bx bx-help-circle'></i>
@@ -2165,7 +2201,7 @@
                     </details>
 
                     <!-- Soru 5 -->
-                    <details class="faq-item">
+                    <details class="faq-item" name="faq-group">
                         <summary class="faq-summary">
                             <span class="faq-summary-content">
                                 <i class='bx bx-help-circle'></i>
@@ -2179,7 +2215,7 @@
                     </details>
 
                     <!-- Soru 6 -->
-                    <details class="faq-item">
+                    <details class="faq-item" name="faq-group">
                         <summary class="faq-summary">
                             <span class="faq-summary-content">
                                 <i class='bx bx-help-circle'></i>
@@ -2218,6 +2254,11 @@
                         </a>
                     </div>
 
+                    <div class="final-cta-address">
+                        <i class='bx bx-map-pin'></i>
+                        <span>Hepsert Spor Kulübü, Kazımdirik Mahallesi, 367. Sokak No: 10 / 2 Kat: 3 Bornova, İzmir</span>
+                    </div>
+
                     <div class="final-cta-social">
                         <span>Instagram’dan Bizi Takip Edin:</span>
                         <a href="https://www.instagram.com/nisanvitrini" target="_blank" rel="noopener noreferrer">
@@ -2242,8 +2283,9 @@
                     <p style="color: #A89F9C; font-size: 0.92rem; line-height: 1.6; max-width: 320px; margin-bottom: 1.2rem;">
                         Bornova’da ferah mekan, profesyonel doğum günü organizasyonu, butik konsept süslemeler ve ikram paketleri.
                     </p>
-                    <p style="font-size: 0.88rem; color: var(--dg-rose-soft); font-weight: 500;">
-                        <i class='bx bx-map'></i> Bornova / İzmir
+                    <p style="font-size: 0.88rem; color: var(--dg-rose-soft); font-weight: 500; line-height: 1.5; max-width: 340px; display: flex; align-items: flex-start; gap: 0.4rem;">
+                        <i class='bx bx-map' style="margin-top: 0.15rem; flex-shrink: 0;"></i>
+                        <span>Kazımdirik Mahallesi, 367. Sokak No: 10 / 2 Kat: 3 Bornova, İzmir</span>
                     </p>
                 </div>
 
@@ -2270,18 +2312,6 @@
                                 <i class='bx bxl-instagram'></i> @hepsertsporkulubu
                             </a>
                         </li>
-                    </ul>
-                </div>
-
-                <div class="dg-footer-col">
-                    <h4>Nisan Vitrini Media</h4>
-                    <ul class="dg-footer-links">
-                        <li><a href="/">Ana Sayfa</a></li>
-                        <li><a href="/hizmetler">Hizmetlerimiz</a></li>
-                        <li><a href="/projeler">Projeler</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/about">Hakkımızda</a></li>
-                        <li><a href="/contact">İletişim</a></li>
                     </ul>
                 </div>
             </div>
@@ -2315,6 +2345,31 @@
     <!-- Interactive Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // SSS (FAQ) Accordion Single-Select & Accessibility
+            const faqItems = document.querySelectorAll('.faq-accordion details');
+            faqItems.forEach(item => {
+                const summary = item.querySelector('.faq-summary');
+                if (summary) {
+                    summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
+                }
+                item.addEventListener('toggle', () => {
+                    if (summary) {
+                        summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
+                    }
+                    if (item.open) {
+                        faqItems.forEach(otherItem => {
+                            if (otherItem !== item && otherItem.open) {
+                                otherItem.open = false;
+                                const otherSummary = otherItem.querySelector('.faq-summary');
+                                if (otherSummary) {
+                                    otherSummary.setAttribute('aria-expanded', 'false');
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+
             // Mobile Drawer Toggle
             const menuToggle = document.getElementById('menuToggle');
             const menuIcon = document.getElementById('menuIcon');
