@@ -14,11 +14,11 @@
     "bride": "Lina",
     "groom": ""
   },
-  "socialPreviewImage": "https://www.nvmedya.com/assets/invitations/lina-2-yasinda/hero.jpg",
+  "socialPreviewImage": "https://www.nvmedya.com/assets/invitations/lina-2-yasinda/social-preview.jpg",
   "social": {
     "title": "Lina 2 Yaşında! | Dijital Davetiye",
     "description": "Lina’nın 2. yaşını birlikte kutlayalım. 6 Aralık 2026 • Bornova / İzmir",
-    "previewImage": "https://www.nvmedya.com/assets/invitations/lina-2-yasinda/hero.jpg"
+    "previewImage": "https://www.nvmedya.com/assets/invitations/lina-2-yasinda/social-preview.jpg"
   },
   "date": {
     "display": "6 Aralık 2026 Pazar",
@@ -35,7 +35,7 @@
     "title": "Lina 2 Yaşında!",
     "dateLine": "6 ARALIK 2026 • PAZAR • 15:00",
     "message": "Bu güzel günü birlikte kutlayalım.",
-    "backgroundImage": "/assets/invitations/lina-2-yasinda/hero.jpg"
+    "backgroundImage": "/assets/invitations/lina-2-yasinda/hero.png"
   },
   "letter": {
     "title": "Lina’nın 2. Yaşını Birlikte Kutlayalım",

@@ -1657,45 +1657,94 @@
             --font-serif: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
         }
 
+        body.theme-sunflower-garden .hero-section {
+            min-height: 0;
+            height: calc(108vw + 78px);
+            max-height: 550px;
+            padding: 1.25rem 1.15rem 2.35rem;
+            background-color: #2A1E14;
+            justify-content: flex-end;
+        }
+
+        @media (min-width: 540px) {
+            body.theme-sunflower-garden .hero-section {
+                height: 575px;
+                max-height: 575px;
+                padding: 1.5rem 1.5rem 2.5rem;
+            }
+        }
+
         body.theme-sunflower-garden .hero-bg-container {
-            background-color: #FAF3E0;
+            height: 86%;
+            background-color: #2A1E14;
         }
 
         body.theme-sunflower-garden .hero-bg-img {
-            object-position: center 22%;
+            object-fit: cover;
+            object-position: 36% 8%;
             filter: none;
+        }
+
+        @media (min-width: 540px) {
+            body.theme-sunflower-garden .hero-bg-img {
+                object-position: 38% 10%;
+            }
         }
 
         body.theme-sunflower-garden .hero-overlay {
             background: linear-gradient(
                 180deg,
-                rgba(42, 29, 17, 0.03) 0%,
-                rgba(42, 29, 17, 0.08) 48%,
-                rgba(42, 29, 17, 0.68) 76%,
-                rgba(34, 23, 13, 0.88) 100%
+                rgba(42, 30, 20, 0) 0%,
+                rgba(42, 30, 20, 0) 62%,
+                rgba(42, 30, 20, 0.58) 80%,
+                #2A1E14 100%
             );
         }
 
         body.theme-sunflower-garden .hero-top-badge {
-            background: rgba(255, 253, 247, 0.90);
-            border: 1px solid rgba(200, 138, 30, 0.35);
-            color: #4A3828;
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
+            align-self: center;
+            margin-top: auto;
+            margin-bottom: 0.45rem;
+            background: rgba(255, 253, 247, 0.92);
+            border: 1px solid rgba(229, 169, 59, 0.45);
+            color: #3A2A1D;
             font-weight: 600;
-            box-shadow: 0 4px 12px rgba(58, 42, 29, 0.08);
+            padding: 0.32rem 0.95rem;
+            font-size: 0.64rem;
+            box-shadow: 0 4px 12px rgba(24, 16, 10, 0.18);
+        }
+
+        body.theme-sunflower-garden .hero-content {
+            margin-top: 0;
         }
 
         body.theme-sunflower-garden .hero-names {
             font-family: var(--font-serif);
-            font-size: clamp(2.35rem, 7.5vw, 3.2rem);
+            font-size: clamp(2.15rem, 7vw, 2.95rem);
             font-weight: 600;
             letter-spacing: -0.01em;
             color: #FFFDF7;
-            text-shadow: 0 3px 16px rgba(28, 18, 10, 0.45);
+            text-shadow: 0 2px 12px rgba(20, 12, 6, 0.55);
+            margin-bottom: 0.3rem;
         }
 
         body.theme-sunflower-garden .hero-date {
-            color: #F8E5B8;
+            color: #F9E3A6;
             font-weight: 600;
+            margin-bottom: 0.55rem;
+            text-shadow: 0 1px 8px rgba(20, 12, 6, 0.45);
+        }
+
+        body.theme-sunflower-garden .hero-quote {
+            font-size: 0.9rem;
+            line-height: 1.45;
+            color: rgba(255, 253, 247, 0.94);
+            margin-bottom: 0.15rem;
+            text-shadow: 0 1px 8px rgba(20, 12, 6, 0.45);
         }
 
         body.theme-sunflower-garden .btn-primary,
