@@ -77,7 +77,13 @@
   "galleryFullRes": [],
   "rsvp": {
     "enabled": true,
-    "connected": false,
+    "connected": true,
+    "closesAt": "2026-12-05T23:00:00+03:00",
+    "timezone": "Europe/Istanbul",
+    "deadlineDisplay": "5 Aralık 2026 • 23:00",
+    "closedText": "Katılım bildirimleri 5 Aralık 2026 saat 23:00 itibarıyla kapanmıştır. İlginiz için teşekkür ederiz.",
+    "formId": "1FAIpQLSeT6XAdJDWwCT_Lgg9OPdZp_TW42nP4HF7c0s3_mJuhQtfksw",
+    "formAction": "https://docs.google.com/forms/d/e/1FAIpQLSeT6XAdJDWwCT_Lgg9OPdZp_TW42nP4HF7c0s3_mJuhQtfksw/formResponse",
     "maxAdults": 4,
     "maxChildren": 4,
     "collectVegetarian": false,
@@ -89,19 +95,26 @@
     "messageLabel": "Lina’ya Mesajınız",
     "messagePlaceholder": "Lina için güzel dileklerinizi paylaşabilirsiniz.",
     "submitText": "Katılımımı Bildir",
-    "notConnectedMessage": "LCV sistemi yakında aktif olacak.",
+    "successTitle": "Katılım bilginiz alındı",
+    "successSubtitleAttending": "Teşekkür ederiz. Lina’nın 2. yaşını birlikte kutlamak için sabırsızlanıyoruz.",
+    "successSubtitleNotAttending": "Katılım bilginiz alındı. Bildiriminiz için teşekkür ederiz.",
+    "errorMessage": "Katılım bilginiz gönderilemedi. Lütfen tekrar deneyin.",
     "entries": {
-      "name": "entry.name",
-      "attendance": "entry.attendance",
-      "adults": "entry.adults",
-      "children": "entry.children",
+      "name": "entry.1719306357",
+      "attendance": "entry.1907723165",
+      "adults": "entry.1386217616",
+      "children": "entry.1561818576",
+      "childAge1": "entry.523811532",
+      "childAge2": "entry.736401696",
+      "childAge3": "entry.2090078110",
+      "childAge4": "entry.2099124944",
       "childAges": [
-        "entry.childAge1",
-        "entry.childAge2",
-        "entry.childAge3",
-        "entry.childAge4"
+        "entry.523811532",
+        "entry.736401696",
+        "entry.2090078110",
+        "entry.2099124944"
       ],
-      "message": "entry.message"
+      "message": "entry.1904980593"
     }
   },
   "calendar": {

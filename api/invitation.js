@@ -269,6 +269,14 @@ function generateRsvpSectionHtml(c, isClosedServer, deadlineDisplay, closedText,
   );
   const submitText = escapeHtml(c.rsvp.submitText || (isBirthday ? 'Katılımımı Bildir' : 'Katılım Bilgimi Gönder'));
   const notConnectedMessage = escapeHtml(c.rsvp.notConnectedMessage || 'LCV sistemi yakında aktif olacak.');
+  const successTitle = escapeHtml(c.rsvp.successTitle || (isBirthday ? 'Katılım bilginiz alındı' : 'Katılım bilginiz için teşekkür ederiz.'));
+  const successSubtitle = escapeHtml(
+    c.rsvp.successSubtitleAttending ||
+    (isBirthday
+      ? 'Teşekkür ederiz. Lina’nın 2. yaşını birlikte kutlamak için sabırsızlanıyoruz.'
+      : `Yanıtınız ${hostDisplay}'nın misafir listesine eklendi.`)
+  );
+  const errorMessage = escapeHtml(c.rsvp.errorMessage || 'Katılım bilginiz gönderilemedi. Lütfen tekrar deneyin.');
 
   const vegetarianHtml = collectVegetarian ? `
                         <!-- 3A. Vejetaryen misiniz? (Hayır / Evet) -->
@@ -337,6 +345,11 @@ function generateRsvpSectionHtml(c, isClosedServer, deadlineDisplay, closedText,
                         <span>${notConnectedMessage}</span>
                     </div>`
     : '';
+
+  const errorNoticeHtml = `                    <div id="rsvpErrorNotice" class="rsvp-pending-notice rsvp-error-notice" style="display: none;" role="alert" aria-live="assertive">
+                        <i class='bx bx-error-circle'></i>
+                        <span id="rsvpErrorNoticeText">${errorMessage}</span>
+                    </div>`;
 
   return `        <!-- ===================================================================
              7. LCV / KATILIM FORMU
@@ -460,6 +473,7 @@ ${childrenQuestionHtml}
                             <i class='bx bx-send'></i> <span>${submitText}</span>
                         </button>
 ${pendingNoticeHtml}
+${errorNoticeHtml}
                     </div>
                 </form>
 
@@ -468,9 +482,9 @@ ${pendingNoticeHtml}
                     <div class="rsvp-success-icon">
                         <i class='bx bxs-heart'></i>
                     </div>
-                    <h3 class="rsvp-success-title">Katılım bilginiz için teşekkür ederiz.</h3>
-                    <p class="rsvp-success-subtitle">
-                        Yanıtınız ${hostDisplay}'nın misafir listesine eklendi.
+                    <h3 class="rsvp-success-title" id="rsvpSuccessTitle">${successTitle}</h3>
+                    <p class="rsvp-success-subtitle" id="rsvpSuccessSubtitle">
+                        ${successSubtitle}
                     </p>
                     <div class="rsvp-summary-card" id="rsvpSummaryContent"></div>
                     <button type="button" class="btn btn-secondary" onclick="resetRsvpForm()" style="max-width: 240px; margin: 0 auto;">
@@ -624,7 +638,15 @@ function renderTemplate(templateHtml, config, options = {}) {
       maxChildren: (c.rsvp && c.rsvp.maxChildren) || 4,
       collectVegetarian: collectVegetarian,
       collectHasChildrenQuestion: collectHasChildrenQuestion,
+      ...(collectVegetarian ? {
+        dietaryQuestionAlert: 'Lütfen vejetaryen misiniz sorusunu yanıtlayınız.',
+        dietarySummaryLabel: 'Vejetaryen'
+      } : {}),
       submitText: (c.rsvp && c.rsvp.submitText) || (isBirthday ? 'Katılımımı Bildir' : 'Katılım Bilgimi Gönder'),
+      successTitle: (c.rsvp && c.rsvp.successTitle) || (isBirthday ? 'Katılım bilginiz alındı' : 'Katılım bilginiz için teşekkür ederiz.'),
+      successSubtitleAttending: (c.rsvp && c.rsvp.successSubtitleAttending) || (isBirthday ? 'Teşekkür ederiz. Lina’nın 2. yaşını birlikte kutlamak için sabırsızlanıyoruz.' : `Yanıtınız ${personName}'nın misafir listesine eklendi.`),
+      successSubtitleNotAttending: (c.rsvp && c.rsvp.successSubtitleNotAttending) || (isBirthday ? 'Katılım bilginiz alındı. Bildiriminiz için teşekkür ederiz.' : `Yanıtınız ${personName}'nın misafir listesine eklendi.`),
+      errorMessage: (c.rsvp && c.rsvp.errorMessage) || 'Katılım bilginiz gönderilemedi. Lütfen tekrar deneyin.',
       demoMode: isDemoRsvp,
       isShowcase: isShowcase,
       entries: rsvpEntries,

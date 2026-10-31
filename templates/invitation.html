@@ -2406,7 +2406,7 @@
                 }
             } else {
                 detailsContainer.style.display = 'none';
-                // Katılamayacaksa vejetaryen state'ini temizle ve submit payload'a gitmesini engelle
+                // Katılamayacaksa ek tercih state'ini temizle ve submit payload'a gitmesini engelle
                 vegRadios.forEach(r => {
                     r.checked = false;
                     r.disabled = true;
@@ -2463,6 +2463,14 @@
         }
 
         // LCV Deadline / Closed State Yönetimi
+        let rsvpDeadlineTimerId = null;
+
+        function getCurrentTimeMs() {
+            return (typeof window.__RSVP_NOW_OVERRIDE_MS__ === 'number')
+                ? window.__RSVP_NOW_OVERRIDE_MS__
+                : Date.now();
+        }
+
         function getRsvpDeadlineMs() {
             if (__INV__.rsvp && __INV__.rsvp.closesAt) {
                 return new Date(__INV__.rsvp.closesAt).getTime();
@@ -2474,7 +2482,7 @@
             if (isShowcase) return false;
             if (__INV__.rsvp && __INV__.rsvp.isClosed) return true;
             const deadlineMs = getRsvpDeadlineMs();
-            if (deadlineMs && Date.now() >= deadlineMs) {
+            if (deadlineMs && getCurrentTimeMs() >= deadlineMs) {
                 return true;
             }
             return false;
@@ -2504,6 +2512,10 @@
         function initRsvpDeadline() {
             if (isShowcase) return;
             if (!document.getElementById('rsvpForm')) return;
+            if (rsvpDeadlineTimerId) {
+                clearTimeout(rsvpDeadlineTimerId);
+                rsvpDeadlineTimerId = null;
+            }
             if (isRsvpClosed()) {
                 setRsvpClosedState();
                 return;
@@ -2512,41 +2524,66 @@
             const deadlineMs = getRsvpDeadlineMs();
             if (!deadlineMs) return;
 
-            const msUntilDeadline = deadlineMs - Date.now();
+            const msUntilDeadline = deadlineMs - getCurrentTimeMs();
             if (msUntilDeadline > 0 && msUntilDeadline < 2147483647) {
-                setTimeout(setRsvpClosedState, msUntilDeadline);
+                rsvpDeadlineTimerId = setTimeout(setRsvpClosedState, msUntilDeadline);
             }
-
-            document.addEventListener('visibilitychange', () => {
-                if (document.visibilityState === 'visible' && isRsvpClosed()) {
-                    setRsvpClosedState();
-                }
-            });
-            window.addEventListener('focus', () => {
-                if (isRsvpClosed()) {
-                    setRsvpClosedState();
-                }
-            });
         }
 
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible' && isRsvpClosed()) {
+                setRsvpClosedState();
+            }
+        });
+        window.addEventListener('focus', () => {
+            if (isRsvpClosed()) {
+                setRsvpClosedState();
+            }
+        });
+
         initRsvpDeadline();
+        window.initRsvpDeadline = initRsvpDeadline;
+        window.checkRsvpDeadlineNow = function() {
+            if (isRsvpClosed()) {
+                setRsvpClosedState();
+                return true;
+            }
+            return false;
+        };
 
         // Form Submit İşleyicisi
         let formSubmitted = false;
+        let rsvpSubmitTimeout = null;
+
+        function showRsvpError(msg) {
+            const errorMsg = msg || (__INV__.rsvp && __INV__.rsvp.errorMessage) || 'Katılım bilginiz gönderilemedi. Lütfen tekrar deneyin.';
+            const errEl = document.getElementById('rsvpErrorNotice');
+            const errTextEl = document.getElementById('rsvpErrorNoticeText');
+            if (errTextEl) errTextEl.innerText = errorMsg;
+            if (errEl) errEl.style.display = 'flex';
+            showToast(errorMsg);
+        }
+
+        function hideRsvpError() {
+            const errEl = document.getElementById('rsvpErrorNotice');
+            if (errEl) errEl.style.display = 'none';
+        }
 
         function handleRsvpSubmit(e) {
             if (isSubmitting) { e.preventDefault(); return false; }
+            hideRsvpError();
 
             // Submit anında kesin deadline kontrolü
             if (isRsvpClosed()) {
                 e.preventDefault();
                 setRsvpClosedState();
-                const deadlineText = (__INV__.rsvp && __INV__.rsvp.deadlineDisplay) || '8 Kasım 2026 • 23:59';
-                alert('Katılım bildirimleri ' + deadlineText.replace(' • ', ' saat ') + ' itibarıyla kapanmıştır. İlginiz için teşekkür ederiz.');
+                const closedAlertText = (__INV__.rsvp && __INV__.rsvp.closedText) ||
+                    ('Katılım bildirimleri ' + (((__INV__.rsvp && __INV__.rsvp.deadlineDisplay) || '8 Kasım 2026 • 23:59').replace(' • ', ' saat ')) + ' itibarıyla kapanmıştır. İlginiz için teşekkür ederiz.');
+                alert(closedAlertText);
                 return false;
             }
 
-            // Henüz backend / Google Form bağlanmamış LCV modu (Örn: Lina 2 Yaşında ilk sürüm)
+            // Henüz backend / Google Form bağlanmamış LCV modu
             if (__INV__.rsvp && __INV__.rsvp.connected === false) {
                 e.preventDefault();
                 const pendingMsg = __INV__.rsvp.notConnectedMessage || 'LCV sistemi yakında aktif olacak.';
@@ -2580,13 +2617,13 @@
             if (isAttending && shouldCollectVegetarian) {
                 if (!vegEl) {
                     e.preventDefault();
-                    alert('Lütfen vejetaryen misiniz sorusunu yanıtlayınız.');
+                    alert((__INV__.rsvp && __INV__.rsvp.dietaryQuestionAlert) || 'Lütfen ilgili seçeneği yanıtlayınız.');
                     const vegGroup = document.getElementById('vegetarianGroup');
                     if (vegGroup) vegGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     return false;
                 }
             } else if (!isAttending) {
-                // Katılamayacaksa vejetaryen seçimlerini sıfırla ve disable et
+                // Katılamayacaksa ek tercih seçimlerini sıfırla ve disable et
                 document.querySelectorAll('input[name="' + vegEntry + '"]').forEach(r => {
                     r.checked = false;
                     r.disabled = true;
@@ -2653,12 +2690,32 @@
                 return false;
             }
 
+            // Çevrimdışı / ağ hatası kontrolü
+            if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+                e.preventDefault();
+                showRsvpError();
+                return false;
+            }
+
             // Show loading state
             isSubmitting = true;
             formSubmitted = true;
             const submitBtn = document.getElementById('rsvpSubmitBtn');
+            const submitBtnLabel = (__INV__.rsvp && __INV__.rsvp.submitText) || 'Katılım Bilgimi Gönder';
             submitBtn.disabled = true;
             submitBtn.innerHTML = "<i class='bx bx-loader-alt bx-spin'></i> <span>Gönderiliyor...</span>";
+
+            if (rsvpSubmitTimeout) clearTimeout(rsvpSubmitTimeout);
+            rsvpSubmitTimeout = setTimeout(() => {
+                if (!formSubmitted) return;
+                formSubmitted = false;
+                isSubmitting = false;
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = "<i class='bx bx-send'></i> <span>" + escapeHtml(submitBtnLabel) + "</span>";
+                }
+                showRsvpError();
+            }, 12000);
 
             // Let the form submit naturally to hidden iframe
             return true;
@@ -2670,6 +2727,11 @@
             hiddenIframe.addEventListener('load', function() {
             if (!formSubmitted) return;
             formSubmitted = false;
+            if (rsvpSubmitTimeout) {
+                clearTimeout(rsvpSubmitTimeout);
+                rsvpSubmitTimeout = null;
+            }
+            hideRsvpError();
 
             const name = document.getElementById('guestName').value.trim();
             const attendanceEl = document.querySelector('input[name="' + __INV__.rsvp.entries.attendance + '"]:checked');
@@ -2678,6 +2740,7 @@
             const vegEntry = (__INV__.rsvp && __INV__.rsvp.entries && __INV__.rsvp.entries.vegetarian) || 'entry.vegetarian';
             const vegEl = document.querySelector('input[name="' + vegEntry + '"]:checked');
             const vegValue = vegEl ? vegEl.value : '';
+            const dietaryLabel = (__INV__.rsvp && __INV__.rsvp.dietarySummaryLabel) || '';
             const hasChildrenEl = hasChildrenQuestion
                 ? document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"]:checked')
                 : null;
@@ -2706,12 +2769,24 @@
             submitBtn.disabled = false;
             submitBtn.innerHTML = "<i class='bx bx-send'></i> <span>" + escapeHtml(submitBtnLabel) + "</span>";
 
+            const successTitleEl = document.getElementById('rsvpSuccessTitle') || document.querySelector('.rsvp-success-title');
+            const successSubEl = document.getElementById('rsvpSuccessSubtitle') || document.querySelector('.rsvp-success-subtitle');
+            if (successTitleEl && __INV__.rsvp && __INV__.rsvp.successTitle) {
+                successTitleEl.innerText = __INV__.rsvp.successTitle;
+            }
+            if (successSubEl && __INV__.rsvp) {
+                const subText = isAttending
+                    ? __INV__.rsvp.successSubtitleAttending
+                    : __INV__.rsvp.successSubtitleNotAttending;
+                if (subText) successSubEl.innerText = subText;
+            }
+
             const summaryEl = document.getElementById('rsvpSummaryContent');
             summaryEl.innerHTML = 
                 '<strong>İletilen Katılım Bilgileriniz:</strong><br>' +
                 '• <strong>Ad Soyad:</strong> ' + escapeHtml(name) + '<br>' +
                 '• <strong>Durum:</strong> ' + escapeHtml(attendance) + '<br>' +
-                (isAttending && vegValue ? '• <strong>Vejetaryen:</strong> ' + escapeHtml(vegValue) + '<br>' : '') +
+                (isAttending && vegValue && dietaryLabel ? '• <strong>' + escapeHtml(dietaryLabel) + ':</strong> ' + escapeHtml(vegValue) + '<br>' : '') +
                 (isAttending ? '• <strong>Yetişkin Sayısı:</strong> ' + adultCount + ' Kişi<br>' : '') +
                 (isAttending && hasChildren === 'Evet' ? '• <strong>Çocuk Sayısı:</strong> ' + childCount + ' Kişi<br>' : '') +
                 childAgesSummary +
@@ -2719,7 +2794,7 @@
 
             document.getElementById('rsvpForm').style.display = 'none';
             document.getElementById('rsvpSuccessBox').style.display = 'block';
-            showToast('Katılım bilginiz iletildi! ✨');
+            showToast((__INV__.rsvp && __INV__.rsvp.successTitle) ? (__INV__.rsvp.successTitle + ' ✨') : 'Katılım bilginiz iletildi! ✨');
             });
         }
 
@@ -2740,6 +2815,7 @@
             const vegEntry = (__INV__.rsvp && __INV__.rsvp.entries && __INV__.rsvp.entries.vegetarian) || 'entry.vegetarian';
             const vegEl = document.querySelector('input[name="' + vegEntry + '"]:checked');
             const vegValue = vegEl ? vegEl.value : '';
+            const dietaryLabel = (__INV__.rsvp && __INV__.rsvp.dietarySummaryLabel) || '';
             const hasChildrenEl = hasChildrenQuestion
                 ? document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"]:checked')
                 : null;
@@ -2772,7 +2848,7 @@
                     '<strong>Girilen Bilgiler:</strong><br>' +
                     '• <strong>Ad Soyad:</strong> ' + escapeHtml(name) + '<br>' +
                     '• <strong>Durum:</strong> ' + escapeHtml(attendance) + '<br>' +
-                    (isAttending && vegValue ? '• <strong>Vejetaryen:</strong> ' + escapeHtml(vegValue) + '<br>' : '') +
+                    (isAttending && vegValue && dietaryLabel ? '• <strong>' + escapeHtml(dietaryLabel) + ':</strong> ' + escapeHtml(vegValue) + '<br>' : '') +
                     (isAttending ? '• <strong>Yetişkin Sayısı:</strong> ' + adultCount + ' Kişi<br>' : '') +
                     (isAttending && hasChildren === 'Evet' ? '• <strong>Çocuk Sayısı:</strong> ' + childCount + ' Kişi<br>' : '') +
                     childAgesSummary +
@@ -2797,6 +2873,7 @@
 
         // Formu Yeniden Sıfırlama
         function resetRsvpForm() {
+            hideRsvpError();
             document.getElementById('rsvpForm').reset();
             adultCountValue = 1;
             childCountValue = 0;
