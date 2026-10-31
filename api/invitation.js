@@ -548,6 +548,26 @@ function generateVenueActionsHtml(c, isBirthday) {
                         </button>`;
 }
 
+function generateMusicControlHtml(c) {
+  if (!c.music || c.music.enabled !== true || !c.music.src) return '';
+  const loopAttr = c.music.loop !== false ? ' loop' : '';
+  return `    <!-- ===================================================================
+         FLOATING MUSIC CONTROL & NATIVE AUDIO
+         =================================================================== -->
+    <audio id="invitationAudio" preload="metadata"${loopAttr} src="${escapeHtml(c.music.src)}"></audio>
+    <button type="button"
+            id="musicToggleBtn"
+            class="music-floating-btn is-paused has-label"
+            aria-label="Müziği Aç"
+            aria-pressed="false"
+            onclick="toggleInvitationMusic(event)">
+        <span class="music-btn-icon-wrap" aria-hidden="true">
+            <i class="bx bx-volume-mute" id="musicToggleIcon"></i>
+        </span>
+        <span class="music-btn-label" id="musicToggleLabel">Müziği Aç</span>
+    </button>`;
+}
+
 function renderTemplate(templateHtml, config, options = {}) {
   const c = config;
   const isBirthday = c.eventType === 'birthday';
@@ -590,6 +610,13 @@ function renderTemplate(templateHtml, config, options = {}) {
       bride: c.couple.bride,
       groom: c.couple.groom
     },
+    music: (c.music && c.music.enabled === true && c.music.src) ? {
+      enabled: true,
+      src: c.music.src,
+      loop: c.music.loop !== false,
+      volume: typeof c.music.volume === 'number' ? c.music.volume : 0.7,
+      title: c.music.title || ''
+    } : null,
     rsvp: (packageTier !== 'standard' && c.rsvp && c.rsvp.enabled !== false) ? {
       connected: isRsvpConnected,
       notConnectedMessage: (c.rsvp && c.rsvp.notConnectedMessage) || 'LCV sistemi yakında aktif olacak.',
@@ -748,6 +775,7 @@ function renderTemplate(templateHtml, config, options = {}) {
     '{{GALLERY_SECTION_HTML}}': generateGallerySectionHtml(c.gallery, packageTier, isBirthday, personName),
     '{{RSVP_SECTION_HTML}}': generateRsvpSectionHtml(c, isClosedServer, deadlineDisplay, closedText, packageTier),
     '{{DETAIL_NOTICES_HTML}}': generateDetailNoticesHtml(c.detailNotices, packageTier),
+    '{{MUSIC_CONTROL_HTML}}': generateMusicControlHtml(c),
     '{{MOBILE_BAR_BUTTONS_HTML}}': mobileBarButtonsHtml,
     '{{CLIENT_CONFIG_JSON}}': safeJsonForScript(clientConfig)
   };

@@ -1892,6 +1892,104 @@
             font-size: 1.1rem;
             flex-shrink: 0;
         }
+
+        /* ===================================================================
+           FLOATING MUSIC CONTROL BUTTON
+           =================================================================== */
+        .music-floating-btn {
+            position: fixed;
+            top: max(0.85rem, calc(env(safe-area-inset-top, 0px) + 0.65rem));
+            right: max(0.85rem, calc(env(safe-area-inset-right, 0px) + 0.65rem));
+            z-index: 98;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 40px;
+            min-width: 40px;
+            padding: 0.35rem;
+            border-radius: 9999px;
+            background: rgba(255, 253, 247, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(200, 138, 30, 0.42);
+            color: #3A2A1D;
+            box-shadow: 0 4px 14px rgba(42, 30, 20, 0.14);
+            cursor: pointer;
+            transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease, background-color 0.22s ease;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        @media (min-width: 680px) {
+            .music-floating-btn {
+                right: max(1rem, calc(50vw - 320px + 0.9rem));
+                top: 1rem;
+            }
+        }
+
+        .music-floating-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(42, 30, 20, 0.18);
+            background: rgba(255, 253, 247, 0.97);
+        }
+
+        .music-floating-btn:active {
+            transform: scale(0.96);
+        }
+
+        .music-floating-btn:focus-visible {
+            outline: 2px solid var(--gold-primary);
+            outline-offset: 2px;
+        }
+
+        .music-btn-icon-wrap {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(217, 155, 38, 0.15);
+            color: #A66E10;
+            font-size: 1.08rem;
+            flex-shrink: 0;
+            transition: background-color 0.22s ease, color 0.22s ease;
+        }
+
+        .music-floating-btn.is-playing {
+            border-color: rgba(91, 122, 82, 0.55);
+            background: rgba(255, 253, 247, 0.95);
+        }
+
+        .music-floating-btn.is-playing .music-btn-icon-wrap {
+            background: linear-gradient(135deg, #F2BE54 0%, #E0A12B 100%);
+            color: #2B1D0E;
+        }
+
+        .music-btn-label {
+            font-family: var(--font-sans);
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            color: #3A2A1D;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 0;
+            opacity: 0;
+            margin-left: 0;
+            padding-right: 0;
+            transition: max-width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                        opacity 0.25s ease,
+                        margin-left 0.3s ease,
+                        padding-right 0.3s ease;
+        }
+
+        .music-floating-btn.has-label .music-btn-label {
+            max-width: 96px;
+            opacity: 1;
+            margin-left: 0.42rem;
+            padding-right: 0.42rem;
+        }
     </style>
 </head>
 
@@ -2113,6 +2211,8 @@
         </footer>
 
     </div>
+
+{{MUSIC_CONTROL_HTML}}
 
     <!-- ===================================================================
          MOBILE STICKY ACTION BAR (FLOATING BOTTOM BAR)
@@ -2811,6 +2911,136 @@
                 bottomBar.classList.remove('visible');
             }
         }, { passive: true });
+
+        /* --------------------------------------------------
+           7. INVITATION MUSIC SYSTEM (Autoplay + Gesture Fallback)
+           -------------------------------------------------- */
+        const invitationAudio = document.getElementById('invitationAudio');
+        const musicToggleBtn = document.getElementById('musicToggleBtn');
+        const musicToggleIcon = document.getElementById('musicToggleIcon');
+        const musicToggleLabel = document.getElementById('musicToggleLabel');
+        let userPausedMusic = false;
+        let gestureListenersAttached = false;
+
+        function syncMusicUi() {
+            if (!invitationAudio || !musicToggleBtn) return;
+            const isPlaying = !invitationAudio.paused && !invitationAudio.ended;
+            if (isPlaying) {
+                musicToggleBtn.classList.add('is-playing');
+                musicToggleBtn.classList.remove('is-paused', 'has-label');
+                musicToggleBtn.setAttribute('aria-label', 'Müziği Durdur');
+                musicToggleBtn.setAttribute('aria-pressed', 'true');
+                if (musicToggleIcon) musicToggleIcon.className = 'bx bx-volume-full';
+                if (musicToggleLabel) musicToggleLabel.textContent = 'Müziği Durdur';
+            } else {
+                musicToggleBtn.classList.add('is-paused');
+                musicToggleBtn.classList.remove('is-playing');
+                musicToggleBtn.setAttribute('aria-label', 'Müziği Aç');
+                musicToggleBtn.setAttribute('aria-pressed', 'false');
+                if (musicToggleIcon) musicToggleIcon.className = 'bx bx-volume-mute';
+                if (musicToggleLabel) musicToggleLabel.textContent = 'Müziği Aç';
+            }
+        }
+
+        function tryPlayInvitationMusic() {
+            if (!invitationAudio) return Promise.resolve(false);
+            try {
+                const playPromise = invitationAudio.play();
+                if (playPromise && typeof playPromise.then === 'function') {
+                    return playPromise.then(() => {
+                        syncMusicUi();
+                        removeMusicGestureListeners();
+                        return true;
+                    }).catch(() => {
+                        syncMusicUi();
+                        return false;
+                    });
+                }
+                syncMusicUi();
+                return Promise.resolve(!invitationAudio.paused);
+            } catch (_) {
+                syncMusicUi();
+                return Promise.resolve(false);
+            }
+        }
+
+        function handleFirstUserMusicGesture(e) {
+            if (!invitationAudio || userPausedMusic) {
+                removeMusicGestureListeners();
+                return;
+            }
+            if (e && e.target && musicToggleBtn && musicToggleBtn.contains(e.target)) {
+                return;
+            }
+            if (!invitationAudio.paused) {
+                removeMusicGestureListeners();
+                return;
+            }
+            tryPlayInvitationMusic();
+        }
+
+        function attachMusicGestureListeners() {
+            if (gestureListenersAttached) return;
+            gestureListenersAttached = true;
+            document.addEventListener('pointerdown', handleFirstUserMusicGesture, { passive: true });
+            document.addEventListener('touchstart', handleFirstUserMusicGesture, { passive: true });
+            document.addEventListener('click', handleFirstUserMusicGesture, { passive: true });
+            document.addEventListener('keydown', handleFirstUserMusicGesture, { passive: true });
+        }
+
+        function removeMusicGestureListeners() {
+            if (!gestureListenersAttached) return;
+            gestureListenersAttached = false;
+            document.removeEventListener('pointerdown', handleFirstUserMusicGesture);
+            document.removeEventListener('touchstart', handleFirstUserMusicGesture);
+            document.removeEventListener('click', handleFirstUserMusicGesture);
+            document.removeEventListener('keydown', handleFirstUserMusicGesture);
+        }
+
+        function toggleInvitationMusic(e) {
+            if (e) e.stopPropagation();
+            if (!invitationAudio) return;
+
+            if (invitationAudio.paused) {
+                userPausedMusic = false;
+                tryPlayInvitationMusic();
+            } else {
+                userPausedMusic = true;
+                removeMusicGestureListeners();
+                invitationAudio.pause();
+                syncMusicUi();
+            }
+        }
+
+        if (__INV__.music && __INV__.music.enabled && invitationAudio && musicToggleBtn) {
+            const initialVol = typeof __INV__.music.volume === 'number' ? __INV__.music.volume : 0.7;
+            invitationAudio.volume = Math.max(0, Math.min(1, initialVol));
+            invitationAudio.loop = __INV__.music.loop !== false;
+
+            invitationAudio.addEventListener('play', syncMusicUi);
+            invitationAudio.addEventListener('playing', syncMusicUi);
+            invitationAudio.addEventListener('pause', syncMusicUi);
+            invitationAudio.addEventListener('ended', syncMusicUi);
+            document.addEventListener('visibilitychange', () => {
+                if (document.visibilityState === 'visible') {
+                    syncMusicUi();
+                }
+            });
+
+            // Collapse initial "Müziği Aç" hint label into compact icon after 4.5s
+            setTimeout(() => {
+                if (musicToggleBtn) {
+                    musicToggleBtn.classList.remove('has-label');
+                }
+            }, 4500);
+
+            // Attempt autoplay gracefully; if blocked by browser policy, unlock on first user gesture
+            tryPlayInvitationMusic().then((started) => {
+                if (!started && !userPausedMusic) {
+                    attachMusicGestureListeners();
+                }
+            });
+        }
     </script>
 </body>
 

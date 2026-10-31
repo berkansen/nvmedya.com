@@ -7,7 +7,14 @@
     "name": "Lina",
     "age": 2,
     "displayName": "Lina 2 Yaşında!",
-    "signature": "Lina & Ailesi"
+    "signature": "Melis, Kamil ve Lina"
+  },
+  "music": {
+    "enabled": true,
+    "src": "/assets/invitations/lina-2-yasinda/music.mp3",
+    "loop": true,
+    "volume": 0.7,
+    "title": "İyi Ki Doğdun Lina"
   },
   "couple": {
     "displayName": "Lina 2 Yaşında!",
@@ -40,7 +47,7 @@
   "letter": {
     "title": "Lina’nın 2. Yaşını Birlikte Kutlayalım",
     "text": "Minik Lina’mız 2 yaşına giriyor! Bu güzel günü sevdiklerimizle birlikte kutlamak ve Lina’nın yeni yaşına hep birlikte gülümsemek istiyoruz. Sizleri de aramızda görmekten mutluluk duyarız.",
-    "signature": "Lina & Ailesi"
+    "signature": "Melis, Kamil ve Lina"
   },
   "messages": {
     "letterTitle": "Lina’nın 2. Yaşını Birlikte Kutlayalım",
