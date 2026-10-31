@@ -30,10 +30,10 @@
 
     <link rel="icon" href="assets/favicon.png" type="image/png">
 
-    <!-- Google Fonts: Cormorant Garamond (Serif), Plus Jakarta Sans (Gövde), Montserrat (Vurgular), Alex Brush (İmza) -->
+    <!-- Google Fonts: Cormorant Garamond, Fraunces (Serif), Plus Jakarta Sans (Gövde), Montserrat (Vurgular), Alex Brush (İmza) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=Montserrat:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Boxicons -->
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
@@ -634,7 +634,7 @@
         }
 
         /* ==========================================================================
-           4. DÜĞÜN AKIŞI (TIMELINE - Kapanış Bilgisi Kaldırılmış)
+           4. ETKİNLİK AKIŞI (TIMELINE)
            ========================================================================== */
         .timeline-container {
             position: relative;
@@ -1632,6 +1632,217 @@
             border: 1px solid var(--gold-border);
             border-radius: var(--radius-full);
         }
+
+        /* ==========================================================================
+           SUNFLOWER GARDEN BIRTHDAY THEME (Lina 2 Yaşında)
+           ========================================================================== */
+        body.theme-sunflower-garden {
+            background-color: #F4ECD6;
+            --bg-primary: #FFFDF7;
+            --bg-surface: #FFFFFF;
+            --bg-secondary: #FAF3E0;
+            --bg-accent: #F3E8CA;
+            --bg-dark: #2C2016;
+            --text-main: #4A3828;
+            --text-heading: #3A2A1D;
+            --text-muted: #786452;
+            --text-light: #9A8673;
+            --gold-primary: #C88A1E;
+            --gold-dark: #8C5E12;
+            --gold-light: #F2BE54;
+            --gold-subtle: rgba(229, 169, 59, 0.14);
+            --gold-border: rgba(200, 138, 30, 0.28);
+            --rose-soft: #FAF4E4;
+            --rose-border: rgba(200, 138, 30, 0.20);
+            --font-serif: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+        }
+
+        body.theme-sunflower-garden .hero-bg-container {
+            background-color: #FAF3E0;
+        }
+
+        body.theme-sunflower-garden .hero-bg-img {
+            object-position: center 22%;
+            filter: none;
+        }
+
+        body.theme-sunflower-garden .hero-overlay {
+            background: linear-gradient(
+                180deg,
+                rgba(42, 29, 17, 0.03) 0%,
+                rgba(42, 29, 17, 0.08) 48%,
+                rgba(42, 29, 17, 0.68) 76%,
+                rgba(34, 23, 13, 0.88) 100%
+            );
+        }
+
+        body.theme-sunflower-garden .hero-top-badge {
+            background: rgba(255, 253, 247, 0.90);
+            border: 1px solid rgba(200, 138, 30, 0.35);
+            color: #4A3828;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(58, 42, 29, 0.08);
+        }
+
+        body.theme-sunflower-garden .hero-names {
+            font-family: var(--font-serif);
+            font-size: clamp(2.35rem, 7.5vw, 3.2rem);
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #FFFDF7;
+            text-shadow: 0 3px 16px rgba(28, 18, 10, 0.45);
+        }
+
+        body.theme-sunflower-garden .hero-date {
+            color: #F8E5B8;
+            font-weight: 600;
+        }
+
+        body.theme-sunflower-garden .btn-primary,
+        body.theme-sunflower-garden .mobile-bar-btn.primary {
+            background: linear-gradient(135deg, #F2BE54 0%, #E0A12B 100%);
+            color: #2B1D0E;
+            font-weight: 700;
+            border: 1px solid rgba(140, 94, 18, 0.25);
+            box-shadow: 0 6px 18px rgba(200, 138, 30, 0.22);
+        }
+
+        body.theme-sunflower-garden .btn-primary:hover,
+        body.theme-sunflower-garden .btn-primary:active {
+            background: linear-gradient(135deg, #E8B143 0%, #D1911E 100%);
+            color: #221609;
+            box-shadow: 0 8px 22px rgba(200, 138, 30, 0.30);
+        }
+
+        body.theme-sunflower-garden .detail-icon-wrap {
+            background: #FAF3E0;
+            color: #B67B15;
+            border: 1px solid rgba(200, 138, 30, 0.22);
+        }
+
+        body.theme-sunflower-garden .timeline-dot {
+            border-color: #5B7A52;
+        }
+
+        body.theme-sunflower-garden .timeline-dot::after {
+            background: #D99B26;
+        }
+
+        body.theme-sunflower-garden .timeline-container::before {
+            background: linear-gradient(180deg, #C7D6C1 0%, #5B7A52 50%, #E5A93B 100%);
+        }
+
+        body.theme-sunflower-garden .letter-signature,
+        body.theme-sunflower-garden .final-signature {
+            font-family: var(--font-serif);
+            font-size: 1.55rem;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--gold-dark);
+        }
+
+        body.theme-sunflower-garden .footer-love-note i {
+            color: #D99B26;
+        }
+
+        .letter-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.4rem, 4vw, 1.75rem);
+            font-weight: 600;
+            color: var(--text-heading);
+            margin-bottom: 0.85rem;
+            line-height: 1.3;
+        }
+
+        .sunflower-divider-svg {
+            color: var(--gold-primary);
+            display: inline-block;
+        }
+
+        .venue-botanical-header {
+            background: linear-gradient(180deg, #FAF3E0 0%, #FFFDF7 100%);
+            border-bottom: 1px solid var(--rose-border);
+            padding: 1.35rem 1rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.55rem;
+        }
+
+        .venue-badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #FFFFFF;
+            border: 1px solid var(--gold-border);
+            color: var(--text-heading);
+            padding: 0.3rem 0.9rem;
+            border-radius: var(--radius-full);
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .venue-badge-pill i {
+            color: #5B7A52;
+        }
+
+        .venue-cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.65rem;
+            width: 100%;
+        }
+
+        .venue-cta-btn {
+            flex: 1 1 140px;
+            max-width: 210px;
+            min-height: 46px;
+            padding: 0.75rem 1.15rem;
+            font-size: 0.9rem;
+        }
+
+        .venue-whatsapp-btn {
+            background: #F4F8F2;
+            color: #365230;
+            border: 1px solid rgba(91, 122, 82, 0.38);
+            font-weight: 600;
+        }
+
+        .venue-whatsapp-btn:hover,
+        .venue-whatsapp-btn:active {
+            background: #E7F0E4;
+            border-color: #5B7A52;
+            color: #283E23;
+        }
+
+        .venue-whatsapp-btn i {
+            font-size: 1.15rem;
+            color: #4A6B42;
+        }
+
+        .rsvp-pending-notice {
+            margin: 0.9rem auto 0;
+            max-width: 340px;
+            padding: 0.65rem 1rem;
+            border-radius: var(--radius-md);
+            background: var(--bg-secondary);
+            border: 1px solid var(--gold-border);
+            color: var(--text-heading);
+            font-size: 0.86rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.45rem;
+            animation: fadeIn 0.25s ease forwards;
+        }
+
+        .rsvp-pending-notice i {
+            color: var(--gold-primary);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
     </style>
 </head>
 
@@ -1655,8 +1866,8 @@
             </div>
 
             <div class="hero-content">
-                <h1 class="hero-names">{{BRIDE_NAME}} <span>&amp;</span> {{GROOM_NAME}}</h1>
-                <div class="hero-date">{{DATE_SHORT}} • {{DAY_OF_WEEK}} • {{TIME_START}}</div>
+                <h1 class="hero-names">{{HERO_TITLE_HTML}}</h1>
+                <div class="hero-date">{{HERO_DATE_LINE}}</div>
                 <p class="hero-quote">
                     {{HERO_MESSAGE}}
                 </p>
@@ -1668,7 +1879,7 @@
             <div class="countdown-card">
                 <div class="countdown-header">
                     <i class='bx bx-time-five'></i>
-                    <span>Büyük Güne Kalan Süre</span>
+                    <span>{{COUNTDOWN_TITLE}}</span>
                 </div>
                 <div class="countdown-grid">
                     <div class="countdown-box">
@@ -1697,13 +1908,14 @@
         <section class="invitation-section invitation-letter-section text-center" id="letter">
             <div class="letter-container">
                 <div class="letter-quote-mark">“</div>
+                {{LETTER_TITLE_HTML}}
                 <p class="letter-text">
                     {{LETTER_TEXT}}
                 </p>
                 <div class="ornament-divider">
-                    <i class='bx bxs-heart'></i>
+                    {{LETTER_ORNAMENT_HTML}}
                 </div>
-                <div class="letter-signature">{{COUPLE_DISPLAY}}</div>
+                <div class="letter-signature">{{LETTER_SIGNATURE}}</div>
             </div>
         </section>
 
@@ -1711,9 +1923,9 @@
              3. DAVET DETAYLARI (3 Sade Bilgi Kartı)
              =================================================================== -->
         <section class="invitation-section text-center" id="details">
-            <h2 class="section-title">Davet Detayları</h2>
+            <h2 class="section-title">{{DETAILS_TITLE}}</h2>
             <div class="ornament-divider"><i class='bx bx-star'></i></div>
-            <p class="section-subtitle">Düğün günümüze dair tüm önemli bilgiler aşağıda yer almaktadır.</p>
+            <p class="section-subtitle">{{DETAILS_SUBTITLE}}</p>
 
             <div class="details-grid">
                 <!-- Tarih -->
@@ -1723,7 +1935,7 @@
                     </div>
                     <span class="detail-label">Tarih</span>
                     <span class="detail-value">{{DATE_SHORT}}</span>
-                    <span class="detail-subvalue">{{DAY_OF_WEEK}} Günü</span>
+                    <span class="detail-subvalue">{{DATE_SUBVALUE}}</span>
                 </div>
 
                 <!-- Saat -->
@@ -1754,42 +1966,18 @@
 
         {{GALLERY_SECTION_HTML}}
 
-            <div class="gallery-grid">
-                {{GALLERY_GRID_HTML}}
-            </div>
-        </section>
-
-        <!-- Lightbox Modal -->
-        <div class="lightbox-modal" id="lightboxModal">
-            <button class="lightbox-close" onclick="closeLightbox()" aria-label="Kapat">&times;</button>
-            <div class="lightbox-content">
-                <button class="lightbox-nav lightbox-prev" onclick="prevLightbox(event)" aria-label="Önceki"><i class='bx bx-chevron-left'></i></button>
-                <img src="" alt="Önizleme" id="lightboxImg" class="lightbox-img">
-                <button class="lightbox-nav lightbox-next" onclick="nextLightbox(event)" aria-label="Sonraki"><i class='bx bx-chevron-right'></i></button>
-            </div>
-        </div>
-
         <!-- ===================================================================
-             6. MEKAN VE KONUM (Gerçek La Win Fotoğrafı)
+             6. MEKAN VE KONUM
              =================================================================== -->
         <section class="invitation-section" id="location">
             <div class="text-center">
-                <h2 class="section-title">Mekan</h2>
+                <h2 class="section-title">{{VENUE_SECTION_TITLE}}</h2>
                 <div class="ornament-divider"><i class='bx bx-map'></i></div>
-                <p class="section-subtitle">Düğün mekanımızın konumu ve detaylı adres bilgileri.</p>
+                <p class="section-subtitle">{{VENUE_SECTION_SUBTITLE}}</p>
             </div>
 
             <div class="venue-card">
-                <div class="venue-media-wrapper">
-                    <img src="{{VENUE_IMAGE}}" 
-                         alt="{{VENUE_IMAGE_ALT}}" 
-                         class="venue-media-img"
-                         loading="lazy"
-                         onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'600\' height=\'300\' viewBox=\'0 0 600 300\'><rect width=\'600\' height=\'300\' fill=\'%23F3ECE2\'/><text x=\'50%25\' y=\'50%25\' dominant-baseline=\'middle\' text-anchor=\'middle\' font-family=\'serif\' font-size=\'24\' fill=\'%23966F36\'>La Win İzmir</text></svg>'">
-                    <div class="venue-badge-overlay">
-                        <i class='bx bxs-map-pin'></i> {{VENUE_ADDRESS_SHORT}}
-                    </div>
-                </div>
+{{VENUE_MEDIA_HTML}}
                 <div class="venue-body">
                     <h3 class="venue-name">{{VENUE_NAME}}</h3>
                     <p class="venue-address">
@@ -1800,15 +1988,7 @@
                         {{VENUE_DESC}}
                     </div>
                     <div class="venue-actions">
-                        <a href="{{VENUE_MAPS_URL}}" 
-                           target="_blank" 
-                           rel="noopener noreferrer" 
-                           class="btn btn-primary">
-                            <i class='bx bx-navigation'></i> Yol Tarifi Al
-                        </a>
-                        <button type="button" class="copy-address-btn" onclick="copyAddressText()">
-                            <i class='bx bx-copy'></i> Adresi Kopyala
-                        </button>
+{{VENUE_ACTIONS_HTML}}
                     </div>
                 </div>
             </div>
@@ -1827,7 +2007,7 @@
             <div class="calendar-card">
                 <i class='bx bx-calendar-check calendar-icon-hero'></i>
                 <h3 style="font-family: var(--font-serif); font-size: 1.3rem; margin-bottom: 0.4rem;">
-                    {{COUPLE_DISPLAY}} Düğün Töreni
+                    {{CALENDAR_EVENT_TITLE}}
                 </h3>
                 <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.25rem;">
                     {{DATE_DISPLAY}} • {{TIME_START}}<br>{{VENUE_NAME}}, {{VENUE_ADDRESS_SHORT}}
@@ -1856,11 +2036,11 @@
         <section class="final-message-section" id="message">
             <div class="final-message-box">
                 <h2 class="section-title" style="margin-bottom: 1rem;">Sevgiyle Bekliyoruz</h2>
-                <div class="ornament-divider"><i class='bx bxs-heart'></i></div>
+                <div class="ornament-divider">{{LETTER_ORNAMENT_HTML}}</div>
                 <p class="final-text">
                     {{FINAL_TEXT}}
                 </p>
-                <div class="final-signature">{{COUPLE_DISPLAY}}</div>
+                <div class="final-signature">{{LETTER_SIGNATURE}}</div>
             </div>
         </section>
 
@@ -2002,8 +2182,11 @@
         let childCountValue = 0;
         let isSubmitting = false;
 
-        // Çocuk Yaşları Dinamik Alan Yönetimi (Maksimum 4 Çocuk)
-        const MAX_CHILD_COUNT = 4;
+        // Yetişkin & Çocuk Yaşları Dinamik Alan Yönetimi (Maksimum 4 Çocuk)
+        const MAX_ADULT_COUNT = (__INV__.rsvp && __INV__.rsvp.maxAdults) || 10;
+        const MAX_CHILD_COUNT = (__INV__.rsvp && __INV__.rsvp.maxChildren) || 4;
+        const hasChildrenQuestion = !(__INV__.rsvp && __INV__.rsvp.collectHasChildrenQuestion === false);
+        const shouldCollectVegetarian = !(__INV__.rsvp && __INV__.rsvp.collectVegetarian === false);
 
         function renderChildAgeFields(count) {
             const wrap = document.getElementById('childAgesWrap');
@@ -2056,6 +2239,8 @@
             const detailsContainer = document.getElementById('attendanceDetailsContainer');
             const vegEntry = (__INV__.rsvp && __INV__.rsvp.entries && __INV__.rsvp.entries.vegetarian) || 'entry.vegetarian';
             const vegRadios = document.querySelectorAll('input[name="' + vegEntry + '"]');
+            const childGroup = document.getElementById('childCountGroup');
+            const childDisplay = document.getElementById('childCountDisplay');
 
             if (isAttending) {
                 detailsContainer.style.display = 'block';
@@ -2064,6 +2249,11 @@
                     adultCountValue = 1;
                     document.getElementById('adultCountDisplay').innerText = '1 Yetişkin';
                     document.getElementById('adultCount').value = '1';
+                }
+                if (!hasChildrenQuestion && childGroup) {
+                    childGroup.style.display = 'block';
+                    if (childDisplay) childDisplay.innerText = `${childCountValue} Çocuk`;
+                    document.getElementById('childCount').value = String(childCountValue);
                 }
             } else {
                 detailsContainer.style.display = 'none';
@@ -2076,7 +2266,12 @@
                 childCountValue = 0;
                 document.getElementById('adultCount').value = '0';
                 document.getElementById('childCount').value = '0';
-                document.getElementById('childCountGroup').style.display = 'none';
+                if (childDisplay) {
+                    childDisplay.innerText = hasChildrenQuestion ? '1 Çocuk' : '0 Çocuk';
+                }
+                if (hasChildrenQuestion && childGroup) {
+                    childGroup.style.display = 'none';
+                }
                 renderChildAgeFields(0);
                 const noRadio = document.querySelector('input[name="{{ENTRY_HAS_CHILDREN}}"][value="Hayır"]');
                 if (noRadio) noRadio.checked = true;
@@ -2085,7 +2280,7 @@
 
         // Yetişkin Sayacı
         function updateAdultCount(delta) {
-            adultCountValue = Math.max(1, Math.min(10, adultCountValue + delta));
+            adultCountValue = Math.max(1, Math.min(MAX_ADULT_COUNT, adultCountValue + delta));
             document.getElementById('adultCountDisplay').innerText = `${adultCountValue} Yetişkin`;
             document.getElementById('adultCount').value = adultCountValue;
         }
@@ -2109,9 +2304,10 @@
             }
         }
 
-        // Çocuk Sayacı (Maks 4 Çocuk)
+        // Çocuk Sayacı (Maks 4 Çocuk; Birthday modunda 0–4, Wedding modunda 1–4)
         function updateChildCount(delta) {
-            childCountValue = Math.max(1, Math.min(MAX_CHILD_COUNT, childCountValue + delta));
+            const minCount = hasChildrenQuestion ? 1 : 0;
+            childCountValue = Math.max(minCount, Math.min(MAX_CHILD_COUNT, childCountValue + delta));
             document.getElementById('childCountDisplay').innerText = `${childCountValue} Çocuk`;
             document.getElementById('childCount').value = childCountValue;
             renderChildAgeFields(childCountValue);
@@ -2201,6 +2397,18 @@
                 return false;
             }
 
+            // Henüz backend / Google Form bağlanmamış LCV modu (Örn: Lina 2 Yaşında ilk sürüm)
+            if (__INV__.rsvp && __INV__.rsvp.connected === false) {
+                e.preventDefault();
+                const pendingMsg = __INV__.rsvp.notConnectedMessage || 'LCV sistemi yakında aktif olacak.';
+                const pendingEl = document.getElementById('rsvpPendingNotice');
+                if (pendingEl) {
+                    pendingEl.style.display = 'flex';
+                }
+                showToast(pendingMsg);
+                return false;
+            }
+
             const name = document.getElementById('guestName').value.trim();
             const attendanceEl = document.querySelector('input[name="' + __INV__.rsvp.entries.attendance + '"]:checked');
             
@@ -2220,7 +2428,7 @@
             const vegEntry = (__INV__.rsvp && __INV__.rsvp.entries && __INV__.rsvp.entries.vegetarian) || 'entry.vegetarian';
             const vegEl = document.querySelector('input[name="' + vegEntry + '"]:checked');
 
-            if (isAttending) {
+            if (isAttending && shouldCollectVegetarian) {
                 if (!vegEl) {
                     e.preventDefault();
                     alert('Lütfen vejetaryen misiniz sorusunu yanıtlayınız.');
@@ -2228,7 +2436,7 @@
                     if (vegGroup) vegGroup.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     return false;
                 }
-            } else {
+            } else if (!isAttending) {
                 // Katılamayacaksa vejetaryen seçimlerini sıfırla ve disable et
                 document.querySelectorAll('input[name="' + vegEntry + '"]').forEach(r => {
                     r.checked = false;
@@ -2236,8 +2444,12 @@
                 });
             }
 
-            const hasChildrenEl = document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"]:checked');
-            const hasChildren = hasChildrenEl ? hasChildrenEl.value : 'Hayır';
+            const hasChildrenEl = hasChildrenQuestion
+                ? document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"]:checked')
+                : null;
+            const hasChildren = hasChildrenQuestion
+                ? (hasChildrenEl ? hasChildrenEl.value : 'Hayır')
+                : (childCountValue > 0 ? 'Evet' : 'Hayır');
 
             // Normalize values for non-attending
             if (!isAttending) {
@@ -2317,10 +2529,12 @@
             const vegEntry = (__INV__.rsvp && __INV__.rsvp.entries && __INV__.rsvp.entries.vegetarian) || 'entry.vegetarian';
             const vegEl = document.querySelector('input[name="' + vegEntry + '"]:checked');
             const vegValue = vegEl ? vegEl.value : '';
-            const hasChildrenEl = document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"]:checked');
-            const hasChildren = hasChildrenEl ? hasChildrenEl.value : 'Hayır';
+            const hasChildrenEl = hasChildrenQuestion
+                ? document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"]:checked')
+                : null;
             const adultCount = parseInt(document.getElementById('adultCount').value, 10);
             const childCount = parseInt(document.getElementById('childCount').value, 10);
+            const hasChildren = hasChildrenQuestion ? (hasChildrenEl ? hasChildrenEl.value : 'Hayır') : (childCount > 0 ? 'Evet' : 'Hayır');
             const note = document.getElementById('guestNote').value.trim();
 
             let childAgesSummary = '';
@@ -2339,8 +2553,9 @@
 
             isSubmitting = false;
             const submitBtn = document.getElementById('rsvpSubmitBtn');
+            const submitBtnLabel = (__INV__.rsvp && __INV__.rsvp.submitText) || 'Katılım Bilgimi Gönder';
             submitBtn.disabled = false;
-            submitBtn.innerHTML = "<i class='bx bx-send'></i> <span>Katılım Bilgimi Gönder</span>";
+            submitBtn.innerHTML = "<i class='bx bx-send'></i> <span>" + escapeHtml(submitBtnLabel) + "</span>";
 
             const summaryEl = document.getElementById('rsvpSummaryContent');
             summaryEl.innerHTML = 
@@ -2363,9 +2578,10 @@
         function handleRsvpDemoSuccess(isCurrentShowcase) {
             isSubmitting = false;
             const submitBtn = document.getElementById('rsvpSubmitBtn');
+            const submitBtnLabel = (__INV__.rsvp && __INV__.rsvp.submitText) || 'Katılım Bilgimi Gönder';
             if (submitBtn) {
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = "<i class='bx bx-send'></i> <span>Katılım Bilgimi Gönder</span>";
+                submitBtn.innerHTML = "<i class='bx bx-send'></i> <span>" + escapeHtml(submitBtnLabel) + "</span>";
             }
 
             const name = document.getElementById('guestName').value.trim();
@@ -2375,10 +2591,12 @@
             const vegEntry = (__INV__.rsvp && __INV__.rsvp.entries && __INV__.rsvp.entries.vegetarian) || 'entry.vegetarian';
             const vegEl = document.querySelector('input[name="' + vegEntry + '"]:checked');
             const vegValue = vegEl ? vegEl.value : '';
-            const hasChildrenEl = document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"]:checked');
-            const hasChildren = hasChildrenEl ? hasChildrenEl.value : 'Hayır';
+            const hasChildrenEl = hasChildrenQuestion
+                ? document.querySelector('input[name="' + __INV__.rsvp.entries.hasChildren + '"]:checked')
+                : null;
             const adultCount = parseInt(document.getElementById('adultCount').value, 10);
             const childCount = parseInt(document.getElementById('childCount').value, 10);
+            const hasChildren = hasChildrenQuestion ? (hasChildrenEl ? hasChildrenEl.value : 'Hayır') : (childCount > 0 ? 'Evet' : 'Hayır');
             const note = document.getElementById('guestNote').value.trim();
 
             let childAgesSummary = '';
@@ -2434,10 +2652,12 @@
             adultCountValue = 1;
             childCountValue = 0;
             document.getElementById('adultCountDisplay').innerText = '1 Yetişkin';
-            document.getElementById('childCountDisplay').innerText = '1 Çocuk';
+            document.getElementById('childCountDisplay').innerText = hasChildrenQuestion ? '1 Çocuk' : '0 Çocuk';
             document.getElementById('adultCount').value = '1';
             document.getElementById('childCount').value = '0';
-            document.getElementById('childCountGroup').style.display = 'none';
+            if (hasChildrenQuestion && document.getElementById('childCountGroup')) {
+                document.getElementById('childCountGroup').style.display = 'none';
+            }
             renderChildAgeFields(0);
             document.getElementById('attendanceDetailsContainer').style.display = 'block';
 
