@@ -68,10 +68,10 @@
     "description": "Partimiz <strong>Hepsert Spor Kulübü</strong>'nde gerçekleşecektir. Yol tarifi ve iletişim için aşağıdaki butonları kullanabilirsiniz."
   },
   "timeline": [
-    { "time": "14:00", "title": "Hoş Geldiniz" },
-    { "time": "14:30", "title": "Oyun & Eğlence" },
-    { "time": "15:00", "title": "Pasta Zamanı" },
-    { "time": "15:30", "title": "Fotoğraf & Hediye Zamanı" }
+    { "time": "14:00", "title": "Hoş Geldiniz", "icon": "bx-door-open" },
+    { "time": "14:30", "title": "Oyun & Eğlence", "icon": "bx-joystick" },
+    { "time": "15:00", "title": "Pasta Zamanı", "icon": "bx-cake" },
+    { "time": "15:30", "title": "Fotoğraf & Hediye Zamanı", "icon": "bx-camera" }
   ],
   "gallery": [],
   "galleryFullRes": [],
