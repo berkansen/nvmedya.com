@@ -1909,8 +1909,8 @@
             display: block;
             font-size: clamp(2.5rem, 8.5vw, 3.5rem);
             font-weight: 700;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            text-transform: none;
             color: #FFFFFF;
             line-height: 1.1;
         }
@@ -1985,10 +1985,17 @@
         body.theme-modern-sehzade .letter-signature,
         body.theme-modern-sehzade .final-signature {
             font-family: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
-            font-size: 1.5rem;
+            font-size: clamp(1.15rem, 4.2vw, 1.5rem);
             font-weight: 600;
             font-style: italic;
             color: var(--gold-dark);
+            line-height: 1.4;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         body.theme-modern-sehzade .timeline-card.has-icon.is-featured {

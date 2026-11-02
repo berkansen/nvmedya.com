@@ -10,7 +10,7 @@
     "mother": "Ayşe",
     "father": "Tufan",
     "sister": "Selda",
-    "signature": "Ayşe, Tufan, Selda ve Burak"
+    "signature": "Annesi Ayşe, Babası Tufan, Ablası Selda ve Burak"
   },
   "couple": {
     "displayName": "Burak’ın Sünnet Düğünü",
@@ -36,7 +36,7 @@
   },
   "hero": {
     "badge": "Sünnet Düğünü Davetiyesi",
-    "title": "BURAK",
+    "title": "Burak",
     "secondaryTitle": "SÜNNET DÜĞÜNÜ",
     "dateLine": "12 HAZİRAN 2027 • CUMARTESİ • 19:00",
     "locationMicroline": "GAZİEMİR • İZMİR",
@@ -46,7 +46,7 @@
   "letter": {
     "title": "Bu Özel Günümüzü Birlikte Kutlayalım",
     "text": "Burak’ın hayatındaki bu özel günü, ailemiz ve sevdiklerimizle birlikte güzel bir hatıraya dönüştürmek istiyoruz. Mutluluğumuzu paylaşmanızdan büyük mutluluk duyarız.",
-    "signature": "Ayşe, Tufan, Selda ve Burak"
+    "signature": "Annesi Ayşe, Babası Tufan, Ablası Selda ve Burak"
   },
   "messages": {
     "letterTitle": "Bu Özel Günümüzü Birlikte Kutlayalım",
