@@ -138,16 +138,23 @@ function generateTimelineHtml(timeline) {
   if (!Array.isArray(timeline) || timeline.length === 0) return '';
   return timeline.map(item => {
     const hasIcon = Boolean(item && item.icon);
-    const cardClass = hasIcon ? 'timeline-card has-icon' : 'timeline-card';
+    const isFeatured = Boolean(item && (item.featured || item.special));
+    const cardClasses = ['timeline-card'];
+    if (hasIcon) cardClasses.push('has-icon');
+    if (isFeatured) cardClasses.push('is-featured');
+    const cardClass = cardClasses.join(' ');
     const iconHtml = hasIcon
       ? `\n                        <div class="timeline-icon-wrap" aria-hidden="true">\n                            <i class='bx ${escapeHtml(item.icon)}'></i>\n                        </div>`
+      : '';
+    const featuredTagHtml = isFeatured
+      ? ` <span class="timeline-featured-tag">Öne Çıkan An</span>`
       : '';
     return `
                 <div class="timeline-item">
                     <div class="timeline-dot"></div>
                     <div class="${cardClass}">${iconHtml}
                         <div class="timeline-content-wrap">
-                            <div class="timeline-event-name">${escapeHtml(item.title)}</div>
+                            <div class="timeline-event-name">${escapeHtml(item.title)}${featuredTagHtml}</div>
                         </div>
                         <div class="timeline-time">${escapeHtml(item.time)}</div>
                     </div>
@@ -155,12 +162,18 @@ function generateTimelineHtml(timeline) {
   }).join('\n');
 }
 
-function generateTimelineSectionHtml(timeline, packageTier, isBirthday = false) {
+function generateTimelineSectionHtml(timeline, packageTier, eventType = 'wedding', c = {}) {
   if (packageTier === 'standard' || !Array.isArray(timeline) || timeline.length === 0) return '';
-  const sectionTitle = isBirthday ? 'Parti Akışı' : 'Düğün Akışı';
-  const sectionSubtitle = isBirthday
-    ? 'Bu güzel günün akışını sizin için özenle hazırladık.'
-    : 'Bu özel gecenin akışını sizin için özenle hazırladık.';
+  const isBirthday = eventType === 'birthday';
+  const isCircumcision = eventType === 'circumcision';
+  const sectionTitle = (c.timelineSection && c.timelineSection.title) ||
+    (isCircumcision ? 'Sünnet Düğünü Akışı' : (isBirthday ? 'Parti Akışı' : 'Düğün Akışı'));
+  const sectionSubtitle = (c.timelineSection && c.timelineSection.subtitle) ||
+    (isCircumcision
+      ? 'Bu özel günün akışını sizin için özenle hazırladık.'
+      : (isBirthday
+        ? 'Bu güzel günün akışını sizin için özenle hazırladık.'
+        : 'Bu özel gecenin akışını sizin için özenle hazırladık.'));
   return `        <!-- ===================================================================
              4. ETKİNLİK AKIŞI (TIMELINE)
              =================================================================== -->
@@ -178,6 +191,40 @@ ${generateTimelineHtml(timeline)}
             <p class="timeline-footnote">
                 * Program saatlerinde küçük değişiklikler olabilir.
             </p>
+        </section>`;
+}
+
+function generateChildrenSectionHtml(c) {
+  if (!c.childrenSection || c.childrenSection.enabled === false) return '';
+  const eyebrow = escapeHtml(c.childrenSection.eyebrow || 'KÜÇÜK MİSAFİRLERİMİZ İÇİN');
+  const title = escapeHtml(c.childrenSection.title || 'Oyun Ablası ile Eğlence');
+  const desc = escapeHtml(c.childrenSection.description || '');
+  const features = Array.isArray(c.childrenSection.features) ? c.childrenSection.features : [];
+
+  const featuresHtml = features.map(f => `
+                <div class="children-feature-card">
+                    <div class="children-feature-icon" aria-hidden="true">
+                        <i class='bx ${escapeHtml(f.icon || 'bx-smile')}'></i>
+                    </div>
+                    <span class="children-feature-title">${escapeHtml(f.title)}</span>
+                </div>`).join('\n');
+
+  return `        <!-- ===================================================================
+             KÜÇÜK MİSAFİRLERİMİZ İÇİN ÖZEL BÖLÜM
+             =================================================================== -->
+        <section class="invitation-section children-special-section" id="children-special">
+            <div class="text-center">
+                <span class="children-eyebrow">${eyebrow}</span>
+                <h2 class="section-title">${title}</h2>
+                <div class="ornament-divider"><i class='bx bx-happy-beaming'></i></div>
+                <p class="section-subtitle">
+                    ${desc}
+                </p>
+            </div>
+
+            <div class="children-features-grid">
+${featuresHtml}
+            </div>
         </section>`;
 }
 
@@ -251,39 +298,60 @@ ${cardsHtml}
 function generateRsvpSectionHtml(c, isClosedServer, deadlineDisplay, closedText, packageTier) {
   if (packageTier === 'standard' || !c.rsvp || c.rsvp.enabled === false) return '';
   const isBirthday = c.eventType === 'birthday';
+  const isCircumcision = c.eventType === 'circumcision';
   const isConnected = c.rsvp.connected !== false;
-  const collectVegetarian = c.rsvp.collectVegetarian !== false && !isBirthday;
-  const collectHasChildrenQuestion = c.rsvp.collectHasChildrenQuestion !== false && !isBirthday;
+  const collectVegetarian = c.rsvp.collectVegetarian !== false && !isBirthday && !isCircumcision;
+  const collectHasChildrenQuestion = c.rsvp.collectHasChildrenQuestion !== false && !isBirthday && !isCircumcision;
 
   const entries = c.rsvp.entries || {};
   const hostDisplay = escapeHtml((c.person && c.person.name) || c.couple.displayName);
   const formDisplay = isClosedServer ? 'style="display: none;"' : '';
   const closedCardDisplay = isClosedServer ? 'style="display: block;"' : 'style="display: none;"';
 
-  const rsvpTitle = escapeHtml(c.rsvp.title || (isBirthday ? 'Partimize Katılıyor musunuz?' : 'Katılımınızı Bildirin'));
+  const rsvpTitle = escapeHtml(
+    c.rsvp.title ||
+    (isCircumcision
+      ? 'Sünnet Düğünümüze Katılıyor musunuz?'
+      : (isBirthday ? 'Partimize Katılıyor musunuz?' : 'Katılımınızı Bildirin'))
+  );
   const rsvpSubtitle = escapeHtml(
     c.rsvp.subtitle ||
-    (isBirthday
-      ? 'Hazırlıklarımızı daha güzel planlayabilmemiz için katılım bilginizi bizimle paylaşabilirsiniz.'
-      : 'Katılım durumunuzu bizimle paylaşmanız, hazırlıklarımızı daha sağlıklı planlamamıza yardımcı olacaktır.')
+    (isCircumcision
+      ? 'Hazırlıklarımızı en iyi şekilde yapabilmemiz için katılım bilginizi bizimle paylaşabilirsiniz.'
+      : (isBirthday
+        ? 'Hazırlıklarımızı daha güzel planlayabilmemiz için katılım bilginizi bizimle paylaşabilirsiniz.'
+        : 'Katılım durumunuzu bizimle paylaşmanız, hazırlıklarımızı daha sağlıklı planlamamıza yardımcı olacaktır.'))
   );
-  const messageLabel = escapeHtml(c.rsvp.messageLabel || (isBirthday ? 'Lina’ya Mesajınız' : 'Çiftimize mesajınız'));
+  const messageLabel = escapeHtml(
+    c.rsvp.messageLabel ||
+    (isCircumcision
+      ? `${hostDisplay}’a Mesajınız`
+      : (isBirthday ? 'Lina’ya Mesajınız' : 'Çiftimize mesajınız'))
+  );
   const messagePlaceholder = escapeHtml(
     c.rsvp.messagePlaceholder ||
-    (isBirthday
-      ? 'Lina için güzel dileklerinizi paylaşabilirsiniz.'
-      : 'Dilerseniz tebrik veya özel notunuzu iletebilirsiniz...')
+    (isCircumcision
+      ? `${hostDisplay} ve ailemiz için güzel dileklerinizi iletebilirsiniz...`
+      : (isBirthday
+        ? 'Lina için güzel dileklerinizi paylaşabilirsiniz.'
+        : 'Dilerseniz tebrik veya özel notunuzu iletebilirsiniz...'))
   );
-  const submitText = escapeHtml(c.rsvp.submitText || (isBirthday ? 'Katılımımı Bildir' : 'Katılım Bilgimi Gönder'));
+  const submitText = escapeHtml(c.rsvp.submitText || (isBirthday || isCircumcision ? 'Katılımımı Bildir' : 'Katılım Bilgimi Gönder'));
   const notConnectedMessage = escapeHtml(c.rsvp.notConnectedMessage || 'LCV sistemi yakında aktif olacak.');
-  const successTitle = escapeHtml(c.rsvp.successTitle || (isBirthday ? 'Katılım bilginiz alındı' : 'Katılım bilginiz için teşekkür ederiz.'));
+  const successTitle = escapeHtml(c.rsvp.successTitle || (isBirthday || isCircumcision ? 'Katılım bilginiz alındı' : 'Katılım bilginiz için teşekkür ederiz.'));
   const successSubtitle = escapeHtml(
     c.rsvp.successSubtitleAttending ||
-    (isBirthday
-      ? 'Teşekkür ederiz. Lina’nın 2. yaşını birlikte kutlamak için sabırsızlanıyoruz.'
-      : `Yanıtınız ${hostDisplay}'nın misafir listesine eklendi.`)
+    (isCircumcision
+      ? `Teşekkür ederiz. ${hostDisplay}’ın sünnet düğününü birlikte kutlamak için sabırsızlanıyoruz.`
+      : (isBirthday
+        ? 'Teşekkür ederiz. Lina’nın 2. yaşını birlikte kutlamak için sabırsızlanıyoruz.'
+        : `Yanıtınız ${hostDisplay}'nın misafir listesine eklendi.`))
   );
   const errorMessage = escapeHtml(c.rsvp.errorMessage || 'Katılım bilginiz gönderilemedi. Lütfen tekrar deneyin.');
+
+  const childInfoNoticeHtml = (c.rsvp && c.rsvp.childInfoNotice)
+    ? `\n                            <div class="rsvp-child-info-text"><i class='bx bx-info-circle'></i> <span>${escapeHtml(c.rsvp.childInfoNotice)}</span></div>`
+    : '';
 
   const vegetarianHtml = collectVegetarian ? `
                         <!-- 3A. Vejetaryen misiniz? (Hayır / Evet) -->
@@ -332,7 +400,7 @@ function generateRsvpSectionHtml(c, isClosedServer, deadlineDisplay, closedText,
   const childCountGroupStyle = collectHasChildrenQuestion ? 'style="display: none;"' : '';
   const initialChildDisplay = collectHasChildrenQuestion ? '1 Çocuk' : '0 Çocuk';
 
-  const childAgeLabel = (idx) => isBirthday ? `Çocuk ${idx} Yaşı *` : `${idx}. Çocuğun Yaşı *`;
+  const childAgeLabel = (idx) => (isBirthday || isCircumcision) ? `Çocuk ${idx} Yaşı *` : `${idx}. Çocuğun Yaşı *`;
 
   const formAttrs = isConnected
     ? `id="rsvpForm" action="${escapeHtml(c.rsvp.formAction || '#')}" method="POST" target="hidden_iframe" onsubmit="return handleRsvpSubmit(event)" ${formDisplay}`
@@ -437,7 +505,7 @@ ${childrenQuestionHtml}
                                 <span class="stepper-display" id="childCountDisplay">${initialChildDisplay}</span>
                                 <button type="button" class="stepper-btn" onclick="updateChildCount(1)" aria-label="Çocuk Sayısını Artır">+</button>
                             </div>
-                            <input type="hidden" id="childCount" name="${escapeHtml(entries.children || 'entry.children')}" value="0">
+                            <input type="hidden" id="childCount" name="${escapeHtml(entries.children || 'entry.children')}" value="0">${childInfoNoticeHtml}
                         </div>
 
                         <!-- 3D. Çocuk Yaşları Dinamik Alanları -->
@@ -592,6 +660,7 @@ function generateMusicControlHtml(c) {
 function renderTemplate(templateHtml, config, options = {}) {
   const c = config;
   const isBirthday = c.eventType === 'birthday';
+  const isCircumcision = c.eventType === 'circumcision';
   const eventType = c.eventType || 'wedding';
   const isShowcase = Boolean(options && options.isShowcase);
   const coupleDisplay = escapeHtml(c.couple.displayName);
@@ -608,8 +677,8 @@ function renderTemplate(templateHtml, config, options = {}) {
   const closedText = (c.rsvp && c.rsvp.closedText) || `Katılım bildirimleri ${deadlineDisplay.replace(' • ', ' saat ')} itibarıyla kapanmıştır. İlginiz için teşekkür ederiz.`;
   const isDemoRsvp = Boolean(c.rsvp && c.rsvp.demoMode) || isShowcase;
   const isRsvpConnected = !(c.rsvp && c.rsvp.connected === false);
-  const collectVegetarian = (c.rsvp && c.rsvp.collectVegetarian !== undefined) ? Boolean(c.rsvp.collectVegetarian) : !isBirthday;
-  const collectHasChildrenQuestion = (c.rsvp && c.rsvp.collectHasChildrenQuestion !== undefined) ? Boolean(c.rsvp.collectHasChildrenQuestion) : !isBirthday;
+  const collectVegetarian = (c.rsvp && c.rsvp.collectVegetarian !== undefined) ? Boolean(c.rsvp.collectVegetarian) : (!isBirthday && !isCircumcision);
+  const collectHasChildrenQuestion = (c.rsvp && c.rsvp.collectHasChildrenQuestion !== undefined) ? Boolean(c.rsvp.collectHasChildrenQuestion) : (!isBirthday && !isCircumcision);
 
   // Build client-side config (safe for <script> injection)
   const clientConfig = {
@@ -641,6 +710,7 @@ function renderTemplate(templateHtml, config, options = {}) {
     rsvp: (packageTier !== 'standard' && c.rsvp && c.rsvp.enabled !== false) ? {
       connected: isRsvpConnected,
       notConnectedMessage: (c.rsvp && c.rsvp.notConnectedMessage) || 'LCV sistemi yakında aktif olacak.',
+      demoNotice: (c.rsvp && c.rsvp.demoNotice) || 'Bu bir demo davetiyedir. Girdiğiniz bilgiler kaydedilmedi.',
       maxAdults: (c.rsvp && c.rsvp.maxAdults) || 10,
       maxChildren: (c.rsvp && c.rsvp.maxChildren) || 4,
       collectVegetarian: collectVegetarian,
@@ -649,10 +719,10 @@ function renderTemplate(templateHtml, config, options = {}) {
         dietaryQuestionAlert: 'Lütfen vejetaryen misiniz sorusunu yanıtlayınız.',
         dietarySummaryLabel: 'Vejetaryen'
       } : {}),
-      submitText: (c.rsvp && c.rsvp.submitText) || (isBirthday ? 'Katılımımı Bildir' : 'Katılım Bilgimi Gönder'),
-      successTitle: (c.rsvp && c.rsvp.successTitle) || (isBirthday ? 'Katılım bilginiz alındı' : 'Katılım bilginiz için teşekkür ederiz.'),
-      successSubtitleAttending: (c.rsvp && c.rsvp.successSubtitleAttending) || (isBirthday ? 'Teşekkür ederiz. Lina’nın 2. yaşını birlikte kutlamak için sabırsızlanıyoruz.' : `Yanıtınız ${personName}'nın misafir listesine eklendi.`),
-      successSubtitleNotAttending: (c.rsvp && c.rsvp.successSubtitleNotAttending) || (isBirthday ? 'Katılım bilginiz alındı. Bildiriminiz için teşekkür ederiz.' : `Yanıtınız ${personName}'nın misafir listesine eklendi.`),
+      submitText: (c.rsvp && c.rsvp.submitText) || (isBirthday || isCircumcision ? 'Katılımımı Bildir' : 'Katılım Bilgimi Gönder'),
+      successTitle: (c.rsvp && c.rsvp.successTitle) || (isBirthday || isCircumcision ? 'Katılım bilginiz alındı' : 'Katılım bilginiz için teşekkür ederiz.'),
+      successSubtitleAttending: (c.rsvp && c.rsvp.successSubtitleAttending) || (isCircumcision ? `Teşekkür ederiz. ${personName}’ın sünnet düğününü birlikte kutlamak için sabırsızlanıyoruz.` : (isBirthday ? 'Teşekkür ederiz. Lina’nın 2. yaşını birlikte kutlamak için sabırsızlanıyoruz.' : `Yanıtınız ${personName}'nın misafir listesine eklendi.`)),
+      successSubtitleNotAttending: (c.rsvp && c.rsvp.successSubtitleNotAttending) || (isBirthday || isCircumcision ? 'Katılım bilginiz alındı. Bildiriminiz için teşekkür ederiz.' : `Yanıtınız ${personName}'nın misafir listesine eklendi.`),
       errorMessage: (c.rsvp && c.rsvp.errorMessage) || 'Katılım bilginiz gönderilemedi. Lütfen tekrar deneyin.',
       demoMode: isDemoRsvp,
       isShowcase: isShowcase,
@@ -684,12 +754,23 @@ function renderTemplate(templateHtml, config, options = {}) {
 
   const heroTopBadge = (c.hero && c.hero.badge)
     ? escapeHtml(c.hero.badge)
-    : (isDemo ? 'NVM Demo Davetiye' : (isBirthday ? 'Doğum Günü Davetiyesi' : 'Düğün Davetiyesi'));
+    : (isDemo ? 'NVM Demo Davetiye' : (isCircumcision ? 'Sünnet Düğünü Davetiyesi' : (isBirthday ? 'Doğum Günü Davetiyesi' : 'Düğün Davetiyesi')));
   const demoFooterNote = isDemo ? '<div class="nvm-demo-notice"><i class=\'bx bx-info-circle\'></i> NVM Demo Davetiye — Bu sayfa örnek amaçlı hazırlanmıştır.</div>' : '';
 
-  const heroTitleHtml = (c.hero && c.hero.title)
-    ? escapeHtml(c.hero.title)
-    : (isBirthday ? coupleDisplay : `${escapeHtml(c.couple.bride)} <span>&amp;</span> ${escapeHtml(c.couple.groom)}`);
+  let heroTitleHtml;
+  if (c.hero && c.hero.secondaryTitle) {
+    heroTitleHtml = `<span class="hero-primary-name">${escapeHtml(c.hero.title || personName)}</span>\n<span class="hero-secondary-title">${escapeHtml(c.hero.secondaryTitle)}</span>`;
+  } else if (c.hero && c.hero.title) {
+    heroTitleHtml = escapeHtml(c.hero.title);
+  } else if (isBirthday || isCircumcision) {
+    heroTitleHtml = coupleDisplay;
+  } else {
+    heroTitleHtml = `${escapeHtml(c.couple.bride)} <span>&amp;</span> ${escapeHtml(c.couple.groom)}`;
+  }
+
+  const heroLocationMicrolineHtml = (c.hero && c.hero.locationMicroline)
+    ? `<div class="hero-location-microline">${escapeHtml(c.hero.locationMicroline)}</div>`
+    : '';
 
   const heroDateLine = (c.hero && c.hero.dateLine)
     ? escapeHtml(c.hero.dateLine)
@@ -697,44 +778,59 @@ function renderTemplate(templateHtml, config, options = {}) {
 
   const countdownTitle = (c.date && c.date.countdownTitle)
     ? escapeHtml(c.date.countdownTitle)
-    : (isBirthday ? `${escapeHtml(personName)}’nın Doğum Gününe` : 'Büyük Güne Kalan Süre');
+    : (isCircumcision
+      ? `${escapeHtml(personName)}’ın Sünnet Düğününe`
+      : (isBirthday ? `${escapeHtml(personName)}’nın Doğum Gününe` : 'Büyük Güne Kalan Süre'));
 
   const letterTitle = (c.letter && c.letter.title) || (c.messages && c.messages.letterTitle) || '';
   const letterTitleHtml = letterTitle ? `<h2 class="letter-title">${escapeHtml(letterTitle)}</h2>` : '';
   const letterSignature = escapeHtml((c.letter && c.letter.signature) || (c.person && c.person.signature) || c.couple.displayName);
 
   const sunflowerOrnamentSvg = `<svg class="sunflower-divider-svg" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="3.5" fill="currentColor" fill-opacity="0.35" stroke="currentColor" stroke-width="1.5"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>`;
-  const letterOrnamentHtml = isBirthday ? sunflowerOrnamentSvg : `<i class='bx bxs-heart'></i>`;
+  const starOrnamentSvg = `<svg class="star-divider-svg" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor" fill-opacity="0.3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+  const letterOrnamentHtml = isCircumcision ? starOrnamentSvg : (isBirthday ? sunflowerOrnamentSvg : `<i class='bx bxs-heart'></i>`);
 
-  const detailsTitle = isBirthday ? 'Parti Detayları' : 'Davet Detayları';
-  const detailsSubtitle = isBirthday
-    ? 'Bu güzel güne dair tüm önemli bilgiler aşağıda yer almaktadır.'
-    : 'Düğün günümüze dair tüm önemli bilgiler aşağıda yer almaktadır.';
-  const dateSubvalue = isBirthday ? escapeHtml(c.date.dayOfWeek) : `${escapeHtml(c.date.dayOfWeek)} Günü`;
+  const detailsTitle = isCircumcision ? 'Davet Detayları' : (isBirthday ? 'Parti Detayları' : 'Davet Detayları');
+  const detailsSubtitle = isCircumcision
+    ? 'Bu özel güne dair tüm önemli bilgiler aşağıda yer almaktadır.'
+    : (isBirthday
+      ? 'Bu güzel güne dair tüm önemli bilgiler aşağıda yer almaktadır.'
+      : 'Düğün günümüze dair tüm önemli bilgiler aşağıda yer almaktadır.');
+  const dateSubvalue = (isBirthday || isCircumcision) ? escapeHtml(c.date.dayOfWeek) : `${escapeHtml(c.date.dayOfWeek)} Günü`;
 
-  const venueSectionTitle = isBirthday ? 'Parti Nerede?' : 'Mekan';
-  const venueSectionSubtitle = isBirthday
-    ? 'Parti mekanımızın konumu ve iletişim bilgileri.'
-    : 'Düğün mekanımızın konumu ve detaylı adres bilgileri.';
+  const venueSectionTitle = (c.venue && c.venue.sectionTitle) || (isCircumcision ? 'Sünnet Düğünü Nerede?' : (isBirthday ? 'Parti Nerede?' : 'Mekan'));
+  const venueSectionSubtitle = (c.venue && c.venue.sectionSubtitle) || (isCircumcision
+    ? 'Sünnet düğünü mekanımızın konumu ve detaylı adres bilgileri.'
+    : (isBirthday
+      ? 'Parti mekanımızın konumu ve iletişim bilgileri.'
+      : 'Düğün mekanımızın konumu ve detaylı adres bilgileri.'));
 
   const calendarEventTitle = escapeHtml(
     (c.calendar && c.calendar.eventTitle) ||
-    (isBirthday ? `${c.couple.displayName} Doğum Günü Partisi` : `${c.couple.displayName} Düğün Töreni`)
+    (isCircumcision
+      ? `${c.couple.displayName} Sünnet Düğünü`
+      : (isBirthday ? `${c.couple.displayName} Doğum Günü Partisi` : `${c.couple.displayName} Düğün Töreni`))
   );
 
   const pageTitle = escapeHtml(
     (c.social && c.social.title) ||
-    (isBirthday ? `${c.couple.displayName} | Dijital Davetiye` : `${c.couple.displayName} | Düğün Davetiyesi`)
+    (isCircumcision
+      ? `${c.couple.displayName} | Dijital Davetiye`
+      : (isBirthday ? `${c.couple.displayName} | Dijital Davetiye` : `${c.couple.displayName} | Düğün Davetiyesi`))
   );
   const ogTitle = escapeHtml(
     (c.social && c.social.title) ||
-    (isBirthday ? `${c.couple.displayName} | Dijital Davetiye` : `${c.couple.displayName} — Düğün Davetiyesi`)
+    (isCircumcision
+      ? `${c.couple.displayName} | Dijital Davetiye`
+      : (isBirthday ? `${c.couple.displayName} | Dijital Davetiye` : `${c.couple.displayName} — Düğün Davetiyesi`))
   );
   const ogDescription = escapeHtml(
     (c.social && c.social.description) ||
-    (isBirthday
-      ? `${personName}’nın ${(c.person && c.person.age) || 2}. yaşını birlikte kutlayalım. ${c.date.short} • ${c.venue.city}`
-      : `Hayatımızın en özel gününü birlikte kutlamaya davet ediyoruz. ${c.date.short} • ${c.venue.name}, ${c.venue.city}`)
+    (isCircumcision
+      ? `${personName}’ın sünnet düğününü birlikte kutlayalım. ${c.date.short} • ${c.venue.name}, ${c.venue.city}`
+      : (isBirthday
+        ? `${personName}’nın ${(c.person && c.person.age) || 2}. yaşını birlikte kutlayalım. ${c.date.short} • ${c.venue.city}`
+        : `Hayatımızın en özel gününü birlikte kutlamaya davet ediyoruz. ${c.date.short} • ${c.venue.name}, ${c.venue.city}`))
   );
 
   const replacements = {
@@ -742,6 +838,7 @@ function renderTemplate(templateHtml, config, options = {}) {
     '{{HERO_TOP_BADGE}}': heroTopBadge,
     '{{HERO_TITLE_HTML}}': heroTitleHtml,
     '{{HERO_DATE_LINE}}': heroDateLine,
+    '{{HERO_LOCATION_MICROLINE_HTML}}': heroLocationMicrolineHtml,
     '{{COUNTDOWN_TITLE}}': countdownTitle,
     '{{LETTER_TITLE_HTML}}': letterTitleHtml,
     '{{LETTER_ORNAMENT_HTML}}': letterOrnamentHtml,
@@ -799,7 +896,8 @@ function renderTemplate(templateHtml, config, options = {}) {
     '{{GOOGLE_CAL_URL}}': escapeHtml(c.calendar.googleCalUrl),
     '{{FINAL_TEXT}}': escapeHtml(c.messages ? c.messages.finalText : ''),
     '{{TIMELINE_ITEMS_HTML}}': generateTimelineHtml(c.timeline),
-    '{{TIMELINE_SECTION_HTML}}': generateTimelineSectionHtml(c.timeline, packageTier, isBirthday),
+    '{{TIMELINE_SECTION_HTML}}': generateTimelineSectionHtml(c.timeline, packageTier, eventType, c),
+    '{{CHILDREN_SECTION_HTML}}': generateChildrenSectionHtml(c),
     '{{GALLERY_GRID_HTML}}': generateGalleryHtml(c.gallery, isBirthday, personName),
     '{{GALLERY_SECTION_HTML}}': generateGallerySectionHtml(c.gallery, packageTier, isBirthday, personName),
     '{{RSVP_SECTION_HTML}}': generateRsvpSectionHtml(c, isClosedServer, deadlineDisplay, closedText, packageTier),

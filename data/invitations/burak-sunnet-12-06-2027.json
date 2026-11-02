@@ -1,0 +1,140 @@
+{
+  "slug": "burak-sunnet-12-06-2027",
+  "eventType": "circumcision",
+  "packageTier": "plus",
+  "isDemo": true,
+  "theme": "modern-sehzade",
+  "person": {
+    "name": "Burak",
+    "displayName": "Burak’ın Sünnet Düğünü",
+    "mother": "Ayşe",
+    "father": "Tufan",
+    "sister": "Selda",
+    "signature": "Ayşe, Tufan, Selda ve Burak"
+  },
+  "couple": {
+    "displayName": "Burak’ın Sünnet Düğünü",
+    "bride": "Burak",
+    "groom": ""
+  },
+  "socialPreviewImage": "https://www.nvmedya.com/assets/demo/burak-sunnet-card.jpg",
+  "social": {
+    "title": "Burak’ın Sünnet Düğünü | Dijital Davetiye",
+    "description": "Burak’ın sünnet düğünü davetiyesi. 12 Haziran 2027 Cumartesi • Seydi Bahçe Kır Düğün Salonu, Gaziemir / İzmir",
+    "previewImage": "https://www.nvmedya.com/assets/demo/burak-sunnet-card.jpg"
+  },
+  "date": {
+    "display": "12 Haziran 2027 Cumartesi",
+    "short": "12 Haziran 2027",
+    "dayOfWeek": "Cumartesi",
+    "iso": "2027-06-12",
+    "time": "19:00",
+    "endTime": "22:00",
+    "timezone": "Europe/Istanbul",
+    "countdownTarget": "2027-06-12T19:00:00+03:00",
+    "countdownTitle": "Burak’ın Sünnet Düğününe"
+  },
+  "hero": {
+    "badge": "Sünnet Düğünü Davetiyesi",
+    "title": "BURAK",
+    "secondaryTitle": "SÜNNET DÜĞÜNÜ",
+    "dateLine": "12 HAZİRAN 2027 • CUMARTESİ • 19:00",
+    "locationMicroline": "GAZİEMİR • İZMİR",
+    "message": "Bu özel günümüzü birlikte kutlamaya bekliyoruz.",
+    "backgroundImage": "/assets/invitations/burak-sunnet-12-06-2027/hero.png"
+  },
+  "letter": {
+    "title": "Bu Özel Günümüzü Birlikte Kutlayalım",
+    "text": "Burak’ın hayatındaki bu özel günü, ailemiz ve sevdiklerimizle birlikte güzel bir hatıraya dönüştürmek istiyoruz. Mutluluğumuzu paylaşmanızdan büyük mutluluk duyarız.",
+    "signature": "Ayşe, Tufan, Selda ve Burak"
+  },
+  "messages": {
+    "letterTitle": "Bu Özel Günümüzü Birlikte Kutlayalım",
+    "letterText": "Burak’ın hayatındaki bu özel günü, ailemiz ve sevdiklerimizle birlikte güzel bir hatıraya dönüştürmek istiyoruz. Mutluluğumuzu paylaşmanızdan büyük mutluluk duyarız.",
+    "finalTitle": "Sevgiyle Bekliyoruz",
+    "finalText": "Burak’ın bu mutlu ve anlamlı gününde yanımızda olmanız dileğiyle, sizleri sevgiyle bekliyoruz."
+  },
+  "venue": {
+    "name": "Seydi Bahçe Kır Düğün Salonu",
+    "address": "Irmak Mahallesi, 39/2 Sokak No:13, Gaziemir / İzmir",
+    "addressLine1": "Irmak Mahallesi, 39/2 Sokak No:13",
+    "addressLine2": "Gaziemir / İzmir",
+    "addressShort": "Gaziemir / İzmir",
+    "city": "Gaziemir / İzmir",
+    "sectionTitle": "Sünnet Düğünü Nerede?",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Seydi+Bah%C3%A7e+K%C4%B1r+D%C3%BC%C4%9F%C3%BCn+Salonu%2C+Irmak+Mahallesi%2C+39%2F2+Sokak+No%3A13%2C+Gaziemir+%C4%B0zmir",
+    "description": "Sünnet düğünümüz <strong>Seydi Bahçe Kır Düğün Salonu</strong>'nda gerçekleşecektir. Yol tarifi için aşağıdaki butonu kullanabilirsiniz."
+  },
+  "timeline": [
+    { "time": "19:00", "title": "Hoş Geldiniz", "icon": "bx-door-open" },
+    { "time": "19:20", "title": "Burak’ın Girişi", "icon": "bx-crown" },
+    { "time": "19:35", "title": "Aile Fotoğrafları & Tebrikler", "icon": "bx-camera" },
+    { "time": "19:50", "title": "Oyun Ablası & Çocuk Eğlencesi", "icon": "bx-happy-beaming", "featured": true },
+    { "time": "20:30", "title": "Akşam Yemeği & İkram", "icon": "bx-dish" },
+    { "time": "21:00", "title": "Müzik & Eğlence", "icon": "bx-music" },
+    { "time": "21:25", "title": "Pasta & Hediye Zamanı", "icon": "bx-cake" },
+    { "time": "21:45", "title": "Takı & Tebrikler", "icon": "bx-gift" },
+    { "time": "22:00", "title": "Hatıra Fotoğrafları & Kapanış", "icon": "bx-moon" }
+  ],
+  "childrenSection": {
+    "enabled": true,
+    "eyebrow": "KÜÇÜK MİSAFİRLERİMİZ İÇİN",
+    "title": "Oyun Ablası ile Eğlence",
+    "description": "Oyunlar, mini yarışmalar ve çocuklara özel eğlenceli aktivitelerle küçük misafirlerimiz için de keyifli bir akşam hazırladık.",
+    "features": [
+      { "icon": "bx-joystick", "title": "Oyunlar" },
+      { "icon": "bx-trophy", "title": "Mini Yarışmalar" },
+      { "icon": "bx-party", "title": "Eğlence" }
+    ]
+  },
+  "gallery": [],
+  "galleryFullRes": [],
+  "rsvp": {
+    "enabled": true,
+    "connected": false,
+    "demoMode": true,
+    "formAction": "#",
+    "maxAdults": 10,
+    "maxChildren": 4,
+    "collectVegetarian": false,
+    "collectHasChildrenQuestion": false,
+    "childInfoNotice": "Çocuklarımız oyun ablası etkinliğine katılabilir.",
+    "title": "Sünnet Düğünümüze Katılıyor musunuz?",
+    "subtitle": "Hazırlıklarımızı en iyi şekilde yapabilmemiz için katılım bilginizi bizimle paylaşabilirsiniz.",
+    "messageLabel": "Burak’a Mesajınız",
+    "messagePlaceholder": "Burak ve ailemiz için güzel dileklerinizi iletebilirsiniz...",
+    "submitText": "Katılımımı Bildir",
+    "successTitle": "Katılım bilginiz alındı",
+    "demoNotice": "Bu bir NVM Dijital Davetiye demo formudur. Gerçek bir katılım kaydı oluşturulmamıştır.",
+    "entries": {
+      "name": "demo_name",
+      "attendance": "demo_attendance",
+      "adults": "demo_adults",
+      "children": "demo_children",
+      "childAge1": "demo_childAge1",
+      "childAge2": "demo_childAge2",
+      "childAge3": "demo_childAge3",
+      "childAge4": "demo_childAge4",
+      "childAges": [
+        "demo_childAge1",
+        "demo_childAge2",
+        "demo_childAge3",
+        "demo_childAge4"
+      ],
+      "message": "demo_message"
+    }
+  },
+  "calendar": {
+    "eventTitle": "Burak’ın Sünnet Düğünü",
+    "googleCalUrl": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Burak%E2%80%99%C4%B1n+S%C3%BCnnet+D%C3%BC%C4%9F%C3%BCn%C3%BC&dates=20270612T160000Z/20270612T190000Z&details=Burak%E2%80%99%C4%B1n+s%C3%BCnnet+d%C3%BC%C4%9F%C3%BCn%C3%BC.+Mekan%3A+Seydi+Bah%C3%A7e+K%C4%B1r+D%C3%BC%C4%9F%C3%BCn+Salonu%2C+Gaziemir+%2F+%C4%B0zmir&location=Seydi+Bah%C3%A7e+K%C4%B1r+D%C3%BC%C4%9F%C3%BCn+Salonu%2C+Irmak+Mahallesi%2C+39%2F2+Sokak+No%3A13%2C+Gaziemir+%2F+%C4%B0zmir",
+    "ics": {
+      "uid": "burak-sunnet-20270612@nvmedya.com",
+      "dtstart": "20270612T160000Z",
+      "dtend": "20270612T190000Z",
+      "summary": "Burak’ın Sünnet Düğünü",
+      "description": "Burak’ın sünnet düğünü. Başlangıç: 19:00, Bitiş: 22:00.",
+      "location": "Seydi Bahçe Kır Düğün Salonu, Irmak Mahallesi, 39/2 Sokak No:13, Gaziemir / İzmir",
+      "filename": "Burak-Sunnet-Dugunu.ics"
+    }
+  }
+}
