@@ -671,11 +671,11 @@ function renderTemplate(templateHtml, config, options = {}) {
 
   const rsvpEntries = (c.rsvp && c.rsvp.entries) || {};
   const closesAtIso = (c.rsvp && c.rsvp.closesAt) || null;
-  // In showcase mode, the deadline override prevents closing the form on the server
-  const isClosedServer = isShowcase ? false : (closesAtIso ? (Date.now() >= new Date(closesAtIso).getTime()) : false);
+  const isDemoRsvp = Boolean(c.rsvp && c.rsvp.demoMode) || isShowcase;
+  // In showcase or demo mode, the deadline override prevents closing the form on the server
+  const isClosedServer = (isShowcase || isDemoRsvp || Boolean(c.isDemo)) ? false : (closesAtIso ? (Date.now() >= new Date(closesAtIso).getTime()) : false);
   const deadlineDisplay = (c.rsvp && c.rsvp.deadlineDisplay) || '8 Kasım 2026 • 23:59';
   const closedText = (c.rsvp && c.rsvp.closedText) || `Katılım bildirimleri ${deadlineDisplay.replace(' • ', ' saat ')} itibarıyla kapanmıştır. İlginiz için teşekkür ederiz.`;
-  const isDemoRsvp = Boolean(c.rsvp && c.rsvp.demoMode) || isShowcase;
   const isRsvpConnected = !(c.rsvp && c.rsvp.connected === false);
   const collectVegetarian = (c.rsvp && c.rsvp.collectVegetarian !== undefined) ? Boolean(c.rsvp.collectVegetarian) : (!isBirthday && !isCircumcision);
   const collectHasChildrenQuestion = (c.rsvp && c.rsvp.collectHasChildrenQuestion !== undefined) ? Boolean(c.rsvp.collectHasChildrenQuestion) : (!isBirthday && !isCircumcision);

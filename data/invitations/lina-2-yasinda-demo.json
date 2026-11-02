@@ -1,0 +1,126 @@
+{
+  "slug": "lina-2-yasinda-demo",
+  "eventType": "birthday",
+  "packageTier": "plus",
+  "isDemo": true,
+  "theme": "sunflower-garden",
+  "person": {
+    "name": "Lina",
+    "age": 2,
+    "displayName": "Lina 2 Yaşında!",
+    "signature": "Melis, Kamil ve Lina"
+  },
+  "music": {
+    "enabled": true,
+    "src": "/assets/invitations/lina-2-yasinda/music.mp3",
+    "loop": true,
+    "volume": 0.7,
+    "title": "İyi Ki Doğdun Lina"
+  },
+  "couple": {
+    "displayName": "Lina 2 Yaşında!",
+    "bride": "Lina",
+    "groom": ""
+  },
+  "socialPreviewImage": "https://www.nvmedya.com/assets/invitations/lina-2-yasinda/social-preview.jpg",
+  "social": {
+    "title": "Lina 2 Yaşında! | Dijital Davetiye",
+    "description": "Lina’nın 2. yaşını birlikte kutlayalım. 6 Aralık 2026 • Bornova / İzmir",
+    "previewImage": "https://www.nvmedya.com/assets/invitations/lina-2-yasinda/social-preview.jpg"
+  },
+  "date": {
+    "display": "6 Aralık 2026 Pazar",
+    "short": "6 Aralık 2026",
+    "dayOfWeek": "Pazar",
+    "iso": "2026-12-06",
+    "time": "14:00",
+    "timezone": "Europe/Istanbul",
+    "countdownTarget": "2026-12-06T14:00:00+03:00",
+    "countdownTitle": "Lina’nın Doğum Gününe"
+  },
+  "hero": {
+    "badge": "Doğum Günü Davetiyesi",
+    "title": "Lina 2 Yaşında!",
+    "dateLine": "6 ARALIK 2026 • PAZAR • 14:00",
+    "message": "Bu güzel günü birlikte kutlayalım.",
+    "backgroundImage": "/assets/invitations/lina-2-yasinda/hero.png"
+  },
+  "letter": {
+    "title": "Lina’nın 2. Yaşını Birlikte Kutlayalım",
+    "text": "Minik Lina’mız 2 yaşına giriyor! Bu güzel günü sevdiklerimizle birlikte kutlamak ve Lina’nın yeni yaşına hep birlikte gülümsemek istiyoruz. Sizleri de aramızda görmekten mutluluk duyarız.",
+    "signature": "Melis, Kamil ve Lina"
+  },
+  "messages": {
+    "letterTitle": "Lina’nın 2. Yaşını Birlikte Kutlayalım",
+    "letterText": "Minik Lina’mız 2 yaşına giriyor! Bu güzel günü sevdiklerimizle birlikte kutlamak ve Lina’nın yeni yaşına hep birlikte gülümsemek istiyoruz. Sizleri de aramızda görmekten mutluluk duyarız.",
+    "finalTitle": "Sevgiyle Bekliyoruz",
+    "finalText": "Bu güzel günü birlikte kutlamak ve Lina’nın 2. yaş heyecanını paylaşmak dileğiyle, sizleri sevgiyle bekliyoruz."
+  },
+  "venue": {
+    "name": "Hepsert Spor Kulübü",
+    "address": "Kazımdirik Mahallesi, 367. Sokak No:10/2 Kat:3, Bornova / İzmir",
+    "addressLine1": "Kazımdirik Mahallesi, 367. Sokak No:10/2 Kat:3",
+    "addressLine2": "Bornova / İzmir",
+    "addressShort": "Bornova / İzmir",
+    "city": "Bornova / İzmir",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Hepsert+Spor+Kul%C3%BCb%C3%BC,+Kaz%C4%B1mdirik+Mahallesi,+367.+Sokak+No:10/2,+Bornova+%C4%B0zmir",
+    "description": "Partimiz <strong>Hepsert Spor Kulübü</strong>'nde gerçekleşecektir. Yol tarifi için aşağıdaki butonu kullanabilirsiniz."
+  },
+  "timeline": [
+    { "time": "14:00", "title": "Hoş Geldiniz", "icon": "bx-door-open" },
+    { "time": "14:30", "title": "Oyun & Eğlence", "icon": "bx-joystick" },
+    { "time": "15:00", "title": "Pasta Zamanı", "icon": "bx-cake" },
+    { "time": "15:30", "title": "Fotoğraf & Hediye Zamanı", "icon": "bx-camera" }
+  ],
+  "gallery": [],
+  "galleryFullRes": [],
+  "rsvp": {
+    "enabled": true,
+    "connected": false,
+    "demoMode": true,
+    "formAction": "#",
+    "maxAdults": 4,
+    "maxChildren": 4,
+    "collectVegetarian": false,
+    "collectHasChildrenQuestion": false,
+    "collectChildAges": true,
+    "collectMessage": true,
+    "title": "Partimize Katılıyor musunuz?",
+    "subtitle": "Hazırlıklarımızı daha güzel planlayabilmemiz için katılım bilginizi bizimle paylaşabilirsiniz.",
+    "messageLabel": "Lina’ya Mesajınız",
+    "messagePlaceholder": "Lina için güzel dileklerinizi paylaşabilirsiniz.",
+    "submitText": "Katılımımı Bildir",
+    "successTitle": "Katılım bilginiz alındı",
+    "demoNotice": "Bu bir NVM Dijital Davetiye demo formudur. Gerçek bir katılım kaydı oluşturulmamıştır.",
+    "entries": {
+      "name": "demo_name",
+      "attendance": "demo_attendance",
+      "adults": "demo_adults",
+      "children": "demo_children",
+      "childAge1": "demo_childAge1",
+      "childAge2": "demo_childAge2",
+      "childAge3": "demo_childAge3",
+      "childAge4": "demo_childAge4",
+      "childAges": [
+        "demo_childAge1",
+        "demo_childAge2",
+        "demo_childAge3",
+        "demo_childAge4"
+      ],
+      "message": "demo_message"
+    }
+  },
+  "calendar": {
+    "eventTitle": "Lina 2 Yaşında! — Doğum Günü Partisi",
+    "googleCalUrl": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Lina+2+Ya%C5%9F%C4%B1nda!+Do%C4%9Fum+G%C3%BCn%C3%BC+Partisi&dates=20261206T110000Z/20261206T140000Z&details=Lina%E2%80%99n%C4%B1n+2.+ya%C5%9F%C4%B1n%C4%B1+birlikte+kutlayal%C4%B1m.+Mekan%3A+Hepsert+Spor+Kul%C3%BCb%C3%BC+Bornova+%2F+%C4%B0zmir&location=Hepsert+Spor+Kul%C3%BCb%C3%BC%2C+Kaz%C4%B1mdirik+Mahallesi%2C+367.+Sokak+No%3A10%2F2+Kat%3A3%2C+Bornova+%2F+%C4%B0zmir",
+    "ics": {
+      "uid": "lina-2-yasinda-demo-20261206@nvmedya.com",
+      "dtstart": "20261206T110000Z",
+      "dtend": "20261206T140000Z",
+      "summary": "Lina 2 Yaşında! — Doğum Günü Partisi",
+      "description": "Lina’nın 2. yaş günü partisi. Başlangıç: 14:00.",
+      "location": "Hepsert Spor Kulübü, Kazımdirik Mahallesi, 367. Sokak No:10/2 Kat:3, Bornova / İzmir",
+      "filename": "Lina-2-Yasinda-Dogum-Gunu.ics"
+    }
+  }
+}

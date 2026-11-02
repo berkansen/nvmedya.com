@@ -2597,6 +2597,13 @@
                 document.getElementById('cd-hours').innerText = '00';
                 document.getElementById('cd-minutes').innerText = '00';
                 document.getElementById('cd-seconds').innerText = '00';
+                if (__INV__.isDemo) {
+                    const cdHeader = document.querySelector('.countdown-header');
+                    if (cdHeader && !cdHeader.getAttribute('data-completed')) {
+                        cdHeader.setAttribute('data-completed', '1');
+                        cdHeader.innerHTML = "<i class='bx bx-party'></i> <span>Kutlama Zamanı!</span>";
+                    }
+                }
                 return;
             }
 
